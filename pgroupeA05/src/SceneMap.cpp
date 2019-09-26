@@ -1,3 +1,4 @@
+#include "Game.h"
 #include "SceneMap.h"
 #include "Graphics.hpp"
 #include <iostream>
@@ -12,9 +13,10 @@ SceneMap::SceneMap()
 }
 
 void SceneMap::draw() {
-    //std::cout << "Render" << std::endl;
+    std::cout << "Render" << std::endl;
+    gmap.draw();
 }
 
 void SceneMap::eventHandler(sf::Event) {
-    std::cout << "Event" << std::endl;
+    //std::cout << "Event" << std::endl;
 }

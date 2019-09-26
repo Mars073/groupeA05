@@ -25,7 +25,7 @@ int main()
             //->getScene().eventHandler(event);
             scene.eventHandler(event);
         }
-        window.clear();
+        //window.clear();
         //game->getScene().draw();
         scene.draw();
     }

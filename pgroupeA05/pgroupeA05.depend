@@ -13,12 +13,13 @@
 	<Graphics.hpp>
 	<Scene.h>
 
-1569510699 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/main.cpp
+1569513271 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/main.cpp
 	<SFML/Graphics.hpp>
 	<Game.h>
 	<SceneMap.h>
 
-1569509196 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/SceneMap.cpp
+1569513752 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/SceneMap.cpp
+	"Game.h"
 	"SceneMap.h"
 	"Graphics.hpp"
 	<iostream>
@@ -59,7 +60,8 @@
 	<SFML/Graphics/VertexBuffer.hpp>
 	<SFML/Graphics/View.hpp>
 
-1569510512 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/GameMap.cpp
+1569513739 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/GameMap.cpp
 	"Game.h"
 	"GameMap.h"
+	<iostream>
 

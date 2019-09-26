@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "GameMap.h"
+#include<iostream>
 
 GameMap::GameMap()
 {
@@ -14,13 +15,14 @@ void GameMap::draw()
 {
     Sprite sprite;
     sprite.setTexture(texture);
-    sprite.setInRect(516, 2, 32, 32);
+    sprite.setTextureRect(IntRect(0, 0, 32, 32));
 
     for (int i = 0; i < 64; i++)
     {
-        sprite.setPosition((i % width)*32.f, i/width*32.f);
+        sprite.setPosition(i % width)*32.f, i/width*32.f);
         Game::window->draw(sprite);
     }
+    std::cout << "render";
 }
 
 
