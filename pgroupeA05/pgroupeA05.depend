@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1569494098 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/Scene.cpp
+	"Scene.h"
+	<iostream>
+
+1569494460 /mnt/nothing/Dossiers/Sources/cb/pgroupeA05/include/Scene.h
+	<SFML/Graphics.hpp>
+
+1569510590 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/Game.cpp
+	"Game.h"
+
+1569510699 /mnt/nothing/Dossiers/Sources/cb/pgroupeA05/include/Game.h
+	<Graphics.hpp>
+	<Scene.h>
+
+1569510699 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/main.cpp
+	<SFML/Graphics.hpp>
+	<Game.h>
+	<SceneMap.h>
+
+1569509196 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/SceneMap.cpp
+	"SceneMap.h"
+	"Graphics.hpp"
+	<iostream>
+
+1569494760 /mnt/nothing/Dossiers/Sources/cb/pgroupeA05/include/SceneMap.h
+	<Scene.h>
+	<GameMap.h>
+
+1569509944 /mnt/nothing/Dossiers/Sources/cb/pgroupeA05/include/GameMap.h
+	<Graphics.hpp>
+
+1539632499 /usr/include/SFML/Graphics.hpp
+	<SFML/Window.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/ConvexShape.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/Graphics/RenderTexture.hpp>
+	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Graphics/Shader.hpp>
+	<SFML/Graphics/Shape.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/Graphics/VertexBuffer.hpp>
+	<SFML/Graphics/View.hpp>
+
+1569510512 source:/mnt/nothing/Dossiers/Sources/cb/pgroupeA05/src/GameMap.cpp
+	"Game.h"
+	"GameMap.h"
+
