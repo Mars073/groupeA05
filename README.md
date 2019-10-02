@@ -16,6 +16,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
+  * [Team](#team)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Configure Code::Blocks](#configure)
@@ -23,6 +24,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
+### Team
+| Kevin | Corentin | Martin |
+|-------|----------|--------|
 
 ### Built With
 
