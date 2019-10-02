@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-[![Final Quest][product-logo]]
+![Final Quest](https://raw.githubusercontent.com/Mars073/groupeA05/master/pgroupeA05/data/images/logo.png)
 	<p align="center">Project carried out as part of the video game development course at HELHa
 		<br />
 		<br />
@@ -25,6 +25,3 @@
 ### Built With
 * [Code::Blocks](http://www.codeblocks.org/)
 * [SFML](https://www.sfml-dev.org/index-fr.php)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[product-logo]: https://raw.githubusercontent.com/Mars073/groupeA05/master/pgroupeA05/data/images/logo.png
