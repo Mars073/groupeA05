@@ -21,7 +21,20 @@
   * [Configure Code::Blocks](#configure)
 * [License](#license)
 
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
 ### Built With
+
 * [Code::Blocks](http://www.codeblocks.org/)
-* [SFML](https://www.sfml-dev.org/index-fr.php)
+* [SFML](https://www.sfml-dev.org/)
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Configure Code::Blocks
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
