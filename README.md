@@ -36,6 +36,10 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
+obviously, clone or download the project:
+```sh
+git clone https://github.com/Mars073/groupeA05.git
+```
 
 ### Configure Code::Blocks
 
