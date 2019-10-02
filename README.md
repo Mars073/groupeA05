@@ -4,7 +4,7 @@
 	<p align="center">Project carried out as part of the video game development course at HELHa
 		<br />
 		<br />
-		<a href="https://helha.be/">HELHa Website</a>
+		<a href="https://helha.be/" target="_blank">HELHa Website</a>
 		.
 		<a href="https://github.com/Mars073/groupeA05/issues">Report Bug</a>
 		.
