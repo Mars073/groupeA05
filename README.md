@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-![Final Quest](https://raw.githubusercontent.com/Mars073/groupeA05/master/pgroupeA05/data/images/logo.png)
+	<img src="https://raw.githubusercontent.com/Mars073/groupeA05/master/pgroupeA05/data/images/logo.png" />
 	<p align="center">Project carried out as part of the video game development course at HELHa
 		<br />
 		<br />
