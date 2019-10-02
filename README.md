@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-[![Final Quest][product-logo]](https://github.com/Mars073/groupeA05)
+[![Final Quest][product-logo]]
 	<p align="center">Project carried out as part of the video game development course at HELHa
 		<br />
 		<br />
