@@ -36,12 +36,15 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
-obviously, clone or download the project:
+Obviously, clone or download the project:
 ```sh
 git clone https://github.com/Mars073/groupeA05.git
 ```
 
 ### Configure Code::Blocks
+1. Open the `pgroupeA05\pgroupeA05.cbp` file with Code::Blocks
+2. Include SFML libs
+3. Finish the readme :)
 
 <!-- LICENSE -->
 ## License
