@@ -1,4 +1,6 @@
 #include "HomeScene.h"
+#include "MapScene.h"
+#include "Game.h"
 
 #include<iostream>
 #include<algorithm>
@@ -48,11 +50,13 @@ void HomeScene::eventHandler(Event event) {
             }
         case Keyboard::Enter:
             {
+                RenderWindow* win = getWindow();
                 switch(selected_id)
                 {
                 case 0:
                     {
                         // Lancer de jeu
+                        setScene(new MapScene);
                         break;
                     }
                 case 1:
@@ -61,7 +65,7 @@ void HomeScene::eventHandler(Event event) {
                         break;
                     }
                 default:
-                    getWindow()->close(); // Dans les autres cas on ferme
+                    win->close(); // Dans les autres cas on ferme
                 }
                 break;
             }

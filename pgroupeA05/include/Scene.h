@@ -20,7 +20,11 @@ class Scene
         virtual void eventHandler(Event) = 0;
         Texture getTexture(string, string);
         Font getFont(string, string);
-        RenderWindow* getWindow();  // raccourci
+
+        // raccourcis scene <-> game
+        RenderWindow* getWindow();
+        void setScene(Scene*);
+
 };
 
 #endif // SCENE_H

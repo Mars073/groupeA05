@@ -57,10 +57,12 @@
 		</Linker>
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/HomeScene.h" />
+		<Unit filename="include/MapScene.h" />
 		<Unit filename="include/Scene.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/HomeScene.cpp" />
+		<Unit filename="src/MapScene.cpp" />
 		<Unit filename="src/Scene.cpp" />
 		<Extensions>
 			<code_completion />
