@@ -43,8 +43,8 @@ git clone https://github.com/Mars073/groupeA05.git
 
 ### Configure Code::Blocks
 1. Open the `pgroupeA05\pgroupeA05.cbp` file with Code::Blocks
-2. Include SFML libs
-3. Finish the readme :)
+2. Include <a href="https://www.sfml-dev.org/tutorials/2.5/start-cb.php" target="_blank" title="SFML and Code::Blocks (MinGW)">SFML libs</a>, the default folder in the project is `C:\libs\SFML`. You can also add all DLL files to the `bin\Debug\` folder.
+3. Enjoy.
 
 <!-- LICENSE -->
 ## License
