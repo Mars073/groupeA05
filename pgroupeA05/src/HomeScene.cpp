@@ -7,7 +7,6 @@
 
 HomeScene::HomeScene()
 {
-
     //ctor
 }
 
