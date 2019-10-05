@@ -6,7 +6,8 @@ MapScene::MapScene()
 }
 
 
-void MapScene::draw() {
+void MapScene::draw()
+{
     RenderWindow* win = getWindow();
     Font f = getFont("arial", "data/fonts/arial.ttf");
     Text text("<ESC> Menu - <A> Interact", f);

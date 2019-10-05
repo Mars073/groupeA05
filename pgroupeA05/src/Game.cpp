@@ -55,7 +55,8 @@ Scene* Game::getScene()
 }
 
 
-bool Game::isOpen() {
+bool Game::isOpen()
+{
     return window->isOpen();
 }
 
@@ -76,10 +77,12 @@ void Game::pollEvent()
     }
 }
 
-void Game::close() {
+void Game::close()
+{
     window->close();
 }
 
-void Game::test_com() {
+void Game::test_com()
+{
     window->setTitle("Communication: OK");
 }

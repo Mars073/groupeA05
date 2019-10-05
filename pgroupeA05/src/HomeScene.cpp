@@ -11,7 +11,8 @@ HomeScene::HomeScene()
     //ctor
 }
 
-void HomeScene::draw() {
+void HomeScene::draw()
+{
     RenderWindow* win = getWindow();
     Sprite sprite;
     Texture t = getTexture("title-background", "data/images/background-title.png");
@@ -28,7 +29,8 @@ void HomeScene::draw() {
     }
 }
 
-void HomeScene::eventHandler(Event event) {
+void HomeScene::eventHandler(Event event)
+{
     if (event.type == Event::KeyPressed)
     {
         switch (event.key.code)
