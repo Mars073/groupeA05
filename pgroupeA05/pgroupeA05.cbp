@@ -56,17 +56,37 @@
 			<Add library="C:/libs/SFML/lib/libsfml-window.a" />
 			<Add directory="C:/libs/SFML/lib" />
 		</Linker>
+		<Unit filename="include/Character.h" />
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/GameMap.h" />
 		<Unit filename="include/HomeScene.h" />
 		<Unit filename="include/MapScene.h" />
 		<Unit filename="include/Scene.h" />
+		<Unit filename="include/Armor.h" />
+		<Unit filename="include/BattleCharacter.h" />
+		<Unit filename="include/Heal.h" />
+		<Unit filename="include/Inventory.h" />
+		<Unit filename="include/Item.h" />
+		<Unit filename="include/Monster.h" />
+		<Unit filename="include/Npc.h" />
+		<Unit filename="include/Player.h" />
+		<Unit filename="include/Weapon.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/GameMap.cpp" />
 		<Unit filename="src/HomeScene.cpp" />
 		<Unit filename="src/MapScene.cpp" />
 		<Unit filename="src/Scene.cpp" />
+		<Unit filename="src/Armor.cpp" />
+		<Unit filename="src/BattleCharacter.cpp" />
+		<Unit filename="src/Heal.cpp" />
+		<Unit filename="src/Inventory.cpp" />
+		<Unit filename="src/Item.cpp" />
+		<Unit filename="src/Monster.cpp" />
+		<Unit filename="src/Npc.cpp" />
+		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/Weapon.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
