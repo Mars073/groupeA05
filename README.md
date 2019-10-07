@@ -26,8 +26,8 @@
 ## About The Project
 
 ### Team
-| Kevin | Corentin | Martin |
-|-------|----------|--------|
+| Kevin "[Nevo067](//github.com/nevo067)" Opese | Corentin "[TigrouSimba](//github.com/TigrouSimba)" Nya | Martin "[mars073](//github.com/mars073)" Leroy |
+|-----------------------|----------------------------|------------------------|
 
 ### Built With
 

@@ -8,26 +8,42 @@ using namespace sf;
 class Game
 {
     private:
-        static Game* instance; // singleton
+        static Game* instance;          //!< Singleton instance
+        /** private constructor */
         Game();
-        Scene* scene = new HomeScene;
-        RenderWindow *window = nullptr;
+        /** instance destructor */
+        ~Game();
+        Scene* scene = new HomeScene;   //!< Pointer "Scene"
+        RenderWindow* window = nullptr; //!< Pointer "RenderWindow"
 
     public:
+        /** Prevent Singleton copy */
+        Game(const Game&) = delete;
+        Game(Game&&) = delete;
+        Game& operator = (const Game&) = delete;
+        Game& operator = (Game&&) = delete;
+        /** Access Singleton instance
+         * \return A pointer of the Game instance
+         */
         static Game* getInstance();
-        virtual ~Game();
 
-        void draw();
-        RenderWindow* getWindow();
+        /** Draw all of Game component */
+        void draw() const;
+        /** Access RenderWindow Instance */
+        RenderWindow* getWindow() const;
+        /** Set active Scene
+         * \param ptr new Scene to set
+         */
         void setScene(Scene*);
-        Scene* getScene();
+        /** Access active Scene */
+        Scene* getScene() const;
 
-        // raccourcis game <-> window
-        bool isOpen();
-        bool pollEvent(Event&);
-        void pollEvent();
-        void close();
-        void test_com();
+        // Shortcuts game <-> window
+        bool isOpen() const;
+        bool pollEvent(/*const*/ Event&) const;
+        void pollEvent() const;
+        void close() const;
+        void test_com() const;
 
 };
 
