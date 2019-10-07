@@ -8,5 +8,6 @@ int main()
         game->pollEvent();
         game->draw();
     }
+    system("PAUSE");
     return 0;
 }
