@@ -30,14 +30,14 @@ Game::~Game()
         delete window;
 }
 
-void Game::draw()
+void Game::draw() const
 {
     window->clear();
     scene->draw();
     window->display();
 }
 
-RenderWindow* Game::getWindow()
+RenderWindow* Game::getWindow() const
 {
     return window;
 }
@@ -49,23 +49,23 @@ void Game::setScene(Scene* _scene)
     scene = _scene;
 }
 
-Scene* Game::getScene()
+Scene* Game::getScene() const
 {
     return scene;
 }
 
 
-bool Game::isOpen()
+bool Game::isOpen() const
 {
     return window->isOpen();
 }
 
-bool Game::pollEvent(Event& event)
+bool Game::pollEvent(Event& event) const
 {
     return window->pollEvent(event);
 }
 
-void Game::pollEvent()
+void Game::pollEvent() const
 {
     Event event;
     if (pollEvent(event))
@@ -77,12 +77,12 @@ void Game::pollEvent()
     }
 }
 
-void Game::close()
+void Game::close() const
 {
     window->close();
 }
 
-void Game::test_com()
+void Game::test_com() const
 {
     window->setTitle("Communication: OK");
 }

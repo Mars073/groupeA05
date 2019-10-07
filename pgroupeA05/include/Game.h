@@ -23,22 +23,22 @@ class Game
         virtual ~Game();
 
         /** Draw all of Game component */
-        void draw();
+        void draw() const;
         /** Access RenderWindow Instance */
-        RenderWindow* getWindow();
+        RenderWindow* getWindow() const;
         /** Set active Scene
          * \param ptr new Scene to set
          */
         void setScene(Scene*);
         /** Access active Scene */
-        Scene* getScene();
+        Scene* getScene() const;
 
         // Shortcuts game <-> window
-        bool isOpen();
-        bool pollEvent(Event&);
-        void pollEvent();
-        void close();
-        void test_com();
+        bool isOpen() const;
+        bool pollEvent(/*const*/ Event&) const;
+        void pollEvent() const;
+        void close() const;
+        void test_com() const;
 
 };
 
