@@ -14,11 +14,11 @@ class GameMap
 {
     private:
         int width;
-        std::vector<int> dataset;
+        vector<int> dataset;
     public:
         GameMap();
         GameMap(int);
-        bool loadFromFile(std::string);
+        bool loadFromFile(string);
         void setWidth(int width);
 };
 

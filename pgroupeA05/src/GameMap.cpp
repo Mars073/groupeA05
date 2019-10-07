@@ -21,12 +21,22 @@ bool GameMap::loadFromFile(string path)
     basic_ifstream<char32_t> fdat(path, ios::binary);
     fdat.imbue(loc);
 
+    int i = 0;
     char32_t c;
+    if (fdat.get(c) != 'm' || fdat.get(c) != 'a' || fdat.get(c) != 'p')
+        return false; // no map header
+    if (fdat.get(c))
+        setWidth(c-48);
+    else
+        return false;
     while (fdat.get(c))
     {
         if (c == '\n' || c == '\r')
             continue;
-        cout << "::" << c << endl;
+        if (i >= width*width)
+            break;
+        cout << (i+1) <<"::" << c << endl;
+        dataset[i++] = c-48;
     }
     return true;
 }
