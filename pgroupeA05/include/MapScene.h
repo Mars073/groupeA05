@@ -1,25 +1,17 @@
-#ifndef GAMEMAP_H
-#define GAMEMAP_H
+#ifndef MAPSCENE_H
+#define MAPSCENE_H
 
-#include <iostream>
-#include <locale>
-#include <string>
-#include <codecvt>
-#include <fstream>
-#include <vector>
+#include "Scene.h"
 
-using namespace std;
-
-class GameMap
+class MapScene: public Scene
 {
     private:
-        int width;
-        vector<int> dataset;
+
     public:
-        GameMap();
-        GameMap(int);
-        bool loadFromFile(string);
-        void setWidth(int width);
+        MapScene();
+        void draw();
+        void eventHandler(Event);
+
 };
 
-#endif // GAMEMAP_H
+#endif // MAPSCENE_H
