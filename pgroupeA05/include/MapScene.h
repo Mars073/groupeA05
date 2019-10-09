@@ -2,10 +2,12 @@
 #define MAPSCENE_H
 
 #include "Scene.h"
+#include "GameMap.h"
 
 class MapScene: public Scene
 {
     private:
+        GameMap gmap;
 
     public:
         MapScene();
