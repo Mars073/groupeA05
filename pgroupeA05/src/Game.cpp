@@ -37,6 +37,22 @@ void Game::draw() const
     window->display();
 }
 
+void Game::drawImage(const Texture& image, int sx, int sy, int sw, int sh, int dx, int dy) const
+{
+    return drawImage(image, sx, sy, sw, sh, dx, dy, sw, sh);
+}
+
+void Game::drawImage(const Texture& image, int sx, int sy, int sw, int sh, int dx, int dy, int dw, int dh) const
+{
+    Sprite sprite;
+    sprite.setTexture(image);
+    sprite.setTextureRect(IntRect(sx, sy, sw, sh));
+    sprite.setPosition(dx, dy);
+    if (sw != dw || sh != dh)
+        sprite.setScale((float)sw / dw, (float)sh / dh);
+    window->draw(sprite);
+}
+
 RenderWindow* Game::getWindow() const
 {
     return window;

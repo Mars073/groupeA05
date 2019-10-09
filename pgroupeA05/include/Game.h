@@ -29,6 +29,8 @@ class Game
 
         /** Draw all of Game component */
         void draw() const;
+        void drawImage(const Texture&, int, int ,int ,int, int, int) const;
+        void drawImage(const Texture&, int, int ,int ,int, int, int, int, int) const; // js like
         /** Access RenderWindow Instance */
         RenderWindow* getWindow() const;
         /** Set active Scene
