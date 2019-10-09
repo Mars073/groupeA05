@@ -7,6 +7,7 @@
 #include <codecvt>
 #include <fstream>
 #include <vector>
+#include <math.h>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "TileInfo.h"

@@ -47,6 +47,7 @@ bool GameMap::loadFromFile(string path)
         //cout << (i+1) <<"::" << c << endl;
         dataset.push_back(TileInfo(i++, c-48));
     }
+    cout << "sz: " << dataset.size() << endl;
     return true;
 }
 
@@ -63,24 +64,28 @@ Vector2u GameMap::tx2loc(int TextureID) const
 vector<TileInfo> GameMap::getNeighboursInfo(const int index) const
 {
     vector<TileInfo> tmp;
-    // to do
+    /*N*/tmp.push_back(dataset.at(index < width ? index : index - width));
+    /*E*/tmp.push_back(dataset.at((index + 1)%width == 0 ? index : index + 1));
+    /*S*/tmp.push_back(dataset.at((int)ceil((index+1)/width) >= width ? index : index + width));
+    /*O*/tmp.push_back(dataset.at((index + 1) % width == 1 || index == 0 ? index : index - 1));
     return tmp;
 }
 
 void GameMap::draw() const
 {
     Game *g = Game::getInstance();
-    RenderWindow *win = g->getWindow();
 
     for (unsigned int i = 0; i < dataset.size(); i++)
     {
         TileInfo tile = dataset[i];
         Vector2u pos(tile.getPosition(width));
         Vector2u posTX(tx2loc(tile.FLOOR_ID));
-        Sprite sprite;
-        sprite.setTexture(texture);
-        sprite.setTextureRect(IntRect(posTX.x, posTX.y, 32, 32));
-        sprite.setPosition(pos.x*32, pos.y*32);
-        win->draw(sprite);
+        g->drawImage(texture, posTX.x, posTX.y, 32, 32, pos.x*32, pos.y*32);
+        vector<TileInfo> nears = getNeighboursInfo(i);
+        //borders
+        /*if (nears.at(0) && [0].FLOOR_ID != tile.FLOOR_ID)
+        {
+            //sprite.setTextureRect(IntRect(posTX.x,))
+        }*/
     }
 }
