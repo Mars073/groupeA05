@@ -81,7 +81,7 @@ void GameMap::draw() const
         Vector2u pos(tile.getPosition(width));
         Vector2u posTX(tx2loc(tile.FLOOR_ID));
         g->drawImage(texture, posTX.x, posTX.y, 32, 32, pos.x*32, pos.y*32);
-        vector<TileInfo> nears = getNeighboursInfo(i);
+        //vector<TileInfo> nears = getNeighboursInfo(i);
         //borders
         /*if (nears.at(0) && [0].FLOOR_ID != tile.FLOOR_ID)
         {

@@ -20,7 +20,7 @@ BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string t
     this->text.setStyle(sf::Text::Bold | sf::Text::Underlined);
     this->text.setPosition(positionX,positionY);
     this->text.setFillColor(sf::Color(0,0,255));
-    this->strat = strat;
+    //this->strat = strat;
 
     /*
     this->txt.setFont(this->font);
