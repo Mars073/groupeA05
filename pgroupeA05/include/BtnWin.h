@@ -40,7 +40,7 @@ class BtnWin
         sf::Font font;
         bool isActivate = false;
         sf::RectangleShape rect;
-        IstrategyBtn *strat;
+
 
 };
 
