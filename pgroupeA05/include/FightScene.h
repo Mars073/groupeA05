@@ -6,7 +6,7 @@
 #include "WindowsFight.h"
 #include "vector"
 #include "iostream"
-#include "IstrategyBtn.h"
+
 
 
 class FightScene

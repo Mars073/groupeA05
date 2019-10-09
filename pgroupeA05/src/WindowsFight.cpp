@@ -26,7 +26,10 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
 
 WindowsFight::~WindowsFight()
 {
-    //dtor
+    for(int i = 0; i< this->vectorButton.size()-1;i++)
+    {
+        delete(this->vectorButton.at(i));
+    }
 }
 int WindowsFight::getPositionX() const
 {

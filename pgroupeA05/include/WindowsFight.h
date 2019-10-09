@@ -2,7 +2,6 @@
 #define WindowsFight_H
 #include "vector"
 #include "BtnWin.h"
-#include "IStrategieBtnAttack.h"
 #include <SFML/Graphics.hpp>
 #include "vector"
 
