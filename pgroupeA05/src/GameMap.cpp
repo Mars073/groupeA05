@@ -66,7 +66,7 @@ vector<TileInfo> GameMap::getNeighboursInfo(const int index) const
     vector<TileInfo> tmp;
     /*N*/tmp.push_back(dataset.at(index < width ? index : index - width));
     /*E*/tmp.push_back(dataset.at((index + 1)%width == 0 ? index : index + 1));
-    /*S*/tmp.push_back(dataset.at((int)ceil((index+1)/width) >= width ? index : index + width));
+    /*S*/tmp.push_back(dataset.at(index+width >= dataset.size() ? index : index + width));
     /*O*/tmp.push_back(dataset.at((index + 1) % width == 1 || index == 0 ? index : index - 1));
     return tmp;
 }
@@ -75,17 +75,42 @@ void GameMap::draw() const
 {
     Game *g = Game::getInstance();
 
+    //dataset.size();
     for (unsigned int i = 0; i < dataset.size(); i++)
     {
         TileInfo tile = dataset[i];
         Vector2u pos(tile.getPosition(width));
         Vector2u posTX(tx2loc(tile.FLOOR_ID));
-        g->drawImage(texture, posTX.x, posTX.y, 32, 32, pos.x*32, pos.y*32);
-        vector<TileInfo> nears = getNeighboursInfo(i);
-        //borders
-        /*if (nears.at(0) && [0].FLOOR_ID != tile.FLOOR_ID)
+        pos.x*=TILE_SIZE;
+        pos.y*=TILE_SIZE;
+        g->drawImage(texture, posTX.x, posTX.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
+        try
         {
-            //sprite.setTextureRect(IntRect(posTX.x,))
-        }*/
+
+            vector<TileInfo> nears = getNeighboursInfo(i);
+            //borders
+            if (nears.at(0).FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x, posTX.y-TILE_SIZE/2, TILE_SIZE, TILE_SIZE/2, pos.x, pos.y);
+            }
+            if (nears.at(1).FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x+TILE_SIZE, posTX.y, TILE_SIZE/2, TILE_SIZE, pos.x+TILE_SIZE/2, pos.y);
+            }
+            if (nears.at(2).FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x, posTX.y+TILE_SIZE, TILE_SIZE, TILE_SIZE/2, pos.x, pos.y+TILE_SIZE/2);
+            }
+            if (nears.at(3).FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x-TILE_SIZE/2, posTX.y, TILE_SIZE/2, TILE_SIZE, pos.x, pos.y);
+            }
+            // inner corners
+
+        }
+        catch (int e)
+        {
+            //
+        }
     }
 }
