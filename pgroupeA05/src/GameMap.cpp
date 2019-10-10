@@ -105,7 +105,6 @@ void GameMap::draw() const
                 g->drawImage(texture, posTX.x-TILE_SIZE/2, posTX.y, TILE_SIZE/2, TILE_SIZE, pos.x, pos.y);
             }
             // inner corners
-
         }
         catch (int e)
         {
