@@ -17,6 +17,9 @@ class Game
         RenderWindow* window = nullptr; //!< Pointer "RenderWindow"
 
     public:
+        /** Game window size */
+        static const int W_WIDTH = 640;
+        static const int W_HEIGHT = 480;
         /** Prevent Singleton copy */
         Game(const Game&) = delete;
         Game(Game&&) = delete;

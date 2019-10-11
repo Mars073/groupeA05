@@ -8,7 +8,7 @@ Game* Game::getInstance()
 
 Game::Game()
 {
-    window = new RenderWindow(sf::VideoMode(640, 480), "Final Quest", sf::Style::Titlebar | sf::Style::Close);
+    window = new RenderWindow(sf::VideoMode(W_WIDTH, W_HEIGHT), "Final Quest", sf::Style::Titlebar | sf::Style::Close);
     window->setMouseCursorVisible(false);
     window->setFramerateLimit(60);
     Image icon;
@@ -17,8 +17,8 @@ Game::Game()
         Vector2u sz = icon.getSize();
         window->setIcon(sz.x, sz.y, icon.getPixelsPtr());
     }
-    View view(sf::Vector2f(16,16), sf::Vector2f(640, 480));
-    view.setCenter(320, 240);
+    View view(FloatRect(0,0, W_WIDTH, W_HEIGHT));
+    view.setCenter(W_WIDTH/2, W_HEIGHT/2);
     window->setView(view);
 }
 
