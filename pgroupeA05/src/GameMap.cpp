@@ -61,54 +61,100 @@ Vector2u GameMap::tx2loc(int TextureID) const
     );
 }
 
-vector<TileInfo> GameMap::getNeighboursInfo(const int index) const
+GameMap::neighboursInfo GameMap::getNeighboursInfo(const int index) const
 {
-    vector<TileInfo> tmp;
-    /*N*/tmp.push_back(dataset.at(index < width ? index : index - width));
-    /*E*/tmp.push_back(dataset.at((index + 1)%width == 0 ? index : index + 1));
-    /*S*/tmp.push_back(dataset.at(index+width >= dataset.size() ? index : index + width));
-    /*O*/tmp.push_back(dataset.at((index + 1) % width == 1 || index == 0 ? index : index - 1));
+    neighboursInfo tmp;
+    const TileInfo* self = dataset.data() + index;
+    tmp.N = dataset.data() + (index < width ? index : index - width);
+    tmp.E = dataset.data() + ((index + 1)%width == 0 ? index : index + 1);
+    tmp.S = dataset.data() + (index+width >= (int)dataset.size() ? index : index + width);
+    tmp.O = dataset.data() + (index % width == 0 ? index : index - 1);
+
+    tmp.NE = tmp.N->INDEX == index || tmp.E->INDEX == index ? self : tmp.N + 1;
+    tmp.SE = tmp.S->INDEX == index || tmp.E->INDEX == index ? self : tmp.S + 1;
+    tmp.SO = tmp.S->INDEX == index || tmp.O->INDEX == index ? self : tmp.S - 1;
+    tmp.NO = tmp.N->INDEX == index || tmp.O->INDEX == index ? self : tmp.N - 1;
+
     return tmp;
 }
 
 void GameMap::draw() const
 {
+    Time now = clock.getElapsedTime();
     Game *g = Game::getInstance();
 
     //dataset.size();
-    for (unsigned int i = 0; i < dataset.size(); i++)
+    for (unsigned i = 0; i < dataset.size(); i++)
     {
-        TileInfo tile = dataset[i];
+        TileInfo tile = dataset.at(i);
         Vector2u pos(tile.getPosition(width));
         Vector2u posTX(tx2loc(tile.FLOOR_ID));
         pos.x*=TILE_SIZE;
         pos.y*=TILE_SIZE;
+        if (tile.FLOOR_ID == 1)
+        {
+            posTX.x+=(now.asMilliseconds()/300+i)%3 * (TILE_SIZE*2);
+        }
         g->drawImage(texture, posTX.x, posTX.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
         try
         {
-            vector<TileInfo> nears = getNeighboursInfo(i);
+            const int HALF_SIZE = TILE_SIZE/2;
+            neighboursInfo nears = getNeighboursInfo(i);
             //borders
-            if (nears.at(0).FLOOR_ID != tile.FLOOR_ID)
+            if (nears.N->FLOOR_ID != tile.FLOOR_ID)
             {
-                g->drawImage(texture, posTX.x, posTX.y-TILE_SIZE/2, TILE_SIZE, TILE_SIZE/2, pos.x, pos.y);
+                g->drawImage(texture, posTX.x, posTX.y-HALF_SIZE, TILE_SIZE, HALF_SIZE, pos.x, pos.y);
             }
-            if (nears.at(1).FLOOR_ID != tile.FLOOR_ID)
+            if (nears.E->FLOOR_ID != tile.FLOOR_ID)
             {
-                g->drawImage(texture, posTX.x+TILE_SIZE, posTX.y, TILE_SIZE/2, TILE_SIZE, pos.x+TILE_SIZE/2, pos.y);
+                g->drawImage(texture, posTX.x+TILE_SIZE, posTX.y, HALF_SIZE, TILE_SIZE, pos.x+HALF_SIZE, pos.y);
             }
-            if (nears.at(2).FLOOR_ID != tile.FLOOR_ID)
+            if (nears.S->FLOOR_ID != tile.FLOOR_ID)
             {
-                g->drawImage(texture, posTX.x, posTX.y+TILE_SIZE, TILE_SIZE, TILE_SIZE/2, pos.x, pos.y+TILE_SIZE/2);
+                g->drawImage(texture, posTX.x, posTX.y+TILE_SIZE, TILE_SIZE, HALF_SIZE, pos.x, pos.y+HALF_SIZE);
             }
-            if (nears.at(3).FLOOR_ID != tile.FLOOR_ID)
+            if (nears.O->FLOOR_ID != tile.FLOOR_ID)
             {
-                g->drawImage(texture, posTX.x-TILE_SIZE/2, posTX.y, TILE_SIZE/2, TILE_SIZE, pos.x, pos.y);
+                g->drawImage(texture, posTX.x-HALF_SIZE, posTX.y, HALF_SIZE, TILE_SIZE, pos.x, pos.y);
             }
             // inner corners
+            if (nears.N->FLOOR_ID != tile.FLOOR_ID && nears.E->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x+TILE_SIZE, posTX.y-HALF_SIZE, HALF_SIZE, HALF_SIZE, pos.x+HALF_SIZE, pos.y);
+            }
+            if (nears.S->FLOOR_ID != tile.FLOOR_ID && nears.E->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x+TILE_SIZE, posTX.y+TILE_SIZE, HALF_SIZE, HALF_SIZE+HALF_SIZE, pos.x+HALF_SIZE, pos.y+HALF_SIZE);
+            }
+            if (nears.S->FLOOR_ID != tile.FLOOR_ID && nears.O->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x-HALF_SIZE, posTX.y+TILE_SIZE, HALF_SIZE, HALF_SIZE, pos.x, pos.y+HALF_SIZE);
+            }
+            if (nears.N->FLOOR_ID != tile.FLOOR_ID && nears.O->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x-HALF_SIZE, posTX.y-HALF_SIZE, HALF_SIZE, HALF_SIZE, pos.x, pos.y);
+            }
+            // outer corners
+            if (nears.N->FLOOR_ID == tile.FLOOR_ID && nears.E->FLOOR_ID == tile.FLOOR_ID && nears.NE->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x+TILE_SIZE, posTX.y-TILE_SIZE*1.5, HALF_SIZE, HALF_SIZE, pos.x+HALF_SIZE, pos.y);
+            }
+            if (nears.S->FLOOR_ID == tile.FLOOR_ID && nears.E->FLOOR_ID == tile.FLOOR_ID && nears.SE->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x+TILE_SIZE, posTX.y-TILE_SIZE, HALF_SIZE, HALF_SIZE, pos.x+HALF_SIZE, pos.y+HALF_SIZE);
+            }
+            if (nears.S->FLOOR_ID == tile.FLOOR_ID && nears.O->FLOOR_ID == tile.FLOOR_ID && nears.SO->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x+HALF_SIZE, posTX.y-TILE_SIZE, HALF_SIZE, HALF_SIZE, pos.x, pos.y+HALF_SIZE);
+            }
+            if (nears.N->FLOOR_ID == tile.FLOOR_ID && nears.O->FLOOR_ID == tile.FLOOR_ID && nears.NO->FLOOR_ID != tile.FLOOR_ID)
+            {
+                g->drawImage(texture, posTX.x+HALF_SIZE, posTX.y-TILE_SIZE*1.5, HALF_SIZE, HALF_SIZE, pos.x, pos.y);
+            }
         }
         catch (int e)
         {
-            //
+            cout << "Something wrong " << endl;
         }
     }
 }

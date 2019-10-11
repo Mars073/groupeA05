@@ -1,6 +1,6 @@
 #include "TileInfo.h"
 
-TileInfo::TileInfo(const int index, long int data):
+TileInfo::TileInfo(const int index = -1, long int data = 1):
     INDEX(index),
     COLLISION(data & 1),
     TOPMOST(data & 2),
@@ -9,6 +9,15 @@ TileInfo::TileInfo(const int index, long int data):
 {
     // ctor
 }
+
+/*TileInfo::TileInfo():
+    INDEX(-1),
+    COLLISION(true),
+    TOPMOST(false),
+    GAMEOBJECT_ID(0),
+    FLOOR_ID(0) {
+    //ctor
+}*/
 
 Vector2u TileInfo::getPosition(const int map_side)
 {
