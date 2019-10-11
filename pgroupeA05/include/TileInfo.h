@@ -13,7 +13,6 @@ class TileInfo
         const int GAMEOBJECT_ID;
         bool COLLISION;
         bool TOPMOST;
-        //TileInfo();
         TileInfo(const int, long int);
         Vector2u getPosition(const int);
 };
