@@ -24,10 +24,8 @@ Game::Game()
 
 Game::~Game()
 {
-    if (scene)
-        delete scene;
-    if (window)
-        delete window;
+    delete scene;
+    delete window;
 }
 
 void Game::draw() const
