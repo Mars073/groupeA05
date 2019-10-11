@@ -42,6 +42,7 @@ class GameMap
         GameMap(int);
         bool loadFromFile(string);
         void setWidth(int width);
+        int  getWidth() const;
         void draw() const;
         Vector2u tx2loc(int) const;
         neighboursInfo getNeighboursInfo(const int) const;

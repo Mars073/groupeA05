@@ -18,6 +18,11 @@ void GameMap::setWidth(int _width)
         dataset.push_back(TileInfo(i, 0));
 }
 
+int GameMap::getWidth() const
+{
+    return width;
+}
+
 bool GameMap::loadFromFile(string path)
 {
     int i = 0;
@@ -36,7 +41,7 @@ bool GameMap::loadFromFile(string path)
         setWidth(c-48);
     else
         return false; // no size
-    cout << ": " << (c-48) << endl;
+    cout << " size: " << (c-48) << endl;
     dataset.clear();
     while (fdat.get(c))
     {
@@ -44,10 +49,9 @@ bool GameMap::loadFromFile(string path)
             continue;
         if (i >= width*width)
             break;
-        //cout << (i+1) <<"::" << c << endl;
         dataset.push_back(TileInfo(i++, c-48));
     }
-    cout << "sz: " << dataset.size() << endl;
+    cout << "map blocks: " << dataset.size() << endl;
     return true;
 }
 
@@ -56,8 +60,8 @@ Vector2u GameMap::tx2loc(int TextureID) const
     if (--TextureID < 0)
         return Vector2u(texture.getSize().x, texture.getSize().y);//vide
     return Vector2u(
-        (TextureID%TEXTURE_RANGE)*2*TILE_SIZE +16,
-        (TextureID/TEXTURE_RANGE)*3*TILE_SIZE +48
+        (TextureID%TEXTURE_RANGE)*2*TILE_SIZE + TILE_SIZE/2,
+        (TextureID/TEXTURE_RANGE)*3*TILE_SIZE + TILE_SIZE*1.5
     );
 }
 
@@ -82,13 +86,15 @@ void GameMap::draw() const
 {
     Time now = clock.getElapsedTime();
     Game *g = Game::getInstance();
+    //Vector2f vw = g->getWindow()->getView().getCenter() - Vector2f(Game::W_WIDTH, Game::W_HEIGHT);
 
-    //dataset.size();
     for (unsigned i = 0; i < dataset.size(); i++)
     {
         TileInfo tile = dataset.at(i);
         Vector2u pos(tile.getPosition(width));
         Vector2u posTX(tx2loc(tile.FLOOR_ID));
+        /*if (pos.x+TILE_SIZE < vw.x || pos.x > vw.x + Game::W_WIDTH)
+            continue;*/
         pos.x*=TILE_SIZE;
         pos.y*=TILE_SIZE;
         if (tile.FLOOR_ID == 1)
