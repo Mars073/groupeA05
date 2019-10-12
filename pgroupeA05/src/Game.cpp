@@ -70,7 +70,9 @@ Scene* Game::getScene() const
 void Game::resetView()
 {
     window->clear();
-    window->setView(View(FloatRect(0, 0, 640, 480)));
+    View view = View(FloatRect(0, 0, W_WIDTH, W_HEIGHT));
+    view.setCenter(W_WIDTH/2, W_HEIGHT/2);
+    window->setView(view);
     window->display();
 }
 
