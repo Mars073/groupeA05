@@ -42,6 +42,7 @@ class Game
         void setScene(Scene*);
         /** Access active Scene */
         Scene* getScene() const;
+        void resetView();
 
         // Shortcuts game <-> window
         bool isOpen() const;

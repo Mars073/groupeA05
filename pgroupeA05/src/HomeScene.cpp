@@ -13,6 +13,7 @@ HomeScene::HomeScene()
 void HomeScene::draw()
 {
     RenderWindow* win = getWindow();
+    //win->setView(View(FloatRect(0, 0, GAME_VIEW, 480))); TODO set center in reset
     Sprite sprite;
     Texture t = getTexture("title-background", "data/images/background-title.png");
     sprite.setTexture(t);

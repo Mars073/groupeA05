@@ -17,9 +17,7 @@ Game::Game()
         Vector2u sz = icon.getSize();
         window->setIcon(sz.x, sz.y, icon.getPixelsPtr());
     }
-    View view(FloatRect(0,0, W_WIDTH, W_HEIGHT));
-    view.setCenter(W_WIDTH/2, W_HEIGHT/2);
-    window->setView(view);
+    resetView();
 }
 
 Game::~Game()
@@ -61,6 +59,7 @@ void Game::setScene(Scene* _scene)
     if (scene)
         delete scene;
     scene = _scene;
+    resetView();
 }
 
 Scene* Game::getScene() const
@@ -68,6 +67,12 @@ Scene* Game::getScene() const
     return scene;
 }
 
+void Game::resetView()
+{
+    window->clear();
+    window->setView(View(FloatRect(0, 0, 640, 480)));
+    window->display();
+}
 
 bool Game::isOpen() const
 {
