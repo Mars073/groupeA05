@@ -59,7 +59,9 @@
 		<Unit filename="include/Armor.h" />
 		<Unit filename="include/BattleCharacter.h" />
 		<Unit filename="include/Bestiary.h" />
+		<Unit filename="include/BtnWin.h" />
 		<Unit filename="include/Character.h" />
+		<Unit filename="include/FightScene.h" />
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/GameMap.h" />
 		<Unit filename="include/Heal.h" />
@@ -74,11 +76,15 @@
 		<Unit filename="include/Scene.h" />
 		<Unit filename="include/TileInfo.h" />
 		<Unit filename="include/Weapon.h" />
+		<Unit filename="include/WindowsFight.h" />
+		<Unit filename="include/btnAttack.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Armor.cpp" />
 		<Unit filename="src/BattleCharacter.cpp" />
 		<Unit filename="src/Bestiary.cpp" />
+		<Unit filename="src/BtnWin.cpp" />
 		<Unit filename="src/Character.cpp" />
+		<Unit filename="src/FightScene.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/GameMap.cpp" />
 		<Unit filename="src/Heal.cpp" />
@@ -93,6 +99,8 @@
 		<Unit filename="src/Scene.cpp" />
 		<Unit filename="src/TileInfo.cpp" />
 		<Unit filename="src/Weapon.cpp" />
+		<Unit filename="src/WindowsFight.cpp" />
+		<Unit filename="src/btnAttack.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
