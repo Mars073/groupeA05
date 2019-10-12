@@ -18,7 +18,7 @@ class WindowsFight
         sf::RectangleShape getRect()const;
         std::vector<BtnWin*> getVect();
         void draw(sf::RenderWindow &rd);
-        void activateButton(int &index);
+        void activateButton(int index);
         int getNbBoutton();
         void ajouterBouton(BtnWin btn);
         void retirerBouton(int index);

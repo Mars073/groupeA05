@@ -60,7 +60,7 @@ std::vector<BtnWin*> WindowsFight::getVect()
 {
     return vectorButton;
 }
-void WindowsFight::activateButton(int &index)
+void WindowsFight::activateButton(int index)
 {
     if(index < 0)
     {

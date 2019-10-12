@@ -16,7 +16,7 @@ class Scene : public Drawable
         Scene();
         ~Scene();
         // /!\ crée une abstraction au niveau de la classe
-        virtual void draw(RenderTarget&, RenderStates) const = 0;
+        virtual void draw(RenderTarget&, RenderStates)const = 0;
         virtual void eventHandler(Event) = 0;
 
         // raccourcis scene <-> game
