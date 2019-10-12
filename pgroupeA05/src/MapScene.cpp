@@ -7,20 +7,19 @@ MapScene::MapScene()
 }
 
 
-void MapScene::draw()
+void MapScene::draw(RenderTarget& target, RenderStates states) const
 {
-    RenderWindow* win = getWindow();
-    Vector2f vw = win->getView().getCenter();
+    const Vector2f vw = target.getView().getCenter();
     gmap.draw();
-    Font f = getFont("arial", "data/fonts/arial.ttf");
+    Font f = Ressources::getFont("arial", "data/fonts/arial.ttf");
     Text text("<ESC> Menu - <A> Interact", f);
     text.setCharacterSize(12);
     text.setFillColor(sf::Color::Black);
     text.setPosition(vw.x-299, vw.y+221);
-    win->draw(text);
+    target.draw(text);
     text.setFillColor(sf::Color::White);
     text.setPosition(vw.x-300, vw.y+220);
-    win->draw(text);
+    target.draw(text);
 }
 
 void MapScene::eventHandler(Event event) {

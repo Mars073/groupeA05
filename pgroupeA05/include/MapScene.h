@@ -11,7 +11,7 @@ class MapScene: public Scene
 
     public:
         MapScene();
-        void draw();
+        void draw(RenderTarget&, RenderStates) const override;
         void eventHandler(Event);
 
 };

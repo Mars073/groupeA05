@@ -1,25 +1,23 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <map>
 #include <string.h>
 #include <SFML/Graphics.hpp>
+#include "Ressources.h"
 
 using namespace std;
 using namespace sf;
 
-class Scene
+class Scene : public Drawable
 {
     private:
-        map<string, Texture> textures;
-        map<string, Font> fonts;
+
     public:
         Scene();
         ~Scene();
-        virtual void draw() = 0;    // /!\ crée un abstraction au niveau de la classe
+        // /!\ crée une abstraction au niveau de la classe
+        virtual void draw(RenderTarget&, RenderStates) const = 0;
         virtual void eventHandler(Event) = 0;
-        Texture getTexture(string, string);
-        Font getFont(string, string);
 
         // raccourcis scene <-> game
         RenderWindow* getWindow();

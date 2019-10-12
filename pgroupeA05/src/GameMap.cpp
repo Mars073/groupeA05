@@ -2,7 +2,7 @@
 
 GameMap::GameMap()
 {
-    texture.loadFromFile("data/images/simplemap_sprite.png");
+    texture = Ressources::getTexture("simplemap", "data/images/simplemap_sprite.png");
     setWidth(64);
 }
 GameMap::GameMap(int width)
@@ -33,7 +33,6 @@ bool GameMap::loadFromFile(string path)
     string header;
     for (int ii = 0; ii < 3 && fdat.get(c); ii++)
         header+=c;
-    //cout << "**" << header;
     if (header != "map")
         return false; // no map header
 
@@ -86,17 +85,21 @@ void GameMap::draw() const
 {
     Time now = clock.getElapsedTime();
     Game *g = Game::getInstance();
-    //Vector2f vw = g->getWindow()->getView().getCenter() - Vector2f(Game::W_WIDTH, Game::W_HEIGHT);
+    Vector2f vw = g->getWindow()->getView().getCenter() - Vector2f(Game::W_WIDTH/2, Game::W_HEIGHT/2);
 
     for (unsigned i = 0; i < dataset.size(); i++)
     {
         TileInfo tile = dataset.at(i);
         Vector2u pos(tile.getPosition(width));
         Vector2u posTX(tx2loc(tile.FLOOR_ID));
-        /*if (pos.x+TILE_SIZE < vw.x || pos.x > vw.x + Game::W_WIDTH)
-            continue;*/
+
         pos.x*=TILE_SIZE;
         pos.y*=TILE_SIZE;
+
+        if (pos.x+TILE_SIZE < vw.x || pos.x > vw.x + Game::W_WIDTH ||
+            pos.y+TILE_SIZE < vw.y  || pos.y > vw.y + Game::W_HEIGHT)
+            continue; // skip hidden tiles
+
         if (tile.FLOOR_ID == 1)
         {
             posTX.x+=(now.asMilliseconds()/300+i)%3 * (TILE_SIZE*2);
