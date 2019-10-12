@@ -50,7 +50,7 @@ void Item::SetitemType(std::string val)
     itemType = val;
 }
 
-std::string Item::toString() const
+std::string Item::str() const
 {
     std::stringstream sstr;
     sstr<<"name : " <<GetitemName()<<std::endl<<"description : "<<GetitemDescription()<<std::endl<<GetitemType();

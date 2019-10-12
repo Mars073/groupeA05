@@ -28,14 +28,14 @@ std::list<Item*> Inventory::Getbag() const
     return bag;
 }
 
-std::string Inventory::toString() const
+std::string Inventory::str() const
 {
     std::stringstream sstr;
     //std::list<Item>::iterator it;
     sstr<<"Items : " <<std::endl<<std::endl;
     for (auto const& i : bag){
-        //sstr<<it->toString()<<endl;
-        sstr<<i->toString()<<std::endl;
+        //sstr<<it->str()<<endl;
+        sstr<<i->str()<<std::endl;
     }
 
     return sstr.str();

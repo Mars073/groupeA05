@@ -83,10 +83,10 @@ void BattleCharacter::Setdef(int val)
     def = val;
 }
 
-std::string BattleCharacter::toString() const
+std::string BattleCharacter::str() const
 {
     std::stringstream sstr;
-    sstr<<Character::toString()<<std::endl<<"level : "<<Getlevel()<<std::endl<<"hp : "<<Gethp()<<std::endl<<"mp : "<<Getmp()<<std::endl<<"atk : "<<Getatk()<<std::endl<<"mag : "<<Getmag()<<std::endl<<"def : "<<Getdef();
+    sstr<<Character::str()<<std::endl<<"level : "<<Getlevel()<<std::endl<<"hp : "<<Gethp()<<std::endl<<"mp : "<<Getmp()<<std::endl<<"atk : "<<Getatk()<<std::endl<<"mag : "<<Getmag()<<std::endl<<"def : "<<Getdef();
     return sstr.str();
 }
 

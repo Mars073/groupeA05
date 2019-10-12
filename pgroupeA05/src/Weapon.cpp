@@ -40,9 +40,9 @@ void Weapon::Setmag(int val)
     mag = val;
 }
 
-std::string Weapon::toString() const
+std::string Weapon::str() const
 {
     std::stringstream sstr;
-    sstr<<Item::toString()<<std::endl<<"attack power : "<<Getatk()<<std::endl<<"magical power : "<<Getmag()<<std::endl;
+    sstr<<Item::str()<<std::endl<<"attack power : "<<Getatk()<<std::endl<<"magical power : "<<Getmag()<<std::endl;
     return sstr.str();
 }

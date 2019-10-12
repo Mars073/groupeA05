@@ -47,9 +47,27 @@ class Player : public BattleCharacter
          */
         void Setmoney(int val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
+        /** add more money to the actual amount
+         * \param moneyEarn amount of money to add
+         */
         void moreMoney(int moneyEarn);
+
+        /** increase the actual level of the player
+         *
+         */
+         void levelUp();
+
+         /** add more exp to the actual amount
+         * \param expGained amount of exp to add
+         */
+         void moreExp(int expGained);
+
+         /** double the amount of exp needed for the next level
+         *
+         */
+         void moreExpForLevelUp();
 
     protected:
 

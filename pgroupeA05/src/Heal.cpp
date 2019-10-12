@@ -28,9 +28,9 @@ void Heal::SetamountHealed(int val)
     amountHealed = val;
 }
 
-std::string Heal::toString() const
+std::string Heal::str() const
 {
     std::stringstream sstr;
-    sstr<<Item::toString()<<std::endl<<"Amount healed : "<<GetamountHealed()<<" hp"<<std::endl;
+    sstr<<Item::str()<<std::endl<<"Amount healed : "<<GetamountHealed()<<" hp"<<std::endl;
     return sstr.str();
 }

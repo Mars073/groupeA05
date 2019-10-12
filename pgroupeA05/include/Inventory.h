@@ -1,10 +1,8 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 #include <list>
-#include<string>
 #include "Item.h"
-#include <sstream>
-#include <iostream>
+
 
 class Inventory
 {
@@ -23,7 +21,7 @@ class Inventory
 
         std::list<Item*> Getbag() const;
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
     protected:
 
 

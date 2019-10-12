@@ -36,9 +36,9 @@ void Character::SetcharaType(std::string val)
     charaType = val;
 }
 
-std::string Character::toString() const
+std::string Character::str() const
 {
     std::stringstream sstr;
-    sstr<<"name : "<<GetcharaName()<<std::endl<<GetcharaType();
+    sstr<<"name : "<<GetcharaName();
     return sstr.str();
 }

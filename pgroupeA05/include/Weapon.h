@@ -37,7 +37,7 @@ class Weapon : public Item
          */
         void Setmag(int val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
     protected:
 

@@ -58,6 +58,7 @@
 		</Linker>
 		<Unit filename="include/Armor.h" />
 		<Unit filename="include/BattleCharacter.h" />
+		<Unit filename="include/Bestiary.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/GameMap.h" />
@@ -75,6 +76,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Armor.cpp" />
 		<Unit filename="src/BattleCharacter.cpp" />
+		<Unit filename="src/Bestiary.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/GameMap.cpp" />

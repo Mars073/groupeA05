@@ -53,14 +53,35 @@ void Player::Setmoney(int val)
     money = val;
 }
 
-std::string Player::toString() const
+std::string Player::str() const
 {
     std::stringstream sstr;
-    sstr<<BattleCharacter::toString()<<std::endl<<"Exp : "<<GetexpNow()<<std::endl<<"Exp for next level : "<<GetexpNext()<<std::endl<<"money : "<<Getmoney()<<std::endl;
+    sstr<<BattleCharacter::str()<<std::endl<<"Exp : "<<GetexpNow()<<std::endl<<"Exp for next level : "<<GetexpNext()<<std::endl<<"money : "<<Getmoney()<<std::endl;
     return sstr.str();
 }
 
 void Player::moreMoney(int moneyEarn)
 {
     Setmoney(money+moneyEarn);
+}
+
+void Player::levelUp()
+{
+    Setlevel(level++);
+    //ajouter le fait d'augmenter les parametres
+}
+
+void Player::moreExp(int expEarned)
+{
+    if(GetexpNow()+expEarned>=GetexpNext()){
+        levelUp();
+        moreExpForLevelUp();
+    }
+    moreExp(expEarned);
+    //ajouter le fait d'avoir plus d'un niveau
+}
+
+void Player::moreExpForLevelUp()
+{
+    SetexpNext(expNext*2);
 }

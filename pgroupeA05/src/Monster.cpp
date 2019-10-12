@@ -3,7 +3,7 @@
 Monster::Monster(std::string charaName,int hp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld):BattleCharacter(charaName,hp,mp,atk,mag,def)
 {
     charaType="Monster";
-    level=level;
+    this->level=level;
     this->moneyHeld=moneyHeld;
     this->expHeld=expHeld;
 }
@@ -16,7 +16,7 @@ Monster::~Monster()
 Monster::Monster(const Monster& m):BattleCharacter(charaName,hp,mp,atk,mag,def)
 {
     charaType="Monster";
-    level=m.level;
+    this->level=m.level;
     this->moneyHeld=m.moneyHeld;
     this->expHeld=m.expHeld;
 }
@@ -41,9 +41,9 @@ void Monster::SetexpHeld(int val)
     expHeld = val;
 }
 
-std::string Monster::toString() const
+std::string Monster::str() const
 {
     std::stringstream sstr;
-    sstr<<BattleCharacter::toString()<<std::endl<<"money held : "<<GetmoneyHeld()<<std::endl<<"exp held : "<<GetexpHeld()<<std::endl;
+    sstr<<BattleCharacter::str()<<std::endl<<"money held : "<<GetmoneyHeld()<<std::endl<<"exp held : "<<GetexpHeld()<<std::endl;
     return sstr.str();
 }

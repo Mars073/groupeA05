@@ -37,7 +37,7 @@ class Character
          */
         void SetcharaType(std::string val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
     private:
 

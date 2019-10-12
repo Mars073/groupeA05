@@ -72,7 +72,7 @@ class BattleCharacter : public Character
          */
         void Setdef(int val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
         void damageReceived(int dmg);
 

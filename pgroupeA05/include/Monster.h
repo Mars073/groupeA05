@@ -37,7 +37,7 @@ class Monster : public BattleCharacter
          */
         void SetexpHeld(int val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
     protected:
 

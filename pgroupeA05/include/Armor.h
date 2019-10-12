@@ -31,7 +31,7 @@ class Armor : public Item
          */
         void Setdef(int val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
     protected:
 

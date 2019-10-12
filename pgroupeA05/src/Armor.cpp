@@ -27,9 +27,9 @@ void Armor::Setdef(int val)
     def = val;
 }
 
-std::string Armor::toString() const
+std::string Armor::str() const
 {
     std::stringstream sstr;
-    sstr<<Item::toString()<<std::endl<<"defense : "<<Getdef()<<std::endl;
+    sstr<<Item::str()<<std::endl<<"defense : "<<Getdef()<<std::endl;
     return sstr.str();
 }

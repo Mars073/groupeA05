@@ -2,7 +2,7 @@
 #define ITEM_H
 #include <sstream>
 #include <iostream>
-#include<string>
+#include <string>
 
 
 class Item
@@ -50,7 +50,7 @@ class Item
          */
         void SetitemType(std::string val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
     private:
 

@@ -30,7 +30,7 @@ class Heal : public Item
          */
         void SetamountHealed(int val);
 
-        virtual std::string toString() const;
+        virtual std::string str() const;
 
     protected:
 
