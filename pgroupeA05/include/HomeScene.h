@@ -12,7 +12,7 @@ class HomeScene: public Scene
 
     public:
         HomeScene();
-        void draw();
+        void draw(RenderTarget&, RenderStates) const override;
         void eventHandler(Event);
 
 };

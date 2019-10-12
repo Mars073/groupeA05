@@ -29,7 +29,7 @@ Game::~Game()
 void Game::draw() const
 {
     window->clear();
-    scene->draw();
+    window->draw(*scene);
     window->display();
 }
 
