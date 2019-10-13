@@ -17,8 +17,10 @@ Bestiary::Bestiary(const Bestiary& b)
 
 void Bestiary::addMonster(Monster *monster)
 {
-    bestiary.push_back(monster);
-    //writeInFile(monster);
+    if(getOneMonster(monster->GetcharaName())==0){
+        bestiary.push_back(monster);
+        writeInFile();
+    }
 
 }
 
@@ -30,10 +32,9 @@ std::list<Monster*> Bestiary::Getbestiary() const
 std::string Bestiary::str() const
 {
     std::stringstream sstr;
-    //std::list<Item>::iterator it;
+
     sstr<<"Bestiary : " <<std::endl<<std::endl;
     for (auto const& i : bestiary){
-        //sstr<<it->str()<<endl;
         sstr<<i->str()<<std::endl;
     }
 
@@ -52,25 +53,24 @@ void Bestiary::readFromFile()
         {
             infile >> mcharaName>>mhp>>mmp>>matk>>mmag>>mdef>>mlevel>>mmoneyHeld>>mexpHeld;
 
-            addMonster(new Monster(mcharaName,mhp,mmp,matk,mmag,mdef,mlevel,mmoneyHeld,mexpHeld));
-
+            bestiary.push_back(new Monster(mcharaName,mhp,mmp,matk,mmag,mdef,mlevel,mmoneyHeld,mexpHeld));
         }
     }
     infile.close();
 
 }
 
-void Bestiary::writeInFile(Monster* monster)
+void Bestiary::writeInFile()
 {
-    // Object to write in file
-    std::ofstream file_obj;
+    std::ofstream output("data/lists/bestiary.txt");
 
-    // Opening file in append mode
-    file_obj.open("data/lists/bestiary.txt", std::ios::app);
-
-    // Writing the object's data in file
-    file_obj.write((char*)&monster, sizeof(monster));
-
+	for (auto const& i : bestiary)
+	{
+        output<<i->GetcharaName()<<" "<<i->Gethp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetmoneyHeld()<<" "<<i->GetexpHeld();
+        if (&i != &bestiary.back()){
+            output<<std::endl;
+        }
+	}
 }
 
 Monster* Bestiary::getOneMonster(std::string name)
@@ -81,4 +81,46 @@ Monster* Bestiary::getOneMonster(std::string name)
         }
     }
     return 0;
+}
+
+void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,std::string value)
+{
+    getOneMonster(nameMonster)->SetcharaName(value);
+    writeInFile();
+}
+
+void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,int value)
+{
+    if(nameAttribute=="hp"){
+        getOneMonster(nameMonster)->Sethp(value);
+    }
+    else if(nameAttribute=="mp"){
+        getOneMonster(nameMonster)->Setmp(value);
+    }
+    else if(nameAttribute=="atk"){
+        getOneMonster(nameMonster)->Setatk(value);
+    }
+    else if(nameAttribute=="mag"){
+        getOneMonster(nameMonster)->Setmag(value);
+    }
+    else if(nameAttribute=="def"){
+        getOneMonster(nameMonster)->Setdef(value);
+    }
+    else if(nameAttribute=="level"){
+        getOneMonster(nameMonster)->Setlevel(value);
+    }
+    else if(nameAttribute=="money"){
+        getOneMonster(nameMonster)->SetmoneyHeld(value);
+    }
+    else if(nameAttribute=="exp"){
+        getOneMonster(nameMonster)->SetexpHeld(value);
+    }
+
+    writeInFile();
+}
+
+void Bestiary::deleteMonster(std::string nameMonster)
+{
+    bestiary.remove(getOneMonster(nameMonster));
+    writeInFile();
 }
