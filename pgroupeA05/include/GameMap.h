@@ -45,6 +45,7 @@ class GameMap
         int  getWidth() const;
         void draw() const;
         Vector2u tx2loc(int) const;
+        Vector2u ob2loc(int objectID) const;
         neighboursInfo getNeighboursInfo(const int) const;
 };
 

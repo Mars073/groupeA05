@@ -1,4 +1,5 @@
 #include "GameMap.h"
+#define PI 3.14159265
 
 GameMap::GameMap()
 {
@@ -54,13 +55,21 @@ bool GameMap::loadFromFile(string path)
     return true;
 }
 
-Vector2u GameMap::tx2loc(int TextureID) const
+Vector2u GameMap::tx2loc(int textureID) const
 {
-    if (--TextureID < 0)
+    if (--textureID < 0)
         return Vector2u(texture.getSize().x, texture.getSize().y);//vide
     return Vector2u(
-        (TextureID%TEXTURE_RANGE)*2*TILE_SIZE + TILE_SIZE/2,
-        (TextureID/TEXTURE_RANGE)*3*TILE_SIZE + TILE_SIZE*1.5
+        (textureID%TEXTURE_RANGE)*2*TILE_SIZE + TILE_SIZE/2,
+        (textureID/TEXTURE_RANGE)*3*TILE_SIZE + TILE_SIZE*1.5
+    );
+}
+
+Vector2u GameMap::ob2loc(int objectID) const
+{
+    return Vector2u(
+        TEXTURE_RANGE*TILE_SIZE*2 + (objectID%16)*TILE_SIZE,
+        (objectID/16)*TILE_SIZE
     );
 }
 
@@ -92,17 +101,22 @@ void GameMap::draw() const
         TileInfo tile = dataset.at(i);
         Vector2u pos(tile.getPosition(width));
         Vector2u posTX(tx2loc(tile.FLOOR_ID));
+        Vector2u posOB(ob2loc(tile.GAMEOBJECT_ID));
 
         pos.x*=TILE_SIZE;
         pos.y*=TILE_SIZE;
-
+        // skip hidden tiles
         if (pos.x+TILE_SIZE < vw.x || pos.x > vw.x + Game::W_WIDTH ||
-            pos.y+TILE_SIZE < vw.y  || pos.y > vw.y + Game::W_HEIGHT)
-            continue; // skip hidden tiles
+            pos.y+TILE_SIZE < vw.y)
+            continue;
+        if (pos.y > vw.y + Game::W_HEIGHT)
+            break;
 
         if (tile.FLOOR_ID == 1)
         {
-            posTX.x+=(now.asMilliseconds()/300+i)%3 * (TILE_SIZE*2);
+            //Math.floor(Math.cos(+new Date/(120*Math.PI))*1.5+1.4)*64;
+            posTX.x+=floor(cos(now.asMilliseconds()/(120.0f*PI))*1.4+1.4)*64;
+            //(now.asMilliseconds()/300+i)%3 * (TILE_SIZE*2);
         }
         g->drawImage(texture, posTX.x, posTX.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
         try
@@ -160,6 +174,9 @@ void GameMap::draw() const
             {
                 g->drawImage(texture, posTX.x+HALF_SIZE, posTX.y-TILE_SIZE*1.5, HALF_SIZE, HALF_SIZE, pos.x, pos.y);
             }
+            // Game object
+            if (tile.GAMEOBJECT_ID > 0)
+                g->drawImage(texture, posOB.x, posOB.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
         }
         catch (int e)
         {

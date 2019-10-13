@@ -2,8 +2,8 @@
 
 TileInfo::TileInfo(const int index = -1, long int data = 1):
     INDEX(index),
-    FLOOR_ID(data >> 9),
-    GAMEOBJECT_ID((data >> 2) & 127),
+    FLOOR_ID(data >> 10),
+    GAMEOBJECT_ID((data >> 2) & 255),
     COLLISION(data & 1),
     TOPMOST(data & 2)
 {
