@@ -57,7 +57,9 @@ void HomeScene::eventHandler(Event event)
                 case 0:
                     {
                         // Lancer de jeu
-                        setScene(new MapScene);
+                        MapScene* s = new MapScene;
+                        setScene(s);
+                        s->playFXIntro();
                         break;
                     }
                 case 1:

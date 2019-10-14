@@ -1,5 +1,5 @@
 #include "GameMap.h"
-#define PI 3.14159265
+#define PI 3.141592653589793
 
 GameMap::GameMap()
 {
@@ -112,11 +112,9 @@ void GameMap::draw() const
         if (pos.y > vw.y + Game::W_HEIGHT)
             break;
 
-        if (tile.FLOOR_ID == 1)
+        if (tile.FLOOR_ID%TEXTURE_RANGE == 1)
         {
-            //Math.floor(Math.cos(+new Date/(120*Math.PI))*1.5+1.4)*64;
-            posTX.x+=floor(cos(now.asMilliseconds()/(120.0f*PI))*1.4+1.4)*64;
-            //(now.asMilliseconds()/300+i)%3 * (TILE_SIZE*2);
+            posTX.x+=floor(cos(now.asMilliseconds()/(120.*PI))*1.5+1.5)*TILE_SIZE*2;
         }
         g->drawImage(texture, posTX.x, posTX.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
         try

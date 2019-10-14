@@ -6,11 +6,36 @@ MapScene::MapScene()
     gmap.loadFromFile("data/maps/map_0.bin");
 }
 
+void MapScene::playFXIntro()
+{
+    fxClock.restart();
+    controller = false;
+    isFXIntro = true;
+    thread(&MapScene::timeoutFXIntro, this).detach();
+}
+void MapScene::timeoutFXIntro()
+{
+    this_thread::sleep_for(chrono::seconds(20));
+    controller = true;
+    isFXIntro = false;
+}
+
+void MapScene::drawFXIntro(RenderTarget& target) const
+{
+    Time now = fxClock.getElapsedTime();
+    View view = target.getView();
+    Vector2f center(2080, 3408.0-min(400., now.asMilliseconds()/50.));
+    view.setCenter(center);
+    target.setView(view);
+
+}
 
 void MapScene::draw(RenderTarget& target, RenderStates states) const
 {
-    const Vector2f vw = target.getView().getCenter();
     gmap.draw();
+    if (isFXIntro)
+        return drawFXIntro(target);
+    const Vector2f vw = target.getView().getCenter();
     Font f = Ressources::getFont("arial", "data/fonts/arial.ttf");
     Text text("<ESC> Menu - <A> Interact", f);
     text.setCharacterSize(12);
@@ -49,13 +74,6 @@ void MapScene::eventHandler(Event event) {
             v.move(3, 0);
             break;
         }
-        case Keyboard::O:
-            {
-
-                v.setCenter(Vector2f(2080, 3008));
-                win->setView(v);
-                return;
-            }
         case Keyboard::Escape:
             {
                 setScene(new HomeScene);
