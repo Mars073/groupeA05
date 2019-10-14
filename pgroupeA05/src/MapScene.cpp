@@ -23,11 +23,38 @@ void MapScene::timeoutFXIntro()
 void MapScene::drawFXIntro(RenderTarget& target) const
 {
     Time now = fxClock.getElapsedTime();
+
     View view = target.getView();
     Vector2f center(2080, 3408.0-min(400., now.asMilliseconds()/50.));
     view.setCenter(center);
     target.setView(view);
 
+    RectangleShape rect(Vector2f(Game::W_WIDTH, Game::W_HEIGHT));
+    rect.setPosition(Vector2f(center.x-Game::W_WIDTH/2, center.y-Game::W_HEIGHT/2));
+    rect.setFillColor(Color(0, 0, 0, 180-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*180.));
+    target.draw(rect);
+
+    vector<string> story = {
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "Pellentesque vel felis a ipsum porttitor maximus. Aliquam erat diam,",
+        "rhoncus nec sodales eu, scelerisque ut nunc. Curabitur fermentum egestas nulla,",
+        "quis viverra orci eleifend nec. Sed lobortis turpis erat, eu rutrum ligula blandit ut.",
+        "Etiam nec lorem non neque sollicitudin faucibus nec non enim. Cras non lorem euismod,",
+        "suscipit sem at, auctor elit. Nulla diam lacus, placerat quis dui non,",
+        "aliquam blandit enim. Morbi id mauris tristique, vulputate risus porta, maximus magna.",
+        "Fusce in mi sit amet sapien facilisis faucibus eget eu nibh.",
+        "Fusce in est sit amet nulla efficitur pellentesque."
+    };
+    Font f = Ressources::getFont("arial", "data/fonts/arial.ttf");
+    Text text("", f);
+    text.setCharacterSize(16);
+    text.setFillColor(Color(255, 255, 255, 255-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*255.));
+    for (unsigned i = 0; i < story.size(); i++)
+    {
+        text.setString(story.at(i));
+        text.setPosition(Vector2f(center.x-Game::W_WIDTH/2+16, center.y-Game::W_HEIGHT/2+64+i*32));
+        target.draw(text);
+    }
 }
 
 void MapScene::draw(RenderTarget& target, RenderStates states) const
@@ -39,7 +66,7 @@ void MapScene::draw(RenderTarget& target, RenderStates states) const
     Font f = Ressources::getFont("arial", "data/fonts/arial.ttf");
     Text text("<ESC> Menu - <A> Interact", f);
     text.setCharacterSize(12);
-    text.setFillColor(sf::Color::Black);
+    text.setFillColor(Color::Black);
     text.setPosition(vw.x-299, vw.y+221);
     target.draw(text);
     text.setFillColor(sf::Color::White);
