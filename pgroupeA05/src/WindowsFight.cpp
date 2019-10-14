@@ -62,6 +62,7 @@ std::vector<BtnWin*> WindowsFight::getVect()
 }
 void WindowsFight::activateButton(int index)
 {
+
     if(index < 0)
     {
         index = vectorButton.size()-1;

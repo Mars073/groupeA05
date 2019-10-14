@@ -18,11 +18,12 @@ class FightScene: public Scene
         void fight();
         void draw(RenderTarget&,RenderStates) const override;
         void eventHandler(Event ev);
+        void setActivate(int activate);
 
     protected:
 
     private:
-        int activate=0;
+        int activate;
         WindowsFight *fn;
 };
 

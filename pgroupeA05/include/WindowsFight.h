@@ -33,6 +33,7 @@ class WindowsFight
         int tailleX;
         int tailleY;
         int indexSelectionner;
+        int activateIndex;
         std::vector<BtnWin*> vectorButton;
         sf::RectangleShape rect;
 

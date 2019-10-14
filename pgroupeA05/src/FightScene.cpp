@@ -3,13 +3,18 @@
 FightScene::FightScene()
 {
     //ctor
-     fn = new WindowsFight(150,500,600,200);
+     fn = new WindowsFight(25,225,600,200);
+     activate = 0;
 }
 
 FightScene::~FightScene()
 {
     //dtor
     delete(fn);
+}
+void FightScene::setActivate(int activate)
+{
+    this->activate = activate;
 }
 void FightScene::draw(RenderTarget& target, RenderStates stat)const
 {
@@ -22,14 +27,14 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     //window.setFramerateLimit(4);
 
     //Modifier la position
-    /*
+
     sf::Font ft = Ressources::getFont("arial", "data/fonts/arial.ttf");
-    ft.loadFromFile("arial.ttf");
+    //ft.loadFromFile("arial.ttf");
 
 
     sf::Text text;
     text.setFont(ft); // font est un sf::Font
-    */
+
     /*
 
     // choix de la cha�ne de caract�res � afficher
@@ -77,6 +82,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         //Gestion du clavier
     */
 
+
         fn->activateButton(activate);
         fn->getVect().at(activate)->setIsActivate(true);
         //window.draw(cercle);
@@ -88,9 +94,9 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
        {
             sf::RectangleShape rr =fn->getVect().at(i)->getRect();
             target.draw(rr,stat);
-            //sf::Text txt = fn->getVect().at(i)->getText();
-            //txt.setFont(ft);
-            //target.draw(txt,stat);
+            sf::Text txt = fn->getVect().at(i)->getText();
+            txt.setFont(ft);
+            target.draw(txt,stat);
             fn->getVect().at(i)->setIsActivate(false);
 
        }
@@ -99,7 +105,15 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 }
 void FightScene::eventHandler(Event ev)
 {
-    /*
+        if(activate < 0)
+        {
+            activate =fn->getNbBoutton()-1;
+        }
+        else if(activate > fn->getNbBoutton()-1)
+        {
+            setActivate(0);
+        }
+
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             //rect.move(0,1);
@@ -134,7 +148,9 @@ void FightScene::eventHandler(Event ev)
             }
 
         }
-        */
+        fn->activateButton(activate);
+
+
 }
 void FightScene::fight()
 {
@@ -233,9 +249,9 @@ void FightScene::fight()
 
         fn.activateButton(activate);
         fn.getVect().at(activate)->setIsActivate(true);
-        window.draw(cercle);
-        window.draw(rect);
-        window.draw(triangle);
+        //window.draw(cercle);
+        //window.draw(rect);
+        //window.draw(triangle);
         //window.draw(text);
         window.draw(fn.getRect());
 
