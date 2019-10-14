@@ -47,7 +47,8 @@ git clone https://github.com/Mars073/groupeA05.git
 	2. Include <a href="https://www.sfml-dev.org/tutorials/2.5/start-cb.php" target="_blank" title="SFML and Code::Blocks (MinGW)">SFML libraries</a>, the default folder in the project is `C:\libs\SFML`. You can also add all DLL files to the `bin\Debug\` folder.
 	3. Build <kbd>F9</kbd> & Enjoy.
 * On Linux 
-	1. Coming soon..
+	1. Open the `pgroupeA05\pgroupeA05_linux.cbp` file with Code::Blocks
+	2. Everything is ready, you can Build and run <kbd>F9</kbd> σ(≧ε≦ｏ)
 
 <!-- LICENSE -->
 ## License
