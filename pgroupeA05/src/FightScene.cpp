@@ -3,7 +3,7 @@
 FightScene::FightScene()
 {
     //ctor
-     fn = new WindowsFight(25,225,600,200);
+     fn = new WindowsFight(25,225,200,200);
      activate = 0;
 }
 
