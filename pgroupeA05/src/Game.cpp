@@ -93,7 +93,7 @@ void Game::pollEvent() const
     {
         if (event.type == sf::Event::Closed)
             close();
-        else
+        else if (scene->controller)
             scene->eventHandler(event);
     }
 }

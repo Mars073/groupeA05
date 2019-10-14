@@ -49,6 +49,13 @@ void MapScene::eventHandler(Event event) {
             v.move(3, 0);
             break;
         }
+        case Keyboard::O:
+            {
+
+                v.setCenter(Vector2f(2080, 3008));
+                win->setView(v);
+                return;
+            }
         case Keyboard::Escape:
             {
                 setScene(new HomeScene);

@@ -15,6 +15,7 @@ class Scene : public Drawable
     public:
         Scene();
         ~Scene();
+        bool controller = true;
         // /!\ crée une abstraction au niveau de la classe
         virtual void draw(RenderTarget&, RenderStates)const = 0;
         virtual void eventHandler(Event) = 0;
