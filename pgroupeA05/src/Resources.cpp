@@ -1,14 +1,14 @@
-#include "Ressources.h"
+#include "Resources.h"
 
-map<string, Font> Ressources::fonts;
-map<string, Texture> Ressources::textures;
+map<string, Font> Resources::fonts;
+map<string, Texture> Resources::textures;
 
-Ressources::Ressources()
+Resources::Resources()
 {
     // ctor
 }
 
-Font Ressources::getFont(string name, string filename)
+Font Resources::getFont(string name, string filename)
 {
     map<string, Font>::iterator it;
     Font tmp;
@@ -20,7 +20,7 @@ Font Ressources::getFont(string name, string filename)
     return tmp;
 }
 
-Texture Ressources::getTexture(string name, string filename)
+Texture Resources::getTexture(string name, string filename)
 {
     map<string, Texture>::iterator it;
     Texture tmp;

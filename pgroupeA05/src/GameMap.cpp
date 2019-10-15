@@ -3,7 +3,7 @@
 
 GameMap::GameMap()
 {
-    texture = Ressources::getTexture("simplemap", "data/images/simplemap_sprite.png");
+    texture = Resources::getTexture("simplemap", "data/images/simplemap_sprite.png");
     setWidth(64);
 }
 GameMap::GameMap(int width)

@@ -45,7 +45,7 @@ void MapScene::drawFXIntro(RenderTarget& target) const
         "Fusce in mi sit amet sapien facilisis faucibus eget eu nibh.",
         "Fusce in est sit amet nulla efficitur pellentesque."
     };
-    Font f = Ressources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
     Text text("", f);
     text.setCharacterSize(16);
     text.setFillColor(Color(255, 255, 255, 255-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*255.));
@@ -63,7 +63,7 @@ void MapScene::draw(RenderTarget& target, RenderStates states) const
     if (isFXIntro)
         return drawFXIntro(target);
     const Vector2f vw = target.getView().getCenter();
-    Font f = Ressources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
     Text text("<ESC> Menu - <A> Interact", f);
     text.setCharacterSize(12);
     text.setFillColor(Color::Black);

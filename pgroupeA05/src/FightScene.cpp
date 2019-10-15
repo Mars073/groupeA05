@@ -28,7 +28,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
     //Modifier la position
 
-    sf::Font ft = Ressources::getFont("arial", "data/fonts/arial.ttf");
+    sf::Font ft = Resources::getFont("arial", "data/fonts/arial.ttf");
     //ft.loadFromFile("arial.ttf");
 
 

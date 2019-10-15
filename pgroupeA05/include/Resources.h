@@ -11,13 +11,13 @@ using std::pair;
 using sf::Font;
 using sf::Texture;
 
-class Ressources
+class Resources
 {
     private:
         /** Cache :: */
         static map<string, Font> fonts;
         static map<string, Texture> textures;
-        Ressources();// Disallow creating an instance
+        Resources();// Disallow creating an instance
 
     public:
         static Font getFont(string, string);

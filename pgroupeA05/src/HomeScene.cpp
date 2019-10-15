@@ -14,10 +14,10 @@ void HomeScene::draw(RenderTarget& target, RenderStates states) const
 {
     target.setView(View(FloatRect(0, 0, Game::W_WIDTH, Game::W_HEIGHT))); // HOT FIX
     Sprite sprite;
-    Texture t = Ressources::getTexture("title-background", "data/images/background-title.png");
+    Texture t = Resources::getTexture("title-background", "data/images/background-title.png");
     sprite.setTexture(t);
     target.draw(sprite, states);
-    Font f = Ressources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
     for (int i = 0; i < MENU_LENGTH; i++)
     {
         Text text(i==selected_id?"> "+menu[i]:menu[i], f);

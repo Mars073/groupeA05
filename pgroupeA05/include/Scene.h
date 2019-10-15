@@ -3,7 +3,7 @@
 
 #include <string.h>
 #include <SFML/Graphics.hpp>
-#include "Ressources.h"
+#include "Resources.h"
 
 using namespace std;
 using namespace sf;
