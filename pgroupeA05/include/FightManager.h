@@ -7,6 +7,7 @@ class FightManager
     public:
         FightManager();
         virtual ~FightManager();
+        void drawButton();
 
     protected:
 

@@ -30,6 +30,7 @@ WindowsFight::~WindowsFight()
     {
         delete(this->vectorButton.at(i));
     }
+
 }
 int WindowsFight::getPositionX() const
 {
@@ -90,6 +91,10 @@ void WindowsFight::ajouterBouton(BtnWin btn)
 void WindowsFight::retirerBouton(int index)
 {
     vectorButton.erase(vectorButton.begin()+index);
+}
+void WindowsFight::setFm(FightManager *newfm)
+{
+    fm = newfm;
 }
 
 

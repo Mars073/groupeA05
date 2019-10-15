@@ -9,7 +9,7 @@ WindowsFightInfo::~WindowsFightInfo()
 {
     //dtor
 }
-void WindowsFightInfo:EcrireinWindow()
+void WindowsFightInfo::EcrireinWindow()
 {
 
 }

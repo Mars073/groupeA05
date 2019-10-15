@@ -39,6 +39,26 @@ BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string t
 
 
 }
+BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton,std::string Description)
+{
+    this->rect.setPosition(sf::Vector2f(positionX,positionY));
+    this->rect.setSize(sf::Vector2f(tailleX,tailleY));
+    this->rect.setOutlineThickness(5);
+    this->rect.setOutlineColor(sf::Color(0,0,255));
+
+
+
+
+
+    sf::Text text;
+    //this->text.setFont(ft); // font est un sf::Font
+    // choix de la cha�ne de caract�res � afficher
+    this->text.setString(textButton);
+    this->text.setCharacterSize(15); // exprim�e en pixels, pas en points !
+    this->text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    this->text.setPosition(positionX,positionY);
+    this->text.setFillColor(sf::Color(0,0,255));
+}
 void BtnWin::ativate()
 {
  isActivate = true;
@@ -97,3 +117,25 @@ BtnWin::~BtnWin()
 {
     //dtor
 }
+BtnWin::BtnWin(const BtnWin& c)
+{
+    this->positionX= c.positionX;
+    this->positionY = c.positionY;
+    this->tailleX = c.tailleX;
+    this->tailleY = c.tailleY;
+    this->text = c.text;
+}
+//Peur de fuite de memoire a poser au prof
+std::vector<BtnWin*> BtnWin::getListButton()const
+{
+    return ListButton;
+}
+std::string BtnWin::getDescription()const
+{
+    return Description;
+}
+void BtnWin::setDescription(std::string str)
+{
+    Description = str;
+}
+

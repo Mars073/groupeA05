@@ -4,6 +4,8 @@
 #include "BtnWin.h"
 #include <SFML/Graphics.hpp>
 #include "vector"
+#include "FightManager.h"
+#include "string"
 
 
 
@@ -15,6 +17,7 @@ class WindowsFight
         int getPositionY() const;
         int getTailleX() const;
         int getTailleY()const;
+        void setFm(FightManager *fm);
         sf::RectangleShape getRect()const;
         std::vector<BtnWin*> getVect();
         void draw(sf::RenderWindow &rd);
@@ -36,6 +39,8 @@ class WindowsFight
         int activateIndex;
         std::vector<BtnWin*> vectorButton;
         sf::RectangleShape rect;
+        FightManager *fm;
+
 
 
 
