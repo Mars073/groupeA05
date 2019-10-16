@@ -22,7 +22,8 @@ class MapScene: public Scene
         void drawFXIntro(RenderTarget&) const;
         void draw(RenderTarget&, RenderStates) const override;
         void eventHandler(Event);
-
+        void setCamera(RenderTarget&, float, float) const;
+        void setCamera(RenderTarget&, Vector2f) const;
 };
 
 #endif // MAPSCENE_H

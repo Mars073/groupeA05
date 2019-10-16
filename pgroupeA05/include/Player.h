@@ -9,8 +9,11 @@
 class Player : public BattleCharacter, public sf::Drawable
 {
     private:
-
-        sf::Vector2f position; //!< Member variable "position"
+        Vector2f old_position; //!< Member variable "old_position"
+        Vector2f position; //!< Member variable "position"
+        short orientation; //!< Member variable "orientation"
+        Clock clock; //!< Member variable "clock"
+        int move_at; //!< Member variable "move_at"
         int expNow; //!< Member variable "expNow"
         int expNext; //!< Member variable "expNext"
         int money; //!< Member variable "money"
@@ -37,6 +40,10 @@ class Player : public BattleCharacter, public sf::Drawable
         /** Set current position */
         void setPosition(const float, const float);
         void setPosition(const sf::Vector2f&);
+        /** Set player orientation */
+        void setOrientation(const short);
+        /** Access Orientation */
+        short getOrientation() const;
         /** Access expNow
          * \return The current value of expNow
          */

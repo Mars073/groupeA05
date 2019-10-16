@@ -7,6 +7,23 @@ MapScene::MapScene():player("Hero", 100, 40, 50, 40, 60)
     // default position for map 0
     player.setPosition(65., 94.);
 }
+void MapScene::setCamera(RenderTarget& target, float cx, float cy) const
+{
+    setCamera(target, Vector2f(cx, cy));
+}
+void MapScene::setCamera(RenderTarget& target, Vector2f center) const
+{
+    View view = target.getView();
+    center.x = min(gmap.getWidth()*gmap.TILE_SIZE-Game::W_WIDTH/2.f, max(Game::W_WIDTH/2.f, center.x));
+    center.y = min(gmap.getWidth()*gmap.TILE_SIZE-Game::W_HEIGHT/2.f, max(Game::W_HEIGHT/2.f, center.y));
+    view.setCenter(center);
+    target.setView(view);
+    //View v = win->getView();
+    /*Vector2f ct = v.getCenter();
+        if (ct.x >= Game::W_WIDTH/2 && ct.x <= gmap.getWidth()*gmap.TILE_SIZE-Game::W_WIDTH/2 &&
+            ct.y >= Game::W_HEIGHT/2 && ct.y <= gmap.getWidth()*gmap.TILE_SIZE-Game::W_HEIGHT/2)
+            win->setView(v);*/
+}
 
 void MapScene::playFXIntro()
 {
@@ -65,6 +82,10 @@ void MapScene::draw(RenderTarget& target, RenderStates states) const
     target.draw(player);
     if (isFXIntro)
         return drawFXIntro(target);
+
+    Vector2f player_position = player.getPosition();
+    setCamera(target, player_position.x*gmap.TILE_SIZE, player_position.y*gmap.TILE_SIZE);
+
     const Vector2f vw = target.getView().getCenter();
     Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
     Text text("<ESC> Menu - <A> Interact", f);
@@ -80,44 +101,42 @@ void MapScene::draw(RenderTarget& target, RenderStates states) const
 void MapScene::eventHandler(Event event) {
     if (event.type == Event::KeyPressed)
     {
-        RenderWindow* win = getWindow();
-        View v = win->getView();
+        Vector2f movement(.0f, .0f);
         switch (event.key.code)
         {
+        case Keyboard::Z:
         case Keyboard::Up:
         {
-            //v.move(0, -3);
-            player.move(.0, -1.);
+            player.setOrientation(0);
+            movement = Vector2f(.0, -1.);
             break;
         }
         case Keyboard::Down:
         {
-            //v.move(0, 3);
-            player.move(.0, 1.);
+            player.setOrientation(2);
+            movement = Vector2f(.0, 1.);
             break;
         }
         case Keyboard::Left:
         {
-            //v.move(-3, 0);
-            player.move(-1., .0);
+            player.setOrientation(3);
+            movement = Vector2f(-1., .0);
             break;
         }
         case Keyboard::Right:
         {
-            //v.move(3, 0);
-            player.move(1., .0);
+            player.setOrientation(1);
+            movement = Vector2f(1., .0);
             break;
         }
         case Keyboard::Escape:
             {
                 setScene(new HomeScene);
-                break;
+                return;
             }
         default: break;
         }
-        Vector2f ct = v.getCenter();
-        if (ct.x >= Game::W_WIDTH/2 && ct.x <= gmap.getWidth()*gmap.TILE_SIZE-Game::W_WIDTH/2 &&
-            ct.y >= Game::W_HEIGHT/2 && ct.y <= gmap.getWidth()*gmap.TILE_SIZE-Game::W_HEIGHT/2)
-            win->setView(v);
+        if (true) // COLLISION TEST
+            player.move(movement);
     }
 }

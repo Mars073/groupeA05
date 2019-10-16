@@ -3,10 +3,13 @@
 Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def):BattleCharacter(charaName,hp,mp,atk,mag,def)
 {
     level=1;
+    orientation = 0;
+    move_at = 0;
     charaType="Player";
     this->expNow=0;
     this->expNext=10;
     this->money=0;
+    clock.restart();
 }
 
 Player::~Player()
@@ -29,12 +32,16 @@ void Player::draw(sf::RenderTarget&target, sf::RenderStates) const
     sf::Sprite sp;
     sf::Texture tx;
     tx.loadFromFile("data/images/character_sprite.png");
-    Game::getInstance()->drawImage(tx, 32, 0, 32, 32, position.x*32, position.y*32);
-}
-
-sf::Vector2f Player::getPosition() const
-{
-    return position;
+    int delta_anim = clock.getElapsedTime().asMilliseconds() - move_at;
+    int y =
+        orientation == 0 ? 108 :
+            orientation == 1 ? 73 :
+                orientation == 3 ? 38 : 3;
+    int x =
+        delta_anim < 300 ?
+            delta_anim < 200 ?
+                delta_anim < 100 ? 1 : 33 : 65 : 33;
+    Game::getInstance()->drawImage(tx, x, y, 32, 32, getPosition().x*32, getPosition().y*32-16);
 }
 
 void Player::move(const float x, const float y)
@@ -44,7 +51,23 @@ void Player::move(const float x, const float y)
 
 void Player::move(const Vector2f& movement)
 {
+    Time now = clock.getElapsedTime();
+    if (now.asMilliseconds() - move_at < 300)
+        return;
+    old_position = position;
     position+= movement;
+    move_at = now.asMilliseconds();
+}
+
+sf::Vector2f Player::getPosition() const
+{
+    Time now = clock.getElapsedTime();
+    float progress = std::min(1.f, (now.asMilliseconds() - move_at)/300.f);
+    Vector2f delta_position = position - old_position;
+    return Vector2f(
+        old_position.x + delta_position.x*progress,
+        old_position.y + delta_position.y*progress
+    );
 }
 
 void Player::setPosition(const float x, const float y)
@@ -55,6 +78,16 @@ void Player::setPosition(const float x, const float y)
 void Player::setPosition(const Vector2f& _position)
 {
     position = _position;
+}
+
+void Player::setOrientation(const short _orientation)
+{
+    orientation = _orientation % 4;
+}
+
+short Player::getOrientation() const
+{
+    return orientation;
 }
 
 int Player::GetexpNow() const
