@@ -35,15 +35,15 @@ void MapScene::drawFXIntro(RenderTarget& target) const
     target.draw(rect);
 
     vector<string> story = {
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "Pellentesque vel felis a ipsum porttitor maximus. Aliquam erat diam,",
-        "rhoncus nec sodales eu, scelerisque ut nunc. Curabitur fermentum egestas nulla,",
-        "quis viverra orci eleifend nec. Sed lobortis turpis erat, eu rutrum ligula blandit ut.",
-        "Etiam nec lorem non neque sollicitudin faucibus nec non enim. Cras non lorem euismod,",
-        "suscipit sem at, auctor elit. Nulla diam lacus, placerat quis dui non,",
-        "aliquam blandit enim. Morbi id mauris tristique, vulputate risus porta, maximus magna.",
-        "Fusce in mi sit amet sapien facilisis faucibus eget eu nibh.",
-        "Fusce in est sit amet nulla efficitur pellentesque."
+        "Long time ago, there was a beautiful kingdom called Cornelia.",
+        "Everyone living there was happy, until the Demon Lord appeared",
+        "and unleashed his army upon the kingdom.",
+        "Now, there are monsters roaming around everywhere and attacking",
+        "anyone in sight.",
+        "But as the prophecy foretold, a Hero will appear and defeat the Demon Lord.",
+        "Today, after 20 years, the Hero is ready to take on his last journey",
+        "to defeat the Demon Lord.",
+        "His final quest."
     };
     Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
     Text text("", f);
