@@ -31,7 +31,7 @@ void MapScene::drawFXIntro(RenderTarget& target) const
 
     RectangleShape rect(Vector2f(Game::W_WIDTH, Game::W_HEIGHT));
     rect.setPosition(Vector2f(center.x-Game::W_WIDTH/2, center.y-Game::W_HEIGHT/2));
-    rect.setFillColor(Color(0, 0, 0, 180-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*180.));
+    rect.setFillColor(Color(0, 0, 0, 120-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*120.));
     target.draw(rect);
 
     vector<string> story = {
@@ -46,7 +46,7 @@ void MapScene::drawFXIntro(RenderTarget& target) const
         "His final quest."
     };
     Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
-    Text text("", f);
+    Text text("No text", f);
     text.setCharacterSize(16);
     text.setFillColor(Color(255, 255, 255, 255-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*255.));
     for (unsigned i = 0; i < story.size(); i++)
