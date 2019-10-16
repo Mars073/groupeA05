@@ -19,7 +19,8 @@
   * [Team](#team)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Configure Code::Blocks](#configure)
+  * [Configure Code::Blocks](#configure-code::blocks)
+  * [How to play](#how-to-play)
 * [License](#license)
 
 <!-- ABOUT THE PROJECT -->
@@ -49,6 +50,10 @@ git clone https://github.com/Mars073/groupeA05.git
 * On Linux 
 	1. Open the `pgroupeA05\pgroupeA05_linux.cbp` file with Code::Blocks
 	2. Everything is ready, you can Build and run <kbd>F9</kbd> σ(≧ε≦ｏ)
+
+### How to play
+* On map
+	You can use the <kbd>Z</kbd><kbd>↑</kbd>, <kbd>D</kbd><kbd>→</kbd>, <kbd>S</kbd><kbd>↓</kbd> or <kbd>Q</kbd><kbd>←</kbd> key to move your character on the map.
 
 <!-- LICENSE -->
 ## License
