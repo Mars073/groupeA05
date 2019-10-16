@@ -1,13 +1,16 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <SFML/Graphics.hpp>
+#include <Game.h>
 #include <BattleCharacter.h>
 
 
-class Player : public BattleCharacter
+class Player : public BattleCharacter, public sf::Drawable
 {
     private:
 
+        sf::Vector2f position; //!< Member variable "position"
         int expNow; //!< Member variable "expNow"
         int expNext; //!< Member variable "expNext"
         int money; //!< Member variable "money"
@@ -22,6 +25,18 @@ class Player : public BattleCharacter
          */
         Player(const Player& p);
 
+        /** Draw player */
+        void draw(sf::RenderTarget&, sf::RenderStates) const;
+        /** Access Position
+         * \return The current position
+         */
+        sf::Vector2f getPosition() const;
+        /** Move player */
+        void move(const float, const float);
+        void move(const sf::Vector2f&);
+        /** Set current position */
+        void setPosition(const float, const float);
+        void setPosition(const sf::Vector2f&);
         /** Access expNow
          * \return The current value of expNow
          */

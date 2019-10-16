@@ -5,12 +5,14 @@
 #include<chrono>
 #include "Scene.h"
 #include "GameMap.h"
+#include "Player.h"
 
 class MapScene: public Scene
 {
     private:
         Clock fxClock;
         GameMap gmap;
+        Player player;
         void timeoutFXIntro();
         bool isFXIntro = false;
 

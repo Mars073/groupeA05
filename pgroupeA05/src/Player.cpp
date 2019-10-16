@@ -23,6 +23,40 @@ Player::Player(const Player& p):BattleCharacter(charaName,hp,mp,atk,mag,def)
     this->money=0;
 }
 
+void Player::draw(sf::RenderTarget&target, sf::RenderStates) const
+{
+    // for debug only::
+    sf::Sprite sp;
+    sf::Texture tx;
+    tx.loadFromFile("data/images/character_sprite.png");
+    Game::getInstance()->drawImage(tx, 32, 0, 32, 32, position.x*32, position.y*32);
+}
+
+sf::Vector2f Player::getPosition() const
+{
+    return position;
+}
+
+void Player::move(const float x, const float y)
+{
+    move(Vector2f(x, y));
+}
+
+void Player::move(const Vector2f& movement)
+{
+    position+= movement;
+}
+
+void Player::setPosition(const float x, const float y)
+{
+    setPosition(Vector2f(x, y));
+}
+
+void Player::setPosition(const Vector2f& _position)
+{
+    position = _position;
+}
+
 int Player::GetexpNow() const
 {
     return expNow;

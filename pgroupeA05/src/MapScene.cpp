@@ -1,9 +1,11 @@
 #include "MapScene.h"
 
-MapScene::MapScene()
+MapScene::MapScene():player("Hero", 100, 40, 50, 40, 60)
 {
     // load default map: 0
     gmap.loadFromFile("data/maps/map_0.bin");
+    // default position for map 0
+    player.setPosition(65., 94.);
 }
 
 void MapScene::playFXIntro()
@@ -60,6 +62,7 @@ void MapScene::drawFXIntro(RenderTarget& target) const
 void MapScene::draw(RenderTarget& target, RenderStates states) const
 {
     gmap.draw();
+    target.draw(player);
     if (isFXIntro)
         return drawFXIntro(target);
     const Vector2f vw = target.getView().getCenter();
@@ -83,22 +86,26 @@ void MapScene::eventHandler(Event event) {
         {
         case Keyboard::Up:
         {
-            v.move(0, -3);
+            //v.move(0, -3);
+            player.move(.0, -1.);
             break;
         }
         case Keyboard::Down:
         {
-            v.move(0, 3);
+            //v.move(0, 3);
+            player.move(.0, 1.);
             break;
         }
         case Keyboard::Left:
         {
-            v.move(-3, 0);
+            //v.move(-3, 0);
+            player.move(-1., .0);
             break;
         }
         case Keyboard::Right:
         {
-            v.move(3, 0);
+            //v.move(3, 0);
+            player.move(1., .0);
             break;
         }
         case Keyboard::Escape:
