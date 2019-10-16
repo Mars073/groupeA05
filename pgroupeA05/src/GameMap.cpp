@@ -3,12 +3,22 @@
 
 GameMap::GameMap()
 {
-    texture = Resources::getTexture("simplemap", "data/images/simplemap_sprite.png");
+    setTexture(Resources::getTexture("simplemap", "data/images/simplemap_sprite.png"));
     setWidth(64);
 }
 GameMap::GameMap(int width)
 {
     setWidth(width);
+}
+
+void GameMap::setTexture(const Texture& _texture)
+{
+    texture = _texture;
+}
+
+Texture GameMap::getTexture() const
+{
+    return texture;
 }
 
 void GameMap::setWidth(int _width)
@@ -53,6 +63,11 @@ bool GameMap::loadFromFile(string path)
     }
     cout << "map blocks: " << dataset.size() << endl;
     return true;
+}
+
+TileInfo GameMap::xy2t(Vector2f vec) const
+{
+    return dataset.at((int)(vec.y*width+vec.x));
 }
 
 Vector2u GameMap::tx2loc(int textureID) const

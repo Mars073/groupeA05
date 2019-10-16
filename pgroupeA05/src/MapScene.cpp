@@ -18,11 +18,6 @@ void MapScene::setCamera(RenderTarget& target, Vector2f center) const
     center.y = min(gmap.getWidth()*gmap.TILE_SIZE-Game::W_HEIGHT/2.f, max(Game::W_HEIGHT/2.f, center.y));
     view.setCenter(center);
     target.setView(view);
-    //View v = win->getView();
-    /*Vector2f ct = v.getCenter();
-        if (ct.x >= Game::W_WIDTH/2 && ct.x <= gmap.getWidth()*gmap.TILE_SIZE-Game::W_WIDTH/2 &&
-            ct.y >= Game::W_HEIGHT/2 && ct.y <= gmap.getWidth()*gmap.TILE_SIZE-Game::W_HEIGHT/2)
-            win->setView(v);*/
 }
 
 void MapScene::playFXIntro()
@@ -86,6 +81,19 @@ void MapScene::draw(RenderTarget& target, RenderStates states) const
     Vector2f player_position = player.getPosition();
     setCamera(target, player_position.x*gmap.TILE_SIZE, player_position.y*gmap.TILE_SIZE);
 
+    TileInfo gob = gmap.xy2t(player_position);
+    if (gob.TOPMOST && gob.GAMEOBJECT_ID > 0)
+    {
+        Vector2u posOB(gmap.ob2loc(gob.GAMEOBJECT_ID));
+        Texture texture(Resources::getTexture("simplemap", "data/images/simplemap_sprite.png"));
+        sf::Sprite sprite;
+        sprite.setTexture(texture);
+        sprite.setTextureRect(IntRect(posOB.x, posOB.y, gmap.TILE_SIZE, gmap.TILE_SIZE));
+        sprite.setPosition(floor(player_position.x)*32., floor(player_position.y)*32.);
+        sprite.setColor(sf::Color(255, 255, 255, 128));
+        target.draw(sprite);
+    }
+
     const Vector2f vw = target.getView().getCenter();
     Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
     Text text("<ESC> Menu - <A> Interact", f);
@@ -136,7 +144,7 @@ void MapScene::eventHandler(Event event) {
             }
         default: break;
         }
-        if (true) // COLLISION TEST
+        if (!gmap.xy2t(player.getPosition()+movement).COLLISION)
             player.move(movement);
     }
 }

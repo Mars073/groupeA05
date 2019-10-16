@@ -41,11 +41,14 @@ class GameMap
         GameMap();
         GameMap(int);
         bool loadFromFile(string);
+        void setTexture(const Texture& texture);
+        Texture getTexture() const;
         void setWidth(int width);
         int  getWidth() const;
         void draw() const;
         Vector2u tx2loc(int) const;
         Vector2u ob2loc(int objectID) const;
+        TileInfo xy2t(Vector2f) const;
         neighboursInfo getNeighboursInfo(const int) const;
 };
 
