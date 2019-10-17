@@ -19,7 +19,7 @@
   * [Team](#team)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Configure Code::Blocks](#configure-code::blocks)
+  * [Configure Code::Blocks](#configure)
   * [How to play](#how-to-play)
 * [License](#license)
 
