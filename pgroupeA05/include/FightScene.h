@@ -26,6 +26,8 @@ class FightScene: public Scene
     private:
         int activate;
         WindowsFight *fn;
+        WindowsFight *fn2;
+
 };
 
 #endif // FightScene_H
