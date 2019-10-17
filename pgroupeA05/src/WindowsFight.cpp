@@ -25,7 +25,7 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
     btnAttack *btnObjet = new btnAttack(positionX,positionY+100,80,50,"Objet");
 
 
-    this->vectorButton.push_back(btn);
+    this->vectorButton.push_back(new btn);
     this->vectorButton.push_back(btnMagie);
     this->vectorButton.push_back(btnObjet);
 

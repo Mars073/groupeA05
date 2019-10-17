@@ -12,4 +12,10 @@ void btnAttack::action()
 btnAttack::~btnAttack()
 {
     //dtor
+
+}
+btnAttack::btnAttack(btnAttack const& btnAttack)
+{
+    //dtor
+    this->
 }

@@ -16,6 +16,13 @@ class BtnWin
         int getPositionY() const;
         int getTailleX() const;
         int getTailleY()const;
+
+        void setPositionX();
+        void setPositionY();
+        void setTailleX();
+        void setTailleY();
+
+
         sf::RectangleShape getRect()const;
         void getNbBoutton();
         void ativate();

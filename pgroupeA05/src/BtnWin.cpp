@@ -124,6 +124,7 @@ BtnWin::BtnWin(const BtnWin& c)
     this->tailleX = c.tailleX;
     this->tailleY = c.tailleY;
     this->text = c.text;
+
 }
 //Peur de fuite de memoire a poser au prof
 std::vector<BtnWin*> BtnWin::getListButton()const
@@ -137,5 +138,21 @@ std::string BtnWin::getDescription()const
 void BtnWin::setDescription(std::string str)
 {
     Description = str;
+}
+ void BtnWin::setPositionX(int pos)
+ {
+    positionX = pos;
+ }
+void BtnWin::setPositionY(int pos)
+{
+    positionY =pos;
+}
+void BtnWin::setTailleX(int pos)
+{
+    tailleX = pos;
+}
+void BtnWin::setTailleY(int pos)
+{
+    tailleY = pos;
 }
 

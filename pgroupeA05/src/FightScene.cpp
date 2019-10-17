@@ -86,7 +86,8 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         //Gestion du clavier
     */
 
-
+        //BackUp draw Widows
+        /*
         fn->activateButton(activate);
         fn->getVect().at(activate)->setIsActivate(true);
         //window.draw(cercle);
@@ -105,27 +106,28 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
        }
        fn->getVect().at(activate)->setIsActivate(true);
-
-       for(int i = 0;i<vectWindows.size();i++)
+        */
+       for(int j = 0;j<vectWindows.size();j++)
        {
-            vectWindows.at(i)->activateButton(activate);
-            vectWindows.at(i)->getVect().at(activate)->setIsActivate(true);
+           std::cout << vectWindows.size() <<std::endl;
+            vectWindows.at(j)->activateButton(activate);
+            vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
             //window.draw(cercle);
             //window.draw(rect);
             //window.draw(triangle);
             //window.draw(text);
-            target.draw(vectWindows.at(i)->getRect());
-           for(int i = 0; i<fn->getNbBoutton();i++)
+            target.draw(vectWindows.at(j)->getRect());
+           for(int i = 0; i<vectWindows.at(j)->getNbBoutton();i++)
            {
-                sf::RectangleShape rr =vectWindows.at(i)->getVect().at(i)->getRect();
+                sf::RectangleShape rr =vectWindows.at(j)->getVect().at(i)->getRect();
                 target.draw(rr,stat);
-                sf::Text txt = vectWindows.at(i)->getVect().at(i)->getText();
+                sf::Text txt = vectWindows.at(j)->getVect().at(i)->getText();
                 txt.setFont(ft);
                 target.draw(txt,stat);
-                vectWindows.at(i)->getVect().at(i)->setIsActivate(false);
+                vectWindows.at(j)->getVect().at(i)->setIsActivate(false);
 
            }
-           vectWindows.at(i)->getVect().at(activate)->setIsActivate(true);
+           vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
        }
 
 }
