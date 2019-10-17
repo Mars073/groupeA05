@@ -4,6 +4,10 @@ FightScene::FightScene()
 {
     //ctor
      fn = new WindowsFight(25,225,200,200);
+     fn2 = new WindowsFightInfo(250,225,200,200);
+     vectWindows.push_back(fn);
+     vectWindows.push_back(fn2);
+
      activate = 0;
 }
 
@@ -102,6 +106,28 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
        }
        fn->getVect().at(activate)->setIsActivate(true);
 
+       for(int i = 0;i<vectWindows.size();i++)
+       {
+            vectWindows.at(i)->activateButton(activate);
+            vectWindows.at(i)->getVect().at(activate)->setIsActivate(true);
+            //window.draw(cercle);
+            //window.draw(rect);
+            //window.draw(triangle);
+            //window.draw(text);
+            target.draw(vectWindows.at(i)->getRect());
+           for(int i = 0; i<fn->getNbBoutton();i++)
+           {
+                sf::RectangleShape rr =vectWindows.at(i)->getVect().at(i)->getRect();
+                target.draw(rr,stat);
+                sf::Text txt = vectWindows.at(i)->getVect().at(i)->getText();
+                txt.setFont(ft);
+                target.draw(txt,stat);
+                vectWindows.at(i)->getVect().at(i)->setIsActivate(false);
+
+           }
+           vectWindows.at(i)->getVect().at(activate)->setIsActivate(true);
+       }
+
 }
 void FightScene::eventHandler(Event ev)
 {
@@ -151,6 +177,11 @@ void FightScene::eventHandler(Event ev)
         fn->activateButton(activate);
 
 
+}
+//Getter of vector of windows
+std::vector<WindowsFight*> FightScene::getVectWindows()
+{
+    return vectWindows;
 }
 void FightScene::fight()
 {

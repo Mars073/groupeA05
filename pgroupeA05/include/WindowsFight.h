@@ -13,23 +13,30 @@ class WindowsFight
 {
     public:
         WindowsFight(int positionX,int positionY,int tailleX,int tailleY);
+        //Getter and setter
         int getPositionX() const;
         int getPositionY() const;
         int getTailleX() const;
         int getTailleY()const;
         void setFm(FightManager *fm);
         sf::RectangleShape getRect()const;
-        std::vector<BtnWin*> getVect();
+        std::vector<BtnWin*> getVect()const;
+        int getNbBoutton();
+        //CRUD method for Button
+        void addButton(BtnWin btn);
+        void removeButton(BtnWin btnRemove);
+
         void draw(sf::RenderWindow &rd);
         void activateButton(int index);
-        int getNbBoutton();
-        void ajouterBouton(BtnWin btn);
+
+
         void retirerBouton(int index);
+
 
         virtual ~WindowsFight();
 
     protected:
-
+        sf::RectangleShape rect;
     private:
         int positionX;
         int positionY;
@@ -38,7 +45,7 @@ class WindowsFight
         int indexSelectionner;
         int activateIndex;
         std::vector<BtnWin*> vectorButton;
-        sf::RectangleShape rect;
+
         FightManager *fm;
 
 

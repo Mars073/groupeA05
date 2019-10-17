@@ -14,6 +14,7 @@ class WindowsFightInfo:public WindowsFight
     protected:
 
     private:
+
 };
 
 #endif // WINDOWSFIGHTINFO_H

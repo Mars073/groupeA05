@@ -13,6 +13,13 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
     this->rect.setOutlineColor(sf::Color(0,200,0));
     this->rect.setFillColor(sf::Color(255,0,0));
     this->indexSelectionner = 0;
+
+    //initialisation cf attribut
+    this->positionX = positionX;
+    this->positionY = positionY;
+    this->tailleX = tailleX;
+    this->tailleY = tailleY;
+
     btnAttack *btn = new btnAttack(positionX,positionY,80,50,"attaquer");
     btnAttack *btnMagie = new btnAttack(positionX,positionY+50,80,50,"Magie");
     btnAttack *btnObjet = new btnAttack(positionX,positionY+100,80,50,"Objet");
@@ -57,7 +64,7 @@ void WindowsFight::draw(sf::RenderWindow &rd)
     rd.draw(rect);
 
 }
-std::vector<BtnWin*> WindowsFight::getVect()
+std::vector<BtnWin*> WindowsFight::getVect()const
 {
     return vectorButton;
 }
@@ -84,7 +91,7 @@ int WindowsFight::getNbBoutton()
 {
     return (vectorButton.size()-1);
 }
-void WindowsFight::ajouterBouton(BtnWin btn)
+void WindowsFight::addButton(BtnWin btn)
 {
     vectorButton.push_back(&btn);
 }
@@ -96,5 +103,7 @@ void WindowsFight::setFm(FightManager *newfm)
 {
     fm = newfm;
 }
+
+
 
 

@@ -7,7 +7,7 @@
 #include "vector"
 #include "iostream"
 #include "Scene.h"
-#include "WindowsFight.h"
+#include "WindowsFightInfo.h"
 
 
 class FightScene: public Scene
@@ -18,7 +18,10 @@ class FightScene: public Scene
         void fight();
         void draw(RenderTarget&,RenderStates) const override;
         void eventHandler(Event ev);
+        //Get and setter
+        std::vector<WindowsFight*>getVectWindows();
         void setActivate(int activate);
+
 
 
     protected:
@@ -26,7 +29,8 @@ class FightScene: public Scene
     private:
         int activate;
         WindowsFight *fn;
-        WindowsFight *fn2;
+        WindowsFightInfo *fn2;
+        std::vector<WindowsFight*>vectWindows;
 
 };
 
