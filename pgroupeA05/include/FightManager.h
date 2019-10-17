@@ -12,6 +12,8 @@ class FightManager
     protected:
 
     private:
+        *FightScene
+
 };
 
 #endif // FIGHTMANAGER_H

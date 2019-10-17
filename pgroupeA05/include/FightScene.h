@@ -20,6 +20,7 @@ class FightScene: public Scene
         void eventHandler(Event ev);
         void setActivate(int activate);
 
+
     protected:
 
     private:
