@@ -11,6 +11,7 @@ class BtnWin
     public:
         BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton);
         BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton,std::string Description);
+
         virtual ~BtnWin();
         int getPositionX() const;
         int getPositionY() const;
