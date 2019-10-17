@@ -14,8 +14,12 @@ btnAttack::~btnAttack()
     //dtor
 
 }
-btnAttack::btnAttack(btnAttack const& btnAttack)
+btnAttack::btnAttack(btnAttack const& btnA)
 {
     //dtor
-    this->
+    this->setPositionX(btnA.getPositionX());
+    this->setPositionY(btnA.getPositionY());
+    this->setTailleX(btnA.getTailleX());
+    this->setTailleY(btnA.getTailleY());
+
 }

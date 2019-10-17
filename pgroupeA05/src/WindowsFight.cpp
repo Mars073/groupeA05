@@ -22,10 +22,11 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
 
     btnAttack *btn = new btnAttack(positionX,positionY,80,50,"attaquer");
     btnAttack *btnMagie = new btnAttack(positionX,positionY+50,80,50,"Magie");
-    btnAttack *btnObjet = new btnAttack(positionX,positionY+100,80,50,"Objet");
+    btnAttack *btnObjet = btnAttack(positionX,positionY+100,80,50,"Objet");
 
 
-    this->vectorButton.push_back(new btn);
+
+    this->vectorButton.push_back(new btnAttack(btn));
     this->vectorButton.push_back(btnMagie);
     this->vectorButton.push_back(btnObjet);
 

@@ -17,10 +17,10 @@ class BtnWin
         int getTailleX() const;
         int getTailleY()const;
 
-        void setPositionX();
-        void setPositionY();
-        void setTailleX();
-        void setTailleY();
+        void setPositionX(int pos);
+        void setPositionY(int pos);
+        void setTailleX(int pos);
+        void setTailleY(int pos);
 
 
         sf::RectangleShape getRect()const;
