@@ -70,6 +70,7 @@
 		<Unit filename="include/Inventory.h" />
 		<Unit filename="include/Item.h" />
 		<Unit filename="include/MapScene.h" />
+		<Unit filename="include/MenuScene.h" />
 		<Unit filename="include/Monster.h" />
 		<Unit filename="include/Npc.h" />
 		<Unit filename="include/Player.h" />
@@ -193,6 +194,7 @@
 		<Unit filename="src/Inventory.cpp" />
 		<Unit filename="src/Item.cpp" />
 		<Unit filename="src/MapScene.cpp" />
+		<Unit filename="src/MenuScene.cpp" />
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/Npc.cpp" />
 		<Unit filename="src/Player.cpp" />

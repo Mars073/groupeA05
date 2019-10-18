@@ -23,6 +23,7 @@ class Scene : public Drawable
         // raccourcis scene <-> game
         RenderWindow* getWindow();
         void setScene(Scene*);
+        void gotoPreviousScene();
 
 };
 

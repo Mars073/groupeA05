@@ -56,9 +56,18 @@ RenderWindow* Game::getWindow() const
 
 void Game::setScene(Scene* _scene)
 {
-    if (scene)
-        delete scene;
+    delete previous_scene;
+    previous_scene = scene;
     scene = _scene;
+    resetView();
+}
+
+void Game::gotoPreviousScene()
+{
+    Scene* tmp;
+    tmp = scene;
+    scene = previous_scene;
+    previous_scene = tmp;
     resetView();
 }
 

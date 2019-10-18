@@ -4,6 +4,7 @@
 #include<thread>
 #include<chrono>
 #include "Scene.h"
+#include "MenuScene.h"
 #include "GameMap.h"
 #include "Player.h"
 

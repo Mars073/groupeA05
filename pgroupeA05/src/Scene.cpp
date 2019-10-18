@@ -16,3 +16,9 @@ void Scene::setScene(Scene* _scene)
     Game* g = Game::getInstance();
     g->setScene(_scene);
 }
+
+void Scene::gotoPreviousScene()
+{
+    Game* g = Game::getInstance();
+    g->gotoPreviousScene();
+}

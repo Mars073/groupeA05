@@ -13,8 +13,9 @@ class Game
         Game();
         /** instance destructor */
         ~Game();
+        Scene* previous_scene = nullptr;//!< Pointer "Previous Scene"
         Scene* scene = new HomeScene;   //!< Pointer "Scene"
-        RenderWindow* window = nullptr; //!< Pointer "RenderWindow"
+        RenderWindow* window = nullptr; //!< Pointer "Render Window"
 
     public:
         /** Game window size */
@@ -42,6 +43,8 @@ class Game
         void setScene(Scene*);
         /** Access active Scene */
         Scene* getScene() const;
+        /** Set previous scene as current scene */
+        void gotoPreviousScene();
         void resetView();
 
         // Shortcuts game <-> window

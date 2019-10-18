@@ -139,7 +139,7 @@ void MapScene::eventHandler(Event event) {
         }
         case Keyboard::Escape:
             {
-                setScene(new HomeScene);
+                setScene(new MenuScene);
                 return;
             }
         default: break;
