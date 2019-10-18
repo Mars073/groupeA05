@@ -67,16 +67,27 @@ bool GameMap::loadFromFile(string path)
 
 TileInfo GameMap::xy2t(Vector2f vec) const
 {
-    return dataset.at((int)(vec.y*width+vec.x));
+    return dataset.at((unsigned)(vec.y*width+vec.x));
+}
+
+unsigned GameMap::xy2i(Vector2f vec) const
+{
+    return vec.x/TILE_SIZE + vec.y/TILE_SIZE*width;
 }
 
 Vector2u GameMap::tx2loc(int textureID) const
 {
     if (--textureID < 0)
         return Vector2u(texture.getSize().x, texture.getSize().y);//vide
+    if (textureID < 28)
+        return Vector2u(
+            (textureID%TEXTURE_RANGE)*2*TILE_SIZE + TILE_SIZE/2,
+            (textureID/TEXTURE_RANGE)*3*TILE_SIZE + TILE_SIZE*1.5
+        );
+    textureID-=28;
     return Vector2u(
-        (textureID%TEXTURE_RANGE)*2*TILE_SIZE + TILE_SIZE/2,
-        (textureID/TEXTURE_RANGE)*3*TILE_SIZE + TILE_SIZE*1.5
+        textureID%(TEXTURE_RANGE+3)*TILE_SIZE,
+        TILE_SIZE*9+textureID/(TEXTURE_RANGE+3)*TILE_SIZE
     );
 }
 
@@ -111,7 +122,7 @@ void GameMap::draw() const
     Game *g = Game::getInstance();
     Vector2f vw = g->getWindow()->getView().getCenter() - Vector2f(Game::W_WIDTH/2, Game::W_HEIGHT/2);
 
-    for (unsigned i = 0; i < dataset.size(); i++)
+    for (unsigned i = xy2i(vw)-width; i < dataset.size(); i++)
     {
         TileInfo tile = dataset.at(i);
         Vector2u pos(tile.getPosition(width));
@@ -127,15 +138,29 @@ void GameMap::draw() const
         if (pos.y > vw.y + Game::W_HEIGHT)
             break;
 
-        if (tile.FLOOR_ID%TEXTURE_RANGE == 1)
+        if (tile.FLOOR_ID < 29 && tile.FLOOR_ID%TEXTURE_RANGE == 1)
         {
             posTX.x+=floor(cos(now.asMilliseconds()/(120.*PI))*1.5+1.5)*TILE_SIZE*2;
         }
-        g->drawImage(texture, posTX.x, posTX.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
         try
         {
             const int HALF_SIZE = TILE_SIZE/2;
             neighboursInfo nears = getNeighboursInfo(i);
+            // quick tile
+            if (tile.FLOOR_ID > 28 || (nears.N->FLOOR_ID != tile.FLOOR_ID && nears.E->FLOOR_ID != tile.FLOOR_ID && nears.S->FLOOR_ID != tile.FLOOR_ID && nears.O->FLOOR_ID != tile.FLOOR_ID))
+            {
+                // floor
+                if (tile.FLOOR_ID > 28)
+                    g->drawImage(texture, posTX.x, posTX.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
+                else
+                    g->drawImage(texture, posTX.x-HALF_SIZE, posTX.y-TILE_SIZE*1.5, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
+                // Game object
+                if (tile.GAMEOBJECT_ID > 0)
+                    g->drawImage(texture, posOB.x, posOB.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
+                continue;
+            }
+            // floor
+            g->drawImage(texture, posTX.x, posTX.y, TILE_SIZE, TILE_SIZE, pos.x, pos.y);
             //borders
             if (nears.N->FLOOR_ID != tile.FLOOR_ID)
             {

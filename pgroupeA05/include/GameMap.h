@@ -49,6 +49,7 @@ class GameMap
         Vector2u tx2loc(int) const;
         Vector2u ob2loc(int objectID) const;
         TileInfo xy2t(Vector2f) const;
+        unsigned xy2i(Vector2f) const;
         neighboursInfo getNeighboursInfo(const int) const;
 };
 
