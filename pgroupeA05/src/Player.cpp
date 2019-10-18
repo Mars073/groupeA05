@@ -77,7 +77,7 @@ void Player::setPosition(const float x, const float y)
 
 void Player::setPosition(const Vector2f& _position)
 {
-    position = _position;
+    position = old_position = _position;
 }
 
 void Player::setOrientation(const short _orientation)

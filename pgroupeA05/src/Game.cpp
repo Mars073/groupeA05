@@ -8,7 +8,7 @@ Game* Game::getInstance()
 
 Game::Game()
 {
-    window = new RenderWindow(sf::VideoMode(W_WIDTH, W_HEIGHT), "Final Quest", sf::Style::Titlebar | sf::Style::Close);
+    window = new RenderWindow(sf::VideoMode(W_WIDTH, W_HEIGHT), "Final Quest", Style::Titlebar | Style::Close);
     window->setMouseCursorVisible(false);
     window->setFramerateLimit(60);
     Image icon;
