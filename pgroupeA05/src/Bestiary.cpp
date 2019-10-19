@@ -54,17 +54,17 @@ std::string Bestiary::str() const
 
 void Bestiary::readFromFile()
 {
-    std::string mcharaName;
-    int mhp, mmp, matk, mmag, mdef, mlevel, mmoneyHeld, mexpHeld;
+    std::string mCharaName;
+    int mHp, mMp, mAtk, mMag, mDef, mLevel, mMoneyHeld, mExpHeld;
     std::ifstream infile;
     infile.open ("data/lists/bestiary.txt");
 
     if(infile){
         while ( !infile.eof() )
         {
-            infile >> mcharaName>>mhp>>mmp>>matk>>mmag>>mdef>>mlevel>>mmoneyHeld>>mexpHeld;
+            infile >> mCharaName>>mHp>>mMp>>mAtk>>mMag>>mDef>>mLevel>>mMoneyHeld>>mExpHeld;
 
-            bestiary.push_back(new Monster(mcharaName,mhp,mmp,matk,mmag,mdef,mlevel,mmoneyHeld,mexpHeld));
+            bestiary.push_back(new Monster(mCharaName,mHp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld));
         }
     }
     infile.close();

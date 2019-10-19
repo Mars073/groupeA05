@@ -1,0 +1,4 @@
+Potion/Heals 50 hp. The most basic item ever./50
+Super potion/Heals 200 hp. Much better than a boring potion./200
+Mega potion/Heals 500 hp. Now we're talking./500
+X-potion/Heals 9999 hp. My potions are too strong for you traveller./9999

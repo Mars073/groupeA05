@@ -1,0 +1,5 @@
+Wooden sword/The first item that every adventurers want./2 1
+Rapier/A sword with a slender blade./9 5
+Saber/A long sword made for piercing./13 8
+Broadsword/Sword with a wide, double-edged blade./15 10
+Ultima weapon/A single strike from it and BAM no enemies left./99 99

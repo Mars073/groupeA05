@@ -1,0 +1,5 @@
+Clothes/Ordinary clothing./1
+Leather armor/Armor made of hardened leather./4
+Chain mail/Mail of interwoven chain links./15
+Mythril armor/Mail crafted from mythril./18
+Adamantite armor/The best of the best./99

@@ -16,6 +16,7 @@ class Heal : public Item
     public:
         /** Default constructor */
         Heal(std::string itemName,std::string itemDescription,int amountHealed);
+
         /** Default destructor */
         virtual ~Heal();
 
