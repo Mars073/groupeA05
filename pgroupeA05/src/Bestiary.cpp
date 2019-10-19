@@ -7,12 +7,23 @@ Bestiary::Bestiary()
 
 Bestiary::~Bestiary()
 {
-    //dtor
+    for (auto const& i : bestiary){
+        delete i;
+    }
 }
 
 Bestiary::Bestiary(const Bestiary& b)
 {
     //copy ctor
+}
+
+Bestiary& Bestiary::operator=(const Bestiary& b){
+    if(this!=&b){
+        for (auto const& i : bestiary){
+            delete i;
+        }
+    }
+    return *this;
 }
 
 void Bestiary::addMonster(Monster *monster)

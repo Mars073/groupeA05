@@ -23,6 +23,18 @@ BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(charaName)
     this->def=b.def;
 }
 
+BattleCharacter& BattleCharacter::operator=(const BattleCharacter& b){
+    if(this!=&b){
+        this->hp=b.hp;
+        this->mp=b.mp;
+        this->atk=b.atk;
+        this->mag=b.mag;
+        this->def=b.def;
+    }
+    return *this;
+}
+
+
 int BattleCharacter::Getlevel() const
 {
     return level;

@@ -17,6 +17,14 @@ Armor::Armor(const Armor& a):Item(itemName,itemDescription)
     this->def=a.def;
 }
 
+Armor& Armor::operator=(const Armor& a){
+    if(this!=&a){
+        itemType="Armor";
+        this->def=a.def;
+    }
+    return *this;
+}
+
 int Armor::Getdef() const
 {
     return def;

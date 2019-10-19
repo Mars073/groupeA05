@@ -21,6 +21,8 @@ class Item
 
         Item(const Item& i);
 
+        Item& operator=(const Item& i);
+
         /** Access itemName
          * \return The current value of itemName
          */

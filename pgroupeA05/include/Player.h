@@ -28,6 +28,8 @@ class Player : public BattleCharacter, public sf::Drawable
          */
         Player(const Player& p);
 
+        Player& operator=(const Player& p);
+
         /** Draw player */
         void draw(sf::RenderTarget&, sf::RenderStates) const;
         /** Access Position

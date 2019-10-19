@@ -19,6 +19,8 @@ class Bestiary
          */
         Bestiary(const Bestiary& b);
 
+        Bestiary& operator=(const Bestiary& b);
+
         /** add a monster in the bestiary
          *  \param the monster to add in the bestiary
          */

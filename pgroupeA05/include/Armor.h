@@ -22,6 +22,8 @@ class Armor : public Item
          */
         Armor(const Armor& a);
 
+        Armor& operator=(const Armor& a);
+
         /** Access def
          * \return The current value of def
          */

@@ -14,3 +14,10 @@ Npc::Npc(const Npc& n):Character(charaName)
 {
     //copy ctor
 }
+
+Npc& Npc::operator=(const Npc& n){
+    if(this!=&n){
+
+    }
+    return *this;
+}

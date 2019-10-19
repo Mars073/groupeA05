@@ -18,6 +18,14 @@ Heal::Heal(const Heal& h):Item(itemName,itemDescription)
     this->amountHealed=h.amountHealed;
 }
 
+Heal& Heal::operator=(const Heal& h){
+    if(this!=&h){
+        itemType="Heal";
+        this->amountHealed=h.amountHealed;
+    }
+    return *this;
+}
+
 int Heal::GetamountHealed() const
 {
     return amountHealed;

@@ -23,6 +23,8 @@ class BattleCharacter : public Character
          */
         BattleCharacter(const BattleCharacter& b);
 
+        BattleCharacter& operator=(const BattleCharacter& b);
+
         /** Access level
          * \return The current value of level
          */

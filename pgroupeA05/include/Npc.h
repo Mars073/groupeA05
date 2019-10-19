@@ -18,6 +18,8 @@ class Npc : public Character
          */
         Npc(const Npc& n);
 
+        Npc& operator=(const Npc& n);
+
     protected:
 
 

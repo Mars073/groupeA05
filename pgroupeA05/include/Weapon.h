@@ -20,6 +20,8 @@ class Weapon : public Item
 
         Weapon(const Weapon& w);
 
+        Weapon& operator=(const Weapon& w);
+
         /** Access atk
          * \return The current value of atk
          */

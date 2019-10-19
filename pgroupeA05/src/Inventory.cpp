@@ -9,13 +9,24 @@ Inventory::Inventory()
 
 Inventory::~Inventory()
 {
-
+    for (auto const& i : bag){
+        delete i;
+    }
 }
 
 Inventory::Inventory(const Inventory& i)
 {
 
 
+}
+
+Inventory& Inventory::operator=(const Inventory& i){
+    if(this!=&i){
+        for (auto const& i : bag){
+            delete i;
+        }
+    }
+    return *this;
 }
 
 void Inventory::addItem(Item *item)

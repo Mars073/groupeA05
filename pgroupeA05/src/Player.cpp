@@ -26,6 +26,17 @@ Player::Player(const Player& p):BattleCharacter(charaName,hp,mp,atk,mag,def)
     this->money=0;
 }
 
+Player& Player::operator=(const Player& p){
+    if(this!=&p){
+        level=1;
+        charaType="Player";
+        this->expNow=0;
+        this->expNext=10;
+        this->money=0;
+    }
+    return *this;
+}
+
 void Player::draw(sf::RenderTarget&target, sf::RenderStates) const
 {
     // for debug only::

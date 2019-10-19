@@ -20,6 +20,8 @@ class Monster : public BattleCharacter
          */
         Monster(const Monster& m);
 
+        Monster& operator=(const Monster& m);
+
         /** Access moneyHeld
          * \return The current value of moneyHeld
          */

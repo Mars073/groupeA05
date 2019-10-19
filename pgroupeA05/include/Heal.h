@@ -21,6 +21,8 @@ class Heal : public Item
 
         Heal(const Heal& h);
 
+        Heal& operator=(const Heal& h);
+
         /** Access amountHealed
          * \return The current value of amountHealed
          */

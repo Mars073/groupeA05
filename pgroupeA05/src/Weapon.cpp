@@ -20,6 +20,15 @@ Weapon::Weapon(const Weapon& w):Item(itemName,itemDescription)
     this->mag=w.mag;
 }
 
+Weapon& Weapon::operator=(const Weapon& w){
+    if(this!=&w){
+        itemType="Weapon";
+        this->atk=w.atk;
+        this->mag=w.mag;
+    }
+    return *this;
+}
+
 int Weapon::Getatk() const
 {
     return atk;

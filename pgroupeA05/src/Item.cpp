@@ -20,6 +20,14 @@ Item::Item(const Item& i)
 
 }
 
+Item& Item::operator=(const Item& i){
+    if(this!=&i){
+        this->itemName=i.itemName;
+        this->itemDescription=i.itemDescription;
+    }
+    return *this;
+}
+
 std::string Item::GetitemName() const
 {
     return itemName;

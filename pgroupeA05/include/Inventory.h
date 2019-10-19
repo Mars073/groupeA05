@@ -17,6 +17,8 @@ class Inventory
 
         Inventory(const Inventory& i);
 
+        Inventory& operator=(const Inventory& i);
+
         void addItem(Item *item);
 
         std::list<Item*> Getbag() const;

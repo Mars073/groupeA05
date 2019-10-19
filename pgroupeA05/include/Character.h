@@ -20,6 +20,8 @@ class Character
          */
         Character(const Character& c);
 
+        Character& operator=(const Character& c);
+
         /** Access name
          * \return The current value of charaName
          */

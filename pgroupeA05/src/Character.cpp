@@ -16,6 +16,13 @@ Character::Character(const Character& c)
 
 }
 
+Character& Character::operator=(const Character& c){
+    if(this!=&c){
+        this->charaName=c.charaName;
+    }
+    return *this;
+}
+
 std::string Character::GetcharaName() const
 {
     return charaName;

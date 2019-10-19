@@ -21,6 +21,16 @@ Monster::Monster(const Monster& m):BattleCharacter(charaName,hp,mp,atk,mag,def)
     this->expHeld=m.expHeld;
 }
 
+Monster& Monster::operator=(const Monster& m){
+    if(this!=&m){
+        charaType="Monster";
+        this->level=m.level;
+        this->moneyHeld=m.moneyHeld;
+        this->expHeld=m.expHeld;
+    }
+    return *this;
+}
+
 int Monster::GetmoneyHeld() const
 {
     return moneyHeld;
