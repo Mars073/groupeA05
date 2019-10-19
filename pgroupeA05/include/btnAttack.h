@@ -7,7 +7,7 @@ class btnAttack : public BtnWin
 {
     public:
         btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::string textButton);
-        //btnAttack(const btnAttack &btnA);
+        btnAttack(btnAttack const &btnA);
         void action();
         virtual ~btnAttack();
 

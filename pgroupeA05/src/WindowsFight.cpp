@@ -20,15 +20,18 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
     this->tailleX = tailleX;
     this->tailleY = tailleY;
 
-    btnAttack *btn = new btnAttack(positionX,positionY,80,50,"attaquer");
-    btnAttack *btnMagie = new btnAttack(positionX,positionY+50,80,50,"Magie");
+
+
+
+    /*
     btnAttack *btnObjet = new btnAttack(positionX,positionY+100,80,50,"Objet");
 
 
-
     this->vectorButton.push_back(btn);
-    this->vectorButton.push_back(btnMagie);
+    this->vectorButton.push_back(btnMagie);C:\wamp64\www\EntrainementTm\groupeA05
     this->vectorButton.push_back(btnObjet);
+    */
+    //this->vectorButton.push_back(new btnAttack(*(btnMagie)));
 
 }
 
@@ -92,9 +95,9 @@ int WindowsFight::getNbBoutton()
 {
     return (vectorButton.size()-1);
 }
-void WindowsFight::addButton(BtnWin btn)
+void WindowsFight::addButton(BtnWin *btn)
 {
-    vectorButton.push_back(&btn);
+    vectorButton.push_back(btn);
 }
 void WindowsFight::retirerBouton(int index)
 {
