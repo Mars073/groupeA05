@@ -8,6 +8,7 @@ FightScene::FightScene()
      vectWindows.push_back(fn);
      vectWindows.push_back(fn2);
      btnAttack *btnMagie = new btnAttack(fn->getPositionX(),fn->getPositionY()+50,80,50,"Magie");
+     btnMagie->setIsMenuBoutton(true);
      btnAttack *btnObjet = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+50,80,50,"Object");
      btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
      btnMagie->AddButton(btnAttack2);
@@ -174,6 +175,17 @@ void FightScene::eventHandler(Event ev)
                 {
                     std::cout << "espace toucher" << std::endl;
                     fn->getVect().at(i)->action();
+                    std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
+                    if(fn->getVect().at(i)->getIsMenuBoutton())
+                    {
+                        for(int j = 0 ;j <fn->getVect().size();j++)
+                        {
+                             fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                             //fn2->fn->getVect().at(i)->getListButton().
+                        }
+
+                    }
+
                 }
 
             }

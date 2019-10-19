@@ -12,6 +12,7 @@ BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string t
     this->positionY =positionY;
     this->tailleX = tailleX;
     this->tailleY = tailleY;
+    this->isButtonMenu = false;
 
 
 
@@ -144,6 +145,9 @@ BtnWin::BtnWin(BtnWin const& c)
     this->text.setPosition(c.positionX,c.positionY);
     this->text.setFillColor(sf::Color(0,0,255));
 
+    this->isButtonMenu = c.isButtonMenu;
+    this->ListButton = c.ListButton;
+
 
 
 
@@ -181,12 +185,16 @@ void BtnWin::setTailleY(int pos)
 {
     return nomText;
 }
-void BtnWin::AddButtonInWindows(WindowsFight fn*)
-{
-    WindowsFight.addButton(this);
-}
-void BtnWin::AddButton(BtnWin btn*)
+void BtnWin::AddButton(BtnWin *btn)
 {
     ListButton.push_back(btn);
+}
+bool BtnWin::getIsMenuBoutton()const
+{
+    return isButtonMenu;
+}
+void BtnWin::setIsMenuBoutton(bool val)
+{
+    isButtonMenu = val;
 }
 

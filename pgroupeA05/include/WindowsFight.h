@@ -1,7 +1,6 @@
 #ifndef WindowsFight_H
 #define WindowsFight_H
 #include "vector"
-#include "BtnWin.h"
 #include <SFML/Graphics.hpp>
 #include "vector"
 #include "FightManager.h"

@@ -4,7 +4,7 @@
 #include "string"
 #include "iostream"
 #include "vector"
-#include "WindowsFight.h"
+
 
 
 class BtnWin
@@ -33,8 +33,11 @@ class BtnWin
         void changeColorDesactivate();
 
         std::vector<BtnWin*>getListButton()const;
-        void AddButtonInWindows(WindowsFight fn*);
-        void AddButton(BtnWin btn*);
+//        void AddButtonInWindows(WindowsFight fn*);
+        void AddButton(BtnWin *btn);
+        bool getIsMenuBoutton()const;
+        void setIsMenuBoutton(bool val);
+
         virtual void action();
         void Draw();
         bool getisActivate();
@@ -58,6 +61,7 @@ class BtnWin
         int tailleY;
         std::string Description;
         std::string nomText;
+        bool isButtonMenu;
 
         sf::Font font;
         bool isActivate = false;
