@@ -3,7 +3,7 @@
 MapScene::MapScene():player("Hero", 100, 40, 50, 40, 60)
 {
     // load default map: 0
-    gmap.loadFromFile("data/maps/map_0.bin");
+    gmap.loadFromFile("data/maps/world_0.bin");
     // default position for map 0
     player.setPosition(65., 94.);
 }
@@ -112,39 +112,76 @@ void MapScene::eventHandler(Event event) {
         Vector2f movement(.0f, .0f);
         switch (event.key.code)
         {
-        case Keyboard::Z:
-        case Keyboard::Up:
-        {
-            player.setOrientation(0);
-            movement = Vector2f(.0, -1.);
-            break;
-        }
-        case Keyboard::Down:
-        {
-            player.setOrientation(2);
-            movement = Vector2f(.0, 1.);
-            break;
-        }
-        case Keyboard::Left:
-        {
-            player.setOrientation(3);
-            movement = Vector2f(-1., .0);
-            break;
-        }
-        case Keyboard::Right:
-        {
-            player.setOrientation(1);
-            movement = Vector2f(1., .0);
-            break;
-        }
-        case Keyboard::Escape:
+            case Keyboard::A:
+            case Keyboard::Enter:
             {
-                setScene(new MenuScene);
-                return;
+                GameMap::neighboursInfo nears = gmap.getNeighboursInfo(gmap.xy2i(player.getRelativePosition()));
+                switch (player.getOrientation())
+                {
+                    case 1: // EST
+                    {
+                        gmap.interact(player, nears.E, gmap);
+                        break;
+                    }
+                    case 2: // SOUTH
+                    {
+                        gmap.interact(player, nears.S, gmap);
+                        break;
+                    }
+                    case 3: // WEST
+                    {
+                        gmap.interact(player, nears.O, gmap);
+                        break;
+                    }
+                    default: // NORTH = 0
+                    {
+                        gmap.interact(player, nears.N, gmap);
+                        break;
+                    }
+                }
+                break;
             }
-        default: break;
+            case Keyboard::Z:
+            case Keyboard::Up:
+            {
+                player.setOrientation(0);
+                movement = Vector2f(.0, -1.);
+                break;
+            }
+            case Keyboard::S:
+            case Keyboard::Down:
+            {
+                player.setOrientation(2);
+                movement = Vector2f(.0, 1.);
+                break;
+            }
+            case Keyboard::Q:
+            case Keyboard::Left:
+            {
+                player.setOrientation(3);
+                movement = Vector2f(-1., .0);
+                break;
+            }
+            case Keyboard::D:
+            case Keyboard::Right:
+            {
+                player.setOrientation(1);
+                movement = Vector2f(1., .0);
+                break;
+            }
+            case Keyboard::Escape:
+                {
+                    setScene(new MenuScene);
+                    return;
+                }
+            default: break;
         }
-        if (!gmap.xy2t(player.getPosition()+movement).COLLISION)
+        TileInfo tile = gmap.xy2t(player.getPosition()+movement);
+        if (movement != Vector2f(.0f, .0f) && !tile.COLLISION)
+        {
             player.move(movement);
+            if (tile.GAMEOBJECT_ID > 0)
+                gmap.interact(player, &tile, gmap);
+        }
     }
 }

@@ -5,10 +5,16 @@ GameMap::GameMap()
 {
     setTexture(Resources::getTexture("simplemap", "data/images/simplemap_sprite.png"));
     setWidth(64);
+    world = 0;
 }
 GameMap::GameMap(int width)
 {
     setWidth(width);
+}
+
+void GameMap::spawn()
+{
+    clock.restart();
 }
 
 void GameMap::setTexture(const Texture& _texture)
@@ -24,55 +30,84 @@ Texture GameMap::getTexture() const
 void GameMap::setWidth(int _width)
 {
    width = _width;
+   //dataset.resize(width*width, TileInfo());
    dataset.clear();
-   for (int i = 0; i < width*width; i++)
+   for (unsigned i = 0; i < width*width; i++)
         dataset.push_back(TileInfo(i, 0));
 }
 
-int GameMap::getWidth() const
+unsigned GameMap::getWidth() const
 {
     return width;
 }
 
 bool GameMap::loadFromFile(string path)
 {
-    int i = 0;
-    char32_t c;
-    locale loc (locale(), new codecvt_utf8<char32_t>);
-    basic_ifstream<char32_t> fdat(path, ios::binary);
-    fdat.imbue(loc);
-    string header;
-    for (int ii = 0; ii < 3 && fdat.get(c); ii++)
-        header+=c;
-    if (header != "map")
-        return false; // no map header
-
-    if (fdat.get(c))
-        setWidth(c-48);
-    else
-        return false; // no size
-    cout << " size: " << (c-48) << endl;
-    dataset.clear();
-    while (fdat.get(c))
+    try
     {
-        if (c == '\n' || c == '\r')
-            continue;
-        if (i >= width*width)
-            break;
-        dataset.push_back(TileInfo(i++, c-48));
+        unsigned i = 0;
+        char32_t c;
+        locale loc (locale(), new codecvt_utf8<char32_t>);
+        basic_ifstream<char32_t> fdat(path, ios::binary);
+        fdat.imbue(loc);
+        string header;
+        for (unsigned ii = 0; ii < 3 && fdat.get(c); ii++)
+            header+=c;
+        if (header != "map")
+            return false; // no map header
+
+        if (fdat.get(c))
+            setWidth(c-48);
+        else
+            return false; // no size
+        cout << " size: " << (c-48) << endl;
+        dataset.clear();
+        while (fdat.get(c))
+        {
+            if (c == '\n' || c == '\r')
+                continue;
+            if (i >= width*width)
+                break;
+            TileInfo current = TileInfo(i++, c-48);
+            if (current.GAMEOBJECT_ID == GUID_RANDOM_TELEPORTER)
+                random_teleporters.push_back(i);
+            dataset.push_back(current);
+        }
+        cout << "map blocks: " << dataset.size() << endl;
+        return true;
     }
-    cout << "map blocks: " << dataset.size() << endl;
-    return true;
+    catch (int e)
+    {
+        return false;
+    }
 }
 
-TileInfo GameMap::xy2t(Vector2f vec) const
+bool GameMap::loadFromFileID(unsigned _world)
+{
+    if (loadFromFile("data/maps/world_" + to_string(_world) + ".bin"))
+    {
+        world = _world;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+TileInfo GameMap::xy2t(const Vector2f vec) const
 {
     return dataset.at((unsigned)(vec.y*width+vec.x));
 }
 
-unsigned GameMap::xy2i(Vector2f vec) const
+unsigned GameMap::xy2i(const Vector2f vec) const
 {
     return vec.x/TILE_SIZE + vec.y/TILE_SIZE*width;
+}
+
+Vector2f GameMap::i2xy(const unsigned index) const
+{
+    return Vector2f((index%width)*TILE_SIZE, (index/width)*TILE_SIZE);
 }
 
 Vector2u GameMap::tx2loc(int textureID) const
@@ -99,13 +134,13 @@ Vector2u GameMap::ob2loc(int objectID) const
     );
 }
 
-GameMap::neighboursInfo GameMap::getNeighboursInfo(const int index) const
+GameMap::neighboursInfo GameMap::getNeighboursInfo(const unsigned index) const
 {
     neighboursInfo tmp;
     const TileInfo* self = dataset.data() + index;
     tmp.N = dataset.data() + (index < width ? index : index - width);
     tmp.E = dataset.data() + ((index + 1)%width == 0 ? index : index + 1);
-    tmp.S = dataset.data() + (index+width >= (int)dataset.size() ? index : index + width);
+    tmp.S = dataset.data() + (index+width >= dataset.size() ? index : index + width);
     tmp.O = dataset.data() + (index % width == 0 ? index : index - 1);
 
     tmp.NE = tmp.N->INDEX == index || tmp.E->INDEX == index ? self : tmp.N + 1;
@@ -122,7 +157,7 @@ void GameMap::draw() const
     Game *g = Game::getInstance();
     Vector2f vw = g->getWindow()->getView().getCenter() - Vector2f(Game::W_WIDTH/2, Game::W_HEIGHT/2);
 
-    for (unsigned i = xy2i(vw)-width; i < dataset.size(); i++)
+    for (unsigned i = max(xy2i(vw), width)-width; i < dataset.size(); i++)
     {
         TileInfo tile = dataset.at(i);
         Vector2u pos(tile.getPosition(width));
@@ -220,5 +255,106 @@ void GameMap::draw() const
         {
             cout << "Something wrong " << endl;
         }
+    }
+    if (now.asMilliseconds() < 300)
+    {
+        RectangleShape rect(Vector2f(width*TILE_SIZE, width*TILE_SIZE));
+        rect.setFillColor(Color(0, 0, 0, (300-now.asMilliseconds())/300.*255));
+        g->getWindow()->draw(rect);
+    }
+}
+
+void GameMap::interact(Player& player, const TileInfo* tile,  GameMap& bypass) const
+{
+    unsigned UID = tile->INDEX;
+    switch (tile->GAMEOBJECT_ID)
+    {
+    case GUID_RANDOM_TELEPORTER:
+        {
+            srand(time(NULL));
+            unsigned tid = rand() % random_teleporters.size();
+            Vector2f new_pos = i2xy(random_teleporters.at(tid));
+            player.setPosition(new_pos.x/32-1, new_pos.y/32);
+            bypass.spawn();
+            break;
+        }
+    case 201://TENT
+    case 132://LARGE_DOOR
+    case GUID_DOORS:
+        {
+            //cout << "[" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << endl;
+            if (world == 0)
+            {
+                switch(UID)
+                {
+                case 11462: // Kot de Kévin
+                    {
+                        player.setPosition(15, 10);
+                        bypass.loadFromFileID(1);
+                        break;
+                    }
+                case 959:  // Castle
+                case 960:
+                    {
+                        break;
+                    }
+                case 5405: // PUB
+                    {
+                        player.setPosition(10, 53);
+                        bypass.loadFromFileID(1);
+                        break;
+                    }
+                case 7071: // Right House (Village)
+                    {
+                        player.setPosition(31, 10);
+                        bypass.loadFromFileID(1);
+                        break;
+                    }
+                case 7081: // Left House (Village)
+                    {
+                        player.setPosition(15, 10);
+                        bypass.loadFromFileID(1);
+                        break;
+                    }
+                default: return;
+                }
+            }
+            else if (world == 1)
+            {
+                switch(UID)
+                {
+                case 591: // Right House (Village)
+                    {
+                        player.setPosition(41, 56);
+                        bypass.loadFromFileID(0);
+                        break;
+                    }
+                case 607: // Left House (Village)4096
+                    {
+                        player.setPosition(31, 56);
+                        bypass.loadFromFileID(0);
+                        break;
+                    }
+                case 1: // TENT
+                    {
+                        player.setPosition(70, 90);
+                        bypass.loadFromFileID(0);
+                        break;
+                    }
+                case 3338: // PUB
+                    {
+                        player.setPosition(29, 43);
+                        bypass.loadFromFileID(0);
+                        break;
+                    }
+                default: return;
+                }
+            }
+            bypass.spawn();
+            player.flip();
+            break;
+
+        }
+    default:break;
     }
 }

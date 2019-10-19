@@ -36,6 +36,8 @@ class Player : public BattleCharacter, public sf::Drawable
          * \return The current position
          */
         sf::Vector2f getPosition() const;
+        sf::Vector2f getRelativePosition() const;
+        sf::Vector2f getAbsolutePosition() const;
         /** Move player */
         void move(const float, const float);
         void move(const sf::Vector2f&);
@@ -44,6 +46,8 @@ class Player : public BattleCharacter, public sf::Drawable
         void setPosition(const sf::Vector2f&);
         /** Set player orientation */
         void setOrientation(const short);
+        /** 180° player rotation */
+        void flip();
         /** Access Orientation */
         short getOrientation() const;
         /** Access expNow

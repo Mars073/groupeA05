@@ -81,6 +81,16 @@ sf::Vector2f Player::getPosition() const
     );
 }
 
+sf::Vector2f Player::getRelativePosition() const
+{
+    return Vector2f(position.x*32, position.y*32);
+}
+
+sf::Vector2f Player::getAbsolutePosition() const
+{
+    return Vector2f(position.x, position.y);
+}
+
 void Player::setPosition(const float x, const float y)
 {
     setPosition(Vector2f(x, y));
@@ -89,6 +99,12 @@ void Player::setPosition(const float x, const float y)
 void Player::setPosition(const Vector2f& _position)
 {
     position = old_position = _position;
+    move_at=0; // clear animation
+}
+
+void Player::flip()
+{
+    setOrientation(orientation + 2);
 }
 
 void Player::setOrientation(const short _orientation)

@@ -7,10 +7,13 @@
 #include <codecvt>
 #include <fstream>
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 #include <math.h>
 #include <SFML/Graphics.hpp>
-#include "Game.h"
-#include "TileInfo.h"
+#include <Game.h>
+#include <TileInfo.h>
+#include <Player.h>
 
 using namespace std;
 using sf::Texture;
@@ -22,6 +25,13 @@ using sf::Clock;
 class GameMap
 {
     private:
+        unsigned width;
+        unsigned world = 0;
+        vector<TileInfo> dataset;
+        vector<int> random_teleporters;
+        Texture texture;
+        Clock clock;
+    public:
         struct neighboursInfo
         {
             const TileInfo // Compass Declaration
@@ -31,26 +41,27 @@ class GameMap
              *SO,  *SE,
                 *S;
         };
-        int width;
-        vector<TileInfo> dataset;
-        Texture texture;
-        Clock clock;
-    public:
-        const int TILE_SIZE = 32;
-        const int TEXTURE_RANGE = 12;
+        static const unsigned TILE_SIZE = 32;
+        static const unsigned TEXTURE_RANGE = 12;
+        static const unsigned GUID_RANDOM_TELEPORTER = 73;
+        static const unsigned GUID_DOORS = 131;
         GameMap();
         GameMap(int);
         bool loadFromFile(string);
+        bool loadFromFileID(unsigned);
         void setTexture(const Texture& texture);
         Texture getTexture() const;
+        void spawn();
         void setWidth(int width);
-        int  getWidth() const;
+        unsigned getWidth() const;
         void draw() const;
         Vector2u tx2loc(int) const;
         Vector2u ob2loc(int objectID) const;
-        TileInfo xy2t(Vector2f) const;
-        unsigned xy2i(Vector2f) const;
-        neighboursInfo getNeighboursInfo(const int) const;
+        TileInfo xy2t(const Vector2f) const;
+        unsigned xy2i(const Vector2f) const;
+        Vector2f i2xy(const unsigned) const;
+        neighboursInfo getNeighboursInfo(const unsigned) const;
+        void interact(Player&, const TileInfo*, GameMap&) const;
 };
 
 #endif // GAMEMAP_H

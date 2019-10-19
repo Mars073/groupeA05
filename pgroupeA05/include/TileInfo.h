@@ -8,13 +8,13 @@ class TileInfo
 {
     private:
     public:
-        const int INDEX;
-        const int FLOOR_ID;
-        const int GAMEOBJECT_ID;
+        const unsigned INDEX;
+        const unsigned FLOOR_ID;
+        const unsigned GAMEOBJECT_ID;
         bool COLLISION;
         bool TOPMOST;
         TileInfo(const int, long int);
-        Vector2u getPosition(const int);
+        Vector2u getPosition(const unsigned) const;
 };
 
 #endif // TILEINFO_H
