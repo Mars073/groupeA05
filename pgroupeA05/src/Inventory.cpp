@@ -121,33 +121,44 @@ void Inventory::readFromFile()
 
 void Inventory::writeInFile()
 {
-    //reparer l'espace a la fin de fichier
     std::ofstream output("data/lists/heals.txt");
     std::ofstream output2("data/lists/armors.txt");
     std::ofstream output3("data/lists/weapons.txt");
+    bool checkHeal=false;
+    bool checkArmor=false;
+    bool checkWeapon=false;
 
 	for (auto const& i : everyItems)
 	{
 	    if(i->GetitemType()=="Heal"){
             Heal *d = dynamic_cast<Heal*>(i);
-            output<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->GetamountHealed();
-            if (&i != &everyItems.back()){
+            if(checkHeal){
                 output<<std::endl;
             }
+            else{
+                checkHeal=true;
+            }
+            output<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->GetamountHealed();
 	    }
 	    else if(i->GetitemType()=="Armor"){
             Armor *d = dynamic_cast<Armor*>(i);
-            output2<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->Getdef();
-            if (&i != &everyItems.back()){
+            if(checkArmor){
                 output2<<std::endl;
             }
+            else{
+                checkArmor=true;
+            }
+            output2<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->Getdef();
 	    }
 	    else if(i->GetitemType()=="Weapon"){
             Weapon *d = dynamic_cast<Weapon*>(i);
-            output3<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->Getatk()<<" "<<d->Getmag();
-            if (&i != &everyItems.back()){
+            if(checkWeapon){
                 output3<<std::endl;
             }
+            else{
+                checkWeapon=true;
+            }
+            output3<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->Getatk()<<" "<<d->Getmag();
 	    }
 	}
 }
@@ -162,4 +173,50 @@ Item* Inventory::getOneItem(std::string name)
     return 0;
 }
 
-//ajouter methode pour modifier et supprimer
+void Inventory::changeAttribute(std::string nameItem,std::string nameAttribute,std::string val)
+{
+    if(nameAttribute=="name"){
+        if(getOneItem(val)==0){
+            getOneItem(nameItem)->SetitemName(val);
+        }
+    }
+    else if(nameAttribute=="description"){
+        getOneItem(nameItem)->SetitemDescription(val);
+    }
+    writeInFile();
+}
+
+void Inventory::changeAttribute(std::string nameItem,std::string nameAttribute,int val)
+{
+    if(getOneItem(nameItem)->GetitemType()=="Heal"){
+        if(nameAttribute=="heal"){
+            dynamic_cast<Heal*>(getOneItem(nameItem))->SetamountHealed(val);
+        }
+    }
+    else if(getOneItem(nameItem)->GetitemType()=="Armor"){
+        if(nameAttribute=="def"){
+            dynamic_cast<Armor*>(getOneItem(nameItem))->Setdef(val);
+        }
+    }
+    else if(getOneItem(nameItem)->GetitemType()=="Weapon"){
+        if(nameAttribute=="atk"){
+            dynamic_cast<Weapon*>(getOneItem(nameItem))->Setatk(val);
+        }
+        else if(nameAttribute=="mag"){
+            dynamic_cast<Weapon*>(getOneItem(nameItem))->Setmag(val);
+        }
+    }
+
+    writeInFile();
+}
+
+void Inventory::deleteItem(std::string nameItem)
+{
+    bag.remove(getOneItem(nameItem));
+}
+
+void Inventory::deleteItemInFile(std::string nameItem)
+{
+    everyItems.remove(getOneItem(nameItem));
+    writeInFile();
+}

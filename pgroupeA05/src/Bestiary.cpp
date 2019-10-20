@@ -94,37 +94,39 @@ Monster* Bestiary::getOneMonster(std::string name)
     return 0;
 }
 
-void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,std::string value)
+void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,std::string val)
 {
-    getOneMonster(nameMonster)->SetcharaName(value);
-    writeInFile();
+    if(getOneMonster(val)==0){
+        getOneMonster(nameMonster)->SetcharaName(val);
+        writeInFile();
+    }
 }
 
-void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,int value)
+void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,int val)
 {
     if(nameAttribute=="hp"){
-        getOneMonster(nameMonster)->Sethp(value);
+        getOneMonster(nameMonster)->Sethp(val);
     }
     else if(nameAttribute=="mp"){
-        getOneMonster(nameMonster)->Setmp(value);
+        getOneMonster(nameMonster)->Setmp(val);
     }
     else if(nameAttribute=="atk"){
-        getOneMonster(nameMonster)->Setatk(value);
+        getOneMonster(nameMonster)->Setatk(val);
     }
     else if(nameAttribute=="mag"){
-        getOneMonster(nameMonster)->Setmag(value);
+        getOneMonster(nameMonster)->Setmag(val);
     }
     else if(nameAttribute=="def"){
-        getOneMonster(nameMonster)->Setdef(value);
+        getOneMonster(nameMonster)->Setdef(val);
     }
     else if(nameAttribute=="level"){
-        getOneMonster(nameMonster)->Setlevel(value);
+        getOneMonster(nameMonster)->Setlevel(val);
     }
     else if(nameAttribute=="money"){
-        getOneMonster(nameMonster)->SetmoneyHeld(value);
+        getOneMonster(nameMonster)->SetmoneyHeld(val);
     }
     else if(nameAttribute=="exp"){
-        getOneMonster(nameMonster)->SetexpHeld(value);
+        getOneMonster(nameMonster)->SetexpHeld(val);
     }
 
     writeInFile();
