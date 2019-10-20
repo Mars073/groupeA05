@@ -178,7 +178,7 @@ void MapScene::eventHandler(Event event) {
                 }
             default: break;
         }
-        TileInfo tile = gmap.xy2t(player.getPosition()+movement);
+        TileInfo tile = gmap.xy2t(player.getAbsolutePosition()+movement);
         if (movement != Vector2f(.0f, .0f) && !tile.COLLISION)
         {
             player.move(movement);
