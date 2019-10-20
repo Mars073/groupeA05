@@ -1,10 +1,7 @@
 #ifndef WEAPON_H
 #define WEAPON_H
-
 #include <Item.h>
-#include <sstream>
-#include <iostream>
-#include<string>
+
 
 class Weapon : public Item
 {

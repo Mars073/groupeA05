@@ -11,8 +11,8 @@
 class Inventory
 {
     private:
-        std::list<Item*>bag;
-        std::list<Item*>everyItems;
+        std::list<Item*>bag; //list of items ingame
+        std::list<Item*>everyItems; //list of every items from the files
 
     public:
         /** Default constructor */
@@ -41,9 +41,11 @@ class Inventory
 
         std::list<Item*> Getbag() const;
 
+        std::list<Item*> GeteveryItems() const;
+
         virtual std::string str() const;
 
-        /** read the file "items.txt" in "data/lists" and add them as items in the bag
+        /** read the file "items.txt" in "data/lists" and add them as items in the everyItems list
          *
          */
         void readFromFile();

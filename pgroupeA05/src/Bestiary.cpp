@@ -62,9 +62,11 @@ void Bestiary::readFromFile()
     if(infile){
         while ( !infile.eof() )
         {
-            infile >> mCharaName>>mHp>>mMp>>mAtk>>mMag>>mDef>>mLevel>>mMoneyHeld>>mExpHeld;
-
+            std::getline(infile,mCharaName,'/');
+            infile >>mHp>>mMp>>mAtk>>mMag>>mDef>>mLevel>>mMoneyHeld>>mExpHeld;
             bestiary.push_back(new Monster(mCharaName,mHp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld));
+            //permet d'ignorer tout l'espace vide entre chaque monstres
+            infile.ignore();
         }
     }
     infile.close();
@@ -77,7 +79,7 @@ void Bestiary::writeInFile()
 
 	for (auto const& i : bestiary)
 	{
-        output<<i->GetcharaName()<<" "<<i->Gethp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetmoneyHeld()<<" "<<i->GetexpHeld();
+        output<<i->GetcharaName()<<"/"<<i->Gethp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetmoneyHeld()<<" "<<i->GetexpHeld();
         if (&i != &bestiary.back()){
             output<<std::endl;
         }
@@ -96,10 +98,13 @@ Monster* Bestiary::getOneMonster(std::string name)
 
 void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,std::string val)
 {
-    if(getOneMonster(val)==0){
-        getOneMonster(nameMonster)->SetcharaName(val);
-        writeInFile();
+    if(nameAttribute=="name"){
+        if(getOneMonster(val)==0){
+            getOneMonster(nameMonster)->SetcharaName(val);
+            writeInFile();
+        }
     }
+
 }
 
 void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,int val)

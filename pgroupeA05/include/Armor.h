@@ -1,10 +1,7 @@
 #ifndef ARMOR_H
 #define ARMOR_H
-
 #include <Item.h>
-#include <sstream>
-#include <iostream>
-#include<string>
+
 
 
 class Armor : public Item

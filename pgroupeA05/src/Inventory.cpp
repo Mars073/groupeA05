@@ -58,6 +58,11 @@ std::list<Item*> Inventory::Getbag() const
     return bag;
 }
 
+std::list<Item*> Inventory::GeteveryItems() const
+{
+    return everyItems;
+}
+
 std::string Inventory::str() const
 {
     std::stringstream sstr;

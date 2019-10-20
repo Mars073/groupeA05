@@ -69,6 +69,7 @@
 		<Unit filename="include/HomeScene.h" />
 		<Unit filename="include/Inventory.h" />
 		<Unit filename="include/Item.h" />
+		<Unit filename="include/Magic.h" />
 		<Unit filename="include/MapScene.h" />
 		<Unit filename="include/MenuScene.h" />
 		<Unit filename="include/Monster.h" />
@@ -174,6 +175,7 @@
 		<Unit filename="include/SFML/Window/WindowHandle.hpp" />
 		<Unit filename="include/SFML/Window/WindowStyle.hpp" />
 		<Unit filename="include/Scene.h" />
+		<Unit filename="include/Spells.h" />
 		<Unit filename="include/TileInfo.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WindowsFight.h" />
@@ -193,6 +195,7 @@
 		<Unit filename="src/HomeScene.cpp" />
 		<Unit filename="src/Inventory.cpp" />
 		<Unit filename="src/Item.cpp" />
+		<Unit filename="src/Magic.cpp" />
 		<Unit filename="src/MapScene.cpp" />
 		<Unit filename="src/MenuScene.cpp" />
 		<Unit filename="src/Monster.cpp" />
@@ -200,6 +203,7 @@
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Resources.cpp" />
 		<Unit filename="src/Scene.cpp" />
+		<Unit filename="src/Spells.cpp" />
 		<Unit filename="src/TileInfo.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WindowsFight.cpp" />

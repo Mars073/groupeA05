@@ -1,9 +1,5 @@
 #ifndef HEAL_H
 #define HEAL_H
-
-#include <sstream>
-#include <iostream>
-#include<string>
 #include <Item.h>
 
 
