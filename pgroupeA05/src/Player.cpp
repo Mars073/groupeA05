@@ -1,6 +1,9 @@
 #include "Player.h"
-
-Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def):BattleCharacter(charaName,hp,mp,atk,mag,def)
+//ajouter max hp et mp et reparer armor et weapon
+Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def)
+:BattleCharacter(charaName,hp,mp,atk,mag,def)/*,
+weapon("Wooden sword","The first item that every adventurers want.",2,1),
+armor("Clothes","Ordinary clothing.",1)*/
 {
     level=1;
     orientation = 0;
@@ -9,10 +12,8 @@ Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def):Batt
     this->expNow=0;
     this->expNext=10;
     this->money=0;
-    this->weapon=new Weapon("Wooden sword","The first item that every adventurers want.",2,1);
-    this->armor=new Armor("Clothes","Ordinary clothing.",1);
-    this->inventory.addItem(weapon);
-    this->inventory.addItem(armor);
+    /*this->inventory.addItem(&weapon);
+    this->inventory.addItem(&armor);*/
     this->spells.addMagic("Fire");
     this->spells.addMagic("Ice");
     this->spells.addMagic("Water");
@@ -22,16 +23,25 @@ Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def):Batt
 
 Player::~Player()
 {
-    //dtor
+
 }
 
-Player::Player(const Player& p):BattleCharacter(charaName,hp,mp,atk,mag,def)
+Player::Player(const Player& p):BattleCharacter(charaName,hp,mp,atk,mag,def)/*,
+weapon("Wooden sword","The first item that every adventurers want.",2,1),
+armor("Clothes","Ordinary clothing.",1)*/
 {
     level=1;
     charaType="Player";
     this->expNow=0;
     this->expNext=10;
     this->money=0;
+    /*this->inventory.addItem(&weapon);
+    this->inventory.addItem(&armor);*/
+    this->spells.addMagic("Fire");
+    this->spells.addMagic("Ice");
+    this->spells.addMagic("Water");
+    srand ( time(NULL) );
+    clock.restart();
 }
 
 Player& Player::operator=(const Player& p){
@@ -41,6 +51,13 @@ Player& Player::operator=(const Player& p){
         this->expNow=0;
         this->expNext=10;
         this->money=0;
+        /*this->inventory.addItem(&weapon);
+        this->inventory.addItem(&armor);*/
+        this->spells.addMagic("Fire");
+        this->spells.addMagic("Ice");
+        this->spells.addMagic("Water");
+        srand ( time(NULL) );
+        clock.restart();
     }
     return *this;
 }
@@ -155,25 +172,25 @@ void Player::Setmoney(int val)
     money = val;
 }
 
-Weapon* Player::Getweapon() const
+/*Weapon Player::Getweapon() const
 {
     return weapon;
 }
 
-void Player::Setweapon(Weapon* val)
+void Player::Setweapon(Weapon val)
 {
     weapon = val;
 }
 
-Armor* Player::Getarmor() const
+Armor Player::Getarmor() const
 {
     return armor;
 }
 
-void Player::Setarmor(Armor* val)
+void Player::Setarmor(Armor val)
 {
     armor = val;
-}
+}*/
 
 Inventory Player::Getinventory() const
 {
@@ -238,12 +255,12 @@ void Player::moreExpForLevelUp()
 
 int Player::damageDone() const
 {
-    return Getatk() + weapon->Getatk();
+    return Getatk();// + weapon.Getatk();
 }
 
 void Player::damageReceived(int dmg)
 {
-    int damage= dmg - (Getdef() + armor->Getdef());
+    int damage= dmg;// - (Getdef() + armor.Getdef());
     if(damage>0){
         Sethp(Gethp()-damage);
     }

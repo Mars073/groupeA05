@@ -22,8 +22,8 @@ class Player : public BattleCharacter, public sf::Drawable
         int expNow; //!< Member variable "expNow"
         int expNext; //!< Member variable "expNext"
         int money; //!< Member variable "money"
-        Weapon* weapon;
-        Armor* armor;
+        /*Weapon weapon;
+        Armor armor;*/
         Inventory inventory;
         Spells spells;
 
@@ -87,22 +87,22 @@ class Player : public BattleCharacter, public sf::Drawable
         /** Access weapon
          * \return The current value of weapon
          */
-        Weapon* Getweapon() const;
+        //Weapon Getweapon() const;
 
         /** Set weapon
          * \param val New value to set
          */
-        void Setweapon(Weapon* weapon);
+        //void Setweapon(Weapon weapon);
 
         /** Access armor
          * \return The current value of armor
          */
-        Armor* Getarmor() const;
+        //Armor Getarmor() const;
 
         /** Set armor
          * \param val New value to set
          */
-        void Setarmor(Armor* armor);
+        //void Setarmor(Armor armor);
 
         /** Access inventory
          * \return The current value of inventory
