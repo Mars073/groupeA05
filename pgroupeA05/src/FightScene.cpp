@@ -5,8 +5,11 @@ FightScene::FightScene()
     //ctor
      fn = new WindowsFight(25,225,200,200);
      fn2 = new WindowsFightInfo(250,225,200,200);
+     fn3 = new WindowsFightInfo(475,225,200,200);
+
      vectWindows.push_back(fn);
      vectWindows.push_back(fn2);
+     vectWindows.push_back(fn3);
      btnAttack *btnMagie = new btnAttack(fn->getPositionX(),fn->getPositionY()+50,80,50,"Magie");
      btnMagie->setIsMenuBoutton(true);
      btnAttack *btnObjet = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+50,80,50,"Object");
@@ -117,14 +120,13 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         */
        for(int j = 0;j<vectWindows.size();j++)
        {
-
+        target.draw(vectWindows.at(j)->getRect());
+        if(vectWindows.at(j)->getNbBoutton()+1 > 0)
+        {
             vectWindows.at(j)->activateButton(activate);
             vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
-            //window.draw(cercle);
-            //window.draw(rect);
-            //window.draw(triangle);
-            //window.draw(text);
-            target.draw(vectWindows.at(j)->getRect());
+
+
 
            for(int i = 0; i<=vectWindows.at(j)->getNbBoutton();i++)
            {
@@ -139,6 +141,9 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
            }
 
            vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
+            vectWindows.at(j)->getVect().at(activate)->getDescription();
+        }
+
        }
 
 }

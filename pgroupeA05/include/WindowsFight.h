@@ -20,6 +20,7 @@ class WindowsFight
         int getTailleY()const;
         void setFm(FightManager *fm);
         sf::RectangleShape getRect()const;
+
         std::vector<BtnWin*> getVect()const;
         int getNbBoutton();
         //CRUD method for Button

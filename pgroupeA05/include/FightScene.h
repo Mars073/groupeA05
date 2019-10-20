@@ -30,6 +30,7 @@ class FightScene: public Scene
         int activate;
         WindowsFight *fn;
         WindowsFightInfo *fn2;
+        WindowsFightInfo *fn3;
         std::vector<WindowsFight*>vectWindows;
 
 };
