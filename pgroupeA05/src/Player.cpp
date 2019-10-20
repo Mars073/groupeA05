@@ -9,6 +9,14 @@ Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def):Batt
     this->expNow=0;
     this->expNext=10;
     this->money=0;
+    this->weapon=new Weapon("Wooden sword","The first item that every adventurers want.",2,1);
+    this->armor=new Armor("Clothes","Ordinary clothing.",1);
+    this->inventory.addItem(weapon);
+    this->inventory.addItem(armor);
+    this->spells.addMagic("Fire");
+    this->spells.addMagic("Ice");
+    this->spells.addMagic("Water");
+    srand ( time(NULL) );
     clock.restart();
 }
 
@@ -147,6 +155,47 @@ void Player::Setmoney(int val)
     money = val;
 }
 
+Weapon* Player::Getweapon() const
+{
+    return weapon;
+}
+
+void Player::Setweapon(Weapon* val)
+{
+    weapon = val;
+}
+
+Armor* Player::Getarmor() const
+{
+    return armor;
+}
+
+void Player::Setarmor(Armor* val)
+{
+    armor = val;
+}
+
+Inventory Player::Getinventory() const
+{
+    return inventory;
+}
+
+void Player::Setinventory(Inventory val)
+{
+    inventory = val;
+}
+
+Spells Player::Getspells() const
+{
+    return spells;
+}
+
+void Player::Setspells(Spells val)
+{
+    spells=val;
+}
+
+
 std::string Player::str() const
 {
     std::stringstream sstr;
@@ -161,21 +210,42 @@ void Player::moreMoney(int moneyEarn)
 
 void Player::levelUp()
 {
-    Setlevel(level++);
-    //ajouter le fait d'augmenter les parametres
+    Setlevel(Getlevel()+1);
+    Sethp(Gethp()+rand() % 50 + 30);
+    Setmp(Getmp()+rand() % 30 + 10);
+    Setatk(Getatk()+rand() % 3 + 1);
+    Setmag(Getmag()+rand() % 3 + 1);
+    Setdef(Getdef()+rand() % 3 + 1);
 }
 
 void Player::moreExp(int expEarned)
 {
-    if(GetexpNow()+expEarned>=GetexpNext()){
-        levelUp();
-        moreExpForLevelUp();
+    SetexpNow(GetexpNow()+expEarned);
+    if(GetexpNow()>=GetexpNext()){
+        //permet d'avoir plus d'un niveau supplementaire
+        int nb=(int)ceil(log2(GetexpNow()/GetexpNext()));
+        for(int i=0;i<=nb;i++){
+            levelUp();
+            moreExpForLevelUp();
+        }
     }
-    moreExp(expEarned);
-    //ajouter le fait d'avoir plus d'un niveau
 }
 
 void Player::moreExpForLevelUp()
 {
     SetexpNext(expNext*2);
 }
+
+int Player::damageDone() const
+{
+    return Getatk() + weapon->Getatk();
+}
+
+void Player::damageReceived(int dmg)
+{
+    int damage= dmg - (Getdef() + armor->Getdef());
+    if(damage>0){
+        Sethp(Gethp()-damage);
+    }
+}
+

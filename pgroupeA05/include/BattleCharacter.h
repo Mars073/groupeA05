@@ -1,7 +1,7 @@
 #ifndef BATTLECHARACTER_H
 #define BATTLECHARACTER_H
 
-#include <Character.h>
+#include "Character.h"
 
 class BattleCharacter : public Character
 {
@@ -75,10 +75,6 @@ class BattleCharacter : public Character
         void Setdef(int val);
 
         virtual std::string str() const;
-
-        void damageReceived(int dmg);
-
-        int damageDone(int atkWeapon,int defEnemy);
 
     private:
 

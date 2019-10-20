@@ -1,7 +1,7 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 
-#include <BattleCharacter.h>
+#include "BattleCharacter.h"
 
 
 class Monster : public BattleCharacter
@@ -40,6 +40,10 @@ class Monster : public BattleCharacter
         void SetexpHeld(int val);
 
         virtual std::string str() const;
+
+        int damageDone() const;
+
+        void damageReceived(int dmg);
 
     protected:
 

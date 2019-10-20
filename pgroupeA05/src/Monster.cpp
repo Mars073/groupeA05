@@ -57,3 +57,16 @@ std::string Monster::str() const
     sstr<<BattleCharacter::str()<<std::endl<<"money held : "<<GetmoneyHeld()<<std::endl<<"exp held : "<<GetexpHeld()<<std::endl;
     return sstr.str();
 }
+
+int Monster::damageDone() const
+{
+    return Getatk();
+}
+
+void Monster::damageReceived(int dmg)
+{
+    int damage= dmg - Getdef();
+    if(damage>0){
+        Sethp(Gethp()-damage);
+    }
+}

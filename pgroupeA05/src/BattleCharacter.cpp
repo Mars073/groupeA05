@@ -102,12 +102,3 @@ std::string BattleCharacter::str() const
     return sstr.str();
 }
 
-void BattleCharacter::damageReceived(int dmg)
-{
-    Sethp(hp-dmg);
-}
-
-int BattleCharacter::damageDone(int atkWeapon,int defEnemy)
-{
-    return (atk+atkWeapon)-defEnemy;
-}
