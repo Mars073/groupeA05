@@ -7,6 +7,14 @@ FightScene::FightScene()
      fn2 = new WindowsFightInfo(250,225,200,200);
      vectWindows.push_back(fn);
      vectWindows.push_back(fn2);
+     btnAttack *btnMagie = new btnAttack(fn->getPositionX(),fn->getPositionY()+50,80,50,"Magie");
+     btnMagie->setIsMenuBoutton(true);
+     btnAttack *btnObjet = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+50,80,50,"Object");
+     btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
+     btnMagie->AddButton(btnAttack2);
+
+     fn->addButton(new btnAttack(*(btnMagie)));
+     fn2->addButton(new btnAttack(*(btnObjet)));
 
      activate = 0;
 }
@@ -109,7 +117,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         */
        for(int j = 0;j<vectWindows.size();j++)
        {
-           std::cout << vectWindows.size() <<std::endl;
+
             vectWindows.at(j)->activateButton(activate);
             vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
             //window.draw(cercle);
@@ -117,8 +125,10 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
             //window.draw(triangle);
             //window.draw(text);
             target.draw(vectWindows.at(j)->getRect());
-           for(int i = 0; i<vectWindows.at(j)->getNbBoutton();i++)
+
+           for(int i = 0; i<=vectWindows.at(j)->getNbBoutton();i++)
            {
+                //std::cout << vectWindows.at(i)->getNbBoutton() <<i <<std::endl;
                 sf::RectangleShape rr =vectWindows.at(j)->getVect().at(i)->getRect();
                 target.draw(rr,stat);
                 sf::Text txt = vectWindows.at(j)->getVect().at(i)->getText();
@@ -127,20 +137,14 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
                 vectWindows.at(j)->getVect().at(i)->setIsActivate(false);
 
            }
+
            vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
        }
 
 }
 void FightScene::eventHandler(Event ev)
 {
-        if(activate < 0)
-        {
-            activate =fn->getNbBoutton()-1;
-        }
-        else if(activate > fn->getNbBoutton()-1)
-        {
-            setActivate(0);
-        }
+
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
@@ -164,18 +168,38 @@ void FightScene::eventHandler(Event ev)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
 
-            for(int i = 0; i<fn->getNbBoutton();i++)
+            for(int i = 0; i<=fn->getNbBoutton();i++)
             {
 
                 if(fn->getVect().at(i)->getisActivate() == true)
                 {
                     std::cout << "espace toucher" << std::endl;
                     fn->getVect().at(i)->action();
+                    std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
+                    if(fn->getVect().at(i)->getIsMenuBoutton())
+                    {
+                        for(int j = 0 ;j <fn->getVect().size();j++)
+                        {
+                             fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                             //fn2->fn->getVect().at(i)->getListButton().
+                        }
+
+                    }
+
                 }
 
             }
 
         }
+        if(activate < 0)
+        {
+            activate =fn->getNbBoutton();
+        }
+        else if(activate >= fn->getNbBoutton())
+        {
+            setActivate(0);
+        }
+        std::cout << fn->getNbBoutton()<< std::endl;
         fn->activateButton(activate);
 
 

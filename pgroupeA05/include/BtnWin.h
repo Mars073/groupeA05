@@ -6,6 +6,7 @@
 #include "vector"
 
 
+
 class BtnWin
 {
     public:
@@ -30,14 +31,22 @@ class BtnWin
         void Desativate();
         void changeColorActivate();
         void changeColorDesactivate();
+
         std::vector<BtnWin*>getListButton()const;
+//        void AddButtonInWindows(WindowsFight fn*);
+        void AddButton(BtnWin *btn);
+        bool getIsMenuBoutton()const;
+        void setIsMenuBoutton(bool val);
+
         virtual void action();
         void Draw();
         bool getisActivate();
+        sf::Text text;
         void setIsActivate(bool val);
+        std::string getTextButton();
         std::string getDescription()const;
         void setDescription(std::string str);
-        BtnWin(const BtnWin& c);
+        BtnWin(BtnWin const& c);
         sf::Text getText();
         void execute();
 
@@ -51,7 +60,9 @@ class BtnWin
         int tailleX;
         int tailleY;
         std::string Description;
-        sf::Text text;
+        std::string nomText;
+        bool isButtonMenu;
+
         sf::Font font;
         bool isActivate = false;
         std::vector<BtnWin*>ListButton;

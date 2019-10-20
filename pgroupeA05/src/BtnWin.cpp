@@ -7,7 +7,12 @@ BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string t
     this->rect.setSize(sf::Vector2f(tailleX,tailleY));
     this->rect.setOutlineThickness(5);
     this->rect.setOutlineColor(sf::Color(0,0,255));
-
+    nomText = textButton;
+    this->positionX = positionX;
+    this->positionY =positionY;
+    this->tailleX = tailleX;
+    this->tailleY = tailleY;
+    this->isButtonMenu = false;
 
 
 
@@ -117,13 +122,34 @@ BtnWin::~BtnWin()
 {
     //dtor
 }
-BtnWin::BtnWin(const BtnWin& c)
+BtnWin::BtnWin(BtnWin const& c)
 {
     this->positionX= c.positionX;
     this->positionY = c.positionY;
     this->tailleX = c.tailleX;
     this->tailleY = c.tailleY;
     this->text = c.text;
+
+    this->rect = c.rect;
+
+    this->rect.setPosition(sf::Vector2f(c.positionX,c.positionY));
+    this->rect.setSize(sf::Vector2f(c.tailleX,c.tailleY));
+    this->rect.setOutlineThickness(5);
+    this->rect.setOutlineColor(sf::Color(0,0,255));
+
+    std::cout << c.positionX<< std::endl;
+    this->text = c.text;
+    this->text.setString(c.nomText);
+    this->text.setCharacterSize(15); // exprim�e en pixels, pas en points !
+    this->text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    this->text.setPosition(c.positionX,c.positionY);
+    this->text.setFillColor(sf::Color(0,0,255));
+
+    this->isButtonMenu = c.isButtonMenu;
+    this->ListButton = c.ListButton;
+
+
+
 
 }
 //Peur de fuite de memoire a poser au prof
@@ -154,5 +180,21 @@ void BtnWin::setTailleX(int pos)
 void BtnWin::setTailleY(int pos)
 {
     tailleY = pos;
+}
+ std::string BtnWin::getTextButton()
+{
+    return nomText;
+}
+void BtnWin::AddButton(BtnWin *btn)
+{
+    ListButton.push_back(btn);
+}
+bool BtnWin::getIsMenuBoutton()const
+{
+    return isButtonMenu;
+}
+void BtnWin::setIsMenuBoutton(bool val)
+{
+    isButtonMenu = val;
 }
 

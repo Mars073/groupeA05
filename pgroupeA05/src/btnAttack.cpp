@@ -14,14 +14,14 @@ btnAttack::~btnAttack()
     //dtor
 
 }
-/*btnAttack::btnAttack(btnAttack const& btnA)
+btnAttack::btnAttack(btnAttack const& btnA):BtnWin(btnA)
 {
-    //dtor
-
-    this->setPositionX(btnA.getPositionX());
-    this->setPositionY(btnA.getPositionY());
-    this->setTailleX(btnA.getTailleX());
-    this->setTailleY(btnA.getTailleY());
 
 }
-*/
+
+    //dtor
+
+    //this->text = c.text;
+
+
+

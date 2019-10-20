@@ -1,11 +1,11 @@
 #ifndef WindowsFight_H
 #define WindowsFight_H
 #include "vector"
-#include "BtnWin.h"
 #include <SFML/Graphics.hpp>
 #include "vector"
 #include "FightManager.h"
 #include "string"
+#include "btnAttack.h"
 
 
 
@@ -23,7 +23,7 @@ class WindowsFight
         std::vector<BtnWin*> getVect()const;
         int getNbBoutton();
         //CRUD method for Button
-        void addButton(BtnWin btn);
+        void addButton(BtnWin *btn);
         void removeButton(BtnWin btnRemove);
 
         void draw(sf::RenderWindow &rd);
@@ -31,6 +31,7 @@ class WindowsFight
 
 
         void retirerBouton(int index);
+
 
 
         virtual ~WindowsFight();
@@ -45,6 +46,8 @@ class WindowsFight
         int indexSelectionner;
         int activateIndex;
         std::vector<BtnWin*> vectorButton;
+
+
 
         FightManager *fm;
 
