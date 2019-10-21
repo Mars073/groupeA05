@@ -4,7 +4,7 @@
 #include<thread>
 #include<chrono>
 #include "View/StrategyScene.h"
-#include "View/Scenes/ConcreteStrategryMenuScene.h"
+#include "View/Scenes/ConcreteStrategyMenuScene.h"
 #include "Model/GameMap.h"
 #include "Player.h"
 

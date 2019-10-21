@@ -2,9 +2,9 @@
 #define MENUSCENE_H
 
 #include <Model/SingletonGame.h>
-#include <View/Scenes/ConcreteStrategryMapScene.h>
+#include <View/Scenes/ConcreteStrategyMapScene.h>
 #include <FightScene.h>
-#include <View/Scenes/ConcreteStrategryGameoverScene.h>
+#include <View/Scenes/ConcreteStrategyGameoverScene.h>
 
 
 class ConcreteStrategyMenuScene : public StrategyScene

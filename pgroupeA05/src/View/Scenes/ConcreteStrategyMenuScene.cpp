@@ -1,4 +1,5 @@
-#include "View/Scenes/ConcreteStrategryMenuScene.h"
+#include "View/Scenes/ConcreteStrategyMenuScene.h"
+#include "View/Scenes/ConcreteStrategyGameOverScene.h"
 
 ConcreteStrategyMenuScene::ConcreteStrategyMenuScene()
 {
@@ -68,8 +69,14 @@ if (event.type == Event::KeyPressed)
                     }
                 case 3:
                     {
-                        //scene
+                        //fight
                         setScene(new FightScene);
+                        break;
+                    }
+                case 5:
+                    {
+                        //game over
+                        setScene(new ConcreteStrategyGameOverScene);
                         break;
                     }
                 default://credits, gameover

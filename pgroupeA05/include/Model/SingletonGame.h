@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "View/Scenes/ConcreteStrategryHomeScene.h"
+#include "View/Scenes/ConcreteStrategyHomeScene.h"
 
 using namespace sf;
 

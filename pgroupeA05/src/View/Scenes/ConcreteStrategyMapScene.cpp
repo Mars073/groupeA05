@@ -1,4 +1,4 @@
-#include "View/Scenes/ConcreteStrategryMapScene.h"
+#include "View/Scenes/ConcreteStrategyMapScene.h"
 
 ConcreteStrategyMapScene::ConcreteStrategyMapScene():player("Hero", 100, 40, 50, 40, 60)
 {

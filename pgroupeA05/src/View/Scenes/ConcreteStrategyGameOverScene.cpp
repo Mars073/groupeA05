@@ -1,4 +1,4 @@
-#include "View/Scenes/ConcreteStrategryGameoverScene.h"
+#include "View/Scenes/ConcreteStrategyGameoverScene.h"
 
 ConcreteStrategyGameOverScene::ConcreteStrategyGameOverScene()
 {
