@@ -1,4 +1,4 @@
-#include "TileInfo.h"
+#include "Model/TileInfo.h"
 
 TileInfo::TileInfo(const int index = 0, long int data = 0):
     INDEX(index),

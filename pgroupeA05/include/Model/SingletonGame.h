@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "HomeScene.h"
+#include "View/Scenes/ConcreteStrategryHomeScene.h"
 
 using namespace sf;
 
@@ -13,8 +13,8 @@ class Game
         Game();
         /** instance destructor */
         ~Game();
-        Scene* previous_scene = nullptr;//!< Pointer "Previous Scene"
-        Scene* scene = new HomeScene;   //!< Pointer "Scene"
+        StrategyScene* previous_scene = nullptr;//!< Pointer "Previous Scene"
+        StrategyScene* scene = new ConcreteStrategyHomeScene;   //!< Pointer "Scene"
         RenderWindow* window = nullptr; //!< Pointer "Render Window"
 
     public:
@@ -40,9 +40,9 @@ class Game
         /** Set active Scene
          * \param ptr new Scene to set
          */
-        void setScene(Scene*);
+        void setScene(StrategyScene*);
         /** Access active Scene */
-        Scene* getScene() const;
+        StrategyScene* getScene() const;
         /** Set previous scene as current scene */
         void gotoPreviousScene();
         void resetView();

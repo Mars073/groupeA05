@@ -1,16 +1,16 @@
-#include "HomeScene.h"
-#include "MapScene.h"
-#include "Game.h"
+#include "View/StrategyScene.h"
+#include "View/Scenes/ConcreteStrategryMapScene.h"
+#include "Model/SingletonGame.h"
 
 #include<iostream>
 #include<algorithm>
 
-HomeScene::HomeScene()
+ConcreteStrategyHomeScene::ConcreteStrategyHomeScene()
 {
     //ctor
 }
 
-void HomeScene::draw(RenderTarget& target, RenderStates states) const
+void ConcreteStrategyHomeScene::draw(RenderTarget& target, RenderStates states) const
 {
     target.setView(View(FloatRect(0, 0, Game::W_WIDTH, Game::W_HEIGHT))); // HOT FIX
     Sprite sprite;
@@ -28,7 +28,7 @@ void HomeScene::draw(RenderTarget& target, RenderStates states) const
     }
 }
 
-void HomeScene::eventHandler(Event event)
+void ConcreteStrategyHomeScene::eventHandler(Event event)
 {
     if (event.type == Event::KeyPressed)
     {
@@ -57,7 +57,7 @@ void HomeScene::eventHandler(Event event)
                 case 0:
                     {
                         // Lancer de jeu
-                        MapScene* s = new MapScene;
+                        ConcreteStrategyMapScene* s = new ConcreteStrategyMapScene;
                         setScene(s);
                         //s->playFXIntro();
                         break;

@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include <SFML/Graphics.hpp>
-#include <Game.h>
+#include <Model/SingletonGame.h>
 #include "BattleCharacter.h"
 #include <time.h>
 #include <math.h>

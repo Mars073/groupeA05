@@ -1,9 +1,9 @@
 #ifndef HOMESCENE_H
 #define HOMESCENE_H
 
-#include "Scene.h"
+#include "View/StrategyScene.h"
 
-class HomeScene: public Scene
+class ConcreteStrategyHomeScene: public StrategyScene
 {
     private:
         const unsigned short int MENU_LENGTH = 3;
@@ -11,7 +11,7 @@ class HomeScene: public Scene
         short int selected_id = 0;
 
     public:
-        HomeScene();
+        ConcreteStrategyHomeScene();
         void draw(RenderTarget&, RenderStates) const override;
         void eventHandler(Event);
 

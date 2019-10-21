@@ -3,12 +3,12 @@
 
 #include<thread>
 #include<chrono>
-#include "Scene.h"
-#include "MenuScene.h"
-#include "GameMap.h"
+#include "View/StrategyScene.h"
+#include "View/Scenes/ConcreteStrategryMenuScene.h"
+#include "Model/GameMap.h"
 #include "Player.h"
 
-class MapScene: public Scene
+class ConcreteStrategyMapScene: public StrategyScene
 {
     private:
         Clock fxClock;
@@ -18,7 +18,7 @@ class MapScene: public Scene
         bool isFXIntro = false;
 
     public:
-        MapScene();
+        ConcreteStrategyMapScene();
         void playFXIntro();
         void drawFXIntro(RenderTarget&) const;
         void draw(RenderTarget&, RenderStates) const override;

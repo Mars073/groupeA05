@@ -1,16 +1,16 @@
-#include "MenuScene.h"
+#include "View/Scenes/ConcreteStrategryMenuScene.h"
 
-MenuScene::MenuScene()
+ConcreteStrategyMenuScene::ConcreteStrategyMenuScene()
 {
     //ctor
 }
 
-MenuScene::~MenuScene()
+ConcreteStrategyMenuScene::~ConcreteStrategyMenuScene()
 {
     //dtor
 }
 
-void MenuScene::draw(RenderTarget& target, RenderStates states) const
+void ConcreteStrategyMenuScene::draw(RenderTarget& target, RenderStates states) const
 {
     target.setView(View(FloatRect(0, 0, Game::W_WIDTH, Game::W_HEIGHT))); // HOT FIX
     Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
@@ -23,7 +23,7 @@ void MenuScene::draw(RenderTarget& target, RenderStates states) const
         target.draw(text, states);
     }
 }
-void MenuScene::eventHandler(Event event)
+void ConcreteStrategyMenuScene::eventHandler(Event event)
 {
 if (event.type == Event::KeyPressed)
     {
@@ -57,13 +57,13 @@ if (event.type == Event::KeyPressed)
                 case 1:
                     {
                         //home
-                        setScene(new HomeScene);
+                        setScene(new ConcreteStrategyHomeScene);
                         break;
                     }
                 case 2:
                     {
                         //map
-                        setScene(new MapScene);
+                        setScene(new ConcreteStrategyMapScene);
                         break;
                     }
                 case 3:

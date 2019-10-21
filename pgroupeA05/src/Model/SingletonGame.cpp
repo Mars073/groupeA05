@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Model/SingletonGame.h"
 
 Game* Game::getInstance()
 {
@@ -54,7 +54,7 @@ RenderWindow* Game::getWindow() const
     return window;
 }
 
-void Game::setScene(Scene* _scene)
+void Game::setScene(StrategyScene* _scene)
 {
     delete previous_scene;
     previous_scene = scene;
@@ -64,14 +64,14 @@ void Game::setScene(Scene* _scene)
 
 void Game::gotoPreviousScene()
 {
-    Scene* tmp;
+    StrategyScene* tmp;
     tmp = scene;
     scene = previous_scene;
     previous_scene = tmp;
     resetView();
 }
 
-Scene* Game::getScene() const
+StrategyScene* Game::getScene() const
 {
     return scene;
 }

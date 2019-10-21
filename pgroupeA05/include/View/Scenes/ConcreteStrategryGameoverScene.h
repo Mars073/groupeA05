@@ -1,17 +1,17 @@
 #ifndef GAMEOVERSCENE_H
 #define GAMEOVERSCENE_H
 
-#include <Scene.h>
+#include <View/StrategyScene.h>
 #include <SFML/Graphics.hpp>
 
 
-class GameoverScene: public Scene
+class ConcreteStrategyGameOverScene: public StrategyScene
 {
     public:
         /** Default constructor */
-        GameoverScene();
+        ConcreteStrategyGameOverScene();
         /** Default destructor */
-        virtual ~GameoverScene();
+        virtual ~ConcreteStrategyGameOverScene();
         void draw(RenderTarget&, RenderStates) const override;
         void eventHandler(Event);
 

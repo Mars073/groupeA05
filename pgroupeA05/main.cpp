@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Model/SingletonGame.h"
 //#include "FightScene.h"
 
 int main()

@@ -11,8 +11,8 @@
 #include <time.h>
 #include <math.h>
 #include <SFML/Graphics.hpp>
-#include <Game.h>
-#include <TileInfo.h>
+#include <Model/SingletonGame.h>
+#include <Model/TileInfo.h>
 #include <Player.h>
 
 using namespace std;

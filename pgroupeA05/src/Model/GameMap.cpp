@@ -1,4 +1,4 @@
-#include "GameMap.h"
+#include "Model/GameMap.h"
 #define PI 3.141592653589793
 
 GameMap::GameMap()

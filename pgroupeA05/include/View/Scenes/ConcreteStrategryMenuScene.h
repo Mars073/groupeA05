@@ -1,13 +1,13 @@
 #ifndef MENUSCENE_H
 #define MENUSCENE_H
 
-#include <Game.h>
-#include <MapScene.h>
+#include <Model/SingletonGame.h>
+#include <View/Scenes/ConcreteStrategryMapScene.h>
 #include <FightScene.h>
-#include <Scene/GameoverScene.h>
+#include <View/Scenes/ConcreteStrategryGameoverScene.h>
 
 
-class MenuScene : public Scene
+class ConcreteStrategyMenuScene : public StrategyScene
 {
     private:
         const unsigned short int MENU_LENGTH = 6;
@@ -16,9 +16,9 @@ class MenuScene : public Scene
 
     public:
         /** Default constructor */
-        MenuScene();
+        ConcreteStrategyMenuScene();
         /** Default destructor */
-        virtual ~MenuScene();
+        virtual ~ConcreteStrategyMenuScene();
         void draw(RenderTarget&, RenderStates) const override;
         void eventHandler(Event);
 

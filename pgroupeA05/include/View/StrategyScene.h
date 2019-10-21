@@ -8,13 +8,13 @@
 using namespace std;
 using namespace sf;
 
-class Scene : public Drawable
+class StrategyScene : public Drawable
 {
     private:
 
     public:
-        Scene();
-        ~Scene();
+        StrategyScene();
+        ~StrategyScene();
         bool controller = true;
         // /!\ crée une abstraction au niveau de la classe
         virtual void draw(RenderTarget&, RenderStates)const = 0;
@@ -22,7 +22,7 @@ class Scene : public Drawable
 
         // raccourcis scene <-> game
         RenderWindow* getWindow();
-        void setScene(Scene*);
+        void setScene(StrategyScene*);
         void gotoPreviousScene();
 
 };

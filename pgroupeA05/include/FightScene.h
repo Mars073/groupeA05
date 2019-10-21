@@ -6,13 +6,13 @@
 #include "WindowsFight.h"
 #include "vector"
 #include "iostream"
-#include "Scene.h"
+#include "View/StrategyScene.h"
 #include "WindowsFightInfo.h"
 #include "Player.h"
 #include "Monster.h"
 
 
-class FightScene: public Scene
+class FightScene: public StrategyScene
 {
     public:
         FightScene();

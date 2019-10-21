@@ -1,17 +1,17 @@
-#include "MapScene.h"
+#include "View/Scenes/ConcreteStrategryMapScene.h"
 
-MapScene::MapScene():player("Hero", 100, 40, 50, 40, 60)
+ConcreteStrategyMapScene::ConcreteStrategyMapScene():player("Hero", 100, 40, 50, 40, 60)
 {
     // load default map: 0
     gmap.loadFromFile("data/maps/world_0.bin");
     // default position for map 0
     player.setPosition(65., 94.);
 }
-void MapScene::setCamera(RenderTarget& target, float cx, float cy) const
+void ConcreteStrategyMapScene::setCamera(RenderTarget& target, float cx, float cy) const
 {
     setCamera(target, Vector2f(cx, cy));
 }
-void MapScene::setCamera(RenderTarget& target, Vector2f center) const
+void ConcreteStrategyMapScene::setCamera(RenderTarget& target, Vector2f center) const
 {
     View view = target.getView();
     center.x = min(gmap.getWidth()*gmap.TILE_SIZE-Game::W_WIDTH/2.f, max(Game::W_WIDTH/2.f, center.x));
@@ -20,21 +20,21 @@ void MapScene::setCamera(RenderTarget& target, Vector2f center) const
     target.setView(view);
 }
 
-void MapScene::playFXIntro()
+void ConcreteStrategyMapScene::playFXIntro()
 {
     fxClock.restart();
     controller = false;
     isFXIntro = true;
-    thread(&MapScene::timeoutFXIntro, this).detach();
+    thread(&ConcreteStrategyMapScene::timeoutFXIntro, this).detach();
 }
-void MapScene::timeoutFXIntro()
+void ConcreteStrategyMapScene::timeoutFXIntro()
 {
     this_thread::sleep_for(chrono::seconds(20));
     controller = true;
     isFXIntro = false;
 }
 
-void MapScene::drawFXIntro(RenderTarget& target) const
+void ConcreteStrategyMapScene::drawFXIntro(RenderTarget& target) const
 {
     Time now = fxClock.getElapsedTime();
 
@@ -71,7 +71,7 @@ void MapScene::drawFXIntro(RenderTarget& target) const
     }
 }
 
-void MapScene::draw(RenderTarget& target, RenderStates states) const
+void ConcreteStrategyMapScene::draw(RenderTarget& target, RenderStates states) const
 {
     gmap.draw();
     target.draw(player);
@@ -108,7 +108,7 @@ void MapScene::draw(RenderTarget& target, RenderStates states) const
     target.draw(text);
 }
 
-void MapScene::eventHandler(Event event) {
+void ConcreteStrategyMapScene::eventHandler(Event event) {
     if (event.type == Event::KeyPressed)
     {
         Vector2f movement(.0f, .0f);
@@ -173,7 +173,7 @@ void MapScene::eventHandler(Event event) {
             }
             case Keyboard::Escape:
                 {
-                    setScene(new MenuScene);
+                    setScene(new ConcreteStrategyMenuScene);
                     return;
                 }
             default: break;
