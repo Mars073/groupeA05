@@ -1,12 +1,12 @@
 #include "Model/SingletonGame.h"
 
-Game* Game::getInstance()
+SingletonGame* SingletonGame::getInstance()
 {
-    static Game instance;
+    static SingletonGame instance;
     return &instance;
 }
 
-Game::Game()
+SingletonGame::SingletonGame()
 {
     window = new RenderWindow(sf::VideoMode(W_WIDTH, W_HEIGHT), "Final Quest", Style::Titlebar | Style::Close);
     window->setMouseCursorVisible(false);
@@ -20,25 +20,25 @@ Game::Game()
     resetView();
 }
 
-Game::~Game()
+SingletonGame::~SingletonGame()
 {
     delete scene;
     delete window;
 }
 
-void Game::draw() const
+void SingletonGame::draw() const
 {
     window->clear();
     window->draw(*scene);
     window->display();
 }
 
-void Game::drawImage(const Texture& image, int sx, int sy, int sw, int sh, int dx, int dy) const
+void SingletonGame::drawImage(const Texture& image, int sx, int sy, int sw, int sh, int dx, int dy) const
 {
     return drawImage(image, sx, sy, sw, sh, dx, dy, sw, sh);
 }
 
-void Game::drawImage(const Texture& image, int sx, int sy, int sw, int sh, int dx, int dy, int dw, int dh) const
+void SingletonGame::drawImage(const Texture& image, int sx, int sy, int sw, int sh, int dx, int dy, int dw, int dh) const
 {
     Sprite sprite;
     sprite.setTexture(image);
@@ -49,12 +49,12 @@ void Game::drawImage(const Texture& image, int sx, int sy, int sw, int sh, int d
     window->draw(sprite);
 }
 
-RenderWindow* Game::getWindow() const
+RenderWindow* SingletonGame::getWindow() const
 {
     return window;
 }
 
-void Game::setScene(StrategyScene* _scene)
+void SingletonGame::setScene(StrategyScene* _scene)
 {
     delete previous_scene;
     previous_scene = scene;
@@ -62,7 +62,7 @@ void Game::setScene(StrategyScene* _scene)
     resetView();
 }
 
-void Game::gotoPreviousScene()
+void SingletonGame::gotoPreviousScene()
 {
     StrategyScene* tmp;
     tmp = scene;
@@ -71,12 +71,12 @@ void Game::gotoPreviousScene()
     resetView();
 }
 
-StrategyScene* Game::getScene() const
+StrategyScene* SingletonGame::getScene() const
 {
     return scene;
 }
 
-void Game::resetView()
+void SingletonGame::resetView()
 {
     window->clear();
     View view = View(FloatRect(0, 0, W_WIDTH, W_HEIGHT));
@@ -85,17 +85,17 @@ void Game::resetView()
     window->display();
 }
 
-bool Game::isOpen() const
+bool SingletonGame::isOpen() const
 {
     return window->isOpen();
 }
 
-bool Game::pollEvent(Event& event) const
+bool SingletonGame::pollEvent(Event& event) const
 {
     return window->pollEvent(event);
 }
 
-void Game::pollEvent() const
+void SingletonGame::pollEvent() const
 {
     Event event;
     if (pollEvent(event))
@@ -107,12 +107,12 @@ void Game::pollEvent() const
     }
 }
 
-void Game::close() const
+void SingletonGame::close() const
 {
     window->close();
 }
 
-void Game::test_com() const
+void SingletonGame::test_com() const
 {
     window->setTitle("Communication: OK");
 }

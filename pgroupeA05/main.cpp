@@ -4,7 +4,7 @@
 int main()
 {
     //FightScene *fn = new FightScene();
-    Game* game = Game::getInstance();
+    SingletonGame* game = SingletonGame::getInstance();
     //game->setScene(fn);
     while (game->isOpen())
     {

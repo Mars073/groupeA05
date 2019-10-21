@@ -5,14 +5,14 @@
 
 using namespace sf;
 
-class Game
+class SingletonGame
 {
     private:
-        static Game* instance;          //!< Singleton instance
+        static SingletonGame* instance;          //!< Singleton instance
         /** private constructor */
-        Game();
+        SingletonGame();
         /** instance destructor */
-        ~Game();
+        ~SingletonGame();
         StrategyScene* previous_scene = nullptr;//!< Pointer "Previous Scene"
         StrategyScene* scene = new ConcreteStrategyHomeScene;   //!< Pointer "Scene"
         RenderWindow* window = nullptr; //!< Pointer "Render Window"
@@ -22,14 +22,14 @@ class Game
         static const int W_WIDTH = 640;
         static const int W_HEIGHT = 480;
         /** Prevent Singleton copy */
-        Game(const Game&) = delete;
-        Game(Game&&) = delete;
-        Game& operator = (const Game&) = delete;
-        Game& operator = (Game&&) = delete;
+        SingletonGame(const SingletonGame&) = delete;
+        SingletonGame(SingletonGame&&) = delete;
+        SingletonGame& operator = (const SingletonGame&) = delete;
+        SingletonGame& operator = (SingletonGame&&) = delete;
         /** Access Singleton instance
          * \return A pointer of the Game instance
          */
-        static Game* getInstance();
+        static SingletonGame* getInstance();
 
         /** Draw all of Game component */
         void draw() const;

@@ -77,7 +77,7 @@ void Player::draw(sf::RenderTarget&target, sf::RenderStates) const
         delta_anim < 300 ?
             delta_anim < 200 ?
                 delta_anim < 100 ? 1 : 33 : 65 : 33;
-    Game::getInstance()->drawImage(tx, x, y, 32, 32, getPosition().x*32, getPosition().y*32-8);
+    SingletonGame::getInstance()->drawImage(tx, x, y, 32, 32, getPosition().x*32, getPosition().y*32-8);
 }
 
 void Player::move(const float x, const float y)

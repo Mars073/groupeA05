@@ -154,8 +154,8 @@ GameMap::neighboursInfo GameMap::getNeighboursInfo(const unsigned index) const
 void GameMap::draw() const
 {
     Time now = clock.getElapsedTime();
-    Game *g = Game::getInstance();
-    Vector2f vw = g->getWindow()->getView().getCenter() - Vector2f(Game::W_WIDTH/2, Game::W_HEIGHT/2);
+    SingletonGame *g = SingletonGame::getInstance();
+    Vector2f vw = g->getWindow()->getView().getCenter() - Vector2f(SingletonGame::W_WIDTH/2, SingletonGame::W_HEIGHT/2);
 
     for (unsigned i = max(xy2i(vw), width)-width; i < dataset.size(); i++)
     {
@@ -167,10 +167,10 @@ void GameMap::draw() const
         pos.x*=TILE_SIZE;
         pos.y*=TILE_SIZE;
         // skip hidden tiles
-        if (pos.x+TILE_SIZE < vw.x || pos.x > vw.x + Game::W_WIDTH ||
+        if (pos.x+TILE_SIZE < vw.x || pos.x > vw.x + SingletonGame::W_WIDTH ||
             pos.y+TILE_SIZE < vw.y)
             continue;
-        if (pos.y > vw.y + Game::W_HEIGHT)
+        if (pos.y > vw.y + SingletonGame::W_HEIGHT)
             break;
 
         if (tile.FLOOR_ID < 29 && tile.FLOOR_ID%TEXTURE_RANGE == 1)

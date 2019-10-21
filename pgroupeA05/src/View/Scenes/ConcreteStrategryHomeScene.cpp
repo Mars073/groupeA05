@@ -12,7 +12,7 @@ ConcreteStrategyHomeScene::ConcreteStrategyHomeScene()
 
 void ConcreteStrategyHomeScene::draw(RenderTarget& target, RenderStates states) const
 {
-    target.setView(View(FloatRect(0, 0, Game::W_WIDTH, Game::W_HEIGHT))); // HOT FIX
+    target.setView(View(FloatRect(0, 0, SingletonGame::W_WIDTH, SingletonGame::W_HEIGHT))); // HOT FIX
     Sprite sprite;
     Texture t = Resources::getTexture("title-background", "data/images/background-title.png");
     sprite.setTexture(t);

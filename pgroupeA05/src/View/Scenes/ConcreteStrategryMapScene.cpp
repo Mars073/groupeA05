@@ -14,8 +14,8 @@ void ConcreteStrategyMapScene::setCamera(RenderTarget& target, float cx, float c
 void ConcreteStrategyMapScene::setCamera(RenderTarget& target, Vector2f center) const
 {
     View view = target.getView();
-    center.x = min(gmap.getWidth()*gmap.TILE_SIZE-Game::W_WIDTH/2.f, max(Game::W_WIDTH/2.f, center.x));
-    center.y = min(gmap.getWidth()*gmap.TILE_SIZE-Game::W_HEIGHT/2.f, max(Game::W_HEIGHT/2.f, center.y));
+    center.x = min(gmap.getWidth()*gmap.TILE_SIZE-SingletonGame::W_WIDTH/2.f, max(SingletonGame::W_WIDTH/2.f, center.x));
+    center.y = min(gmap.getWidth()*gmap.TILE_SIZE-SingletonGame::W_HEIGHT/2.f, max(SingletonGame::W_HEIGHT/2.f, center.y));
     view.setCenter(center);
     target.setView(view);
 }
@@ -43,8 +43,8 @@ void ConcreteStrategyMapScene::drawFXIntro(RenderTarget& target) const
     view.setCenter(center);
     target.setView(view);
 
-    RectangleShape rect(Vector2f(Game::W_WIDTH, Game::W_HEIGHT));
-    rect.setPosition(Vector2f(center.x-Game::W_WIDTH/2, center.y-Game::W_HEIGHT/2));
+    RectangleShape rect(Vector2f(SingletonGame::W_WIDTH, SingletonGame::W_HEIGHT));
+    rect.setPosition(Vector2f(center.x-SingletonGame::W_WIDTH/2, center.y-SingletonGame::W_HEIGHT/2));
     rect.setFillColor(Color(0, 0, 0, 120-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*120.));
     target.draw(rect);
 
@@ -66,7 +66,7 @@ void ConcreteStrategyMapScene::drawFXIntro(RenderTarget& target) const
     for (unsigned i = 0; i < story.size(); i++)
     {
         text.setString(story.at(i));
-        text.setPosition(Vector2f(center.x-Game::W_WIDTH/2+16, center.y-Game::W_HEIGHT/2+64+i*32));
+        text.setPosition(Vector2f(center.x-SingletonGame::W_WIDTH/2+16, center.y-SingletonGame::W_HEIGHT/2+64+i*32));
         target.draw(text);
     }
 }
