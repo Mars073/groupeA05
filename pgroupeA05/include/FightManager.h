@@ -12,7 +12,7 @@ class FightManager
     protected:
 
     private:
-        *FightScene;
+        //*FightScene;
 
 };
 
