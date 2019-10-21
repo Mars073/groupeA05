@@ -175,6 +175,7 @@
 		<Unit filename="include/SFML/Window/WindowHandle.hpp" />
 		<Unit filename="include/SFML/Window/WindowStyle.hpp" />
 		<Unit filename="include/Scene.h" />
+		<Unit filename="include/Scene/GameoverScene.h" />
 		<Unit filename="include/Spells.h" />
 		<Unit filename="include/TileInfo.h" />
 		<Unit filename="include/Weapon.h" />
@@ -203,6 +204,7 @@
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Resources.cpp" />
 		<Unit filename="src/Scene.cpp" />
+		<Unit filename="src/Scene/GameoverScene.cpp" />
 		<Unit filename="src/Spells.cpp" />
 		<Unit filename="src/TileInfo.cpp" />
 		<Unit filename="src/Weapon.cpp" />

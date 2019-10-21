@@ -4,6 +4,7 @@
 #include <Game.h>
 #include <MapScene.h>
 #include <FightScene.h>
+#include <Scene/GameoverScene.h>
 
 
 class MenuScene : public Scene
