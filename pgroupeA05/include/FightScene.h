@@ -8,6 +8,8 @@
 #include "iostream"
 #include "Scene.h"
 #include "WindowsFightInfo.h"
+#include "Player.h"
+#include "Monster.h"
 
 
 class FightScene: public Scene
@@ -28,8 +30,10 @@ class FightScene: public Scene
 
     private:
         int activate;
+        Player *player;
+        Monster * monster;
         WindowsFight *fn;
-        WindowsFightInfo *fn2;
+        WindowsFight *fn2;
         WindowsFightInfo *fn3;
         std::vector<WindowsFight*>vectWindows;
 

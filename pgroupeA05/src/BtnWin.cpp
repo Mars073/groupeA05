@@ -153,7 +153,7 @@ BtnWin::BtnWin(BtnWin const& c)
 
 }
 //Peur de fuite de memoire a poser au prof
-std::vector<BtnWin*> BtnWin::getListButton()const
+std::vector<BtnWin*> BtnWin::getListButton()
 {
     return ListButton;
 }

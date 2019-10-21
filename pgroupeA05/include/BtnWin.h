@@ -32,7 +32,7 @@ class BtnWin
         void changeColorActivate();
         void changeColorDesactivate();
 
-        std::vector<BtnWin*>getListButton()const;
+        std::vector<BtnWin*>getListButton();
 //        void AddButtonInWindows(WindowsFight fn*);
         void AddButton(BtnWin *btn);
         bool getIsMenuBoutton()const;

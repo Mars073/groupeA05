@@ -3,21 +3,30 @@
 FightScene::FightScene()
 {
     //ctor
-     fn = new WindowsFight(25,225,200,200);
-     fn2 = new WindowsFightInfo(250,225,200,200);
-     fn3 = new WindowsFightInfo(475,225,200,200);
+     fn = new WindowsFight(0,200,200,200);
+     fn2 = new WindowsFightInfo(225,200,200,200);
+     fn3 = new WindowsFightInfo(450,200,200,200);
 
      vectWindows.push_back(fn);
      vectWindows.push_back(fn2);
      vectWindows.push_back(fn3);
-     btnAttack *btnMagie = new btnAttack(fn->getPositionX(),fn->getPositionY()+50,80,50,"Magie");
+     //Creation of button
+     btnAttack *btnMagie = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+0,80,50,"Magic");
      btnMagie->setIsMenuBoutton(true);
-     btnAttack *btnObjet = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+50,80,50,"Object");
-     btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
-     btnMagie->AddButton(btnAttack2);
+     btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+50,80,50,"Attack");
+     btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+100,80,50,"Defend");
+     btnAttack *btnObjet = new btnAttack(fn2->getPositionX()+10,fn2->getPositionY()+150,80,50,"Object");
 
+     btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
+     btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
+     btnMagie->AddButton(btnAttack2);
+     btnMagie->AddButton(btnAttack3);
+
+
+     fn->addButton(new btnAttack(*(btnAtt)));
      fn->addButton(new btnAttack(*(btnMagie)));
-     fn2->addButton(new btnAttack(*(btnObjet)));
+     fn->addButton(new btnAttack(*(btnDefend)));
+     fn->addButton(new btnAttack(*(btnObjet)));
 
      activate = 0;
 }
@@ -183,8 +192,10 @@ void FightScene::eventHandler(Event ev)
                     std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
                     if(fn->getVect().at(i)->getIsMenuBoutton())
                     {
-                        for(int j = 0 ;j <fn->getVect().size();j++)
+
+                        for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
                         {
+                             std::cout << fn->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
                              fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
                              //fn2->fn->getVect().at(i)->getListButton().
                         }
