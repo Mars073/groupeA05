@@ -4,7 +4,7 @@
 #include <Model/SingletonGame.h>
 #include <View/Scenes/ConcreteStrategyMapScene.h>
 #include <FightScene.h>
-#include <View/Scenes/ConcreteStrategyGameoverScene.h>
+#include <View/Scenes/ConcreteStrategyGameOverScene.h>
 
 
 class ConcreteStrategyMenuScene : public StrategyScene
