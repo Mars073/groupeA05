@@ -1,6 +1,6 @@
 #include "View/Scenes/ConcreteStrategyMapScene.h"
 
-ConcreteStrategyMapScene::ConcreteStrategyMapScene():player("Hero", 100, 40, 50, 40, 60)
+ConcreteStrategyMapScene::ConcreteStrategyMapScene()
 {
     // load default map: 0
     gmap.loadFromFile("data/maps/world_0.bin");

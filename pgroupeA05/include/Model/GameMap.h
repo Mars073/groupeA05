@@ -13,9 +13,8 @@
 #include <SFML/Graphics.hpp>
 #include <Model/SingletonGame.h>
 #include <Model/TileInfo.h>
-#include <Player.h>
+#include <View/DrawablePlayer.h>
 
-using namespace std;
 using sf::Texture;
 using sf::Sprite;
 using sf::RenderWindow;
@@ -61,7 +60,7 @@ class GameMap
         unsigned xy2i(const Vector2f) const;
         Vector2f i2xy(const unsigned) const;
         neighboursInfo getNeighboursInfo(const unsigned) const;
-        void interact(Player&, const TileInfo*, GameMap&) const;
+        void interact(DrawablePlayer&, const TileInfo*, GameMap&) const;
 };
 
 #endif // GAMEMAP_H

@@ -3,7 +3,7 @@
 
 #include "View/Scenes/ConcreteStrategyHomeScene.h"
 
-using namespace sf;
+//using namespace sf;
 
 class SingletonGame
 {

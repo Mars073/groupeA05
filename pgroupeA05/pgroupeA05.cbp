@@ -61,6 +61,7 @@
 		<Unit filename="include/Bestiary.h" />
 		<Unit filename="include/BtnWin.h" />
 		<Unit filename="include/Character.h" />
+		<Unit filename="include/View/DrawablePlayer.h" />
 		<Unit filename="include/FightManager.h" />
 		<Unit filename="include/FightScene.h" />
 		<Unit filename="include/Heal.h" />
@@ -188,6 +189,7 @@
 		<Unit filename="src/Bestiary.cpp" />
 		<Unit filename="src/BtnWin.cpp" />
 		<Unit filename="src/Character.cpp" />
+		<Unit filename="src/View/DrawablePlayer.cpp" />
 		<Unit filename="src/FightManager.cpp" />
 		<Unit filename="src/FightScene.cpp" />
 		<Unit filename="src/Heal.cpp" />

@@ -264,7 +264,7 @@ void GameMap::draw() const
     }
 }
 
-void GameMap::interact(Player& player, const TileInfo* tile,  GameMap& bypass) const
+void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& bypass) const
 {
     unsigned UID = tile->INDEX;
     switch (tile->GAMEOBJECT_ID)

@@ -1,6 +1,8 @@
 #ifndef FIGHTMANAGER_H
 #define FIGHTMANAGER_H
 
+#include<Monster.h>
+#include<Player.h>
 
 class FightManager
 {

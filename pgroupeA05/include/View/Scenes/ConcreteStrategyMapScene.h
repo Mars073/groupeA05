@@ -6,14 +6,14 @@
 #include "View/StrategyScene.h"
 #include "View/Scenes/ConcreteStrategyMenuScene.h"
 #include "Model/GameMap.h"
-#include "Player.h"
+#include "View/DrawablePlayer.h"
 
 class ConcreteStrategyMapScene: public StrategyScene
 {
     private:
         Clock fxClock;
         GameMap gmap;
-        Player player;
+        DrawablePlayer player;
         void timeoutFXIntro();
         bool isFXIntro = false;
 

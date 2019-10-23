@@ -1,8 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <SFML/Graphics.hpp>
-#include <Model/SingletonGame.h>
 #include "BattleCharacter.h"
 #include <time.h>
 #include <math.h>
@@ -11,14 +9,9 @@
 #include "Inventory.h"
 #include "Spells.h"
 
-class Player : public BattleCharacter, public sf::Drawable
+class Player : public BattleCharacter
 {
     private:
-        Vector2f old_position; //!< Member variable "old_position"
-        Vector2f position; //!< Member variable "position"
-        short orientation; //!< Member variable "orientation"
-        Clock clock; //!< Member variable "clock"
-        int move_at; //!< Member variable "move_at"
         int expNow; //!< Member variable "expNow"
         int expNext; //!< Member variable "expNext"
         int money; //!< Member variable "money"
@@ -39,26 +32,6 @@ class Player : public BattleCharacter, public sf::Drawable
 
         Player& operator=(const Player& p);
 
-        /** Draw player */
-        void draw(sf::RenderTarget&, sf::RenderStates) const;
-        /** Access Position
-         * \return The current position
-         */
-        sf::Vector2f getPosition() const;
-        sf::Vector2f getRelativePosition() const;
-        sf::Vector2f getAbsolutePosition() const;
-        /** Move player */
-        void move(const float, const float);
-        void move(const sf::Vector2f&);
-        /** Set current position */
-        void setPosition(const float, const float);
-        void setPosition(const sf::Vector2f&);
-        /** Set player orientation */
-        void setOrientation(const short);
-        /** 180° player rotation */
-        void flip();
-        /** Access Orientation */
-        short getOrientation() const;
         /** Access expNow
          * \return The current value of expNow
          */
