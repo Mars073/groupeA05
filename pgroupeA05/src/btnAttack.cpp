@@ -4,7 +4,7 @@ btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::st
 {
     //ctor
 }
-void btnAttack::action()
+void btnAttack::action(Player *pl,Monster *ms)
 {
     std::cout << "vous attaquez" << std::endl;
 }

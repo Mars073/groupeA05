@@ -8,11 +8,17 @@ class FightManager
         FightManager();
         virtual ~FightManager();
         void drawButton();
+        void DamagePlayer();
+        void DamageMonster();
 
     protected:
 
     private:
         //*FightScene;
+        //Monster who fight
+        Monster *ms;
+        //Player
+        Player *pl;
 
 };
 

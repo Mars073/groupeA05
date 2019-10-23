@@ -4,6 +4,9 @@
 #include "string"
 #include "iostream"
 #include "vector"
+#include "Player.h";
+#include "Monster.h"
+#include "FightManager.h"
 
 
 
@@ -23,6 +26,7 @@ class BtnWin
         void setPositionY(int pos);
         void setTailleX(int pos);
         void setTailleY(int pos);
+        void setFm(FightManager *fmNew);
 
 
         sf::RectangleShape getRect()const;
@@ -38,7 +42,7 @@ class BtnWin
         bool getIsMenuBoutton()const;
         void setIsMenuBoutton(bool val);
 
-        virtual void action();
+        virtual void action(Player *pl =nullptr,Monster *ms = nullptr);
         void Draw();
         bool getisActivate();
         sf::Text text;
@@ -67,6 +71,9 @@ class BtnWin
         bool isActivate = false;
         std::vector<BtnWin*>ListButton;
         sf::RectangleShape rect;
+        /*Fight manager come of FightScene.
+        don't destruct here because he wiil destruct in fightManager*/
+        FightManager *fm;
 
 
 };

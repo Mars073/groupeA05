@@ -36,6 +36,8 @@ class FightScene: public StrategyScene
         WindowsFight *fn2;
         WindowsFightInfo *fn3;
         std::vector<WindowsFight*>vectWindows;
+        //Manage the fight
+        FightManager *fm;
 
 };
 
