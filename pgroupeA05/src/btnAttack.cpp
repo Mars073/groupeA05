@@ -7,6 +7,7 @@ btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::st
 void btnAttack::action(Player *pl,Monster *ms)
 {
     std::cout << "vous attaquez" << std::endl;
+
 }
 
 btnAttack::~btnAttack()
