@@ -10,7 +10,7 @@ Npc::~Npc()
     //dtor
 }
 
-Npc::Npc(const Npc& n):Character(charaName)
+Npc::Npc(const Npc& n):Character(n)
 {
     //copy ctor
 }

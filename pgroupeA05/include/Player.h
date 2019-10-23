@@ -22,9 +22,9 @@ class Player : public BattleCharacter, public sf::Drawable
         int expNow; //!< Member variable "expNow"
         int expNext; //!< Member variable "expNext"
         int money; //!< Member variable "money"
-        Weapon weapon;
-        Armor armor;
-        Inventory inventory;
+        Weapon* weapon;
+        Armor* armor;
+        Inventory* inventory;
         Spells spells;
 
     public:
@@ -87,32 +87,32 @@ class Player : public BattleCharacter, public sf::Drawable
         /** Access weapon
          * \return The current value of weapon
          */
-        Weapon Getweapon() const;
+        Weapon* Getweapon() const;
 
         /** Set weapon
          * \param val New value to set
          */
-        void Setweapon(Weapon weapon);
+        void Setweapon(Weapon* weapon);
 
         /** Access armor
          * \return The current value of armor
          */
-        Armor Getarmor() const;
+        Armor* Getarmor() const;
 
         /** Set armor
          * \param val New value to set
          */
-        void Setarmor(Armor armor);
+        void Setarmor(Armor* armor);
 
         /** Access inventory
          * \return The current value of inventory
          */
-        Inventory Getinventory() const;
+        Inventory* Getinventory() const;
 
         /** Set inventory
          * \param val New value to set
          */
-        void Setinventory(Inventory inventory);
+        void Setinventory(Inventory* inventory);
 
         /** Access spells
          * \return The current value of spells
@@ -149,6 +149,10 @@ class Player : public BattleCharacter, public sf::Drawable
          int damageDone() const;
 
          void damageReceived(int dmg);
+
+         void addIntoTheBag(std::string nameItem);
+
+         void changeEquipment(std::string nameItem);
 
     protected:
 

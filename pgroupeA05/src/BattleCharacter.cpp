@@ -14,7 +14,7 @@ BattleCharacter::~BattleCharacter()
     //dtor
 }
 
-BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(charaName)
+BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(b)
 {
     this->hp=b.hp;
     this->mp=b.mp;

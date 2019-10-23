@@ -13,7 +13,7 @@ Monster::~Monster()
     //dtor
 }
 
-Monster::Monster(const Monster& m):BattleCharacter(charaName,hp,mp,atk,mag,def)
+Monster::Monster(const Monster& m):BattleCharacter(m)
 {
     charaType="Monster";
     this->level=m.level;

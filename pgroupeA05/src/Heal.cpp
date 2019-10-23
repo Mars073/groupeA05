@@ -12,7 +12,7 @@ Heal::~Heal()
 
 }
 
-Heal::Heal(const Heal& h):Item(itemName,itemDescription)
+Heal::Heal(const Heal& h):Item(h)
 {
     itemType="Heal";
     this->amountHealed=h.amountHealed;

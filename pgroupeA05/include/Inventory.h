@@ -27,7 +27,7 @@ class Inventory
         /** add an item in the bag ingame not in the file
          *  \param the item to add ingame
          */
-        void addItem(Item *item);
+        void addItem(Item* item);
 
         /** add an item in the bag ingame not in the file
          *  \param the name of the item from the file to add ingame
@@ -37,7 +37,7 @@ class Inventory
         /** add an item in the file not in the bag ingame
          *  \param the item to add in the file
          */
-        void addItemInFile(Item *item);
+        void addItemInFile(Item* item);
 
         std::list<Item*> Getbag() const;
 
@@ -55,10 +55,15 @@ class Inventory
          */
         void writeInFile();
 
-        /** return the item with the name in the argument
+        /** return the item with the name in the argument from the list of every items
          *  \param the name of the item to return
          */
         Item* getOneItem(std::string name);
+
+        /** return the item with the name in the argument from the list of items ingame
+         *  \param the name of the item to return
+         */
+        Item* getOneItemIngame(std::string name);
 
         /** allow to change the attributes of an item and write it in the file of that type of item
          *  \param nameItem the name of the item to change its attributes

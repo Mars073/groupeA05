@@ -13,7 +13,7 @@ Weapon::~Weapon()
     //dtor
 }
 
-Weapon::Weapon(const Weapon& w):Item(itemName,itemDescription)
+Weapon::Weapon(const Weapon& w):Item(w)
 {
     itemType="Weapon";
     this->atk=w.atk;

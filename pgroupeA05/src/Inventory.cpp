@@ -34,7 +34,7 @@ Inventory& Inventory::operator=(const Inventory& i){
     return *this;
 }
 
-void Inventory::addItem(Item *item)
+void Inventory::addItem(Item* item)
 {
     bag.push_back(item);
 }
@@ -44,7 +44,7 @@ void Inventory::addItem(std::string itemName)
     bag.push_back(getOneItem(itemName));
 }
 
-void Inventory::addItemInFile(Item *item)
+void Inventory::addItemInFile(Item* item)
 {
     if(getOneItem(item->GetitemName())==0){
         everyItems.push_back(item);
@@ -171,6 +171,16 @@ void Inventory::writeInFile()
 Item* Inventory::getOneItem(std::string name)
 {
     for (auto const& i : everyItems){
+        if(i->GetitemName()==name){
+            return i;
+        }
+    }
+    return 0;
+}
+
+Item* Inventory::getOneItemIngame(std::string name)
+{
+    for (auto const& i : bag){
         if(i->GetitemName()==name){
             return i;
         }

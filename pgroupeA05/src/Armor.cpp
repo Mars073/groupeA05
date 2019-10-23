@@ -11,7 +11,7 @@ Armor::~Armor()
     //dtor
 }
 
-Armor::Armor(const Armor& a):Item(itemName,itemDescription)
+Armor::Armor(const Armor& a):Item(a)
 {
     itemType="Armor";
     this->def=a.def;

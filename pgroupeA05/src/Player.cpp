@@ -1,9 +1,9 @@
 #include "Player.h"
 //ajouter max hp et mp et reparer armor et weapon
 Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def)
-:BattleCharacter(charaName,hp,mp,atk,mag,def),
+:BattleCharacter(charaName,hp,mp,atk,mag,def)/*,inventory(),
 weapon("Wooden sword","The first item that every adventurers want.",2,1),
-armor("Clothes","Ordinary clothing.",1)
+armor("Clothes","Ordinary clothing.",1)*/
 {
     level=1;
     orientation = 0;
@@ -12,8 +12,11 @@ armor("Clothes","Ordinary clothing.",1)
     this->expNow=0;
     this->expNext=10;
     this->money=0;
-    this->inventory.addItem(&weapon);
-    this->inventory.addItem(&armor);
+    this->inventory=new Inventory();
+    this->weapon=new Weapon("Wooden sword","The first item that every adventurers want.",2,1);
+    this->armor=new Armor("Clothes","Ordinary clothing.",1);
+    this->inventory->addItem(weapon);
+    this->inventory->addItem(armor);
     this->spells.addMagic("Fire");
     this->spells.addMagic("Ice");
     this->spells.addMagic("Water");
@@ -23,20 +26,27 @@ armor("Clothes","Ordinary clothing.",1)
 
 Player::~Player()
 {
+    std::cout << "tick" ;
+    delete weapon;
+    delete armor;
+    //delete inventory;
 
 }
 
-Player::Player(const Player& p):BattleCharacter(charaName,hp,mp,atk,mag,def),
+Player::Player(const Player& p):BattleCharacter(p)/*,inventory(p),
 weapon("Wooden sword","The first item that every adventurers want.",2,1),
-armor("Clothes","Ordinary clothing.",1)
+armor("Clothes","Ordinary clothing.",1)*/
 {
     level=1;
     charaType="Player";
     this->expNow=0;
     this->expNext=10;
     this->money=0;
-    this->inventory.addItem(&weapon);
-    this->inventory.addItem(&armor);
+    this->inventory=p.inventory;
+    this->weapon=p.weapon;
+    this->armor=p.armor;
+    this->inventory->addItem(p.weapon);
+    this->inventory->addItem(p.armor);
     this->spells.addMagic("Fire");
     this->spells.addMagic("Ice");
     this->spells.addMagic("Water");
@@ -51,8 +61,11 @@ Player& Player::operator=(const Player& p){
         this->expNow=0;
         this->expNext=10;
         this->money=0;
-        this->inventory.addItem(&weapon);
-        this->inventory.addItem(&armor);
+        this->inventory=p.inventory;
+        this->weapon=p.weapon;
+        this->armor=p.armor;
+        this->inventory->addItem(p.weapon);
+        this->inventory->addItem(p.armor);
         this->spells.addMagic("Fire");
         this->spells.addMagic("Ice");
         this->spells.addMagic("Water");
@@ -172,32 +185,32 @@ void Player::Setmoney(int val)
     money = val;
 }
 
-Weapon Player::Getweapon() const
+Weapon* Player::Getweapon() const
 {
     return weapon;
 }
 
-void Player::Setweapon(Weapon val)
+void Player::Setweapon(Weapon* val)
 {
     weapon = val;
 }
 
-Armor Player::Getarmor() const
+Armor* Player::Getarmor() const
 {
     return armor;
 }
 
-void Player::Setarmor(Armor val)
+void Player::Setarmor(Armor* val)
 {
     armor = val;
 }
 
-Inventory Player::Getinventory() const
+Inventory* Player::Getinventory() const
 {
     return inventory;
 }
 
-void Player::Setinventory(Inventory val)
+void Player::Setinventory(Inventory* val)
 {
     inventory = val;
 }
@@ -216,7 +229,7 @@ void Player::Setspells(Spells val)
 std::string Player::str() const
 {
     std::stringstream sstr;
-    sstr<<BattleCharacter::str()<<std::endl<<"Exp : "<<GetexpNow()<<std::endl<<"Exp for next level : "<<GetexpNext()<<std::endl<<"money : "<<Getmoney()<<std::endl;
+    sstr<<BattleCharacter::str()<<std::endl<<"Exp : "<<GetexpNow()<<std::endl<<"Exp for next level : "<<GetexpNext()<<std::endl<<"money : "<<Getmoney()<<std::endl<<"Equipment : "<<std::endl<<Getweapon()->str()<<std::endl<<Getarmor()->str()<<std::endl<<Getinventory()->str();
     return sstr.str();
 }
 
@@ -255,14 +268,32 @@ void Player::moreExpForLevelUp()
 
 int Player::damageDone() const
 {
-    return Getatk()+ weapon.Getatk();
+    return Getatk()+ weapon->Getatk();
 }
 
 void Player::damageReceived(int dmg)
 {
-    int damage= dmg - (Getdef() + armor.Getdef());
+    int damage= dmg - (Getdef() + armor->Getdef());
     if(damage>0){
         Sethp(Gethp()-damage);
+    }
+}
+
+void Player::addIntoTheBag(std::string nameItem)
+{
+    inventory->addItem(nameItem);
+}
+
+void Player::changeEquipment(std::string nameItem)
+{
+    if(inventory->getOneItemIngame(nameItem)!=0){
+        if(inventory->getOneItemIngame(nameItem)->GetitemType()=="Weapon"){
+            Setweapon(dynamic_cast<Weapon*>(inventory->getOneItemIngame(nameItem)));
+        }
+        else if(inventory->getOneItemIngame(nameItem)->GetitemType()=="Armor"){
+            Setarmor(dynamic_cast<Armor*>(inventory->getOneItemIngame(nameItem)));
+        }
+
     }
 }
 
