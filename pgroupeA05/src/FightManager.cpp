@@ -19,4 +19,12 @@ void FightManager::DamageMonster()
 {
 
 }
+void FightManager::setMonster(Monster* ms)
+{
+  this->ms = ms;
+}
+void FightManager::setPlayer(Player* pls)
+{
+  this->pl = pl;
+}
 

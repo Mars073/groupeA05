@@ -12,6 +12,8 @@ class FightManager
         void drawButton();
         void DamagePlayer();
         void DamageMonster();
+        void setPlayer(Player *pls);
+        void setMonster(Monster *ms);
 
     protected:
 
