@@ -19,6 +19,14 @@ void FightManager::DamageMonster()
 {
 
 }
+Monster* FightManager::getMonster()const
+{
+ return ms;
+}
+Player* FightManager::getPlayer()const
+{
+ return pl;
+}
 void FightManager::setMonster(Monster* ms)
 {
   this->ms = ms;

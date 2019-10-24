@@ -15,8 +15,8 @@ class FightManager
         void DamageMonster();
         void setPlayer(Player *pls);
         void setMonster(Monster *ms);
-        Player getPlayer()const;
-        Monster getMonster()const;
+        Player* getPlayer()const;
+        Monster* getMonster()const;
 
     protected:
 
