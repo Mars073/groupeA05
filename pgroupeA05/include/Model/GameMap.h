@@ -11,6 +11,7 @@
 #include <time.h>
 #include <math.h>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <Model/SingletonGame.h>
 #include <Model/TileInfo.h>
 #include <View/DrawablePlayer.h>
@@ -19,6 +20,8 @@ using sf::Texture;
 using sf::Sprite;
 using sf::RenderWindow;
 using sf::Clock;
+using sf::Sound;
+using sf::SoundBuffer;
 
 
 class GameMap
@@ -29,6 +32,8 @@ class GameMap
         vector<TileInfo> dataset;
         vector<int> random_teleporters;
         Texture texture;
+        SoundBuffer buffer;
+        Sound sound;
         Clock clock;
     public:
         struct neighboursInfo

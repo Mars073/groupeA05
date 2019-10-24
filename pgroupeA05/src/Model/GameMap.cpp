@@ -86,6 +86,16 @@ bool GameMap::loadFromFileID(unsigned _world)
 {
     if (loadFromFile("data/maps/world_" + to_string(_world) + ".bin"))
     {
+        if (buffer.loadFromFile("data/sounds/world_" + to_string(_world) + ".ogg"))
+        {
+            sound.setBuffer(buffer);
+            sound.setLoop(true);
+            sound.play();
+        }
+        else
+        {
+            std::cout << "AUDIO FAIL" << std::endl;
+        }
         world = _world;
         return true;
     }

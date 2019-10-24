@@ -3,7 +3,7 @@
 ConcreteStrategyMapScene::ConcreteStrategyMapScene()
 {
     // load default map: 0
-    gmap.loadFromFile("data/maps/world_0.bin");
+    gmap.loadFromFileID(0);
     // default position for map 0
     player.setPosition(65., 94.);
 }
