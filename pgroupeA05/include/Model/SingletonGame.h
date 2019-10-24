@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "View/Scenes/ConcreteStrategyHomeScene.h"
+#include <Player.h>
 
 //using namespace sf;
 
@@ -16,6 +17,7 @@ class SingletonGame
         StrategyScene* previous_scene = nullptr;//!< Pointer "Previous Scene"
         StrategyScene* scene = new ConcreteStrategyHomeScene;   //!< Pointer "Scene"
         RenderWindow* window = nullptr; //!< Pointer "Render Window"
+        Player* player = nullptr;
 
     public:
         /** Game window size */
@@ -30,6 +32,7 @@ class SingletonGame
          * \return A pointer of the Game instance
          */
         static SingletonGame* getInstance();
+        Player* getPlayerPTR() const;
 
         /** Draw all of Game component */
         void draw() const;

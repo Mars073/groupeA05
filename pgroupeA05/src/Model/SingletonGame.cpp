@@ -26,6 +26,11 @@ SingletonGame::~SingletonGame()
     delete window;
 }
 
+Player* SingletonGame::getPlayerPTR() const
+{
+    return player;
+}
+
 void SingletonGame::draw() const
 {
     window->clear();
