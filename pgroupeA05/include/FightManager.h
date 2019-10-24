@@ -3,6 +3,7 @@
 
 #include<Monster.h>
 #include<Player.h>
+#include "Model/SingletonGame.h"
 
 class FightManager
 {
@@ -14,6 +15,8 @@ class FightManager
         void DamageMonster();
         void setPlayer(Player *pls);
         void setMonster(Monster *ms);
+        Player getPlayer()const;
+        Monster getMonster()const;
 
     protected:
 

@@ -10,6 +10,7 @@
 #include "WindowsFightInfo.h"
 #include "Player.h"
 #include "Monster.h"
+#include "Model/SingletonGame.h"
 
 
 class FightScene: public StrategyScene

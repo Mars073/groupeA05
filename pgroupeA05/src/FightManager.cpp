@@ -25,6 +25,12 @@ void FightManager::setMonster(Monster* ms)
 }
 void FightManager::setPlayer(Player* pls)
 {
-  this->pl = pl;
+  this->pl = (SingletonGame::getInstance()->getPlayerPTR());
+  if(!this->pl)
+  {
+   //fuite de emoire pour l'instant
+   this->pl = pls;
+  }
+
 }
 
