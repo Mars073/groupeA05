@@ -29,10 +29,12 @@ FightScene::FightScene()
      fn->addButton(new btnAttack(*(btnObjet)));
 
      activate = 0;
+
      delete btnAtt;
      delete btnMagie;
      delete btnDefend;
      delete btnObjet;
+
 }
 
 FightScene::~FightScene()
@@ -351,3 +353,8 @@ void FightScene::fight()
     */
 
 }
+void FightScene::setFightManager(FightManager* fm)
+{
+ this->fm = fm;
+}
+

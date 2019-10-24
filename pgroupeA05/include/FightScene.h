@@ -23,6 +23,7 @@ class FightScene: public StrategyScene
         //Get and setter
         std::vector<WindowsFight*>getVectWindows();
         void setActivate(int activate);
+        void setFightManager(FightManager *fm);
 
 
 
