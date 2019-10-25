@@ -279,11 +279,20 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
     unsigned UID = tile->INDEX;
     switch (tile->GAMEOBJECT_ID)
     {
-    case GUID_RANDOM_TELEPORTER:
+    case GUID_RANDOM_TELEPORTER: // HOLEs
         {
             srand(time(NULL));
-            unsigned tid = rand() % random_teleporters.size();
-            Vector2f new_pos = i2xy(random_teleporters.at(tid));
+            unsigned tile_UID;
+
+            do
+            {
+                unsigned tid = rand() % random_teleporters.size();
+                tile_UID = random_teleporters.at(tid);
+                std::cout << tile_UID << " vs " << UID << std::endl;
+            } while (tile_UID-1 == UID);
+            cout << "--" << std::endl;
+
+            Vector2f new_pos = i2xy(tile_UID);
             player.setPosition(new_pos.x/32-1, new_pos.y/32);
             bypass.spawn();
             break;

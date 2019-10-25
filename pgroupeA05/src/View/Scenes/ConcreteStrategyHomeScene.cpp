@@ -59,7 +59,7 @@ void ConcreteStrategyHomeScene::eventHandler(Event event)
                         // Lancer de jeu
                         ConcreteStrategyMapScene* s = new ConcreteStrategyMapScene;
                         setScene(s);
-                        //s->playFXIntro();
+                        s->playFXIntro();
                         break;
                     }
                 case 1:
