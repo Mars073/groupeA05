@@ -27,7 +27,11 @@ FightScene::FightScene()
      fn->addButton(new btnAttack(*(btnMagie)));
      fn->addButton(new btnAttack(*(btnDefend)));
      fn->addButton(new btnAttack(*(btnObjet)));
-
+     //initialise fm in button
+     for(int i = 0;i<fn->getVect().size();i++)
+     {
+      fn->getVect().at(i)->setFm(fm);
+     }
 
      activate = 0;
 
@@ -228,7 +232,7 @@ void FightScene::eventHandler(Event ev)
 
 }
 //Getter of vector of windows
-std::vector<WindowsFight*> FightScene::getVectWindows()
+std::vector<WindowsFight*> FightScene::getVectWindows()const
 {
     return vectWindows;
 }
@@ -357,5 +361,9 @@ void FightScene::fight()
 void FightScene::setFightManager(FightManager* fm)
 {
  this->fm = fm;
+}
+FightManager* FightScene::getFightManager()const
+{
+ return fm;
 }
 

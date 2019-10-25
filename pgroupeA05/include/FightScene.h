@@ -22,9 +22,10 @@ class FightScene: public StrategyScene
         void draw(RenderTarget&,RenderStates) const override;
         void eventHandler(Event ev);
         //Get and setter
-        std::vector<WindowsFight*>getVectWindows();
+        std::vector<WindowsFight*>getVectWindows()const;
         void setActivate(int activate);
         void setFightManager(FightManager *fm);
+        FightManager* getFightManager()const;
 
 
 

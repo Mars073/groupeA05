@@ -105,7 +105,7 @@ sf::Text BtnWin::getText()
 {
     return text;
 }
-void BtnWin::action(Player *pl,Monster *ms)
+void BtnWin::action()
 {
     std::cout << "vous avez fait une action"<< std::endl;
 }
@@ -201,5 +201,9 @@ void BtnWin::setIsMenuBoutton(bool val)
 void BtnWin::setFm(FightManager *fmNew)
 {
     fm = fmNew;
+}
+FightManager* BtnWin::getFm()
+{
+ return fm;
 }
 

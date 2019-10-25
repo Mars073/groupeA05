@@ -21,6 +21,7 @@ class BtnWin
         int getPositionY() const;
         int getTailleX() const;
         int getTailleY()const;
+        FightManager* getFm();
 
         void setPositionX(int pos);
         void setPositionY(int pos);
@@ -42,7 +43,7 @@ class BtnWin
         bool getIsMenuBoutton()const;
         void setIsMenuBoutton(bool val);
 
-        virtual void action(Player *pl =nullptr,Monster *ms = nullptr);
+        virtual void action();
         void Draw();
         bool getisActivate();
         sf::Text text;
