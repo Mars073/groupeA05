@@ -14,7 +14,7 @@ class SingletonGame
         SingletonGame();
         /** instance destructor */
         ~SingletonGame();
-        StrategyScene* previous_scene = nullptr;//!< Pointer "Previous Scene"
+        vector<StrategyScene*> previous_scene;   //!< Pointer "Previous Scene"
         StrategyScene* scene = new ConcreteStrategyHomeScene;   //!< Pointer "Scene"
         RenderWindow* window = nullptr; //!< Pointer "Render Window"
         Player* player = nullptr;

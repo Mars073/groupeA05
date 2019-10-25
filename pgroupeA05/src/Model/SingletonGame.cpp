@@ -22,6 +22,10 @@ SingletonGame::SingletonGame()
 
 SingletonGame::~SingletonGame()
 {
+    for (unsigned i = 0; i < previous_scene.size(); i++)
+    {
+        delete previous_scene.at(i);
+    }
     delete scene;
     delete window;
 }
@@ -61,18 +65,20 @@ RenderWindow* SingletonGame::getWindow() const
 
 void SingletonGame::setScene(StrategyScene* _scene)
 {
-    delete previous_scene;
-    previous_scene = scene;
+    if (scene)
+        previous_scene.push_back(scene);
     scene = _scene;
     resetView();
 }
 
 void SingletonGame::gotoPreviousScene()
 {
-    StrategyScene* tmp;
-    tmp = scene;
-    scene = previous_scene;
-    previous_scene = tmp;
+    if (previous_scene.size() == 0)
+        return;
+    StrategyScene* curr = getScene();
+    setScene(previous_scene.at(previous_scene.size()-1));
+    previous_scene.erase(previous_scene.begin() + previous_scene.size() - 1);
+    delete curr;
     resetView();
 }
 
