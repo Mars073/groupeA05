@@ -13,8 +13,8 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->inventory=new Inventory();
     this->weapon=new Weapon("Wooden sword","The first item that every adventurers want.",2,1);
     this->armor=new Armor("Clothes","Ordinary clothing.",1);
-    this->inventory->addItem(weapon);
-    this->inventory->addItem(armor);
+    /*this->inventory->addItem(weapon);
+    this->inventory->addItem(armor);*/
     this->spells.addMagic("Fire");
     this->spells.addMagic("Ice");
     this->spells.addMagic("Water");
@@ -26,7 +26,7 @@ Player::~Player()
     std::cout << "tick" ;
     delete weapon;
     delete armor;
-    //delete inventory;
+    delete inventory;
 
 }
 
@@ -42,8 +42,8 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->inventory=p.inventory;
     this->weapon=p.weapon;
     this->armor=p.armor;
-    this->inventory->addItem(p.weapon);
-    this->inventory->addItem(p.armor);
+    /*this->inventory->addItem(p.weapon);
+    this->inventory->addItem(p.armor);*/
     this->spells.addMagic("Fire");
     this->spells.addMagic("Ice");
     this->spells.addMagic("Water");
@@ -60,8 +60,8 @@ Player& Player::operator=(const Player& p){
         this->inventory=p.inventory;
         this->weapon=p.weapon;
         this->armor=p.armor;
-        this->inventory->addItem(p.weapon);
-        this->inventory->addItem(p.armor);
+        /*this->inventory->addItem(p.weapon);
+        this->inventory->addItem(p.armor);*/
         this->spells.addMagic("Fire");
         this->spells.addMagic("Ice");
         this->spells.addMagic("Water");
