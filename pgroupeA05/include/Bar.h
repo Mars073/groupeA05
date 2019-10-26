@@ -33,6 +33,7 @@ class Bar
   int posY;
   int sizeX;
   int sizeY;
+  float current;
   sf::Color color;
   sf::RectangleShape rect;
   sf::RectangleShape fond;

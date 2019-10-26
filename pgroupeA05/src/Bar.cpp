@@ -40,9 +40,15 @@ Bar& Bar::operator=(const Bar& rhs)
 }
 sf::RectangleShape Bar::getRect()
 {
- Return rect;
+ return rect;
 }
 sf::RectangleShape Bar::getFond()
 {
- Return fond;
+ return fond;
+}
+void Bar::setBarLifeTaille(float current, float maxx)
+{
+ float pourcentage = (current/maxx);
+ fond.setSize(sf::Vector2f(sizeX*pourcentage,sizeY));
+
 }
