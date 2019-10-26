@@ -1,0 +1,41 @@
+#ifndef BAR_H
+#define BAR_H
+#include <SFML/Graphics.hpp>
+
+class Bar
+{
+ public:
+  Bar();
+  Bar(int posX,int posY,int sizeX,int sizeY);
+  virtual ~Bar();
+  Bar(const Bar& other);
+  Bar& operator=(const Bar& other);
+
+  int GetposX() { return posX; }
+  void SetposX(int val) { posX = val; }
+  int GetposY() { return posY; }
+  void SetposY(int val) { posY = val; }
+  int GetsizeX() { return sizeX; }
+  void SetsizeX(int val) { sizeX = val; }
+  int GetsizeY() { return sizeY; }
+  void SetsizeY(int val) { sizeY = val; }
+  sf::Color Getcolor() { return color; }
+  void Setcolor(sf::Color val) { color = val; }
+  void setBarLifeTaille(float current,float maxx);
+  sf::RectangleShape getRect();
+  sf::RectangleShape getFond();
+
+
+ protected:
+
+ private:
+  int posX;
+  int posY;
+  int sizeX;
+  int sizeY;
+  sf::Color color;
+  sf::RectangleShape rect;
+  sf::RectangleShape fond;
+};
+
+#endif // BAR_H
