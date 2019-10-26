@@ -7,6 +7,7 @@ FightScene::FightScene()
      fn2 = new WindowsFightInfo(225,200,200,200);
      fn3 = new WindowsFightInfo(450,200,200,200);
 
+
      vectWindows.push_back(fn);
      vectWindows.push_back(fn2);
      vectWindows.push_back(fn3);
@@ -21,7 +22,7 @@ FightScene::FightScene()
      btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
      btnMagie->AddButton(btnAttack2);
      btnMagie->AddButton(btnAttack3);
-
+     fm = new FightManager();
 
      fn->addButton(new btnAttack(*(btnAtt)));
      fn->addButton(new btnAttack(*(btnMagie)));

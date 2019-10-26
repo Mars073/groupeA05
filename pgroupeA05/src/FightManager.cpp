@@ -16,12 +16,29 @@ FightManager::~FightManager()
 void FightManager::DamagePlayer()
 {
     //no finsh calcul
+    if(!pl)
+    {
+       std::cout <<"il y a pas de player"<<endl;
+    }
+    if(!ms)
+    {
+        std::cout <<"il y a pas de monstre"<<endl;
+    }
+    std::cout <<pl->damageDone()<<" nombre de domage du joueur"<<endl;
     ms->damageReceived(pl->damageDone());
 
 }
 void FightManager::DamageMonster()
 {
- pl->damageDone();
+ if(!pl)
+    {
+       std::cout <<"il y a pas de player"<<endl;
+    }
+    if(!ms)
+    {
+        std::cout <<"il y a pas de monstre"<<endl;
+    }
+ pl->damageReceived(ms->damageDone());
 }
 Monster* FightManager::getMonster()const
 {

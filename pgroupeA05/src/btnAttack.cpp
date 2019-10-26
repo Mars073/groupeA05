@@ -4,10 +4,12 @@ btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::st
 {
     //ctor
 }
-void btnAttack::action(Player *pl,Monster *ms)
+void btnAttack::action()
 {
     std::cout << "vous attaquez" << std::endl;
-    getFm()->DamageMonster();
+    getFm()->DamagePlayer();
+    std::cout <<getFm()->getMonster()->str()<< std::endl;
+    std::cout <<getFm()->getPlayer()->str()<< std::endl;
 
 }
 
