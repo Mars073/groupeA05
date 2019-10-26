@@ -3,8 +3,8 @@
 FightManager::FightManager()
 {
     //ctor
-    setPlayer(new Player("joueur",5,5,5,5,5));
-    setMonster(new Monster("monstre",5,5,5,5,10,1,100,100));
+    setPlayer(new Player("joueur",100,100,100,100,100));
+    setMonster(new Monster("monstre",500,500,500,1,10,1,100,100));
 }
 
 FightManager::~FightManager()
@@ -26,6 +26,7 @@ void FightManager::DamagePlayer()
     }
     std::cout <<pl->damageDone()<<" nombre de domage du joueur"<<endl;
     ms->damageReceived(pl->damageDone());
+    this->DamageMonster();
 
 }
 void FightManager::DamageMonster()
