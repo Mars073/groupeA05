@@ -6,8 +6,6 @@ FightScene::FightScene()
      fn = new WindowsFight(0,200,200,200);
      fn2 = new WindowsFightInfo(225,200,200,200);
      fn3 = new WindowsFightInfo(450,200,200,200);
-     barLife = new Bar(400,20,200,20);
-
 
 
      vectWindows.push_back(fn);
@@ -49,7 +47,6 @@ FightScene::~FightScene()
 {
     //dtor
     delete(fn);
-    delete(barLife);
 }
 void FightScene::setActivate(int activate)
 {
@@ -169,11 +166,6 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         }
 
        }
-       //manage bar of life and mana and
-       target.draw((barLife->getFond()),stat);
-       target.draw((barLife->getRect()),stat);
-
-
 
 }
 void FightScene::eventHandler(Event ev)
@@ -375,9 +367,4 @@ FightManager* FightScene::getFightManager()const
 {
  return fm;
 }
-Bar* FightScene::getBar()const
-{
- return barLife;
-}
-
 

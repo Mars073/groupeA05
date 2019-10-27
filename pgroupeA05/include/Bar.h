@@ -22,8 +22,8 @@ class Bar
   sf::Color Getcolor() { return color; }
   void Setcolor(sf::Color val) { color = val; }
   void setBarLifeTaille(float current,float maxx);
-  sf::RectangleShape getRect()const;
-  sf::RectangleShape getFond()const;
+  sf::RectangleShape getRect();
+  sf::RectangleShape getFond();
 
 
  protected:
