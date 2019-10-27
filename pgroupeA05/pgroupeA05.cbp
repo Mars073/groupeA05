@@ -190,6 +190,7 @@
 		<Unit filename="include/View/Scenes/ConcreteStrategyLoadScreenScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyMapScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyMenuScene.h" />
+		<Unit filename="include/View/Scenes/WindowStatus.h" />
 		<Unit filename="include/View/StrategyScene.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WindowsFight.h" />
@@ -230,6 +231,7 @@
 		<Unit filename="src/View/Scenes/ConcreteStrategyLoadScreenScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyMapScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyMenuScene.cpp" />
+		<Unit filename="src/View/Scenes/WindowStatus.cpp" />
 		<Unit filename="src/View/StrategyScene.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WindowsFight.cpp" />
