@@ -87,12 +87,7 @@ if (event.type == Event::KeyPressed)
                 }
                 break;
             }
-        case Keyboard::Space:
-            {
-                //ouvrir le menu du personnage
-                //setScene(new FightScene);
-                //break;
-            }
+
         default: // no default action
             break;
         }

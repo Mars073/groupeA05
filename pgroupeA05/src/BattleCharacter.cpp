@@ -1,7 +1,8 @@
 #include "BattleCharacter.h"
 
-BattleCharacter::BattleCharacter(std::string charaName,int hp,int mp,int atk,int mag,int def):Character(charaName)
+BattleCharacter::BattleCharacter(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def):Character(charaName)
 {
+    this->maxHp=maxHp;
     this->hp=hp;
     this->mp=mp;
     this->atk=atk;
@@ -16,6 +17,7 @@ BattleCharacter::~BattleCharacter()
 
 BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(b)
 {
+    this->maxHp=b.maxHp;
     this->hp=b.hp;
     this->mp=b.mp;
     this->atk=b.atk;
@@ -25,6 +27,7 @@ BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(b)
 
 BattleCharacter& BattleCharacter::operator=(const BattleCharacter& b){
     if(this!=&b){
+        this->maxHp=b.maxHp;
         this->hp=b.hp;
         this->mp=b.mp;
         this->atk=b.atk;
@@ -43,6 +46,16 @@ int BattleCharacter::Getlevel() const
 void BattleCharacter::Setlevel(int val)
 {
     level = val;
+}
+
+int BattleCharacter::GetmaxHp() const
+{
+    return maxHp;
+}
+
+void BattleCharacter::SetmaxHp(int val)
+{
+    maxHp = val;
 }
 
 int BattleCharacter::Gethp() const
@@ -98,12 +111,12 @@ void BattleCharacter::Setdef(int val)
 std::string BattleCharacter::str() const
 {
     std::stringstream sstr;
-    sstr<<Character::str()<<std::endl<<"level : "<<Getlevel()<<std::endl<<"hp : "<<Gethp()<<std::endl<<"mp : "<<Getmp()<<std::endl<<"atk : "<<Getatk()<<std::endl<<"mag : "<<Getmag()<<std::endl<<"def : "<<Getdef();
+    sstr<<Character::str()<<std::endl<<"level : "<<Getlevel()<<std::endl<<"Max hp : "<<GetmaxHp()<<std::endl<<"hp : "<<Gethp()<<std::endl<<"mp : "<<Getmp()<<std::endl<<"atk : "<<Getatk()<<std::endl<<"mag : "<<Getmag()<<std::endl<<"def : "<<Getdef();
     return sstr.str();
 }
 
 BattleCharacter* BattleCharacter::clone() const
 {
-    return new BattleCharacter(GetcharaName(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef());
+    return new BattleCharacter(GetcharaName(),GetmaxHp(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef());
 }
 

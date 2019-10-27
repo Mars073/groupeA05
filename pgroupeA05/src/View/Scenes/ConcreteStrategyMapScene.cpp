@@ -176,6 +176,12 @@ void ConcreteStrategyMapScene::eventHandler(Event event) {
                     setScene(new ConcreteStrategyMenuScene);
                     return;
                 }
+            case Keyboard::Space:
+                {
+                    //ouvrir le menu du personnage
+                    setScene(new WindowStatus);
+                    break;
+                }
             default: break;
         }
         TileInfo tile = gmap.xy2t(player.getAbsolutePosition()+movement);

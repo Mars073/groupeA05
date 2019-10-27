@@ -7,6 +7,7 @@ class BattleCharacter : public Character
 {
     protected:
         int level; //!< Member variable "level"
+        int maxHp;
         int hp; //!< Member variable "hp"
         int mp; //!< Member variable "mp"
         int atk; //!< Member variable "atk"
@@ -15,7 +16,7 @@ class BattleCharacter : public Character
 
     public:
         /** Default constructor */
-        BattleCharacter(std::string charaName,int hp,int mp,int atk,int mag,int def);
+        BattleCharacter(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def);
         /** Default destructor */
         virtual ~BattleCharacter();
         /** Copy constructor
@@ -33,6 +34,16 @@ class BattleCharacter : public Character
          * \param val New value to set
          */
         void Setlevel(int val);
+
+        /** Access hp
+         * \return The current value of hp
+         */
+        int GetmaxHp() const;
+        /** Set hp
+         * \param val New value to set
+         */
+        void SetmaxHp(int val);
+
         /** Access hp
          * \return The current value of hp
          */

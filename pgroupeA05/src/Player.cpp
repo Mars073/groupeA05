@@ -1,7 +1,7 @@
 #include "Player.h"
 //ajouter max hp et mp et reparer armor et weapon
-Player::Player(std::string charaName,int hp,int mp,int atk,int mag,int def)
-:BattleCharacter(charaName,hp,mp,atk,mag,def)/*,inventory(),
+Player::Player(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def)
+:BattleCharacter(charaName,maxHp,hp,mp,atk,mag,def)/*,inventory(),
 weapon("Wooden sword","The first item that every adventurers want.",2,1),
 armor("Clothes","Ordinary clothing.",1)*/
 {

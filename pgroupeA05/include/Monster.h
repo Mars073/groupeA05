@@ -12,7 +12,7 @@ class Monster : public BattleCharacter
 
     public:
         /** Default constructor */
-        Monster(std::string charaName,int hp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld);
+        Monster(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld);
         /** Default destructor */
         virtual ~Monster();
         /** Copy constructor
