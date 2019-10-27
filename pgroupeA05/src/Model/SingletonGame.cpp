@@ -33,6 +33,7 @@ SingletonGame::~SingletonGame()
     }
     delete scene;
     delete window;
+    delete player;
 }
 
 Player* SingletonGame::getPlayerPTR() const
