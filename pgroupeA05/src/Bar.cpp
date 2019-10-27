@@ -25,11 +25,24 @@ Bar::Bar(int posX, int posY, int sizeX, int sizeY)
 Bar::~Bar()
 {
  //dtor
+
 }
 
 Bar::Bar(const Bar& other)
 {
  //copy ctor
+ this->posX = other.posX;
+ this->posY = other.posY;
+ this->sizeX = other.sizeX;
+ this->sizeX = other.sizeY;
+ this->rect.setSize(sf::Vector2f(sizeX,sizeY));
+ this->rect.setPosition(sf::Vector2f(posX,posY));
+ this->rect.setFillColor(sf::Color(255,0,0));
+
+ this->fond.setSize(sf::Vector2f(sizeX,sizeY));
+ this->fond.setPosition(sf::Vector2f(posX,posY));
+ this->fond.setOutlineThickness(5);
+ this->fond.setOutlineColor(sf::Color(255,255,255));
 }
 
 Bar& Bar::operator=(const Bar& rhs)
@@ -38,11 +51,11 @@ Bar& Bar::operator=(const Bar& rhs)
  //assignment operator
  return *this;
 }
-sf::RectangleShape Bar::getRect()
+sf::RectangleShape Bar::getRect()const
 {
  return rect;
 }
-sf::RectangleShape Bar::getFond()
+sf::RectangleShape Bar::getFond()const
 {
  return fond;
 }

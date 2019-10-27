@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Monster.h"
 #include "Model/SingletonGame.h"
+#include "Bar.h"
 
 
 class FightScene: public StrategyScene
@@ -26,6 +27,9 @@ class FightScene: public StrategyScene
         void setActivate(int activate);
         void setFightManager(FightManager *fm);
         FightManager* getFightManager()const;
+        Bar* getBar()const;
+
+
 
 
 
@@ -39,6 +43,7 @@ class FightScene: public StrategyScene
         WindowsFight *fn2;
         WindowsFightInfo *fn3;
         std::vector<WindowsFight*>vectWindows;
+        Bar *barLife;
         //Manage the fight
         FightManager *fm;
 
