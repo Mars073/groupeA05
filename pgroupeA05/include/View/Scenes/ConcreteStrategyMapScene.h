@@ -5,9 +5,9 @@
 #include<chrono>
 #include "View/StrategyScene.h"
 #include "View/Scenes/ConcreteStrategyMenuScene.h"
+#include "View/Scenes/WindowStatus.h"
 #include "Model/GameMap.h"
 #include "View/DrawablePlayer.h"
-#include <View/Scenes/WindowStatus.h>
 class ConcreteStrategyMapScene: public StrategyScene
 {
     private:
