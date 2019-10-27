@@ -28,6 +28,8 @@ class FightScene: public StrategyScene
         void setFightManager(FightManager *fm);
         FightManager* getFightManager()const;
         Bar* getBar()const;
+        Bar* getBarMp()const;
+        Bar* getBarMonsterLife()const;
 
 
 
@@ -44,6 +46,8 @@ class FightScene: public StrategyScene
         WindowsFightInfo *fn3;
         std::vector<WindowsFight*>vectWindows;
         Bar *barLife;
+        Bar *barMp;
+        Bar *barMonsterLife;
         //Manage the fight
         FightManager *fm;
 

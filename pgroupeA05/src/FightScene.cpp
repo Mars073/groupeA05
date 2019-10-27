@@ -7,7 +7,8 @@ FightScene::FightScene()
      fn2 = new WindowsFightInfo(225,200,200,200);
      fn3 = new WindowsFightInfo(450,200,200,200);
      barLife = new Bar(400,20,200,20);
-
+     barMp = new Bar(400,150,200,20);
+     barMonsterLife = new Bar(100,20,200,20);
 
 
      vectWindows.push_back(fn);
@@ -172,13 +173,23 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
        //manage bar of life and mana and
        //target.draw((barLife->getFond()),stat);
        target.draw((barLife->getRect()),stat);
+       target.draw((barMp->getRect()),stat);
+       target.draw((barMonsterLife->getRect()),stat);
+       //Get current and max value of Bar
        float current = fm->getPlayer()->Gethp();
        float maxx = fm->getPlayer()->GetmaxHp();
-       float pourcentage = (current/maxx);
-       std::cout <<pourcentage<<"\n";
-       std::cout <<barLife->GetsizeX()<<"\n";
 
+       float currentMp = fm->getPlayer()->Getmp();
+       float maxxMp = fm->getPlayer()->GetmaxHp();
+
+       float currentMHp = fm->getMonster()->Gethp();
+       float maxxMHp = fm->getMonster()->GetmaxHp();
+
+
+       std::cout <<barLife->GetsizeX()<<"\n";
+       //Change the size of bar
        barLife->setBarLifeTaille(current,maxx);
+       barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
 
 
 
@@ -385,6 +396,14 @@ FightManager* FightScene::getFightManager()const
 Bar* FightScene::getBar()const
 {
  return barLife;
+}
+Bar* FightScene::getBarMp()const
+{
+ return barMp;
+}
+Bar* FightScene::getBarMonsterLife()const
+{
+ return barMonsterLife;
 }
 
 

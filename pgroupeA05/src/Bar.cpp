@@ -34,7 +34,7 @@ Bar::Bar(const Bar& other)
  this->posX = other.posX;
  this->posY = other.posY;
  this->sizeX = other.sizeX;
- this->sizeX = other.sizeY;
+ this->sizeY = other.sizeY;
  this->rect.setSize(sf::Vector2f(sizeX,sizeY));
  this->rect.setPosition(sf::Vector2f(posX,posY));
  this->rect.setFillColor(sf::Color(255,0,0));
@@ -63,8 +63,11 @@ void Bar::setBarLifeTaille(float current, float maxx)
 {
  float pourcentage = (current/maxx);
 
+if(pourcentage <0)
+{
+ pourcentage = 0;
+}
 
-
- rect.setSize(sf::Vector2f(((this->sizeX)*pourcentage),10));
+ this->rect.setSize(sf::Vector2f(((this->sizeX)*pourcentage),(this->sizeY)));
 
 }
