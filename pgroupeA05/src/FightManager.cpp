@@ -62,6 +62,10 @@ void FightManager::setPlayer(Player* pls)
    //fuite de emoire pour l'instant
    this->pl = pls;
   }
+  else
+  {
+   delete(pls);
+  }
 
 }
 

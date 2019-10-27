@@ -170,13 +170,13 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
        }
        //manage bar of life and mana and
-       target.draw((barLife->getFond()),stat);
+       //target.draw((barLife->getFond()),stat);
        target.draw((barLife->getRect()),stat);
        float current = fm->getPlayer()->Gethp();
        float maxx = fm->getPlayer()->GetmaxHp();
        float pourcentage = (current/maxx);
        std::cout <<pourcentage<<"\n";
-       std::cout <<maxx<<"\n";
+       std::cout <<barLife->GetsizeX()<<"\n";
 
        barLife->setBarLifeTaille(current,maxx);
 
