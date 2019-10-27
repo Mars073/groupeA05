@@ -27,9 +27,16 @@ class FightScene: public StrategyScene
         void setActivate(int activate);
         void setFightManager(FightManager *fm);
         FightManager* getFightManager()const;
+        //Bar of Fight
         Bar* getBar()const;
         Bar* getBarMp()const;
         Bar* getBarMonsterLife()const;
+        sf::Texture getTextureBackGroud()const;
+        void setTextureBackGroud(std::string path);
+
+        sf::Texture getSpriteBackGroud()const;
+        void setSpriteBackGroud(std::string path);
+
 
 
 
@@ -48,8 +55,11 @@ class FightScene: public StrategyScene
         Bar *barLife;
         Bar *barMp;
         Bar *barMonsterLife;
+        sf::Texture textureBackGroud;
+        sf::Sprite sprintBackGroud;
         //Manage the fight
         FightManager *fm;
+
 
 };
 

@@ -406,5 +406,9 @@ Bar* FightScene::getBarMonsterLife()const
 {
  return barMonsterLife;
 }
+sf::Texture FightScene::getTextureBackGroud()const
+{
+ return textureBackGroud;
+}
 
 
