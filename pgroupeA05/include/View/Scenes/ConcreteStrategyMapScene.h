@@ -7,7 +7,7 @@
 #include "View/Scenes/ConcreteStrategyMenuScene.h"
 #include "Model/GameMap.h"
 #include "View/DrawablePlayer.h"
-
+#include <View/Scenes/WindowStatus.h>
 class ConcreteStrategyMapScene: public StrategyScene
 {
     private:

@@ -17,7 +17,6 @@
 					<Add option="-DSFML" />
 					<Add directory="C:/libs/SFML/include" />
 					<Add directory="include" />
-					<Add directory="include/View/Scenes" />
 				</Compiler>
 				<Linker>
 					<Add library="C:/libs/SFML/lib/libsfml-graphics.a" />
@@ -37,7 +36,6 @@
 					<Add option="-DSFML_STATIC" />
 					<Add directory="include" />
 					<Add directory="C:/libs/SFML/include" />
-					<Add directory="include/View/Scenes" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -60,6 +58,7 @@
 			<Add directory="C:/libs/SFML/lib" />
 		</Linker>
 		<Unit filename="include/Armor.h" />
+		<Unit filename="include/Bar.h" />
 		<Unit filename="include/BattleCharacter.h" />
 		<Unit filename="include/Bestiary.h" />
 		<Unit filename="include/BtnWin.h" />
@@ -181,7 +180,6 @@
 		<Unit filename="include/View/Scenes/ConcreteStrategyHomeScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyMapScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyMenuScene.h" />
-		<Unit filename="include/View/Scenes/WindowStatus.h" />
 		<Unit filename="include/View/StrategyScene.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WindowsFight.h" />
@@ -189,6 +187,7 @@
 		<Unit filename="include/btnAttack.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Armor.cpp" />
+		<Unit filename="src/Bar.cpp" />
 		<Unit filename="src/BattleCharacter.cpp" />
 		<Unit filename="src/Bestiary.cpp" />
 		<Unit filename="src/BtnWin.cpp" />
@@ -212,7 +211,6 @@
 		<Unit filename="src/View/Scenes/ConcreteStrategyHomeScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyMapScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyMenuScene.cpp" />
-		<Unit filename="src/View/Scenes/WindowStatus.cpp" />
 		<Unit filename="src/View/StrategyScene.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WindowsFight.cpp" />

@@ -1,4 +1,4 @@
-#include "WindowStatus.h"
+#include <View/Scenes/WindowStatus.h>
 
 WindowStatus::WindowStatus()
 {
