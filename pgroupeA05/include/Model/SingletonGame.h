@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "View/Scenes/ConcreteStrategyHomeScene.h"
+#include "View/Scenes/ConcreteStrategyLoadScreenScene.h"
 #include <Player.h>
 
 //using namespace sf;
@@ -15,9 +15,10 @@ class SingletonGame
         /** instance destructor */
         ~SingletonGame();
         vector<StrategyScene*> previous_scene;   //!< Pointer "Previous Scene"
-        StrategyScene* scene = new ConcreteStrategyHomeScene;   //!< Pointer "Scene"
+        StrategyScene* scene = new ConcreteStrategyLoadScreenScene;   //!< Pointer "Scene"
         RenderWindow* window = nullptr; //!< Pointer "Render Window"
         Player* player = nullptr;
+        void load_icon() const;
 
     public:
         /** Game window size */
@@ -48,7 +49,7 @@ class SingletonGame
         StrategyScene* getScene() const;
         /** Set previous scene as current scene */
         void gotoPreviousScene();
-        void resetView();
+        void resetView() const;
 
         // Shortcuts game <-> window
         bool isOpen() const;

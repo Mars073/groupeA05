@@ -57,7 +57,11 @@
 			<Add library="C:/libs/SFML/lib/libsfml-window.a" />
 			<Add directory="C:/libs/SFML/lib" />
 		</Linker>
+		<Unit filename="icon.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="include/Armor.h" />
+		<Unit filename="include/Bar.h" />
 		<Unit filename="include/BattleCharacter.h" />
 		<Unit filename="include/Bestiary.h" />
 		<Unit filename="include/BtnWin.h" />
@@ -174,9 +178,16 @@
 		<Unit filename="include/SFML/Window/WindowHandle.hpp" />
 		<Unit filename="include/SFML/Window/WindowStyle.hpp" />
 		<Unit filename="include/Spells.h" />
+		<Unit filename="include/Util/FontsManager.h" />
+		<Unit filename="include/Util/INIReader.h" />
+		<Unit filename="include/Util/RessourcesManager.h" />
+		<Unit filename="include/Util/SoundsManager.h" />
+		<Unit filename="include/Util/TexturesManager.h" />
+		<Unit filename="include/Util/ini.h" />
 		<Unit filename="include/View/DrawablePlayer.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyGameOverScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyHomeScene.h" />
+		<Unit filename="include/View/Scenes/ConcreteStrategyLoadScreenScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyMapScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyMenuScene.h" />
 		<Unit filename="include/View/StrategyScene.h" />
@@ -186,6 +197,7 @@
 		<Unit filename="include/btnAttack.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Armor.cpp" />
+		<Unit filename="src/Bar.cpp" />
 		<Unit filename="src/BattleCharacter.cpp" />
 		<Unit filename="src/Bestiary.cpp" />
 		<Unit filename="src/BtnWin.cpp" />
@@ -204,9 +216,18 @@
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Resources.cpp" />
 		<Unit filename="src/Spells.cpp" />
+		<Unit filename="src/Util/FontsManager.cpp" />
+		<Unit filename="src/Util/INIReader.cpp" />
+		<Unit filename="src/Util/RessourcesManager.cpp" />
+		<Unit filename="src/Util/SoundsManager.cpp" />
+		<Unit filename="src/Util/TexturesManager.cpp" />
+		<Unit filename="src/Util/init.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/View/DrawablePlayer.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyGameOverScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyHomeScene.cpp" />
+		<Unit filename="src/View/Scenes/ConcreteStrategyLoadScreenScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyMapScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyMenuScene.cpp" />
 		<Unit filename="src/View/StrategyScene.cpp" />

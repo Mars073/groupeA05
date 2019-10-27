@@ -1,4 +1,5 @@
 #include "View/StrategyScene.h"
+#include "View/Scenes/ConcreteStrategyHomeScene.h"
 #include "View/Scenes/ConcreteStrategyMapScene.h"
 #include "Model/SingletonGame.h"
 

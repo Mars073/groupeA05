@@ -1,5 +1,6 @@
 #include "View/Scenes/ConcreteStrategyMenuScene.h"
 #include "View/Scenes/ConcreteStrategyGameOverScene.h"
+#include "View/Scenes/ConcreteStrategyHomeScene.h"
 
 ConcreteStrategyMenuScene::ConcreteStrategyMenuScene()
 {

@@ -1,5 +1,5 @@
 #include "Model/SingletonGame.h"
-
+#define TITLE "Final Quest"
 SingletonGame* SingletonGame::getInstance()
 {
     static SingletonGame instance;
@@ -8,16 +8,21 @@ SingletonGame* SingletonGame::getInstance()
 
 SingletonGame::SingletonGame()
 {
-    window = new RenderWindow(sf::VideoMode(W_WIDTH, W_HEIGHT), "Final Quest", Style::Titlebar | Style::Close);
+    window = new RenderWindow(sf::VideoMode(W_WIDTH, W_HEIGHT), TITLE, Style::Titlebar | Style::Close);
     window->setMouseCursorVisible(false);
     window->setFramerateLimit(60);
+    load_icon();
+    resetView();
+}
+
+void SingletonGame::load_icon() const
+{
     Image icon;
     if (icon.loadFromFile("data/images/icon.png"))
     {
         Vector2u sz = icon.getSize();
         window->setIcon(sz.x, sz.y, icon.getPixelsPtr());
     }
-    resetView();
 }
 
 SingletonGame::~SingletonGame()
@@ -69,6 +74,7 @@ void SingletonGame::setScene(StrategyScene* _scene)
         previous_scene.push_back(scene);
     scene = _scene;
     resetView();
+    std::cout << string(50, '\n'); // clear console
 }
 
 void SingletonGame::gotoPreviousScene()
@@ -87,7 +93,7 @@ StrategyScene* SingletonGame::getScene() const
     return scene;
 }
 
-void SingletonGame::resetView()
+void SingletonGame::resetView() const
 {
     window->clear();
     View view = View(FloatRect(0, 0, W_WIDTH, W_HEIGHT));
@@ -111,6 +117,17 @@ void SingletonGame::pollEvent() const
     Event event;
     if (pollEvent(event))
     {
+        if (event.type == Event::KeyPressed && event.key.code == Keyboard::F11)
+        {
+            if (window->getSize() == Vector2u(W_WIDTH, W_HEIGHT))
+                window->create(VideoMode::getFullscreenModes()[0], TITLE, Style::Fullscreen);
+            else
+                window->create(VideoMode(W_WIDTH, W_HEIGHT), TITLE, Style::Titlebar | Style::Close);
+            window->setMouseCursorVisible(false);
+            window->setFramerateLimit(60);
+            load_icon();
+            resetView();
+        }
         if (event.type == sf::Event::Closed)
             close();
         else if (scene->controller)
