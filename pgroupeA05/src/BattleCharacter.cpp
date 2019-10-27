@@ -102,3 +102,8 @@ std::string BattleCharacter::str() const
     return sstr.str();
 }
 
+BattleCharacter* BattleCharacter::clone() const
+{
+    return new BattleCharacter(GetcharaName(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef());
+}
+

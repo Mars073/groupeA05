@@ -8,57 +8,90 @@ Inventory::Inventory()
 
 Inventory::~Inventory()
 {
-    for (auto const& i : bag){
-        delete i;
+    for (unsigned i = 0; i < bag.size(); i++)
+    {
+        delete bag.at(i);
     }
-    for (auto const& i : everyItems){
-        delete i;
+
+    for (unsigned i = 0; i < everyItems.size(); i++)
+    {
+        delete everyItems.at(i);
     }
 }
 
 Inventory::Inventory(const Inventory& i)
 {
-
-
+    readFromFile();
 }
 
 Inventory& Inventory::operator=(const Inventory& i){
     if(this!=&i){
-        for (auto const& i : bag){
-            delete i;
+        for (unsigned i = 0; i < bag.size(); i++)
+        {
+            delete bag.at(i);
         }
-        for (auto const& i : everyItems){
-            delete i;
+
+        for (unsigned i = 0; i < everyItems.size(); i++)
+        {
+            delete everyItems.at(i);
         }
+        readFromFile();
     }
     return *this;
 }
 
 void Inventory::addItem(Item* item)
 {
-    bag.push_back(item);
+    /*if (indexOf(item) >= 0){
+        return;
+    }*/
+    bag.push_back(item->clone());
 }
+
 
 void Inventory::addItem(std::string itemName)
 {
-    bag.push_back(getOneItem(itemName));
+    /*if (indexOf(getOneItem(itemName)->clone()) >= 0){
+        return;
+    }*/
+    bag.push_back(getOneItem(itemName)->clone());
 }
 
 void Inventory::addItemInFile(Item* item)
 {
-    if(getOneItem(item->GetitemName())==0){
-        everyItems.push_back(item);
-        writeInFile();
+    if (indexOfEveryItems(item) >= 0){
+        return;
     }
-
+    everyItems.push_back(item);
+    writeInFile();
 }
 
-std::list<Item*> Inventory::Getbag() const
+int Inventory::indexOf(Item* item) const
+{
+    for (unsigned i = 0; i < bag.size(); i++){
+        if (*(bag.at(i)) == *item){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int Inventory::indexOfEveryItems(Item* item) const
+{
+    for (unsigned i = 0; i < everyItems.size(); i++){
+        if (*(everyItems.at(i)) == *item){
+            return i;
+        }
+    }
+    return -1;
+}
+
+std::vector<Item*> Inventory::Getbag() const
 {
     return bag;
 }
 
-std::list<Item*> Inventory::GeteveryItems() const
+std::vector<Item*> Inventory::GeteveryItems() const
 {
     return everyItems;
 }
@@ -170,9 +203,10 @@ void Inventory::writeInFile()
 
 Item* Inventory::getOneItem(std::string name)
 {
-    for (auto const& i : everyItems){
-        if(i->GetitemName()==name){
-            return i;
+    //for (auto const& i : everyItems){
+    for (unsigned i = 0; i < everyItems.size(); i++){
+        if(everyItems.at(i)->GetitemName()==name){
+            return everyItems.at(i);
         }
     }
     return 0;
@@ -180,13 +214,14 @@ Item* Inventory::getOneItem(std::string name)
 
 Item* Inventory::getOneItemIngame(std::string name)
 {
-    for (auto const& i : bag){
-        if(i->GetitemName()==name){
-            return i;
+    for (unsigned i = 0; i < bag.size(); i++){
+        if(bag.at(i)->GetitemName()==name){
+            return bag.at(i);
         }
     }
     return 0;
 }
+
 
 void Inventory::changeAttribute(std::string nameItem,std::string nameAttribute,std::string val)
 {
@@ -227,11 +262,21 @@ void Inventory::changeAttribute(std::string nameItem,std::string nameAttribute,i
 
 void Inventory::deleteItem(std::string nameItem)
 {
-    bag.remove(getOneItem(nameItem));
+    int tmp = indexOf(getOneItem(nameItem));
+    if (tmp < 0){
+        return;
+    }
+    delete bag.at(tmp);
+    bag.erase(bag.begin() + tmp);
 }
 
 void Inventory::deleteItemInFile(std::string nameItem)
 {
-    everyItems.remove(getOneItem(nameItem));
+    int tmp = indexOf(getOneItem(nameItem));
+    if (tmp < 0){
+        return;
+    }
+    delete everyItems.at(tmp);
+    everyItems.erase(everyItems.begin() + tmp);
     writeInFile();
 }

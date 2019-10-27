@@ -38,6 +38,8 @@ class Weapon : public Item
 
         virtual std::string str() const;
 
+        Weapon* clone() const override;
+
     protected:
 
 

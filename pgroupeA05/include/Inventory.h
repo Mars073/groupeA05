@@ -1,6 +1,6 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
-#include <list>
+#include <vector>
 #include <fstream>
 #include <algorithm>
 #include "Item.h"
@@ -11,8 +11,8 @@
 class Inventory
 {
     private:
-        std::list<Item*>bag; //list of items ingame
-        std::list<Item*>everyItems; //list of every items from the files
+        std::vector<Item*>bag; //list of items ingame
+        std::vector<Item*>everyItems; //list of every items from the files
 
     public:
         /** Default constructor */
@@ -39,9 +39,13 @@ class Inventory
          */
         void addItemInFile(Item* item);
 
-        std::list<Item*> Getbag() const;
+        int indexOf(Item*) const;
 
-        std::list<Item*> GeteveryItems() const;
+        int indexOfEveryItems(Item*) const;
+
+        std::vector<Item*> Getbag() const;
+
+        std::vector<Item*> GeteveryItems() const;
 
         virtual std::string str() const;
 
@@ -64,6 +68,7 @@ class Inventory
          *  \param the name of the item to return
          */
         Item* getOneItemIngame(std::string name);
+
 
         /** allow to change the attributes of an item and write it in the file of that type of item
          *  \param nameItem the name of the item to change its attributes

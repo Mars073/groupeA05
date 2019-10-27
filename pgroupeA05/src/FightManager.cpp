@@ -3,7 +3,7 @@
 FightManager::FightManager()
 {
     //ctor
-    setPlayer(new Player("joueur",100,100,100,100,100));
+    setPlayer(new Player());
     setMonster(new Monster("monstre",500,500,500,1,10,1,100,100));
 }
 

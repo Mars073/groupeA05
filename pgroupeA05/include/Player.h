@@ -22,7 +22,7 @@ class Player : public BattleCharacter
 
     public:
         /** Default constructor */
-        Player(std::string charaName,int hp,int mp,int atk,int mag,int def);
+        Player(std::string charaName="Firion",int hp=200,int mp=100,int atk=20,int mag=10,int def=15);
         /** Default destructor */
         virtual ~Player();
         /** Copy constructor
@@ -126,6 +126,8 @@ class Player : public BattleCharacter
          void addIntoTheBag(std::string nameItem);
 
          void changeEquipment(std::string nameItem);
+
+         Player* clone() const override;
 
     protected:
 

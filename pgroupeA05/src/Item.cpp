@@ -64,3 +64,13 @@ std::string Item::str() const
     sstr<<"name : " <<GetitemName()<<std::endl<<"description : "<<GetitemDescription()<<std::endl<<GetitemType();
     return sstr.str();
 }
+
+Item* Item::clone() const
+{
+    return new Item(GetitemName(),GetitemDescription());
+}
+
+bool Item::operator==(const Item& other) const
+{
+    return itemName == other.GetitemName() && itemDescription == other.GetitemDescription() && itemType == other.GetitemType();
+}

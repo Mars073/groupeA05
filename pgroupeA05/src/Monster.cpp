@@ -70,3 +70,8 @@ void Monster::damageReceived(int dmg)
         Sethp(Gethp()-damage);
     }
 }
+
+Monster* Monster::clone() const
+{
+    return new Monster(GetcharaName(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetmoneyHeld(),GetexpHeld());
+}

@@ -13,8 +13,8 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->inventory=new Inventory();
     this->weapon=new Weapon("Wooden sword","The first item that every adventurers want.",2,1);
     this->armor=new Armor("Clothes","Ordinary clothing.",1);
-    /*this->inventory->addItem(weapon);
-    this->inventory->addItem(armor);*/
+    this->inventory->addItem(weapon);
+    this->inventory->addItem(armor);
     this->spells.addMagic("Fire");
     this->spells.addMagic("Ice");
     this->spells.addMagic("Water");
@@ -23,7 +23,6 @@ armor("Clothes","Ordinary clothing.",1)*/
 
 Player::~Player()
 {
-    std::cout << "tick" ;
     delete weapon;
     delete armor;
     delete inventory;
@@ -34,16 +33,16 @@ Player::Player(const Player& p):BattleCharacter(p)/*,inventory(p),
 weapon("Wooden sword","The first item that every adventurers want.",2,1),
 armor("Clothes","Ordinary clothing.",1)*/
 {
-    level=1;
-    charaType="Player";
-    this->expNow=0;
-    this->expNext=10;
-    this->money=0;
-    this->inventory=p.inventory;
-    this->weapon=p.weapon;
-    this->armor=p.armor;
-    /*this->inventory->addItem(p.weapon);
-    this->inventory->addItem(p.armor);*/
+    level=p.level;
+    charaType=p.charaType;
+    this->expNow=p.expNow;
+    this->expNext=p.expNext;
+    this->money=p.money;
+    this->inventory=new Inventory(*p.inventory);
+    this->weapon=new Weapon(*p.weapon);
+    this->armor=new Armor(*p.armor);
+    this->inventory->addItem(p.weapon);
+    this->inventory->addItem(p.armor);
     this->spells.addMagic("Fire");
     this->spells.addMagic("Ice");
     this->spells.addMagic("Water");
@@ -52,16 +51,19 @@ armor("Clothes","Ordinary clothing.",1)*/
 
 Player& Player::operator=(const Player& p){
     if(this!=&p){
-        level=1;
-        charaType="Player";
-        this->expNow=0;
-        this->expNext=10;
-        this->money=0;
-        this->inventory=p.inventory;
-        this->weapon=p.weapon;
-        this->armor=p.armor;
-        /*this->inventory->addItem(p.weapon);
-        this->inventory->addItem(p.armor);*/
+        level=p.level;
+        charaType=p.charaType;
+        this->expNow=p.expNow;
+        this->expNext=p.expNext;
+        this->money=p.money;
+        delete inventory;
+        this->inventory=new Inventory(*p.inventory);
+        delete weapon;
+        this->weapon=new Weapon(*p.weapon);
+        delete armor;
+        this->armor=new Armor(*p.armor);
+        this->inventory->addItem(p.weapon);
+        this->inventory->addItem(p.armor);
         this->spells.addMagic("Fire");
         this->spells.addMagic("Ice");
         this->spells.addMagic("Water");
@@ -212,3 +214,7 @@ void Player::changeEquipment(std::string nameItem)
     }
 }
 
+Player* Player::clone() const
+{
+    return new Player();
+}

@@ -55,3 +55,8 @@ std::string Weapon::str() const
     sstr<<Item::str()<<std::endl<<"attack power : "<<Getatk()<<std::endl<<"magical power : "<<Getmag()<<std::endl;
     return sstr.str();
 }
+
+Weapon* Weapon::clone() const
+{
+    return new Weapon(GetitemName(),GetitemDescription(),Getatk(),Getmag());
+}

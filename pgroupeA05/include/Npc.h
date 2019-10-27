@@ -20,6 +20,8 @@ class Npc : public Character
 
         Npc& operator=(const Npc& n);
 
+        Npc* clone() const override;
+
     protected:
 
 

@@ -32,6 +32,8 @@ class Armor : public Item
 
         virtual std::string str() const;
 
+        Armor* clone() const override;
+
     protected:
 
 

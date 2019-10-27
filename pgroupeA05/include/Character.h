@@ -41,6 +41,8 @@ class Character
 
         virtual std::string str() const;
 
+        virtual Character* clone() const;
+
     private:
 
 

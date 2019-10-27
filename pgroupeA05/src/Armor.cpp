@@ -13,13 +13,13 @@ Armor::~Armor()
 
 Armor::Armor(const Armor& a):Item(a)
 {
-    itemType="Armor";
+    itemType=a.itemType;
     this->def=a.def;
 }
 
 Armor& Armor::operator=(const Armor& a){
     if(this!=&a){
-        itemType="Armor";
+        itemType=a.itemType;
         this->def=a.def;
     }
     return *this;
@@ -40,4 +40,9 @@ std::string Armor::str() const
     std::stringstream sstr;
     sstr<<Item::str()<<std::endl<<"defense : "<<Getdef()<<std::endl;
     return sstr.str();
+}
+
+Armor* Armor::clone() const
+{
+    return new Armor(GetitemName(),GetitemDescription(),Getdef());
 }

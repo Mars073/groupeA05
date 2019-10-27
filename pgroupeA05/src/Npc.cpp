@@ -21,3 +21,8 @@ Npc& Npc::operator=(const Npc& n){
     }
     return *this;
 }
+
+Npc* Npc::clone() const
+{
+    return new Npc(GetcharaName());
+}

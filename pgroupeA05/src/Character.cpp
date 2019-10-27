@@ -49,3 +49,8 @@ std::string Character::str() const
     sstr<<"name : "<<GetcharaName();
     return sstr.str();
 }
+
+Character* Character::clone() const
+{
+    return new Character(GetcharaName());
+}

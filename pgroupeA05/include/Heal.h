@@ -31,6 +31,8 @@ class Heal : public Item
 
         virtual std::string str() const;
 
+        Heal* clone() const override;
+
     protected:
 
 

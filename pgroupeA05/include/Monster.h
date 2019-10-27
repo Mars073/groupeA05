@@ -45,6 +45,8 @@ class Monster : public BattleCharacter
 
         void damageReceived(int dmg);
 
+        Monster* clone() const override;
+
     protected:
 
 

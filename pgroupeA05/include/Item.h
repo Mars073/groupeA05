@@ -54,6 +54,10 @@ class Item
 
         virtual std::string str() const;
 
+        virtual Item* clone() const;
+
+        bool operator==(const Item&) const;
+
     private:
 
 

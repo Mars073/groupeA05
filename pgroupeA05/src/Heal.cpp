@@ -42,3 +42,9 @@ std::string Heal::str() const
     sstr<<Item::str()<<std::endl<<"Amount healed : "<<GetamountHealed()<<" hp"<<std::endl;
     return sstr.str();
 }
+
+Heal* Heal::clone() const
+{
+    return new Heal(GetitemName(),GetitemDescription(),GetamountHealed());
+}
+
