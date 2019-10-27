@@ -71,3 +71,7 @@ if(pourcentage <0)
  this->rect.setSize(sf::Vector2f(((this->sizeX)*pourcentage),(this->sizeY)));
 
 }
+void Bar::Setcolor(sf::Color val)
+{
+ rect.setFillColor(val);
+}

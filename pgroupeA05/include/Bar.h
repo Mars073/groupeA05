@@ -22,7 +22,7 @@ class Bar
   int GetsizeY() { return sizeY; }
   void SetsizeY(int val) { sizeY = val; }
   sf::Color Getcolor() { return color; }
-  void Setcolor(sf::Color val) { color = val; }
+  void Setcolor(sf::Color val);
   void setBarLifeTaille(float current,float maxx);
   sf::RectangleShape getRect()const;
   sf::RectangleShape getFond()const;

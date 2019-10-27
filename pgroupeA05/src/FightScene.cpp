@@ -8,7 +8,8 @@ FightScene::FightScene()
      fn3 = new WindowsFightInfo(450,200,200,200);
      barLife = new Bar(400,20,200,20);
      barMp = new Bar(400,150,200,20);
-     barMonsterLife = new Bar(100,20,200,20);
+     barMp->Setcolor(sf::Color(0,0,225));
+     barMonsterLife = new Bar(50,20,200,20);
 
 
      vectWindows.push_back(fn);
