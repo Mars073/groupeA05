@@ -5,7 +5,7 @@
 #include <View/Scenes/ConcreteStrategyMapScene.h>
 #include <FightScene.h>
 #include <View/Scenes/ConcreteStrategyGameOverScene.h>
-
+#include <View/Scenes/WindowStatus.h>
 
 class ConcreteStrategyMenuScene : public StrategyScene
 {
