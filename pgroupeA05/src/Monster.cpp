@@ -1,6 +1,6 @@
 #include "Monster.h"
 
-Monster::Monster(std::string charaName,int hp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld):BattleCharacter(charaName,hp,mp,atk,mag,def)
+Monster::Monster(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld):BattleCharacter(charaName,maxHp,hp,mp,atk,mag,def)
 {
     charaType="Monster";
     this->level=level;
@@ -73,5 +73,5 @@ void Monster::damageReceived(int dmg)
 
 Monster* Monster::clone() const
 {
-    return new Monster(GetcharaName(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetmoneyHeld(),GetexpHeld());
+    return new Monster(GetcharaName(),GetmaxHp(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetmoneyHeld(),GetexpHeld());
 }
