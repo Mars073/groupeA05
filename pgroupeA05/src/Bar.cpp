@@ -12,12 +12,12 @@ Bar::Bar(int posX, int posY, int sizeX, int sizeY)
  this->sizeX = sizeY;
  this->rect.setSize(sf::Vector2f(sizeX,sizeY));
  this->rect.setPosition(sf::Vector2f(posX,posY));
- this->rect.setFillColor(sf::Color(255,0,0));
+ this->rect.setFillColor(sf::Color(0,255,0));
 
  this->fond.setSize(sf::Vector2f(sizeX,sizeY));
  this->fond.setPosition(sf::Vector2f(posX,posY));
  this->fond.setOutlineThickness(5);
- this->fond.setOutlineColor(sf::Color(255,255,255));
+ this->fond.setOutlineColor(sf::Color(0,0,0));
 
 
 
@@ -62,6 +62,9 @@ sf::RectangleShape Bar::getFond()const
 void Bar::setBarLifeTaille(float current, float maxx)
 {
  float pourcentage = (current/maxx);
- fond.setSize(sf::Vector2f(sizeX*pourcentage,sizeY));
+
+
+
+ fond.setSize(sf::Vector2f(sizeX,sizeY));
 
 }

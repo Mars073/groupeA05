@@ -1,8 +1,7 @@
 #ifndef BAR_H
 #define BAR_H
 #include <SFML/Graphics.hpp>
-#include <ostream>
-#include "string"
+#include "string";
 
 class Bar
 {
