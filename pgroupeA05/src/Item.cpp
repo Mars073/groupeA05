@@ -65,6 +65,13 @@ std::string Item::str() const
     return sstr.str();
 }
 
+std::string Item::strEquipment() const
+{
+    std::stringstream sstr;
+    sstr<<GetitemName();
+    return sstr.str();
+}
+
 Item* Item::clone() const
 {
     return new Item(GetitemName(),GetitemDescription());

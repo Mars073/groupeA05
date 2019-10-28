@@ -56,6 +56,13 @@ std::string Weapon::str() const
     return sstr.str();
 }
 
+std::string Weapon::strEquipment() const
+{
+    std::stringstream sstr;
+    sstr<<Item::strEquipment()<<" ATK : "<<Getatk()<<" MAG : "<<Getmag()<<std::endl;
+    return sstr.str();
+}
+
 Weapon* Weapon::clone() const
 {
     return new Weapon(GetitemName(),GetitemDescription(),Getatk(),Getmag());

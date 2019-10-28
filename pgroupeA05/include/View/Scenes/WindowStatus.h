@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+#include <View/Scenes/WindowEquipment.h>
 using namespace sf;
 using namespace std;
 class WindowStatus: public StrategyScene
@@ -18,6 +19,9 @@ class WindowStatus: public StrategyScene
         RectangleShape rectAll;
         RectangleShape rectMenu;
         Player* p;
+        int choiceMenu;
+        short int selected_id_menu = 0;
+        std::vector<Item*>equipments;
 
     public:
         /** Default constructor */
@@ -37,8 +41,6 @@ class WindowStatus: public StrategyScene
         void draw(RenderTarget&, RenderStates) const override;
 
         void eventHandler(Event event);
-
-        void SettextMenu(string val);
 
     protected:
 

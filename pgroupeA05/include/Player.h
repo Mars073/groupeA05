@@ -99,6 +99,8 @@ class Player : public BattleCharacter
 
         virtual std::string str() const;
 
+        std::string strStatus() const;
+
         /** add more money to the actual amount
          * \param moneyEarn amount of money to add
          */

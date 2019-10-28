@@ -4,7 +4,7 @@
 #include "string"
 #include "iostream"
 #include "vector"
-#include "Player.h";
+#include "Player.h"
 #include "Monster.h"
 #include "FightManager.h"
 

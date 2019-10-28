@@ -150,6 +150,20 @@ std::string Player::str() const
     return sstr.str();
 }
 
+std::string Player::strStatus() const
+{
+    std::stringstream sstr;
+    sstr<<GetcharaName()<<std::endl<<"Hp : "<<GetmaxHp()<<"/"<<Gethp()<<std::endl
+    <<"Mp : "<<Getmp()<<"/"<<Getmp()<<std::endl
+    <<"Atk : "<<Getatk()<<std::endl
+    <<"Mag : "<<Getmag()<<std::endl
+    <<"Def : "<<Getdef()<<std::endl<<std::endl
+    <<"Equipment : "<<std::endl<<std::endl
+    <<"Weapon : "<<Getweapon()->GetitemName()<<" ATK : "<<Getweapon()->Getatk()<<" MAG : "<<Getweapon()->Getmag()<<std::endl
+    <<"Armor : "<<Getarmor()->GetitemName()<<" DEF : "<<Getarmor()->Getdef()<<std::endl;
+    return sstr.str();
+}
+
 void Player::moreMoney(int moneyEarn)
 {
     Setmoney(money+moneyEarn);

@@ -42,6 +42,13 @@ std::string Armor::str() const
     return sstr.str();
 }
 
+std::string Armor::strEquipment() const
+{
+    std::stringstream sstr;
+    sstr<<Item::strEquipment()<<" DEF : "<<Getdef()<<std::endl;
+    return sstr.str();
+}
+
 Armor* Armor::clone() const
 {
     return new Armor(GetitemName(),GetitemDescription(),Getdef());
