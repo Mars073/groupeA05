@@ -277,7 +277,7 @@ void GameMap::draw() const
 void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& bypass) const
 {
     unsigned UID = tile->INDEX;
-    cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
+    //cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
     switch (tile->GAMEOBJECT_ID)
     {
     case GUID_RANDOM_TELEPORTER: // HOLEs
@@ -301,7 +301,6 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
     case 133://TOP_DOOR
     case GUID_DOORS:
         {
-            cout << "[" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y  << " (" << world << ")" << endl;
             if (world == 0)
             {
                 switch(UID)
@@ -378,7 +377,6 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
             }
             else if (world == 2)
             {
-                cout << "[" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << endl;
 
                 switch(UID)
                 {
