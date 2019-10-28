@@ -29,7 +29,8 @@ The playable character will move on a "map" where he will randomly meet monsters
 * Attack
 * Defense
 * Magic
-* …
+* ...
+
 The more monsters he beats, the more experience he will gain and the more he will increase his level and characteristics.
 
 ### Team
