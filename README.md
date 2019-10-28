@@ -27,6 +27,7 @@
 ## About The Project
 
 ### Team
+| <img src="https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/fantasy-159526_1280.png" width="200" /> | 123 | 123 |
 | Kevin "[Nevo067](//github.com/nevo067)" Opese | Corentin "[TigrouSimba](//github.com/TigrouSimba)" Nya | Martin "[mars073](//github.com/mars073)" Leroy |
 |-----------------------|----------------------------|------------------------|
 
