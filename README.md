@@ -27,9 +27,9 @@
 ## About The Project
 
 ### Team
-| Kevin "[Nevo067](//github.com/nevo067)" Opese | Corentin "[TigrouSimba](//github.com/TigrouSimba)" Nya | Martin "[mars073](//github.com/mars073)" Leroy |
+| ![image](https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/fantasy-159526_1280.png) | ![image](https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/fantasy-159526_1280.png) | ![image](https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/fantasy-159526_1280.png) |
 | :---: | :---: | :---: |
-| ![image](http://i.imgur.com/hRLuez2.png) | ![image](http://i.imgur.com/hRLuez2.png) | ![image](http://i.imgur.com/hRLuez2.png) |
+| Kevin "[Nevo067](//github.com/nevo067)" Opese | Corentin "[TigrouSimba](//github.com/TigrouSimba)" Nya | Martin "[mars073](//github.com/mars073)" Leroy |
 
 
 ### Built With
