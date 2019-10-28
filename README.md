@@ -29,6 +29,7 @@
 ### Team
 | Kevin "[Nevo067](//github.com/nevo067)" Opese | Corentin "[TigrouSimba](//github.com/TigrouSimba)" Nya | Martin "[mars073](//github.com/mars073)" Leroy |
 | :---: | :---: | :---: |
+| ![image](http://i.imgur.com/hRLuez2.png) | ![image](http://i.imgur.com/hRLuez2.png) | ![image](http://i.imgur.com/hRLuez2.png) |
 
 
 ### Built With
