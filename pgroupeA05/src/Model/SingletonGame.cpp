@@ -10,6 +10,7 @@ SingletonGame::SingletonGame()
 {
     window = new RenderWindow(sf::VideoMode(W_WIDTH, W_HEIGHT), TITLE, Style::Titlebar | Style::Close);
     window->setMouseCursorVisible(false);
+    window->setVerticalSyncEnabled(true);
     window->setFramerateLimit(60);
     load_icon();
     resetView();
@@ -125,6 +126,7 @@ void SingletonGame::pollEvent() const
             else
                 window->create(VideoMode(W_WIDTH, W_HEIGHT), TITLE, Style::Titlebar | Style::Close);
             window->setMouseCursorVisible(false);
+            window->setVerticalSyncEnabled(true);
             window->setFramerateLimit(60);
             load_icon();
             resetView();
