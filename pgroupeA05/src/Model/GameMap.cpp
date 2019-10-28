@@ -277,6 +277,7 @@ void GameMap::draw() const
 void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& bypass) const
 {
     unsigned UID = tile->INDEX;
+    cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
     switch (tile->GAMEOBJECT_ID)
     {
     case GUID_RANDOM_TELEPORTER: // HOLEs
@@ -288,9 +289,7 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
             {
                 unsigned tid = rand() % random_teleporters.size();
                 tile_UID = random_teleporters.at(tid);
-                std::cout << tile_UID << " vs " << UID << std::endl;
             } while (tile_UID-1 == UID);
-            cout << "--" << std::endl;
 
             Vector2f new_pos = i2xy(tile_UID);
             player.setPosition(new_pos.x/32-1, new_pos.y/32);
@@ -299,9 +298,10 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
         }
     case 201://TENT
     case 132://LARGE_DOOR
+    case 133://TOP_DOOR
     case GUID_DOORS:
         {
-            //cout << "[" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << endl;
+            cout << "[" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y  << " (" << world << ")" << endl;
             if (world == 0)
             {
                 switch(UID)
@@ -310,29 +310,35 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
                     {
                         player.setPosition(15, 10);
                         bypass.loadFromFileID(1);
+                        player.flip();
                         break;
                     }
                 case 959:  // Castle
                 case 960:
                     {
+                        player.setPosition(15, 17);
+                        bypass.loadFromFileID(2);
                         break;
                     }
                 case 5405: // PUB
                     {
                         player.setPosition(10, 53);
                         bypass.loadFromFileID(1);
+                        player.flip();
                         break;
                     }
                 case 7071: // Right House (Village)
                     {
                         player.setPosition(31, 10);
                         bypass.loadFromFileID(1);
+                        player.flip();
                         break;
                     }
                 case 7081: // Left House (Village)
                     {
                         player.setPosition(15, 10);
                         bypass.loadFromFileID(1);
+                        player.flip();
                         break;
                     }
                 default: return;
@@ -368,9 +374,26 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
                     }
                 default: return;
                 }
+                player.flip();
+            }
+            else if (world == 2)
+            {
+                cout << "[" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << endl;
+
+                switch(UID)
+                {
+                case 572:
+                case 573:
+                case 574: // OUTSIDE
+                    {
+                        player.setPosition(64, 8);
+                        bypass.loadFromFileID(0);
+                        break;
+                    }
+                default:break;
+                }
             }
             bypass.spawn();
-            player.flip();
             break;
 
         }
