@@ -27,7 +27,7 @@
 ## About The Project
 
 ### Team
-| ![Test1](https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/fantasy-159526_1280.png =150x100) | ![Test1](https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/fantasy-159526_1280.png =150x100) | ![Test2ss](https://www.needpix.com/file_download.php?url=//storage.needpix.com/rsynced_images/fantasy-159526_1280.png =150x100) |
+| ![GitHub Logo](https://cloud.githubusercontent.com/assets/5456665/13322882/e74f6626-dc00-11e5-921d-f6d024a01eaa.png "GitHub") | ![GitHub Logo](https://cloud.githubusercontent.com/assets/5456665/13322882/e74f6626-dc00-11e5-921d-f6d024a01eaa.png "GitHub") | ![GitHub Logo](https://cloud.githubusercontent.com/assets/5456665/13322882/e74f6626-dc00-11e5-921d-f6d024a01eaa.png "GitHub") |
 | Kevin "[Nevo067](//github.com/nevo067)" Opese | Corentin "[TigrouSimba](//github.com/TigrouSimba)" Nya | Martin "[mars073](//github.com/mars073)" Leroy |
 |-----------------------|----------------------------|------------------------|
 
