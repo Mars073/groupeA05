@@ -55,6 +55,18 @@ git clone https://github.com/Mars073/groupeA05.git
 * On map
 	You can use the <kbd>Z</kbd><kbd>↑</kbd>, <kbd>D</kbd><kbd>→</kbd>, <kbd>S</kbd><kbd>↓</kbd> or <kbd>Q</kbd><kbd>←</kbd> key to move your character on the map.
 
+## Resources
+_All elements of the game remain the property of their intellectual author(s) and can be deleted upon request._
+* Graphics:
+	* Game sprites: [RPG Maker](https://www.rpgmakerweb.com/)
+	* Title bg: [Goblin Slayer](https://www.trzcacak.rs/imgb/iwwxxwR/) + [Dofus](https://www.dofus.com/en/mmorpg/media/wallpapers/579152-dofus-2016-login-screen)
+* Musics:
+	* Title music: [Main Theme 04](https://wingless-seraph.net/en/material-music_title.html)
+	* World 0 : [Voyage of Mystic Sea](https://wingless-seraph.net/en/material-music_field.html)
+	* World 1 : [Shopping District](https://wingless-seraph.net/en/material-music_town_field.html)
+	* World 2 : [Caos and Despair](https://wingless-seraph.net/en/material-music_dangeon.html)
+
+
 <!-- LICENSE -->
 ## License
 
