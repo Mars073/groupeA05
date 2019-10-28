@@ -26,10 +26,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 The playable character will move on a "map" where he will randomly meet monsters he will have to fight. It will have a starting level of 1 and characteristics such as :
-	* Attack
-	* Defense
-	* Magic
-	* ...
+* Attack
+* Defense
+* Magic
+* ...
 
 The more monsters he beats, the more experience he will gain and the more he will increase his level and characteristics.
 
