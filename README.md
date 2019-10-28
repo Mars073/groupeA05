@@ -25,12 +25,18 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+The playable character will move on a "map" where he will randomly meet monsters he will have to fight. It will have a starting level of 1 and characteristics such as :
+* Attack
+* Defense
+* Magic
+* …
+The more monsters he beats, the more experience he will gain and the more he will increase his level and characteristics.
 
 ### Team
 | ![avatar](https://image.noelshack.com/fichiers/2019/44/1/1572255557-10551879-816797391685674-1509560817-n.jpg) | ![avatar](https://image.noelshack.com/fichiers/2019/44/1/1572255557-10304438-354222028072916-5132253780138011790-n.jpg) | ![avatar](https://image.noelshack.com/fichiers/2019/44/1/1572255557-3de4c0e02f5f238610de9062ec468aad8ddd38dfd825fdce632fe47116791901.jpg) |
 | :---: | :---: | :---: |
 | Kevin "[Nevo067](//github.com/nevo067)" Opese | Corentin "[TigrouSimba](//github.com/TigrouSimba)" Nya | Martin "[mars073](//github.com/mars073)" Leroy |
-| _Creation of the combat system_ | _Monster, character and inventory system_ | Basic systems, game map ans animation_ |
+| _Creation of the combat system_ | _Monster, character and inventory system_ | _Basic systems, game map ans animation_ |
 
 
 ### Built With
