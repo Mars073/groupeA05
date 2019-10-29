@@ -1,13 +1,13 @@
 #ifndef HEAL_H
 #define HEAL_H
-#include <Item.h>
+#include <HealItem.h>
 
 
 
-class Heal : public Item
+class Heal : public HealItem
 {
     private:
-        int amountHealed; //!< Member variable "amountHealed"
+
 
     public:
         /** Default constructor */
@@ -20,16 +20,9 @@ class Heal : public Item
 
         Heal& operator=(const Heal& h);
 
-        /** Access amountHealed
-         * \return The current value of amountHealed
-         */
-        int GetamountHealed() const;
-        /** Set amountHealed
-         * \param val New value to set
-         */
-        void SetamountHealed(int val);
-
         virtual std::string str() const;
+
+        std::string strEquipment() const;
 
         Heal* clone() const override;
 

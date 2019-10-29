@@ -126,6 +126,20 @@ void Inventory::readFromFile()
     }
     infile.close();
 
+    infile.open ("data/lists/healsMp.txt");
+
+    if(infile){
+        while ( !infile.eof() )
+        {
+            std::getline(infile,iItemName,'/');
+            std::getline(infile,iItemDescription,'/');
+            infile>>hAmountHealed;
+            everyItems.push_back(new HealMp(iItemName,iItemDescription,hAmountHealed));
+            infile.ignore();
+        }
+    }
+    infile.close();
+
     infile.open ("data/lists/armors.txt");
 
     if(infile){
@@ -162,7 +176,9 @@ void Inventory::writeInFile()
     std::ofstream output("data/lists/heals.txt");
     std::ofstream output2("data/lists/armors.txt");
     std::ofstream output3("data/lists/weapons.txt");
+    std::ofstream output4("data/lists/healsMp.txt");
     bool checkHeal=false;
+    bool checkHealMp=false;
     bool checkArmor=false;
     bool checkWeapon=false;
 
@@ -177,6 +193,16 @@ void Inventory::writeInFile()
                 checkHeal=true;
             }
             output<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->GetamountHealed();
+	    }
+	    else if(i->GetitemType()=="HealMp"){
+            HealMp *d = dynamic_cast<HealMp*>(i);
+            if(checkHealMp){
+                output4<<std::endl;
+            }
+            else{
+                checkHealMp=true;
+            }
+            output4<<d->GetitemName()<<"/"<<d->GetitemDescription()<<"/"<<d->GetamountHealed();
 	    }
 	    else if(i->GetitemType()=="Armor"){
             Armor *d = dynamic_cast<Armor*>(i);
@@ -241,6 +267,11 @@ void Inventory::changeAttribute(std::string nameItem,std::string nameAttribute,i
     if(getOneItem(nameItem)->GetitemType()=="Heal"){
         if(nameAttribute=="heal"){
             dynamic_cast<Heal*>(getOneItem(nameItem))->SetamountHealed(val);
+        }
+    }
+    else if(getOneItem(nameItem)->GetitemType()=="HealMp"){
+        if(nameAttribute=="heal"){
+            dynamic_cast<HealMp*>(getOneItem(nameItem))->SetamountHealed(val);
         }
     }
     else if(getOneItem(nameItem)->GetitemType()=="Armor"){

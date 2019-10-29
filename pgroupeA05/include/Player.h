@@ -144,6 +144,8 @@ class Player : public BattleCharacter
 
          void reduceMp(std::string magicName);
 
+         void heals(int amountHeal,std::string typeHeal);
+
     protected:
 
 

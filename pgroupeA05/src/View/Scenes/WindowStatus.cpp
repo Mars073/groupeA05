@@ -28,7 +28,19 @@ WindowStatus::WindowStatus()
     }
     for (unsigned i = 0; i < p->Getinventory()->Getbag().size(); i++){
         if(p->Getinventory()->Getbag().at(i)->GetitemType()=="Armor"){
-                equipments.push_back(p->Getinventory()->Getbag().at(i)->clone());
+            equipments.push_back(p->Getinventory()->Getbag().at(i)->clone());
+        }
+    }
+
+    for (unsigned i = 0; i < p->Getinventory()->Getbag().size(); i++){
+        if(p->Getinventory()->Getbag().at(i)->GetitemType()=="Heal"){
+            items.push_back(p->Getinventory()->Getbag().at(i)->clone());
+        }
+    }
+
+    for (unsigned i = 0; i < p->Getinventory()->Getbag().size(); i++){
+        if(p->Getinventory()->Getbag().at(i)->GetitemType()=="HealMp"){
+            items.push_back(p->Getinventory()->Getbag().at(i)->clone());
         }
     }
 
@@ -41,6 +53,11 @@ WindowStatus::~WindowStatus()
     for (unsigned i = 0; i < equipments.size(); i++)
     {
         delete equipments.at(i);
+    }
+
+    for (unsigned i = 0; i < items.size(); i++)
+    {
+        delete items.at(i);
     }
 
 }
@@ -64,6 +81,8 @@ WindowStatus::WindowStatus(const WindowStatus& other)
     this->choiceMenu=other.choiceMenu;
 
     this->equipments=other.equipments;
+
+    this->items=other.items;
 }
 
 WindowStatus& WindowStatus::operator=(const WindowStatus& rhs)
@@ -91,6 +110,12 @@ WindowStatus& WindowStatus::operator=(const WindowStatus& rhs)
             delete equipments.at(i);
         }
         this->equipments=rhs.equipments;
+
+        for (unsigned i = 0; i < items.size(); i++)
+        {
+            delete items.at(i);
+        }
+        this->items=rhs.items;
     }
     //assignment operator
     return *this;
@@ -154,6 +179,38 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
         }
     }
 
+    else if(choiceMenu==2){
+        bool isHealMp=false;
+
+        Text textHeal("Heal hp : ", f);
+        textHeal.setCharacterSize(15);
+        textHeal.setFillColor(sf::Color::Black);
+        textHeal.setPosition(250, 50);
+        target.draw(textHeal, states);
+
+        for (int i = 0; i < items.size(); i++)
+        {
+            if(items.at(i)->GetitemType()=="HealMp" && !isHealMp){
+                isHealMp=true;
+                Text textHealMp("Heal mp : ", f);
+                textHealMp.setCharacterSize(15);
+                textHealMp.setFillColor(sf::Color::Black);
+                textHealMp.setPosition(250, 50+ (i+1)*42);
+                target.draw(textHealMp, states);
+            }
+            Text textItems(i==selected_id_items?"> "+items.at(i)->strEquipment():items.at(i)->strEquipment(), f);
+            textItems.setCharacterSize(15);
+            textItems.setFillColor(sf::Color::Black);
+            if(!isHealMp){
+                textItems.setPosition(250, 50 + (i+1)*42);
+            }
+            else{
+                textItems.setPosition(250, 50 + (i+2)*42);
+            }
+            target.draw(textItems, states);
+        }
+    }
+
 }
 
 
@@ -201,7 +258,7 @@ void WindowStatus::eventHandler(Event event)
                         case 2:
                             {
                                 //items
-
+                                choiceMenu=2;
                                 break;
                             }
                         case 3:
@@ -251,11 +308,13 @@ void WindowStatus::eventHandler(Event event)
                         }
                     case Keyboard::Enter:
                         {
-                            if(equipments.at(selected_id_menu)->GetitemType()=="Weapon"){
-                                p->Setweapon(dynamic_cast<Weapon*>(equipments.at(selected_id_menu)));
-                            }
-                            else {
-                                p->Setarmor(dynamic_cast<Armor*>(equipments.at(selected_id_menu)));
+                            if(equipments.size()>0){
+                                if(equipments.at(selected_id_menu)->GetitemType()=="Weapon"){
+                                    p->Setweapon(dynamic_cast<Weapon*>(equipments.at(selected_id_menu)));
+                                }
+                                else {
+                                    p->Setarmor(dynamic_cast<Armor*>(equipments.at(selected_id_menu)));
+                                }
                             }
                             choiceMenu=0;
                             break;
@@ -266,9 +325,69 @@ void WindowStatus::eventHandler(Event event)
                 selected_id_menu = max(0, min((int)selected_id_menu, (int)(equipments.size() - 1)));
                 break;
             }
+            case 2:
+            {
+               switch (event.key.code)
+                {
+                    case Keyboard::Up:
+                        {
+                            if(selected_id_items>0){
+                                selected_id_items--;
+                            }
+                            break;
+                        }
+
+                    case Keyboard::Down:
+                        {
+                            if(selected_id_items<items.size()){
+                                selected_id_items++;
+                            }
+                            break;
+                        }
+                    case Keyboard::Escape:
+                        {
+                            choiceMenu=0;
+                            break;
+                        }
+                    case Keyboard::Enter:
+                        {
+                            if(items.size()>0){
+                                if(items.at(selected_id_items)->GetitemType()=="Heal"){
+                                    p->heals(dynamic_cast<Heal*>(items.at(selected_id_items))->GetamountHealed(),"hp");
+                                    p->Getinventory()->deleteItem(items.at(selected_id_items)->GetitemName());
+
+                                }
+                                else {
+                                    p->heals(dynamic_cast<HealMp*>(items.at(selected_id_items))->GetamountHealed(),"mp");
+                                    p->Getinventory()->deleteItem(items.at(selected_id_items)->GetitemName());
+                                }
+                                int tmp = indexOfHeal(items.at(selected_id_items));
+                                delete items.at(tmp);
+                                items.erase(items.begin() + tmp);
+                            }
+                            choiceMenu=0;
+                            break;
+                        }
+                    default: // no default action
+                    break;
+                }
+                selected_id_items = max(0, min((int)selected_id_items, (int)(items.size() - 1)));
+                break;
+            }
             default: // no default action
             break;
         }
     }
 }
+
+int WindowStatus::indexOfHeal(Item* item) const
+{
+    for (unsigned i = 0; i < items.size(); i++){
+        if (*(items.at(i)) == *item){
+            return i;
+        }
+    }
+    return -1;
+}
+
 

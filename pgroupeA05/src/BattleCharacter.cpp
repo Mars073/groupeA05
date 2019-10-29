@@ -126,8 +126,8 @@ std::string BattleCharacter::str() const
     std::stringstream sstr;
     sstr<<Character::str()<<std::endl
     <<"Level : "<<Getlevel()<<std::endl
-    <<"Hp : "<<GetmaxHp()<<"/"<<Gethp()<<std::endl
-    <<"Mp : "<<GetmaxMp()<<"/"<<Getmp()<<std::endl
+    <<"Hp : "<<Gethp()<<"/"<<GetmaxHp()<<std::endl
+    <<"Mp : "<<Getmp()<<"/"<<GetmaxMp()<<std::endl
     <<"Atk : "<<Getatk()<<std::endl
     <<"Mag : "<<Getmag()<<std::endl
     <<"Def : "<<Getdef();

@@ -15,6 +15,8 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->armor=new Armor("Clothes","Ordinary clothing.",1);
     this->inventory->addItem(weapon);
     this->inventory->addItem(armor);
+    this->inventory->addItem(inventory->getOneItem("Potion"));
+    this->inventory->addItem(inventory->getOneItem("Ether"));
     this->spells=new Spells();
     this->spells->addMagic("Fire");
     this->spells->addMagic("Ice");
@@ -265,3 +267,20 @@ void Player::reduceMp(std::string magicName)
         SetcheckSpellCast(false);
     }
 }
+
+void Player::heals(int amountHeal, std::string typeHeal)
+{
+    if(typeHeal=="hp"){
+        Sethp(Gethp()+amountHeal);
+        if(Gethp()>GetmaxHp()){
+            Sethp(GetmaxHp());
+        }
+    }
+    else if(typeHeal=="mp"){
+        Setmp(Getmp()+amountHeal);
+        if(Getmp()>GetmaxMp()){
+            Setmp(GetmaxMp());
+        }
+    }
+}
+

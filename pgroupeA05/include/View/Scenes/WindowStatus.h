@@ -20,7 +20,9 @@ class WindowStatus: public StrategyScene
         Player* p;
         int choiceMenu;
         short int selected_id_menu = 0;
+        short int selected_id_items = 0;
         std::vector<Item*>equipments;
+        std::vector<Item*>items;
 
     public:
         /** Default constructor */
@@ -40,6 +42,8 @@ class WindowStatus: public StrategyScene
         void draw(RenderTarget&, RenderStates) const override;
 
         void eventHandler(Event event);
+
+        int indexOfHeal(Item*) const;
 
     protected:
 

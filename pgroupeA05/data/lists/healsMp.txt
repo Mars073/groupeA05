@@ -1,0 +1,4 @@
+Ether/Heals 50 mp. The most basic item ever./50
+Super ether/Heals 200 mp. Much better than a boring ether./200
+Mega ether/Heals 500 mp. Now we're talking./500
+X-ether/Heals 9999 mp. My potions are too strong for you traveller./9999
