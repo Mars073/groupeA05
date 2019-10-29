@@ -15,9 +15,10 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->armor=new Armor("Clothes","Ordinary clothing.",1);
     this->inventory->addItem(weapon);
     this->inventory->addItem(armor);
-    this->spells.addMagic("Fire");
-    this->spells.addMagic("Ice");
-    this->spells.addMagic("Water");
+    this->spells=new Spells();
+    this->spells->addMagic("Fire");
+    this->spells->addMagic("Ice");
+    this->spells->addMagic("Water");
     srand ( time(NULL) );
 }
 
@@ -26,6 +27,7 @@ Player::~Player()
     delete weapon;
     delete armor;
     delete inventory;
+    delete spells;
 
 }
 
@@ -43,9 +45,10 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->armor=new Armor(*p.armor);
     this->inventory->addItem(p.weapon);
     this->inventory->addItem(p.armor);
-    this->spells.addMagic("Fire");
-    this->spells.addMagic("Ice");
-    this->spells.addMagic("Water");
+    this->spells=new Spells(*p.spells);
+    this->spells->addMagic("Fire");
+    this->spells->addMagic("Ice");
+    this->spells->addMagic("Water");
     srand ( time(NULL) );
 }
 
@@ -64,9 +67,11 @@ Player& Player::operator=(const Player& p){
         this->armor=new Armor(*p.armor);
         this->inventory->addItem(p.weapon);
         this->inventory->addItem(p.armor);
-        this->spells.addMagic("Fire");
-        this->spells.addMagic("Ice");
-        this->spells.addMagic("Water");
+        delete spells;
+        this->spells=new Spells(*p.spells);
+        this->spells->addMagic("Fire");
+        this->spells->addMagic("Ice");
+        this->spells->addMagic("Water");
         srand ( time(NULL) );
     }
     return *this;
@@ -132,16 +137,25 @@ void Player::Setinventory(Inventory* val)
     inventory = val;
 }
 
-Spells Player::Getspells() const
+Spells* Player::Getspells() const
 {
     return spells;
 }
 
-void Player::Setspells(Spells val)
+void Player::Setspells(Spells* val)
 {
     spells=val;
 }
 
+bool Player::GetcheckSpellCast() const
+{
+    return checkSpellCast;
+}
+
+void Player::SetcheckSpellCast(bool val)
+{
+    checkSpellCast=val;
+}
 
 std::string Player::str() const
 {
@@ -195,11 +209,23 @@ int Player::damageDone() const
     return Getatk()+ weapon->Getatk();
 }
 
+int Player::magicalDamageDone(std::string magicName)
+{
+    reduceMp(magicName);
+    if(!GetcheckSpellCast()){
+        return 0;
+    }
+    return Getmag()+ spells->getOneMagicInGame(magicName)->GetbaseDamage();
+}
+
 void Player::damageReceived(int dmg)
 {
     int damage= dmg - (Getdef() + armor->Getdef());
     if(damage>0){
         Sethp(Gethp()-damage);
+        if(Gethp()<0){
+            Sethp(0);
+        }
     }
 }
 
@@ -224,4 +250,18 @@ void Player::changeEquipment(std::string nameItem)
 Player* Player::clone() const
 {
     return new Player();
+}
+
+void Player::reduceMp(std::string magicName)
+{
+    if(Getmp()>=spells->getOneMagicInGame(magicName)->GetmpUsage()){
+        Setmp(Getmp()-(spells->getOneMagicInGame(magicName)->GetmpUsage()));
+        if(Getmp()<0){
+            Setmp(0);
+        }
+        SetcheckSpellCast(true);
+    }
+    else {
+        SetcheckSpellCast(false);
+    }
 }

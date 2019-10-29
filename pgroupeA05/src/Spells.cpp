@@ -7,57 +7,90 @@ Spells::Spells()
 
 Spells::~Spells()
 {
-    for (auto const& i : spellsHeld){
-        delete i;
+    for (unsigned i = 0; i < spellsHeld.size(); i++)
+    {
+        delete spellsHeld.at(i);
     }
-    for (auto const& i : everySpells){
-        delete i;
+
+    for (unsigned i = 0; i < everySpells.size(); i++)
+    {
+        delete everySpells.at(i);
     }
 }
 
 Spells::Spells(const Spells& s)
 {
-    //copy ctor
+    readFromFile();
 }
 
 Spells& Spells::operator=(const Spells& s)
 {
     if(this!=&s){
-        for (auto const& i : spellsHeld){
-            delete i;
+        for (unsigned i = 0; i < spellsHeld.size(); i++)
+        {
+            delete spellsHeld.at(i);
         }
-        for (auto const& i : everySpells){
-            delete i;
+
+        for (unsigned i = 0; i < everySpells.size(); i++)
+        {
+            delete everySpells.at(i);
         }
+        readFromFile();
     }
     return *this;
 }
 
 void Spells::addMagic(Magic *magic)
 {
-    spellsHeld.push_back(magic);
+    if (indexOf(magic) >= 0){
+        return;
+    }
+    spellsHeld.push_back(magic->clone());
 }
 
 void Spells::addMagic(std::string magicName)
 {
-    spellsHeld.push_back(getOneMagic(magicName));
+    if (indexOf(getOneMagic(magicName)) >= 0){
+        return;
+    }
+    spellsHeld.push_back(getOneMagic(magicName)->clone());
 }
 
 void Spells::addMagicInFile(Magic *magic)
 {
-    if(getOneMagic(magic->GetmName())==0){
-        everySpells.push_back(magic);
-        writeInFile();
+    if (indexOfEverySpells(magic) >= 0){
+        return;
     }
-
+    everySpells.push_back(magic);
+    writeInFile();
 }
 
-std::list<Magic*> Spells::GetspellsHeld() const
+int Spells::indexOf(Magic* magic) const
+{
+    for (unsigned i = 0; i < spellsHeld.size(); i++){
+        if (*(spellsHeld.at(i)) == *magic){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int Spells::indexOfEverySpells(Magic* magic) const
+{
+    for (unsigned i = 0; i < everySpells.size(); i++){
+        if (*(everySpells.at(i)) == *magic){
+            return i;
+        }
+    }
+    return -1;
+}
+
+std::vector<Magic*> Spells::GetspellsHeld() const
 {
     return spellsHeld;
 }
 
-std::list<Magic*> Spells::GeteverySpells() const
+std::vector<Magic*> Spells::GeteverySpells() const
 {
     return everySpells;
 }
@@ -76,7 +109,7 @@ std::string Spells::str() const
 void Spells::readFromFile()
 {
     std::string magicName;
-    int magicDamage;
+    int magicDamage,magicMpUsage;
     std::ifstream infile;
     infile.open ("data/lists/spells.txt");
 
@@ -84,8 +117,8 @@ void Spells::readFromFile()
         while ( !infile.eof() )
         {
             std::getline(infile,magicName,'/');
-            infile>>magicDamage;
-            everySpells.push_back(new Magic(magicName,magicDamage));
+            infile>>magicDamage>>magicMpUsage;
+            everySpells.push_back(new Magic(magicName,magicDamage,magicMpUsage));
             infile.ignore();
         }
     }
@@ -98,7 +131,7 @@ void Spells::writeInFile()
 
 	for (auto const& i : everySpells)
 	{
-        output<<i->GetmName()<<"/"<<i->GetbaseDamage();
+        output<<i->GetmName()<<"/"<<i->GetbaseDamage()<<i->GetmpUsage();
         if (&i != &everySpells.back()){
             output<<std::endl;
         }
@@ -107,13 +140,24 @@ void Spells::writeInFile()
 
 Magic* Spells::getOneMagic(std::string name)
 {
-    for (auto const& i : everySpells){
-        if(i->GetmName()==name){
-            return i;
+    for (unsigned i = 0; i < everySpells.size(); i++){
+        if(everySpells.at(i)->GetmName()==name){
+            return everySpells.at(i)->clone();
         }
     }
     return 0;
 }
+
+Magic* Spells::getOneMagicInGame(std::string name)
+{
+    for (unsigned i = 0; i < spellsHeld.size(); i++){
+        if(spellsHeld.at(i)->GetmName()==name){
+            return spellsHeld.at(i);
+        }
+    }
+    return 0;
+}
+
 
 void Spells::changeAttribute(std::string nameMagic,std::string nameAttribute,std::string val)
 {
@@ -130,16 +174,29 @@ void Spells::changeAttribute(std::string nameMagic,std::string nameAttribute,int
     if(nameAttribute=="damage"){
         getOneMagic(nameMagic)->SetbaseDamage(val);
     }
+    else if(nameAttribute=="mp usage"){
+        getOneMagic(nameMagic)->SetmpUsage(val);
+    }
     writeInFile();
 }
 
 void Spells::deleteMagic(std::string nameMagic)
 {
-    spellsHeld.remove(getOneMagic(nameMagic));
+    int tmp = indexOf(getOneMagic(nameMagic));
+    if (tmp < 0){
+        return;
+    }
+    delete spellsHeld.at(tmp);
+    spellsHeld.erase(spellsHeld.begin() + tmp);
 }
 
 void Spells::deleteMagicInFile(std::string nameMagic)
 {
-    everySpells.remove(getOneMagic(nameMagic));
+    int tmp = indexOf(getOneMagic(nameMagic));
+    if (tmp < 0){
+        return;
+    }
+    delete everySpells.at(tmp);
+    everySpells.erase(everySpells.begin() + tmp);
     writeInFile();
 }

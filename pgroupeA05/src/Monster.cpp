@@ -70,6 +70,9 @@ void Monster::damageReceived(int dmg)
     int damage= dmg - Getdef();
     if(damage>0){
         Sethp(Gethp()-damage);
+        if(Gethp()<0){
+            Sethp(0);
+        }
     }
 }
 
@@ -77,3 +80,9 @@ Monster* Monster::clone() const
 {
     return new Monster(GetcharaName(),GetmaxHp(),Gethp(),GetmaxMp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetmoneyHeld(),GetexpHeld());
 }
+
+bool Monster::operator==(const Monster& other) const
+{
+    return charaName == other.GetcharaName();
+}
+

@@ -1,6 +1,6 @@
-Fire/10
-Super fire/20
-Ice/10
-Super ice/20
-Water/10
-Super water/20
+Fire/10 10
+Super fire/20 20
+Ice/10 10
+Super ice/20 20
+Water/10 10
+Super water/20 20

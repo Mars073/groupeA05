@@ -7,35 +7,49 @@ Bestiary::Bestiary()
 
 Bestiary::~Bestiary()
 {
-    for (auto const& i : bestiary){
-        delete i;
+    for (unsigned i = 0; i < bestiary.size(); i++)
+    {
+        delete bestiary.at(i);
     }
 }
 
 Bestiary::Bestiary(const Bestiary& b)
 {
-    //copy ctor
+    readFromFile();
 }
 
 Bestiary& Bestiary::operator=(const Bestiary& b){
     if(this!=&b){
-        for (auto const& i : bestiary){
-            delete i;
+        for (unsigned i = 0; i < bestiary.size(); i++)
+        {
+            delete bestiary.at(i);
         }
+        readFromFile();
     }
     return *this;
 }
 
 void Bestiary::addMonster(Monster *monster)
 {
-    if(getOneMonster(monster->GetcharaName())==0){
-        bestiary.push_back(monster);
-        writeInFile();
+    if (indexOf(monster) >= 0){
+        return;
     }
+    bestiary.push_back(monster);
+    writeInFile();
 
 }
 
-std::list<Monster*> Bestiary::Getbestiary() const
+int Bestiary::indexOf(Monster *monster) const
+{
+    for (unsigned i = 0; i < bestiary.size(); i++){
+        if (*(bestiary.at(i)) == *monster){
+            return i;
+        }
+    }
+    return -1;
+}
+
+std::vector<Monster*> Bestiary::Getbestiary() const
 {
     return bestiary;
 }
@@ -88,9 +102,9 @@ void Bestiary::writeInFile()
 
 Monster* Bestiary::getOneMonster(std::string name)
 {
-    for (auto const& i : bestiary){
-        if(i->GetcharaName()==name){
-            return i;
+    for (unsigned i = 0; i < bestiary.size(); i++){
+        if(bestiary.at(i)->GetcharaName()==name){
+            return bestiary.at(i)->clone();
         }
     }
     return 0;
@@ -145,6 +159,11 @@ void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute
 
 void Bestiary::deleteMonster(std::string nameMonster)
 {
-    bestiary.remove(getOneMonster(nameMonster));
+    int tmp = indexOf(getOneMonster(nameMonster));
+    if (tmp < 0){
+        return;
+    }
+    delete bestiary.at(tmp);
+    bestiary.erase(bestiary.begin() + tmp);
     writeInFile();
 }

@@ -18,7 +18,8 @@ class Player : public BattleCharacter
         Weapon* weapon;
         Armor* armor;
         Inventory* inventory;
-        Spells spells;
+        Spells* spells;
+        bool checkSpellCast;
 
     public:
         /** Default constructor */
@@ -90,12 +91,22 @@ class Player : public BattleCharacter
         /** Access spells
          * \return The current value of spells
          */
-        Spells Getspells() const;
+        Spells* Getspells() const;
 
         /** Set spells
          * \param val New value to set
          */
-        void Setspells(Spells spells);
+        void Setspells(Spells* spells);
+
+        /** Access checkSpellCast
+         * \return The current value of checkSpellCast
+         */
+        bool GetcheckSpellCast() const;
+
+        /** Set checkSpellCast
+         * \param val New value to set
+         */
+        void SetcheckSpellCast(bool val);
 
         virtual std::string str() const;
 
@@ -121,6 +132,8 @@ class Player : public BattleCharacter
 
          int damageDone() const;
 
+         int magicalDamageDone(std::string magicName);
+
          void damageReceived(int dmg);
 
          void addIntoTheBag(std::string nameItem);
@@ -128,6 +141,8 @@ class Player : public BattleCharacter
          void changeEquipment(std::string nameItem);
 
          Player* clone() const override;
+
+         void reduceMp(std::string magicName);
 
     protected:
 

@@ -1,6 +1,6 @@
 #ifndef SPELLS_H
 #define SPELLS_H
-#include <list>
+#include <vector>
 #include <fstream>
 #include <algorithm>
 #include "Magic.h"
@@ -8,8 +8,8 @@
 class Spells
 {
     private:
-        std::list<Magic*>spellsHeld; //list of magic ingame
-        std::list<Magic*>everySpells; //list of every magic from the file
+        std::vector<Magic*>spellsHeld; //list of magic ingame
+        std::vector<Magic*>everySpells; //list of every magic from the file
 
     public:
         /** Default constructor */
@@ -41,9 +41,13 @@ class Spells
          */
         void addMagicInFile(Magic *magic);
 
-        std::list<Magic*> GetspellsHeld() const;
+        int indexOf(Magic*) const;
 
-        std::list<Magic*> GeteverySpells() const;
+        int indexOfEverySpells(Magic*) const;
+
+        std::vector<Magic*> GetspellsHeld() const;
+
+        std::vector<Magic*> GeteverySpells() const;
 
         virtual std::string str() const;
 
@@ -57,10 +61,15 @@ class Spells
          */
         void writeInFile();
 
-        /** return the magic with the name in the argument
+        /** return the magic with the name in the argument from the file
          *  \param the name of the magic to return
          */
         Magic* getOneMagic(std::string name);
+
+        /** return the magic with the name in the argument ingame
+         *  \param the name of the magic to return
+         */
+        Magic* getOneMagicInGame(std::string name);
 
         /** allow to change the attributes of a magic and write it in the file
          *  \param nameMagic the name of the magic to change its attributes

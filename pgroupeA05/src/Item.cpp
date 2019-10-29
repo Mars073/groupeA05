@@ -79,5 +79,5 @@ Item* Item::clone() const
 
 bool Item::operator==(const Item& other) const
 {
-    return itemName == other.GetitemName() && itemDescription == other.GetitemDescription() && itemType == other.GetitemType();
+    return itemName == other.GetitemName();
 }

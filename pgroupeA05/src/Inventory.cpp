@@ -206,7 +206,7 @@ Item* Inventory::getOneItem(std::string name)
     //for (auto const& i : everyItems){
     for (unsigned i = 0; i < everyItems.size(); i++){
         if(everyItems.at(i)->GetitemName()==name){
-            return everyItems.at(i);
+            return everyItems.at(i)->clone();
         }
     }
     return 0;

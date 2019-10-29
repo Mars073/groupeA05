@@ -47,6 +47,8 @@ class Monster : public BattleCharacter
 
         Monster* clone() const override;
 
+        bool operator==(const Monster&) const;
+
     protected:
 
 

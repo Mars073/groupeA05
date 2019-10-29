@@ -9,10 +9,11 @@ class Magic
     private:
         std::string mName; //!< Member variable "mName"
         int baseDamage; //!< Member variable "baseDamage"
+        int mpUsage;
 
     public:
         /** Default constructor */
-        Magic(std::string mName,int baseDamage);
+        Magic(std::string mName,int baseDamage,int mpUsage);
 
         /** Default destructor */
         virtual ~Magic();
@@ -48,7 +49,21 @@ class Magic
          */
         void SetbaseDamage(int val);
 
+        /** Access mpUsage
+         * \return The current value of mpUsage
+         */
+        int GetmpUsage()const;
+
+        /** Set mpUsage
+         * \param val New value to set
+         */
+        void SetmpUsage(int val);
+
         virtual std::string str() const;
+
+        virtual Magic* clone() const;
+
+        bool operator==(const Magic&) const;
 
     protected:
 

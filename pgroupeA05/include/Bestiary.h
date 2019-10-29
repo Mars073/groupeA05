@@ -1,14 +1,14 @@
 #ifndef BESTIARY_H
 #define BESTIARY_H
 #include "Monster.h"
-#include <list>
+#include <vector>
 #include <fstream>
 #include <algorithm>
 
 class Bestiary
 {
     private:
-        std::list<Monster*>bestiary;
+        std::vector<Monster*>bestiary;
     public:
         /** Default constructor */
         Bestiary();
@@ -26,10 +26,12 @@ class Bestiary
          */
         void addMonster(Monster *monster);
 
+        int indexOf(Monster*) const;
+
         /** return the all bestiary
          *
          */
-        std::list<Monster*> Getbestiary() const;
+        std::vector<Monster*> Getbestiary() const;
 
         /** write every information about the bestiary
          *
