@@ -27,12 +27,12 @@ FightScene::FightScene()
      btnMagie->AddButton(btnAttack2);
      btnMagie->AddButton(btnAttack3);
      fm = new FightManager();
-
+     //Add Button  in fightManager
      fn->addButton(new btnAttack(*(btnAtt)));
      fn->addButton(new btnAttack(*(btnMagie)));
      fn->addButton(new btnAttack(*(btnDefend)));
      fn->addButton(new btnAttack(*(btnObjet)));
-     //initialise fm in button
+     //initialise fightManager in button
      for(int i = 0;i<fn->getVect().size();i++)
      {
       fn->getVect().at(i)->setFm(fm);
@@ -40,6 +40,10 @@ FightScene::FightScene()
 
      activate = 0;
 
+     textureBackGroud =Resources::getTexture("BackGroudCombat", "data/images/BackGroudCombat.png");
+     sprintBackGroud.setTexture(textureBackGroud);
+
+     //Delete pointer
      delete btnAtt;
      delete btnMagie;
      delete btnDefend;
@@ -144,6 +148,10 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
        }
        fn->getVect().at(activate)->setIsActivate(true);
         */
+
+
+        // Draw the backgroud
+        target.draw(sprintBackGroud,stat);
        for(int j = 0;j<vectWindows.size();j++)
        {
         target.draw(vectWindows.at(j)->getRect());
