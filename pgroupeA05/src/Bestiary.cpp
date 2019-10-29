@@ -55,7 +55,7 @@ std::string Bestiary::str() const
 void Bestiary::readFromFile()
 {
     std::string mCharaName;
-    int  mMaxHp, mHp,mMp, mAtk, mMag, mDef, mLevel, mMoneyHeld, mExpHeld;
+    int  mMaxHp, mHp,mMaxMp,mMp, mAtk, mMag, mDef, mLevel, mMoneyHeld, mExpHeld;
     std::ifstream infile;
     infile.open ("data/lists/bestiary.txt");
 
@@ -63,8 +63,8 @@ void Bestiary::readFromFile()
         while ( !infile.eof() )
         {
             std::getline(infile,mCharaName,'/');
-            infile >>mMaxHp>>mHp>>mMp>>mAtk>>mMag>>mDef>>mLevel>>mMoneyHeld>>mExpHeld;
-            bestiary.push_back(new Monster(mCharaName,mMaxHp,mHp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld));
+            infile >>mMaxHp>>mHp>>mMaxMp>>mMp>>mAtk>>mMag>>mDef>>mLevel>>mMoneyHeld>>mExpHeld;
+            bestiary.push_back(new Monster(mCharaName,mMaxHp,mHp,mMaxMp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld));
             //permet d'ignorer tout l'espace vide entre chaque monstres
             infile.ignore();
         }
@@ -79,7 +79,7 @@ void Bestiary::writeInFile()
 
 	for (auto const& i : bestiary)
 	{
-        output<<i->GetcharaName()<<"/"<<i->GetmaxHp()<<i->Gethp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetmoneyHeld()<<" "<<i->GetexpHeld();
+        output<<i->GetcharaName()<<"/"<<i->GetmaxHp()<<i->Gethp()<<" "<<i->GetmaxMp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetmoneyHeld()<<" "<<i->GetexpHeld();
         if (&i != &bestiary.back()){
             output<<std::endl;
         }
@@ -114,6 +114,9 @@ void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute
     }
     else if(nameAttribute=="hp"){
         getOneMonster(nameMonster)->Sethp(val);
+    }
+    else if(nameAttribute=="max mp"){
+        getOneMonster(nameMonster)->SetmaxMp(val);
     }
     else if(nameAttribute=="mp"){
         getOneMonster(nameMonster)->Setmp(val);

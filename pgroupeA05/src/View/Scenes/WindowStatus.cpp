@@ -116,7 +116,7 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     }
 
     if(choiceMenu==0){
-        Text textStatus(p->strStatus(), f);
+        Text textStatus(p->str(), f);
         textStatus.setCharacterSize(15);
         textStatus.setFillColor(sf::Color::Black);
         textStatus.setPosition(250, 60);

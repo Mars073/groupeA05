@@ -1,7 +1,7 @@
 #include "Player.h"
 //ajouter max hp et mp et reparer armor et weapon
-Player::Player(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def)
-:BattleCharacter(charaName,maxHp,hp,mp,atk,mag,def)/*,inventory(),
+Player::Player(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def)
+:BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)/*,inventory(),
 weapon("Wooden sword","The first item that every adventurers want.",2,1),
 armor("Clothes","Ordinary clothing.",1)*/
 {
@@ -146,18 +146,9 @@ void Player::Setspells(Spells val)
 std::string Player::str() const
 {
     std::stringstream sstr;
-    sstr<<BattleCharacter::str()<<std::endl<<"Exp : "<<GetexpNow()<<std::endl<<"Exp for next level : "<<GetexpNext()<<std::endl<<"money : "<<Getmoney()<<std::endl<<"Equipment : "<<std::endl<<Getweapon()->str()<<std::endl<<Getarmor()->str()<<std::endl<<Getinventory()->str();
-    return sstr.str();
-}
-
-std::string Player::strStatus() const
-{
-    std::stringstream sstr;
-    sstr<<GetcharaName()<<std::endl<<"Hp : "<<GetmaxHp()<<"/"<<Gethp()<<std::endl
-    <<"Mp : "<<Getmp()<<"/"<<Getmp()<<std::endl
-    <<"Atk : "<<Getatk()<<std::endl
-    <<"Mag : "<<Getmag()<<std::endl
-    <<"Def : "<<Getdef()<<std::endl<<std::endl
+    sstr<<BattleCharacter::str()<<std::endl
+    <<"Money : "<<Getmoney()<<std::endl
+    <<"Exp : "<<GetexpNow()<<"/"<<GetexpNext()<<std::endl<<std::endl
     <<"Equipment : "<<std::endl<<std::endl
     <<"Weapon : "<<Getweapon()->GetitemName()<<" ATK : "<<Getweapon()->Getatk()<<" MAG : "<<Getweapon()->Getmag()<<std::endl
     <<"Armor : "<<Getarmor()->GetitemName()<<" DEF : "<<Getarmor()->Getdef()<<std::endl;
@@ -172,8 +163,10 @@ void Player::moreMoney(int moneyEarn)
 void Player::levelUp()
 {
     Setlevel(Getlevel()+1);
-    Sethp(Gethp()+rand() % 50 + 30);
-    Setmp(Getmp()+rand() % 30 + 10);
+    SetmaxHp(Gethp()+rand() % 50 + 30);
+    Sethp(GetmaxHp());
+    SetmaxMp(Getmp()+rand() % 30 + 10);
+    Setmp(GetmaxMp());
     Setatk(Getatk()+rand() % 3 + 1);
     Setmag(Getmag()+rand() % 3 + 1);
     Setdef(Getdef()+rand() % 3 + 1);

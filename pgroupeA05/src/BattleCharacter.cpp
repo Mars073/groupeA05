@@ -1,9 +1,10 @@
 #include "BattleCharacter.h"
 
-BattleCharacter::BattleCharacter(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def):Character(charaName)
+BattleCharacter::BattleCharacter(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def):Character(charaName)
 {
     this->maxHp=maxHp;
     this->hp=hp;
+    this->maxMp=maxMp;
     this->mp=mp;
     this->atk=atk;
     this->mag=mag;
@@ -19,6 +20,7 @@ BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(b)
 {
     this->maxHp=b.maxHp;
     this->hp=b.hp;
+    this->maxMp=b.maxMp;
     this->mp=b.mp;
     this->atk=b.atk;
     this->mag=b.mag;
@@ -29,6 +31,7 @@ BattleCharacter& BattleCharacter::operator=(const BattleCharacter& b){
     if(this!=&b){
         this->maxHp=b.maxHp;
         this->hp=b.hp;
+        this->maxMp=b.maxMp;
         this->mp=b.mp;
         this->atk=b.atk;
         this->mag=b.mag;
@@ -66,6 +69,16 @@ int BattleCharacter::Gethp() const
 void BattleCharacter::Sethp(int val)
 {
     hp = val;
+}
+
+int BattleCharacter::GetmaxMp() const
+{
+    return maxMp;
+}
+
+void BattleCharacter::SetmaxMp(int val)
+{
+    maxMp = val;
 }
 
 int BattleCharacter::Getmp() const
@@ -111,12 +124,18 @@ void BattleCharacter::Setdef(int val)
 std::string BattleCharacter::str() const
 {
     std::stringstream sstr;
-    sstr<<Character::str()<<std::endl<<"level : "<<Getlevel()<<std::endl<<"Max hp : "<<GetmaxHp()<<std::endl<<"hp : "<<Gethp()<<std::endl<<"mp : "<<Getmp()<<std::endl<<"atk : "<<Getatk()<<std::endl<<"mag : "<<Getmag()<<std::endl<<"def : "<<Getdef();
+    sstr<<Character::str()<<std::endl
+    <<"Level : "<<Getlevel()<<std::endl
+    <<"Hp : "<<GetmaxHp()<<"/"<<Gethp()<<std::endl
+    <<"Mp : "<<GetmaxMp()<<"/"<<Getmp()<<std::endl
+    <<"Atk : "<<Getatk()<<std::endl
+    <<"Mag : "<<Getmag()<<std::endl
+    <<"Def : "<<Getdef();
     return sstr.str();
 }
 
 BattleCharacter* BattleCharacter::clone() const
 {
-    return new BattleCharacter(GetcharaName(),GetmaxHp(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef());
+    return new BattleCharacter(GetcharaName(),GetmaxHp(),Gethp(),GetmaxMp(),Getmp(),Getatk(),Getmag(),Getdef());
 }
 

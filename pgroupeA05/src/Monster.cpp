@@ -1,6 +1,6 @@
 #include "Monster.h"
 
-Monster::Monster(std::string charaName,int maxHp,int hp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld):BattleCharacter(charaName,maxHp,hp,mp,atk,mag,def)
+Monster::Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld):BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)
 {
     charaType="Monster";
     this->level=level;
@@ -54,7 +54,9 @@ void Monster::SetexpHeld(int val)
 std::string Monster::str() const
 {
     std::stringstream sstr;
-    sstr<<BattleCharacter::str()<<std::endl<<"money held : "<<GetmoneyHeld()<<std::endl<<"exp held : "<<GetexpHeld()<<std::endl;
+    sstr<<BattleCharacter::str()<<std::endl
+    <<"Money held : "<<GetmoneyHeld()<<std::endl
+    <<"Exp held : "<<GetexpHeld()<<std::endl;
     return sstr.str();
 }
 
@@ -73,5 +75,5 @@ void Monster::damageReceived(int dmg)
 
 Monster* Monster::clone() const
 {
-    return new Monster(GetcharaName(),GetmaxHp(),Gethp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetmoneyHeld(),GetexpHeld());
+    return new Monster(GetcharaName(),GetmaxHp(),Gethp(),GetmaxMp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetmoneyHeld(),GetexpHeld());
 }
