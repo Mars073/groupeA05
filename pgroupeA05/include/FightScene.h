@@ -46,6 +46,7 @@ class FightScene: public StrategyScene
 
     private:
         int activate;
+        int secondWindowsActivate;
         Player *player;
         Monster * monster;
         WindowsFight *fn;

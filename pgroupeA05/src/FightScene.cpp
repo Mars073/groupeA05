@@ -3,6 +3,7 @@
 FightScene::FightScene()
 {
     //ctor
+     //init pointer
      fn = new WindowsFight(0,200,200,200);
      fn2 = new WindowsFightInfo(225,200,200,200);
      fn3 = new WindowsFightInfo(450,200,200,200);
@@ -11,7 +12,7 @@ FightScene::FightScene()
      barMp->Setcolor(sf::Color(0,0,225));
      barMonsterLife = new Bar(50,20,200,20);
 
-
+     //add Windows in Vecteur
      vectWindows.push_back(fn);
      vectWindows.push_back(fn2);
      vectWindows.push_back(fn3);
@@ -232,24 +233,33 @@ void FightScene::eventHandler(Event ev)
             for(int i = 0; i<=fn->getNbBoutton();i++)
             {
 
-                if(fn->getVect().at(i)->getisActivate() == true)
-                {
-                    std::cout << "espace toucher" << std::endl;
-                    fn->getVect().at(i)->action();
-                    std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
-                    if(fn->getVect().at(i)->getIsMenuBoutton())
-                    {
 
-                        for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
-                        {
-                             std::cout << fn->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
-                             fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
-                             //fn2->fn->getVect().at(i)->getListButton().
-                        }
 
-                    }
 
-                }
+                 if(fn->getVect().at(i)->getisActivate() == true)
+                 {
+                     std::cout << "espace toucher" << std::endl;
+                     fn->getVect().at(i)->action();
+                     std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
+                     if(fn->getVect().at(i)->getIsMenuBoutton())
+                     {
+                      secondWindowsActivate = 1;
+
+                         for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
+                         {
+                              std::cout << fn->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
+                              fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                              //fn2->fn->getVect().at(i)->getListButton().
+                         }
+
+                     }
+                     else
+                     {
+                      secondWindowsActivate =0;
+                     }
+
+                 }
+
 
             }
 
@@ -263,7 +273,15 @@ void FightScene::eventHandler(Event ev)
             setActivate(0);
         }
         std::cout << fn->getNbBoutton()<< std::endl;
-        fn->activateButton(activate);
+        if(secondWindowsActivate ==0)
+        {
+         fn->activateButton(activate);
+        }
+        else
+        {
+         fn->activateButton(activate);
+        }
+
 
 
 }

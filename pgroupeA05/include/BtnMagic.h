@@ -1,0 +1,25 @@
+#ifndef BTNMAGIC_H
+#define BTNMAGIC_H
+
+#include <BtnWin.h>
+#include "Magic.h"
+
+
+class BtnMagic : public BtnWin
+{
+ public:
+  BtnMagic();
+  virtual ~BtnMagic();
+  BtnMagic(const BtnMagic& other);
+  BtnMagic& operator=(const BtnMagic& other);
+
+  Magic* Getmagic() { return magic; }
+  void Setmagic(Magic* val) { magic = val; }
+
+ protected:
+
+ private:
+  Magic* magic;
+};
+
+#endif // BTNMAGIC_H

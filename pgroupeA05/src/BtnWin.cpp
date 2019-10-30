@@ -206,4 +206,13 @@ FightManager* BtnWin::getFm()
 {
  return fm;
 }
+void BtnWin::setNomText(std::string nomText)
+{
+ this->nomText = nomText;
+ this->text.setString(nomText);
+}
+std::string BtnWin::getNomText()const
+{
+ return nomText;
+}
 

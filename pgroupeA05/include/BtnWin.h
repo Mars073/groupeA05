@@ -22,12 +22,15 @@ class BtnWin
         int getTailleX() const;
         int getTailleY()const;
         FightManager* getFm();
+        std::string getNomText const;
 
         void setPositionX(int pos);
         void setPositionY(int pos);
         void setTailleX(int pos);
         void setTailleY(int pos);
         void setFm(FightManager *fmNew);
+        void setNomText(std::string nomText);
+
 
 
         sf::RectangleShape getRect()const;
