@@ -22,7 +22,7 @@ class BtnWin
         int getTailleX() const;
         int getTailleY()const;
         FightManager* getFm();
-        std::string getNomText const;
+        std::string getNomText() const;
 
         void setPositionX(int pos);
         void setPositionY(int pos);

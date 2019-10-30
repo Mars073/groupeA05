@@ -8,7 +8,7 @@
 class BtnMagic : public BtnWin
 {
  public:
-  BtnMagic();
+  BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::string textButton);
   virtual ~BtnMagic();
   BtnMagic(const BtnMagic& other);
   BtnMagic& operator=(const BtnMagic& other);

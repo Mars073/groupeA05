@@ -3,6 +3,8 @@
 BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {
  //ctor
+
+ this->setNomText(textButton);
 }
 
 BtnMagic::~BtnMagic()
@@ -10,7 +12,7 @@ BtnMagic::~BtnMagic()
  //dtor
 }
 
-BtnMagic::BtnMagic(const BtnMagic& other)
+BtnMagic::BtnMagic(const BtnMagic& other):BtnWin(other)
 {
  //copy ctor
 }
