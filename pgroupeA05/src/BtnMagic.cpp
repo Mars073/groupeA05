@@ -10,6 +10,7 @@ BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::stri
 BtnMagic::~BtnMagic()
 {
  //dtor
+ delete(magic);
 }
 
 BtnMagic::BtnMagic(const BtnMagic& other):BtnWin(other)
@@ -22,4 +23,8 @@ BtnMagic& BtnMagic::operator=(const BtnMagic& rhs)
  if (this == &rhs) return *this; // handle self assignment
  //assignment operator
  return *this;
+}
+void BtnMagic::action()
+{
+
 }

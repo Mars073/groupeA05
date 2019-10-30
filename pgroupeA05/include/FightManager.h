@@ -17,6 +17,7 @@ class FightManager
         void setMonster(Monster *ms);
         Player* getPlayer()const;
         Monster* getMonster()const;
+        void DamageMagicPlayer(Magic *Magic);
 
     protected:
 

@@ -16,6 +16,8 @@ class BtnMagic : public BtnWin
   Magic* Getmagic() { return magic; }
   void Setmagic(Magic* val) { magic = val; }
 
+  void action();
+
  protected:
 
  private:
