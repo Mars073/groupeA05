@@ -12,6 +12,7 @@
 #include "Monster.h"
 #include "Model/SingletonGame.h"
 #include "Bar.h"
+#include "BtnMagic.h"
 
 
 class FightScene: public StrategyScene

@@ -17,20 +17,20 @@ FightScene::FightScene()
      vectWindows.push_back(fn2);
      vectWindows.push_back(fn3);
      //Creation of button
-     btnAttack *btnMagie = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+0,80,50,"Magic");
+     BtnMagic *btnMagie = new BtnMagic(fn->getPositionX()+10,fn->getPositionY()+0,80,50,"Magic");
      btnMagie->setIsMenuBoutton(true);
      btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+50,80,50,"Attack");
      btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+100,80,50,"Defend");
      btnAttack *btnObjet = new btnAttack(fn2->getPositionX()+10,fn2->getPositionY()+150,80,50,"Object");
 
-     btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
-     btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
-     btnMagie->AddButton(btnAttack2);
-     btnMagie->AddButton(btnAttack3);
+     //btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
+     //btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
+     //btnMagie->AddButton(btnAttack2);
+     //btnMagie->AddButton(btnAttack3);
      fm = new FightManager();
      //Add Button  in fightManager
      fn->addButton(new btnAttack(*(btnAtt)));
-     fn->addButton(new btnAttack(*(btnMagie)));
+     fn->addButton(new BtnMagic(*(btnMagie)));
      fn->addButton(new btnAttack(*(btnDefend)));
      fn->addButton(new btnAttack(*(btnObjet)));
      //initialise fightManager in button
@@ -46,7 +46,7 @@ FightScene::FightScene()
 
      //Delete pointer
      delete btnAtt;
-     delete btnMagie;
+     //delete btnMagie;
      delete btnDefend;
      delete btnObjet;
 
