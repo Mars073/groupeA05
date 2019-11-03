@@ -215,4 +215,18 @@ std::string BtnWin::getNomText()const
 {
  return nomText;
 }
+bool BtnWin::operator==(const BtnWin a)
+{
+  return this->equals(a);
+}
+bool BtnWin::equals(const BtnWin b)
+{
+ return this->getNomText() == b.getNomText();
+}
+bool BtnWin::equals(BtnWin* b)
+{
+ return this->getNomText() == b->getNomText();
+}
+
+
 

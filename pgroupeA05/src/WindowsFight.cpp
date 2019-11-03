@@ -107,7 +107,10 @@ void WindowsFight::setFm(FightManager *newfm)
 {
     fm = newfm;
 }
-
+void WindowsFight::ClearWindows()
+{
+ this->vectorButton.clear();
+}
 
 
 

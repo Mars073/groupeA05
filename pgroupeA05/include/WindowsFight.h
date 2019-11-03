@@ -32,6 +32,8 @@ class WindowsFight
 
 
         void retirerBouton(int index);
+        //Clear button in Windows
+        void ClearWindows();
 
 
 

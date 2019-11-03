@@ -177,6 +177,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
            vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
             vectWindows.at(j)->getVect().at(activate)->getDescription();
+
         }
 
        }
@@ -226,9 +227,37 @@ void FightScene::eventHandler(Event ev)
         {
             //rect.move(-1,0);
         }
-
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if(secondWindowsActivate == 1)
         {
+            if(activate < 0)
+            {
+                activate =fn2->getNbBoutton();
+            }
+            else if(activate > fn2->getNbBoutton())
+            {
+                setActivate(0);
+            }
+               std::cout << fn2->getNbBoutton()<< std::endl;
+
+        }
+        else
+        {
+             if(activate < 0)
+           {
+               activate =fn->getNbBoutton();
+           }
+           else if(activate > fn->getNbBoutton())
+           {
+               setActivate(0);
+           }
+           std::cout << fn->getNbBoutton()<< std::endl;
+
+        }
+
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+
 
             for(int i = 0; i<=fn->getNbBoutton();i++)
             {
@@ -243,12 +272,27 @@ void FightScene::eventHandler(Event ev)
                      std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
                      if(fn->getVect().at(i)->getIsMenuBoutton())
                      {
+                      fn2->ClearWindows();
                       secondWindowsActivate = 1;
+                      //check Doublon ERREUR
 
                          for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
                          {
-                              std::cout << fn->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
-                              fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                              //std::cout << fn2->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
+                              bool isCopie = false;
+                               for(int t = 0;t <fn2->getVect().size();t++)
+                               {
+                                 if(fn2->getVect().at(t)->equals(fn->getVect().at(i)->getListButton().at(j)))
+                                 {
+                                  isCopie = true;
+                                 }
+                               }
+                               if(isCopie == false)
+                               {
+                                fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                               }
+
+
                               //fn2->fn->getVect().at(i)->getListButton().
                          }
 
@@ -264,22 +308,31 @@ void FightScene::eventHandler(Event ev)
             }
 
         }
-        if(activate < 0)
+        if(secondWindowsActivate == 1)
         {
-            activate =fn->getNbBoutton();
-        }
-        else if(activate >= fn->getNbBoutton())
-        {
-            setActivate(0);
-        }
-        std::cout << fn->getNbBoutton()<< std::endl;
-        if(secondWindowsActivate ==0)
-        {
-         fn->activateButton(activate);
+            if(activate < 0)
+            {
+                activate =fn2->getNbBoutton();
+            }
+            else if(activate >= fn2->getNbBoutton())
+            {
+                setActivate(0);
+            }
+               std::cout << fn2->getNbBoutton()<< std::endl;
+
         }
         else
         {
-         fn->activateButton(activate);
+             if(activate < 0)
+           {
+               activate =fn->getNbBoutton();
+           }
+           else if(activate > fn->getNbBoutton())
+           {
+               setActivate(0);
+           }
+           std::cout << fn->getNbBoutton()<< std::endl;
+
         }
 
 

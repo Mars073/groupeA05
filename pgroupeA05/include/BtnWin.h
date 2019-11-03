@@ -58,6 +58,10 @@ class BtnWin
         sf::Text getText();
         void execute();
 
+        bool operator==(const BtnWin a);
+        bool equals(const BtnWin b);
+        bool equals(BtnWin* b);
+
 
 
     protected:
