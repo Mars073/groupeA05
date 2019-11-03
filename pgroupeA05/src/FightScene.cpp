@@ -4,6 +4,8 @@ FightScene::FightScene()
 {
     //ctor
      //init pointer
+     activate = 0;
+     secondWindowsActivate = 0;
      fn = new WindowsFight(0,200,200,200);
      fn2 = new WindowsFightInfo(225,200,200,200);
      fn3 = new WindowsFightInfo(450,200,200,200);
@@ -158,8 +160,8 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         target.draw(vectWindows.at(j)->getRect());
         if(vectWindows.at(j)->getNbBoutton()+1 > 0)
         {
-            vectWindows.at(j)->activateButton(activate);
-            vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
+            vectWindows.at(secondWindowsActivate)->activateButton(activate);
+            vectWindows.at(secondWindowsActivate)->getVect().at(activate)->setIsActivate(true);
 
 
 
@@ -175,8 +177,8 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
            }
 
-           vectWindows.at(j)->getVect().at(activate)->setIsActivate(true);
-            vectWindows.at(j)->getVect().at(activate)->getDescription();
+           vectWindows.at(secondWindowsActivate)->getVect().at(activate)->setIsActivate(true);
+            vectWindows.at(secondWindowsActivate)->getVect().at(activate)->getDescription();
 
         }
 
@@ -209,6 +211,13 @@ void FightScene::eventHandler(Event ev)
 {
 
 
+
+
+
+
+
+
+
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             //rect.move(0,1);
@@ -226,32 +235,6 @@ void FightScene::eventHandler(Event ev)
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
             //rect.move(-1,0);
-        }
-        if(secondWindowsActivate == 1)
-        {
-            if(activate < 0)
-            {
-                activate =fn2->getNbBoutton();
-            }
-            else if(activate > fn2->getNbBoutton())
-            {
-                setActivate(0);
-            }
-               std::cout << fn2->getNbBoutton()<< std::endl;
-
-        }
-        else
-        {
-             if(activate < 0)
-           {
-               activate =fn->getNbBoutton();
-           }
-           else if(activate > fn->getNbBoutton())
-           {
-               setActivate(0);
-           }
-           std::cout << fn->getNbBoutton()<< std::endl;
-
         }
 
 
@@ -299,7 +282,7 @@ void FightScene::eventHandler(Event ev)
                      }
                      else
                      {
-                      secondWindowsActivate =0;
+                      //secondWindowsActivate =0;
                      }
 
                  }
@@ -308,13 +291,14 @@ void FightScene::eventHandler(Event ev)
             }
 
         }
-        if(secondWindowsActivate == 1)
+
+       if(secondWindowsActivate == 1)
         {
             if(activate < 0)
             {
                 activate =fn2->getNbBoutton();
             }
-            else if(activate >= fn2->getNbBoutton())
+            else if(activate > fn2->getNbBoutton())
             {
                 setActivate(0);
             }

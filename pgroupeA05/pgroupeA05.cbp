@@ -65,6 +65,7 @@
 		<Unit filename="include/Bar.h" />
 		<Unit filename="include/BattleCharacter.h" />
 		<Unit filename="include/Bestiary.h" />
+		<Unit filename="include/BtnMagic.h" />
 		<Unit filename="include/BtnWin.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/FightManager.h" />
@@ -72,6 +73,8 @@
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="include/Heal.h" />
+		<Unit filename="include/HealItem.h" />
+		<Unit filename="include/HealMp.h" />
 		<Unit filename="include/Inventory.h" />
 		<Unit filename="include/Item.h" />
 		<Unit filename="include/Magic.h" />
@@ -204,11 +207,14 @@
 		<Unit filename="src/Bar.cpp" />
 		<Unit filename="src/BattleCharacter.cpp" />
 		<Unit filename="src/Bestiary.cpp" />
+		<Unit filename="src/BtnMagic.cpp" />
 		<Unit filename="src/BtnWin.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/FightManager.cpp" />
 		<Unit filename="src/FightScene.cpp" />
 		<Unit filename="src/Heal.cpp" />
+		<Unit filename="src/HealItem.cpp" />
+		<Unit filename="src/HealMp.cpp" />
 		<Unit filename="src/Inventory.cpp" />
 		<Unit filename="src/Item.cpp" />
 		<Unit filename="src/Magic.cpp" />
