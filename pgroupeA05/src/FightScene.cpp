@@ -6,6 +6,7 @@ FightScene::FightScene()
      //init pointer
      activate = 0;
      secondWindowsActivate = 0;
+     isEventActive = true;
      fn = new WindowsFight(0,200,200,200);
      fn2 = new WindowsFightInfo(225,200,200,200);
      fn3 = new WindowsFightInfo(450,200,200,200);
@@ -237,61 +238,64 @@ void FightScene::eventHandler(Event ev)
             //rect.move(-1,0);
         }
 
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if(isEventActive)
         {
 
 
-            for(int i = 0; i<=fn->getNbBoutton();i++)
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
+                isEventActive=!Cooldown::isTimePassed(timeEventIsNotActive,0.1);
+
+                for(int i = 0; i<=fn->getNbBoutton();i++)
+                {
 
 
 
 
-                 if(fn->getVect().at(i)->getisActivate() == true)
-                 {
-                     std::cout << "espace toucher" << std::endl;
-                     fn->getVect().at(i)->action();
-                     std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
-                     if(fn->getVect().at(i)->getIsMenuBoutton())
+                     if(fn->getVect().at(i)->getisActivate() == true)
                      {
-                      fn2->ClearWindows();
-                      secondWindowsActivate = 1;
-                      //check Doublon ERREUR
-
-                         for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
+                         std::cout << "espace toucher" << std::endl;
+                         fn->getVect().at(i)->action();
+                         std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
+                         if(fn->getVect().at(i)->getIsMenuBoutton())
                          {
-                              //std::cout << fn2->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
-                              bool isCopie = false;
-                               for(int t = 0;t <fn2->getVect().size();t++)
-                               {
-                                 if(fn2->getVect().at(t)->equals(fn->getVect().at(i)->getListButton().at(j)))
-                                 {
-                                  isCopie = true;
-                                 }
-                               }
-                               if(isCopie == false)
-                               {
-                                fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
-                               }
+                          fn2->ClearWindows();
+                          secondWindowsActivate = 1;
+                          //check Doublon ERREUR
+
+                             for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
+                             {
+                                  //std::cout << fn2->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
+                                  bool isCopie = false;
+                                   for(int t = 0;t <fn2->getVect().size();t++)
+                                   {
+                                     if(fn2->getVect().at(t)->equals(fn->getVect().at(i)->getListButton().at(j)))
+                                     {
+                                      isCopie = true;
+                                     }
+                                   }
+                                   if(isCopie == false)
+                                   {
+                                    fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                                   }
 
 
-                              //fn2->fn->getVect().at(i)->getListButton().
+                                  //fn2->fn->getVect().at(i)->getListButton().
+                             }
+
+                         }
+                         else
+                         {
+                          //secondWindowsActivate =0;
                          }
 
                      }
-                     else
-                     {
-                      //secondWindowsActivate =0;
-                     }
 
-                 }
 
+                }
 
             }
-
         }
-
        if(secondWindowsActivate == 1)
         {
             if(activate < 0)
@@ -472,6 +476,14 @@ Bar* FightScene::getBarMonsterLife()const
 sf::Texture FightScene::getTextureBackGroud()const
 {
  return textureBackGroud;
+}
+float FightScene::getTimeEventIsNotActive()const
+{
+    return timeEventIsNotActive;
+}
+void FightScene::setTimeEventIsNotActive(float newTime)
+{
+    timeEventIsNotActive = newTime;
 }
 
 

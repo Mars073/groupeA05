@@ -13,6 +13,7 @@
 #include "Model/SingletonGame.h"
 #include "Bar.h"
 #include "BtnMagic.h"
+#include "Cooldown.h"
 
 
 class FightScene: public StrategyScene
@@ -38,6 +39,10 @@ class FightScene: public StrategyScene
         sf::Texture getSpriteBackGroud()const;
         void setSpriteBackGroud(std::string path);
 
+        float getTimeEventIsNotActive()const;
+        void setTimeEventIsNotActive(float newTime);
+
+
 
 
 
@@ -48,6 +53,8 @@ class FightScene: public StrategyScene
     private:
         int activate;
         int secondWindowsActivate;
+        bool isEventActive;
+        float timeEventIsNotActive;
         Player *player;
         Monster * monster;
         WindowsFight *fn;
