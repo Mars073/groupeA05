@@ -5,7 +5,7 @@
 		<Option title="pgroupeA05" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="src\;" />
+		<Option virtualFolders="Scenes\;Scenes\Headers;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/pgroupeA05" prefix_auto="1" extension_auto="1" />
@@ -70,9 +70,7 @@
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Cooldown.h" />
 		<Unit filename="include/FightManager.h" />
-		<Unit filename="include/FightScene.h">
-			<Option virtualFolder="src/" />
-		</Unit>
+		<Unit filename="include/FightScene.h"/>
 		<Unit filename="include/Heal.h" />
 		<Unit filename="include/HealItem.h" />
 		<Unit filename="include/HealMp.h" />
@@ -192,12 +190,24 @@
 		<Unit filename="include/Util/TexturesManager.h" />
 		<Unit filename="include/Util/ini.h" />
 		<Unit filename="include/View/DrawablePlayer.h" />
-		<Unit filename="include/View/Scenes/ConcreteStrategyGameOverScene.h" />
-		<Unit filename="include/View/Scenes/ConcreteStrategyHomeScene.h" />
-		<Unit filename="include/View/Scenes/ConcreteStrategyLoadScreenScene.h" />
-		<Unit filename="include/View/Scenes/ConcreteStrategyMapScene.h" />
-		<Unit filename="include/View/Scenes/ConcreteStrategyMenuScene.h" />
-		<Unit filename="include/View/Scenes/WindowStatus.h" />
+		<Unit filename="include/View/Scenes/ConcreteStrategyGameOverScene.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
+		<Unit filename="include/View/Scenes/ConcreteStrategyHomeScene.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
+		<Unit filename="include/View/Scenes/ConcreteStrategyLoadScreenScene.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
+		<Unit filename="include/View/Scenes/ConcreteStrategyMapScene.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
+		<Unit filename="include/View/Scenes/ConcreteStrategyMenuScene.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
+		<Unit filename="include/View/Scenes/WindowStatus.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
 		<Unit filename="include/View/StrategyScene.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WindowsFight.h" />
@@ -237,12 +247,24 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/View/DrawablePlayer.cpp" />
-		<Unit filename="src/View/Scenes/ConcreteStrategyGameOverScene.cpp" />
-		<Unit filename="src/View/Scenes/ConcreteStrategyHomeScene.cpp" />
-		<Unit filename="src/View/Scenes/ConcreteStrategyLoadScreenScene.cpp" />
-		<Unit filename="src/View/Scenes/ConcreteStrategyMapScene.cpp" />
-		<Unit filename="src/View/Scenes/ConcreteStrategyMenuScene.cpp" />
-		<Unit filename="src/View/Scenes/WindowStatus.cpp" />
+		<Unit filename="src/View/Scenes/ConcreteStrategyGameOverScene.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
+		<Unit filename="src/View/Scenes/ConcreteStrategyHomeScene.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
+		<Unit filename="src/View/Scenes/ConcreteStrategyLoadScreenScene.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
+		<Unit filename="src/View/Scenes/ConcreteStrategyMapScene.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
+		<Unit filename="src/View/Scenes/ConcreteStrategyMenuScene.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
+		<Unit filename="src/View/Scenes/WindowStatus.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
 		<Unit filename="src/View/StrategyScene.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WindowsFight.cpp" />
