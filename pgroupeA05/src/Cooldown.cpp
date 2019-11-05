@@ -21,16 +21,20 @@ Cooldown& Cooldown::operator=(const Cooldown& rhs)
     //assignment operator
     return *this;
 }
-bool Cooldown::isTimePassed(float &valActuel,float maxVal)
+bool Cooldown::isTimePassed(float &valActuel,float maxVal,bool isCooldown)
 {
-        sf::Clock cl;
-        sf::Time elapsed = cl.getElapsedTime();
-        valActuel-=elapsed.asSeconds();
-        cl.restart();
-        if(valActuel<0)
+
+        if(isCooldown == true)
         {
-            valActuel = maxVal;
-            return true;
+            sf::Clock cl;
+            sf::Time elapsed = cl.getElapsedTime();
+            valActuel-=elapsed.asSeconds();
+            cl.restart();
+            if(valActuel<0)
+            {
+                valActuel = maxVal;
+                return true;
+            }
         }
         return false;
 }

@@ -41,7 +41,6 @@ void FightManager::DamageMagicPlayer(Magic *magic)
     }
     std::cout <<pl->damageDone()<<" nombre de domage du joueur"<<endl;
     ms->damageReceived(magic->GetbaseDamage());
-    pl->reduceMp(magic->GetmName());
     this->DamageMonster();
 }
 void FightManager::DamageMonster()

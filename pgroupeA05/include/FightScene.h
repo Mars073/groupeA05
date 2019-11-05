@@ -48,18 +48,22 @@ class FightScene: public StrategyScene
 
 
 
+
+
     protected:
 
     private:
         int activate;
         int secondWindowsActivate;
         bool isEventActive;
+        bool isCooldown;
         float timeEventIsNotActive;
         Player *player;
         Monster * monster;
         WindowsFight *fn;
         WindowsFight *fn2;
         WindowsFightInfo *fn3;
+
         std::vector<WindowsFight*>vectWindows;
         Bar *barLife;
         Bar *barMp;

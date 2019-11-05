@@ -20,7 +20,7 @@ class Cooldown
          *  \return A reference to this
          */
         Cooldown& operator=(const Cooldown& other);
-        static bool isTimePassed(float &valActuel,float maxVal);
+        static bool isTimePassed(float &valActuel,float maxVal,bool isCooldown);
 
     protected:
 

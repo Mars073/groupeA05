@@ -7,6 +7,7 @@ FightScene::FightScene()
      activate = 0;
      secondWindowsActivate = 0;
      isEventActive = true;
+     isCooldown = false;
      fn = new WindowsFight(0,200,200,200);
      fn2 = new WindowsFightInfo(225,200,200,200);
      fn3 = new WindowsFightInfo(450,200,200,200);
@@ -200,7 +201,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
        float maxxMHp = fm->getMonster()->GetmaxHp();
 
 
-       std::cout <<barLife->GetsizeX()<<"\n";
+       //std::cout <<secondWindowsActivate<<endl;
        //Change the size of bar
        barLife->setBarLifeTaille(current,maxx);
        barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
@@ -237,29 +238,31 @@ void FightScene::eventHandler(Event ev)
         {
             //rect.move(-1,0);
         }
-
+        isEventActive=!Cooldown::isTimePassed(timeEventIsNotActive,5,isCooldown);
         if(isEventActive)
         {
 
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
-                isEventActive=!Cooldown::isTimePassed(timeEventIsNotActive,0.1);
 
-                for(int i = 0; i<=fn->getNbBoutton();i++)
+                isCooldown = true;
+                for(int i = 0; i<=vectWindows.at(secondWindowsActivate)->getNbBoutton();i++)
                 {
 
 
+                    std::cout <<secondWindowsActivate<<endl;
 
-
-                     if(fn->getVect().at(i)->getisActivate() == true)
+                     if(this->vectWindows.at(secondWindowsActivate)->getVect().at(i)->getisActivate() == true)
                      {
+
+
                          std::cout << "espace toucher" << std::endl;
-                         fn->getVect().at(i)->action();
-                         std::cout << fn->getVect().at(i)->getIsMenuBoutton() <<"isMenu" <<std::endl;
+                         vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
+                         std::cout <<"isMenu" <<std::endl;
                          if(fn->getVect().at(i)->getIsMenuBoutton())
                          {
-                          fn2->ClearWindows();
+                            fn2->ClearWindows();
                           secondWindowsActivate = 1;
                           //check Doublon ERREUR
 
@@ -283,12 +286,13 @@ void FightScene::eventHandler(Event ev)
                                   //fn2->fn->getVect().at(i)->getListButton().
                              }
 
+
                          }
                          else
                          {
-                          //secondWindowsActivate =0;
+                          secondWindowsActivate =0;
                          }
-
+                        std::cout << "verif doublons" << std::endl;
                      }
 
 
@@ -296,6 +300,7 @@ void FightScene::eventHandler(Event ev)
 
             }
         }
+        //isCooldown = isEventActive;
        if(secondWindowsActivate == 1)
         {
             if(activate < 0)

@@ -36,10 +36,16 @@ void BtnMagic::action()
    BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+220,200+(50*i),80,50,"p");
    btnMagCreate->Setmagic(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i));
    btnMagCreate->setNomText(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->GetmName());
+   btnMagCreate->setFm(this->getFm());
    this->AddButton(btnMagCreate);
 
   }
-
+ }
+ else
+ {
+     std::cout<<"magie util"<< std::endl;
+     this->getFm()->DamageMagicPlayer(magic);
+     this->getFm()->DamageMonster();
  }
 
 }

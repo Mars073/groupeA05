@@ -68,6 +68,7 @@
 		<Unit filename="include/BtnMagic.h" />
 		<Unit filename="include/BtnWin.h" />
 		<Unit filename="include/Character.h" />
+		<Unit filename="include/Cooldown.h" />
 		<Unit filename="include/FightManager.h" />
 		<Unit filename="include/FightScene.h">
 			<Option virtualFolder="src/" />
@@ -210,6 +211,7 @@
 		<Unit filename="src/BtnMagic.cpp" />
 		<Unit filename="src/BtnWin.cpp" />
 		<Unit filename="src/Character.cpp" />
+		<Unit filename="src/Cooldown.cpp" />
 		<Unit filename="src/FightManager.cpp" />
 		<Unit filename="src/FightScene.cpp" />
 		<Unit filename="src/Heal.cpp" />
