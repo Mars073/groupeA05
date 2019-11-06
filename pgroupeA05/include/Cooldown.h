@@ -1,6 +1,7 @@
 #ifndef COOLDOWN_H
 #define COOLDOWN_H
 
+#include "iostream"
 #include <SFML/System.hpp>
 
 

@@ -50,6 +50,8 @@ class FightScene: public StrategyScene
 
 
 
+
+
     protected:
 
     private:
@@ -58,6 +60,7 @@ class FightScene: public StrategyScene
         bool isEventActive;
         bool isCooldown;
         float timeEventIsNotActive;
+        sf::Clock clock;
         Player *player;
         Monster * monster;
         WindowsFight *fn;
