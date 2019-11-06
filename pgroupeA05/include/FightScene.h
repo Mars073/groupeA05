@@ -13,6 +13,7 @@
 #include "Model/SingletonGame.h"
 #include "Bar.h"
 #include "BtnMagic.h"
+#include "BtnObject.h"
 #include "Cooldown.h"
 
 

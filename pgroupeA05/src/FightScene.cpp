@@ -9,9 +9,9 @@ FightScene::FightScene()
      isEventActive = true;
      isCooldown = false;
      timeEventIsNotActive = 5.0f;
-     fn = new WindowsFight(0,200,200,200);
-     fn2 = new WindowsFightInfo(225,200,200,200);
-     fn3 = new WindowsFightInfo(450,200,200,200);
+     fn = new WindowsFight(0,250,200,200);
+     fn2 = new WindowsFightInfo(225,250,200,200);
+     fn3 = new WindowsFightInfo(450,250,200,200);
      barLife = new Bar(400,20,200,20);
      barMp = new Bar(400,150,200,20);
      barMp->Setcolor(sf::Color(0,0,225));
@@ -26,7 +26,8 @@ FightScene::FightScene()
      btnMagie->setIsMenuBoutton(true);
      btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+50,80,50,"Attack");
      btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+100,80,50,"Defend");
-     btnAttack *btnObjet = new btnAttack(fn2->getPositionX()+10,fn2->getPositionY()+150,80,50,"Object");
+     BtnObject *btnObjet = new BtnObject(fn->getPositionX()+10,fn->getPositionY()+150,80,50,"Object");
+     btnObjet->setIsMenuBoutton(true);
 
      //btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
      //btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
@@ -34,10 +35,10 @@ FightScene::FightScene()
      //btnMagie->AddButton(btnAttack3);
      fm = new FightManager();
      //Add Button  in fightManager
-     fn->addButton(new btnAttack(*(btnAtt)));
-     fn->addButton(new BtnMagic(*(btnMagie)));
-     fn->addButton(new btnAttack(*(btnDefend)));
-     fn->addButton(new btnAttack(*(btnObjet)));
+     fn->addButton(btnAtt);
+     fn->addButton(btnMagie);
+     fn->addButton(btnDefend);
+     fn->addButton(btnObjet);
      //initialise fightManager in button
      for(int i = 0;i<fn->getVect().size();i++)
      {
@@ -50,10 +51,7 @@ FightScene::FightScene()
      sprintBackGroud.setTexture(textureBackGroud);
 
      //Delete pointer
-     delete btnAtt;
-     //delete btnMagie;
-     delete btnDefend;
-     delete btnObjet;
+
 
 }
 
@@ -324,9 +322,9 @@ void FightScene::eventHandler(Event ev)
         {
              if(activate < 0)
            {
-               activate =fn->getNbBoutton()-1;
+               activate =fn->getNbBoutton();
            }
-           else if(activate > fn->getNbBoutton()-1)
+           else if(activate > fn->getNbBoutton())
            {
                setActivate(0);
            }
