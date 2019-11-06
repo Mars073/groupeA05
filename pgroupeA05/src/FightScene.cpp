@@ -9,9 +9,9 @@ FightScene::FightScene()
      isEventActive = true;
      isCooldown = false;
      timeEventIsNotActive = 5.0f;
-     fn = new WindowsFight(0,250,200,200);
-     fn2 = new WindowsFightInfo(225,250,200,200);
-     fn3 = new WindowsFightInfo(450,250,200,200);
+     fn = new WindowsFight(0,250,300,200);
+     fn2 = new WindowsFightInfo(325,250,300,200);
+     fn3 = new WindowsFightInfo(50,190,550,40);
      barLife = new Bar(400,20,200,20);
      barMp = new Bar(400,150,200,20);
      barMp->Setcolor(sf::Color(0,0,225));

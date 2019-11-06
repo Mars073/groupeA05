@@ -33,7 +33,7 @@ void BtnMagic::action()
  {
   for(int i = 0 ;i<this->getFm()->getPlayer()->Getspells()->GetspellsHeld().size();i++)
   {
-   BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+220,250+(50*i),80,50,"p");
+   BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+325,250+(50*i),80,50,"p");
    btnMagCreate->Setmagic(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i));
    btnMagCreate->setNomText(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->GetmName());
    btnMagCreate->setFm(this->getFm());
