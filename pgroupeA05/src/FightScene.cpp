@@ -22,11 +22,11 @@ FightScene::FightScene()
      vectWindows.push_back(fn2);
      vectWindows.push_back(fn3);
      //Creation of button
-     BtnMagic *btnMagie = new BtnMagic(fn->getPositionX()+10,fn->getPositionY()+0,80,50,"Magic");
+     BtnMagic *btnMagie = new BtnMagic(fn->getPositionX()+10,fn->getPositionY()+7,70,35,"Magic");
      btnMagie->setIsMenuBoutton(true);
-     btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+50,80,50,"Attack");
-     btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+100,80,50,"Defend");
-     BtnObject *btnObjet = new BtnObject(fn->getPositionX()+10,fn->getPositionY()+150,80,50,"Object");
+     btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+57,70,35,"Attack");
+     btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+107,70,35,"Defend");
+     BtnObject *btnObjet = new BtnObject(fn->getPositionX()+10,fn->getPositionY()+157,70,35,"Object");
      btnObjet->setIsMenuBoutton(true);
 
      //btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");

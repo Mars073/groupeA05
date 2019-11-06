@@ -34,7 +34,7 @@ void BtnObject::action()
     for(int i = 0 ;i<this->getFm()->getPlayer()->Getinventory()->Getbag().size();i++)
     {
       if(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemType()=="Heal" || this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemType()=="HealMp"){
-           BtnObject *btnObjCreate = new BtnObject(this->getPositionX()+220,250+(50*i),80,50,"p");
+           BtnObject *btnObjCreate = new BtnObject(this->getPositionX()+325,250+(50*i),70,35,"p");
            btnObjCreate->setItem(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i));
            btnObjCreate->setNomText(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemName());
            btnObjCreate->setFm(this->getFm());
