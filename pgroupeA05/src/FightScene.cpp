@@ -245,7 +245,7 @@ void FightScene::eventHandler(Event ev)
 
 
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && clock.getElapsedTime().asSeconds() >3)
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && clock.getElapsedTime().asSeconds() >0.5)
             {
                 clock.restart();
                 isCooldown = true;
@@ -311,7 +311,7 @@ void FightScene::eventHandler(Event ev)
         {
             if(activate < 0)
             {
-                activate =fn2->getNbBoutton();
+                activate =fn2->getNbBoutton()-1;
             }
             else if(activate > fn2->getNbBoutton())
             {
@@ -324,13 +324,13 @@ void FightScene::eventHandler(Event ev)
         {
              if(activate < 0)
            {
-               activate =fn->getNbBoutton();
+               activate =fn->getNbBoutton()-1;
            }
-           else if(activate > fn->getNbBoutton())
+           else if(activate > fn->getNbBoutton()-1)
            {
                setActivate(0);
            }
-           std::cout << fn->getNbBoutton()<< std::endl;
+           std::cout << activate<< std::endl;
 
         }
 

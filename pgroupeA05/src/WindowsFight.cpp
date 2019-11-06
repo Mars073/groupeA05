@@ -83,7 +83,7 @@ void WindowsFight::activateButton(int index)
     {
         index = 0;
     }
-    for(int i = 0;i < vectorButton.size()-1;i++)
+    for(int i = 0;i < vectorButton.size();i++)
     {
         vectorButton.at(i)->changeColorDesactivate();
         vectorButton.at(i)->Desativate();
