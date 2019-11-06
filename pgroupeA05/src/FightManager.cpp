@@ -40,7 +40,7 @@ void FightManager::DamageMagicPlayer(Magic *magic)
         std::cout <<"il y a pas de monstre"<<endl;
     }
     std::cout <<pl->damageDone()<<" nombre de domage du joueur"<<endl;
-    ms->damageReceived(magic->GetbaseDamage());
+    ms->damageReceived(pl->magicalDamageDone(magic->GetmName()));
     this->DamageMonster();
 }
 void FightManager::DamageMonster()
