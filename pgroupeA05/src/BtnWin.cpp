@@ -6,7 +6,7 @@ BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string t
     this->rect.setPosition(sf::Vector2f(positionX,positionY));
     this->rect.setSize(sf::Vector2f(tailleX,tailleY));
     this->rect.setOutlineThickness(5);
-    this->rect.setOutlineColor(sf::Color(0,0,255));
+    this->rect.setOutlineColor(sf::Color(255,255,255));
     nomText = textButton;
     this->positionX = positionX;
     this->positionY =positionY;

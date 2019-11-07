@@ -30,6 +30,7 @@ bool Cooldown::isTimePassed(float &valActuel,float maxVal,bool isCooldown)
             sf::Time elapsed = cl.getElapsedTime();
             valActuel-=elapsed.asSeconds();
             cl.restart();
+            std::cout <<valActuel<<std::endl;
             if(valActuel<0)
             {
                 valActuel = maxVal;

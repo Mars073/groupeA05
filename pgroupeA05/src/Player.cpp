@@ -268,19 +268,20 @@ void Player::reduceMp(std::string magicName)
     }
 }
 
-void Player::heals(int amountHeal, std::string typeHeal)
+void Player::heals(Item* item)
 {
-    if(typeHeal=="hp"){
-        Sethp(Gethp()+amountHeal);
+    if(item->GetitemType()=="Heal"){
+        Sethp(Gethp()+(dynamic_cast<HealItem*>(item)->GetamountHealed()));
         if(Gethp()>GetmaxHp()){
             Sethp(GetmaxHp());
         }
     }
-    else if(typeHeal=="mp"){
-        Setmp(Getmp()+amountHeal);
+    else if(item->GetitemType()=="HealMp"){
+        Setmp(Getmp()+(dynamic_cast<HealItem*>(item)->GetamountHealed()));
         if(Getmp()>GetmaxMp()){
             Setmp(GetmaxMp());
         }
     }
+    Getinventory()->deleteItem(item->GetitemName());
 }
 

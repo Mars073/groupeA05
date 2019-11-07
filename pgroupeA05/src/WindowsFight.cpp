@@ -9,9 +9,9 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
 {
     this->rect.setPosition(sf::Vector2f(positionX,positionY));
     this->rect.setSize(sf::Vector2f(tailleX,tailleY));
-    this->rect.setOutlineThickness(5);
-    this->rect.setOutlineColor(sf::Color(0,200,0));
-    this->rect.setFillColor(sf::Color(255,0,0));
+    this->rect.setOutlineThickness(2);
+    this->rect.setOutlineColor(sf::Color(255,255,255));
+    this->rect.setFillColor(sf::Color(0,0,255));
     this->indexSelectionner = 0;
 
     //initialisation cf attribut
@@ -83,7 +83,7 @@ void WindowsFight::activateButton(int index)
     {
         index = 0;
     }
-    for(int i = 0;i < vectorButton.size()-1;i++)
+    for(int i = 0;i < vectorButton.size();i++)
     {
         vectorButton.at(i)->changeColorDesactivate();
         vectorButton.at(i)->Desativate();

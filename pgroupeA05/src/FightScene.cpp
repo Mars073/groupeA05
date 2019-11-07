@@ -8,9 +8,10 @@ FightScene::FightScene()
      secondWindowsActivate = 0;
      isEventActive = true;
      isCooldown = false;
-     fn = new WindowsFight(0,200,200,200);
-     fn2 = new WindowsFightInfo(225,200,200,200);
-     fn3 = new WindowsFightInfo(450,200,200,200);
+     timeEventIsNotActive = 5.0f;
+     fn = new WindowsFight(0,250,300,200);
+     fn2 = new WindowsFightInfo(325,250,300,200);
+     fn3 = new WindowsFightInfo(50,190,550,40);
      barLife = new Bar(400,20,200,20);
      barMp = new Bar(400,150,200,20);
      barMp->Setcolor(sf::Color(0,0,225));
@@ -21,11 +22,12 @@ FightScene::FightScene()
      vectWindows.push_back(fn2);
      vectWindows.push_back(fn3);
      //Creation of button
-     BtnMagic *btnMagie = new BtnMagic(fn->getPositionX()+10,fn->getPositionY()+0,80,50,"Magic");
+     BtnMagic *btnMagie = new BtnMagic(fn->getPositionX()+10,fn->getPositionY()+7,70,35,"Magic");
      btnMagie->setIsMenuBoutton(true);
-     btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+50,80,50,"Attack");
-     btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+100,80,50,"Defend");
-     btnAttack *btnObjet = new btnAttack(fn2->getPositionX()+10,fn2->getPositionY()+150,80,50,"Object");
+     btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+57,70,35,"Attack");
+     btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+107,70,35,"Defend");
+     BtnObject *btnObjet = new BtnObject(fn->getPositionX()+10,fn->getPositionY()+157,70,35,"Object");
+     btnObjet->setIsMenuBoutton(true);
 
      //btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
      //btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
@@ -33,10 +35,10 @@ FightScene::FightScene()
      //btnMagie->AddButton(btnAttack3);
      fm = new FightManager();
      //Add Button  in fightManager
-     fn->addButton(new btnAttack(*(btnAtt)));
-     fn->addButton(new BtnMagic(*(btnMagie)));
-     fn->addButton(new btnAttack(*(btnDefend)));
-     fn->addButton(new btnAttack(*(btnObjet)));
+     fn->addButton(btnAtt);
+     fn->addButton(btnMagie);
+     fn->addButton(btnDefend);
+     fn->addButton(btnObjet);
      //initialise fightManager in button
      for(int i = 0;i<fn->getVect().size();i++)
      {
@@ -49,10 +51,7 @@ FightScene::FightScene()
      sprintBackGroud.setTexture(textureBackGroud);
 
      //Delete pointer
-     delete btnAtt;
-     //delete btnMagie;
-     delete btnDefend;
-     delete btnObjet;
+
 
 }
 
@@ -201,6 +200,8 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
        float maxxMHp = fm->getMonster()->GetmaxHp();
 
 
+
+
        //std::cout <<secondWindowsActivate<<endl;
        //Change the size of bar
        barLife->setBarLifeTaille(current,maxx);
@@ -238,14 +239,13 @@ void FightScene::eventHandler(Event ev)
         {
             //rect.move(-1,0);
         }
-        isEventActive=!Cooldown::isTimePassed(timeEventIsNotActive,5,isCooldown);
-        if(isEventActive)
-        {
 
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && clock.getElapsedTime().asSeconds() >0.5)
             {
-
+                clock.restart();
                 isCooldown = true;
                 for(int i = 0; i<=vectWindows.at(secondWindowsActivate)->getNbBoutton();i++)
                 {
@@ -290,22 +290,26 @@ void FightScene::eventHandler(Event ev)
                          }
                          else
                          {
-                          secondWindowsActivate =0;
+                             secondWindowsActivate =0;
                          }
+
+
+
+
                         std::cout << "verif doublons" << std::endl;
                      }
 
 
                 }
 
-            }
+
         }
         //isCooldown = isEventActive;
        if(secondWindowsActivate == 1)
         {
             if(activate < 0)
             {
-                activate =fn2->getNbBoutton();
+                activate =fn2->getNbBoutton()-1;
             }
             else if(activate > fn2->getNbBoutton())
             {
@@ -324,7 +328,7 @@ void FightScene::eventHandler(Event ev)
            {
                setActivate(0);
            }
-           std::cout << fn->getNbBoutton()<< std::endl;
+           std::cout << activate<< std::endl;
 
         }
 

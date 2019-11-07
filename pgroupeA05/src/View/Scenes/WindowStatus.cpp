@@ -352,15 +352,7 @@ void WindowStatus::eventHandler(Event event)
                     case Keyboard::Enter:
                         {
                             if(items.size()>0){
-                                if(items.at(selected_id_items)->GetitemType()=="Heal"){
-                                    p->heals(dynamic_cast<Heal*>(items.at(selected_id_items))->GetamountHealed(),"hp");
-                                    p->Getinventory()->deleteItem(items.at(selected_id_items)->GetitemName());
-
-                                }
-                                else {
-                                    p->heals(dynamic_cast<HealMp*>(items.at(selected_id_items))->GetamountHealed(),"mp");
-                                    p->Getinventory()->deleteItem(items.at(selected_id_items)->GetitemName());
-                                }
+                                p->heals(items.at(selected_id_items));
                                 int tmp = indexOfHeal(items.at(selected_id_items));
                                 delete items.at(tmp);
                                 items.erase(items.begin() + tmp);
