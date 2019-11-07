@@ -188,7 +188,7 @@ void ConcreteStrategyMapScene::eventHandler(Event event) {
         if (movement != Vector2f(.0f, .0f) && !tile.COLLISION)
         {
             player.move(movement);
-            if (tile.GAMEOBJECT_ID > 0)
+            if (tile.GAMEOBJECT_ID > 0 || tile.FLOOR_ID == gmap.FLOOR_AGGRO || tile.FLOOR_ID == gmap.FLOOR_HIGH_AGGRO)
                 gmap.interact(player, &tile, gmap);
         }
     }

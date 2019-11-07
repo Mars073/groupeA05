@@ -15,6 +15,7 @@
 #include <Model/SingletonGame.h>
 #include <Model/TileInfo.h>
 #include <View/DrawablePlayer.h>
+#include <FightScene.h>
 
 using sf::Texture;
 using sf::Sprite;
@@ -49,6 +50,10 @@ class GameMap
         static const unsigned TEXTURE_RANGE = 12;
         static const unsigned GUID_RANDOM_TELEPORTER = 73;
         static const unsigned GUID_DOORS = 131;
+        static const unsigned FLOOR_AGGRO = 4;
+        static const unsigned FLOOR_HIGH_AGGRO = 18;
+        static const unsigned RATE_AGGRO = 15;//%
+        static const unsigned RATE_HIGH_AGGRO = 40;//%
         GameMap();
         GameMap(int);
         bool loadFromFile(string);

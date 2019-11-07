@@ -6,6 +6,7 @@ GameMap::GameMap()
     setTexture(Resources::getTexture("simplemap", "data/images/simplemap_sprite.png"));
     setWidth(64);
     world = 0;
+    srand(time(NULL));
 }
 GameMap::GameMap(int width)
 {
@@ -280,6 +281,23 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
     //cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
     switch (tile->GAMEOBJECT_ID)
     {
+    case 0: // empty
+        {
+            bool has_aggro = false;
+            if (tile->FLOOR_ID == FLOOR_AGGRO)
+                has_aggro = (rand() % 100) < RATE_AGGRO;
+            else if (tile->FLOOR_ID == FLOOR_HIGH_AGGRO)
+                has_aggro = (rand() % 100) < RATE_HIGH_AGGRO;
+
+            if (has_aggro)
+            {
+                FightScene *fight = new FightScene();
+                //fight->getFightManager()->setPlayer(SingletonGame::getInstance()->getPlayerPTR());
+                fight->getFightManager()->setMonster(new Monster("Test", 1000, 1000, 60, 60, 60, 10, 20, 1, 20, 20));
+                SingletonGame::getInstance()->setScene(fight);
+            }
+            break;
+        }
     case GUID_RANDOM_TELEPORTER: // HOLEs
         {
             srand(time(NULL));
