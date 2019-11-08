@@ -2,12 +2,18 @@
 
 ConcreteStrategyLoadScreenScene::ConcreteStrategyLoadScreenScene()
 {
+    if (!logo.loadFromFile("data/images/helha.png"))
+    {
+        return;
+    }
     error = "";
+    clock.restart();
     thread(&ConcreteStrategyLoadScreenScene::load_resources, this).detach();
 }
 
 void ConcreteStrategyLoadScreenScene::draw(RenderTarget& target, RenderStates states) const
 {
+    target.clear(Color::White);
     Font font;
     if (!font.loadFromFile("arial.ttf"))
     {
@@ -22,6 +28,27 @@ void ConcreteStrategyLoadScreenScene::draw(RenderTarget& target, RenderStates st
     text.setFillColor(Color::Red);
 
     target.draw(text);
+
+    if (loaded >= MAX_LOAD)
+    {
+        int now = clock.getElapsedTime().asMilliseconds();
+        int delta_anim = now-loaded;
+        Sprite logo_anim;
+        logo_anim.setTexture(logo);
+        logo_anim.setPosition(200, 280-112.f*(min(1000, delta_anim)/1000.f));
+        target.draw(logo_anim);
+    }
+
+    RectangleShape mask(Vector2f(640, 200));
+    mask.setPosition(0, 300);
+    mask.setFillColor(Color::White);
+    target.draw(mask);
+
+
+    RectangleShape bar(Vector2f(600.f*((float)min(MAX_LOAD, loaded)/MAX_LOAD), 24));
+    bar.setPosition(320.f-300.f*((float)min(MAX_LOAD, loaded)/MAX_LOAD), 280);
+    bar.setFillColor(Color(0, 152, 147));
+    target.draw(bar);
 }
 
 void ConcreteStrategyLoadScreenScene::eventHandler(Event event)
@@ -49,6 +76,7 @@ void ConcreteStrategyLoadScreenScene::load_resources()
             error = "font::"+font[0];
             return;
         }
+        loaded++;
     }
     for (string* sound: sounds)
     {
@@ -59,6 +87,7 @@ void ConcreteStrategyLoadScreenScene::load_resources()
             error = "sound::"+sound[0];
             return;
         }
+        loaded++;
     }
     for (string* image: images)
     {
@@ -68,8 +97,9 @@ void ConcreteStrategyLoadScreenScene::load_resources()
             error = "image::"+image[0];
             return;
         }
+        loaded++;
     }
-    error = "OK";
-    this_thread::sleep_for(chrono::seconds(1));
+    loaded = clock.getElapsedTime().asMilliseconds();
+    this_thread::sleep_for(chrono::seconds(2));
     setScene(new ConcreteStrategyHomeScene);
 }
