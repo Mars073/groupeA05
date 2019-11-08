@@ -1,4 +1,5 @@
 #include "Util/SoundsManager.h"
+#include <iostream> // debug
 
 map<string, Sound*> SoundsManager::store;
 map<string, SoundBuffer*> SoundsManager::buffers;
@@ -29,13 +30,17 @@ SoundsManager* SoundsManager::getInstance()
 
 bool SoundsManager::load(string name, string filename)
 {
-    SoundBuffer buffer;
-    Sound sound;
-    if (!buffer.loadFromFile(filename))
+    SoundBuffer* buffer = new SoundBuffer;
+    Sound* sound = new Sound;
+    if (!buffer->loadFromFile(filename))
+    {
+        delete buffer;
+        delete sound;
         return false;
-    sound.setBuffer(buffer);
-    buffers[name] = new SoundBuffer(buffer);
-    store[name] = new Sound(sound);
+    }
+    sound->setBuffer(*buffer);
+    buffers[name] = buffer;
+    store[name] = sound;
     return true;
 }
 
@@ -52,20 +57,22 @@ void SoundsManager::play(string name) const
     it = store.find(name);
     if (it != store.end())
         it->second->play();
+    else
+        std::cout << "Sound not found" << std::endl;
 }
 void SoundsManager::pause(string name) const
 {
     map<string, Sound*>::iterator it;
     it = store.find(name);
     if (it != store.end())
-        it->second->play();
+        it->second->pause();
 }
 void SoundsManager::stop(string name) const
 {
     map<string, Sound*>::iterator it;
     it = store.find(name);
     if (it != store.end())
-        it->second->play();
+        it->second->stop();
 }
 void SoundsManager::stopAll() const
 {

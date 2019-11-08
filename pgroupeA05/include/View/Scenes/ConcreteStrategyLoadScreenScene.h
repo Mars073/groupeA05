@@ -8,9 +8,6 @@
 #include "View/StrategyScene.h"
 #include "View/Scenes/ConcreteStrategyHomeScene.h"
 #include "Util/INIReader.h"
-#include "Util/FontsManager.h"
-#include "Util/SoundsManager.h"
-#include "Util/TexturesManager.h"
 
 using std::thread;
 using std::string;

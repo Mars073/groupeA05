@@ -8,17 +8,19 @@
 
 ConcreteStrategyHomeScene::ConcreteStrategyHomeScene()
 {
-    //ctor
+    sm->play("title");
+    // ctor
 }
 
 void ConcreteStrategyHomeScene::draw(RenderTarget& target, RenderStates states) const
 {
+    TexturesManager* tm = TexturesManager::getInstance();
     target.setView(View(FloatRect(0, 0, SingletonGame::W_WIDTH, SingletonGame::W_HEIGHT))); // HOT FIX
     Sprite sprite;
-    Texture t = Resources::getTexture("title-background", "data/images/background-title.png");
+    Texture t = *tm->get("title");
     sprite.setTexture(t);
     target.draw(sprite, states);
-    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = *fm->get("arial");
     for (int i = 0; i < MENU_LENGTH; i++)
     {
         Text text(i==selected_id?"> "+menu[i]:menu[i], f);
@@ -71,6 +73,7 @@ void ConcreteStrategyHomeScene::eventHandler(Event event)
                 default:
                     win->close(); // Dans les autres cas on ferme
                 }
+                sm->stopAll();
                 break;
             }
         default: // no default action

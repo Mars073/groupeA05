@@ -49,24 +49,26 @@ void ConcreteStrategyMapScene::drawFXIntro(RenderTarget& target) const
     target.draw(rect);
 
     vector<string> story = {
-        "Long time ago, there was a beautiful kingdom called Cornelia.",
-        "Everyone living there was happy, until the Demon Lord appeared",
-        "and unleashed his army upon the kingdom.",
-        "Now, there are monsters roaming around everywhere and attacking",
-        "anyone in sight.",
-        "But as the prophecy foretold, a Hero will appear and defeat the Demon Lord.",
-        "Today, after 20 years, the Hero is ready to take on his last journey",
-        "to defeat the Demon Lord.",
+        "Long time ago, there was a beautiful kingdom called",
+        "Cornelia. Everyone living there was happy, until the",
+        "Demon Lord appeared and unleashed his army upon the",
+        "kingdom. Now, there are monsters roaming around",
+        "everywhere and attacking anyone in sight.",
+        "But as the prophecy foretold, a Hero will appear and",
+        "defeat the Demon Lord. Today, after 20 years, the Hero",
+        "is ready to take on his last journey to...",
+        "defeat the Demon Lord.",
+        "",
         "His final quest."
     };
-    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = *fm->get("morpheus");
     Text text("No text", f);
-    text.setCharacterSize(16);
+    text.setCharacterSize(24);
     text.setFillColor(Color(255, 255, 255, 255-min(1., max(0., now.asMilliseconds()-18000.)/1500.)*255.));
     for (unsigned i = 0; i < story.size(); i++)
     {
         text.setString(story.at(i));
-        text.setPosition(Vector2f(center.x-SingletonGame::W_WIDTH/2+16, center.y-SingletonGame::W_HEIGHT/2+64+i*32));
+        text.setPosition(Vector2f(center.x-SingletonGame::W_WIDTH/2+32, center.y-SingletonGame::W_HEIGHT/2+64+i*32));
         target.draw(text);
     }
 }
@@ -86,7 +88,7 @@ void ConcreteStrategyMapScene::draw(RenderTarget& target, RenderStates states) c
         if (gob.TOPMOST && gob.GAMEOBJECT_ID > 0)
         {
             Vector2u posOB(gmap.ob2loc(gob.GAMEOBJECT_ID));
-            Texture texture(Resources::getTexture("simplemap", "data/images/simplemap_sprite.png"));
+            Texture texture(*tm->get("map"));
             sf::Sprite sprite;
             sprite.setTexture(texture);
             sprite.setTextureRect(IntRect(posOB.x, posOB.y, gmap.TILE_SIZE, gmap.TILE_SIZE));
@@ -97,7 +99,7 @@ void ConcreteStrategyMapScene::draw(RenderTarget& target, RenderStates states) c
     }
     catch (const out_of_range& oor) { }
     const Vector2f vw = target.getView().getCenter();
-    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = *fm->get("arial");
     Text text("<ESC> Menu - <A> Interact", f);
     text.setCharacterSize(12);
     text.setFillColor(Color::Black);

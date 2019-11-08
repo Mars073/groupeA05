@@ -3,6 +3,7 @@
 
 #include <View/StrategyScene.h>
 #include <SFML/Graphics.hpp>
+#include "Model/SingletonGame.h"
 
 
 class ConcreteStrategyGameOverScene: public StrategyScene

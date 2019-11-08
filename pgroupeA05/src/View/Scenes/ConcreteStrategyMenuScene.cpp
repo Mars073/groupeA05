@@ -15,7 +15,7 @@ ConcreteStrategyMenuScene::~ConcreteStrategyMenuScene()
 void ConcreteStrategyMenuScene::draw(RenderTarget& target, RenderStates states) const
 {
     target.setView(View(FloatRect(0, 0, SingletonGame::W_WIDTH, SingletonGame::W_HEIGHT))); // HOT FIX
-    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = *fm->get("arial");
     for (int i = 0; i < MENU_LENGTH; i++)
     {
         Text text(i==selected_id?"> "+menu[i]:menu[i], f);

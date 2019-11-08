@@ -59,9 +59,6 @@ void ConcreteStrategyLoadScreenScene::eventHandler(Event event)
 void ConcreteStrategyLoadScreenScene::load_resources()
 {
     this_thread::sleep_for(chrono::milliseconds(200));
-    FontsManager* fm = FontsManager::getInstance();
-    SoundsManager* sm = SoundsManager::getInstance();
-    TexturesManager* tm = TexturesManager::getInstance();
     INIReader reader("data/data.ini");
     if (reader.ParseError() < 0)
     {

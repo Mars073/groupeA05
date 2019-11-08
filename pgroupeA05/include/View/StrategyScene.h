@@ -4,13 +4,19 @@
 #include <string.h>
 #include <SFML/Graphics.hpp>
 #include "Resources.h"
+#include "Util/FontsManager.h"
+#include "Util/SoundsManager.h"
+#include "Util/TexturesManager.h"
 
 using namespace std;
 using namespace sf;
 
 class StrategyScene : public Drawable
 {
-    private:
+    protected:
+        FontsManager*   fm = FontsManager::getInstance();
+        SoundsManager*  sm = SoundsManager::getInstance();
+        TexturesManager*tm = TexturesManager::getInstance();
 
     public:
         StrategyScene();
