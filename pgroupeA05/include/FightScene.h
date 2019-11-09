@@ -72,6 +72,7 @@ class FightScene: public StrategyScene
         Bar *barLife;
         Bar *barMp;
         Bar *barMonsterLife;
+
         sf::Texture textureBackGroud;
         sf::Sprite sprintBackGroud;
         //Manage the fight
