@@ -8,8 +8,9 @@
 
 ConcreteStrategyHomeScene::ConcreteStrategyHomeScene()
 {
+    sm->stopAll();
+    sm->get("title")->setLoop(true);
     sm->play("title");
-    // ctor
 }
 
 void ConcreteStrategyHomeScene::draw(RenderTarget& target, RenderStates states) const
