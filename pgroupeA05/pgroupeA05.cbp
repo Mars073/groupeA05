@@ -70,6 +70,7 @@
 		<Unit filename="include/BtnWin.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Cooldown.h" />
+		<Unit filename="include/DrawableMonster.h" />
 		<Unit filename="include/FightManager.h" />
 		<Unit filename="include/FightScene.h" />
 		<Unit filename="include/Heal.h" />
@@ -191,6 +192,9 @@
 		<Unit filename="include/Util/TexturesManager.h" />
 		<Unit filename="include/Util/ini.h" />
 		<Unit filename="include/View/DrawablePlayer.h" />
+		<Unit filename="include/View/Scenes/ConcreteStrategyCreditsScene.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
 		<Unit filename="include/View/Scenes/ConcreteStrategyGameOverScene.h">
 			<Option virtualFolder="Scenes/Headers/" />
 		</Unit>
@@ -224,6 +228,7 @@
 		<Unit filename="src/BtnWin.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Cooldown.cpp" />
+		<Unit filename="src/DrawableMonster.cpp" />
 		<Unit filename="src/FightManager.cpp" />
 		<Unit filename="src/FightScene.cpp" />
 		<Unit filename="src/Heal.cpp" />
@@ -249,6 +254,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/View/DrawablePlayer.cpp" />
+		<Unit filename="src/View/Scenes/ConcreteStrategyCreditsScene.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
 		<Unit filename="src/View/Scenes/ConcreteStrategyGameOverScene.cpp">
 			<Option virtualFolder="Scenes/" />
 		</Unit>
