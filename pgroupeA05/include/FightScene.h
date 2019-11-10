@@ -15,7 +15,10 @@
 #include "BtnMagic.h"
 #include "BtnObject.h"
 #include "Cooldown.h"
-
+#include "string.h"
+#include "DrawableMonster.h"
+#include "Resources.h"
+#include "Util/FontsManager.h"
 
 class FightScene: public StrategyScene
 {
@@ -43,6 +46,12 @@ class FightScene: public StrategyScene
         float getTimeEventIsNotActive()const;
         void setTimeEventIsNotActive(float newTime);
 
+        void setNameMonster(std::string val){nameMonster = val;}
+
+        void setSpriteMonster(std::string val);
+
+        void setText(std::string text);
+
 
 
 
@@ -67,6 +76,7 @@ class FightScene: public StrategyScene
         WindowsFight *fn;
         WindowsFight *fn2;
         WindowsFightInfo *fn3;
+        std::string cc;
 
         std::vector<WindowsFight*>vectWindows;
         Bar *barLife;
@@ -75,8 +85,17 @@ class FightScene: public StrategyScene
 
         sf::Texture textureBackGroud;
         sf::Sprite sprintBackGroud;
+
+        sf::Texture textureMonster;
+        sf::Sprite spriteMonster;
+        std::string nameMonster;
+
+        sf::Text textCombat;
+        sf::Font police;
+
         //Manage the fight
         FightManager *fm;
+        FontsManager *ft;
 
 
 };

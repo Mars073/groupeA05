@@ -5,6 +5,8 @@ FightManager::FightManager()
     //ctor
     setPlayer(new Player());
     setMonster(new Monster("monstre",500,500,100,100,1,1,1,1,100,100));
+
+
 }
 
 FightManager::~FightManager()

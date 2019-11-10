@@ -13,6 +13,8 @@ class BtnObject : public BtnWin
   BtnObject(const BtnObject& other);
   BtnObject& operator=(const BtnObject& other);
   void action();
+  std::string getDescription();
+
 
  protected:
 

@@ -22,6 +22,10 @@ btnAttack::btnAttack(btnAttack const& btnA):BtnWin(btnA)
 {
 
 }
+std::string btnAttack::getDescription()
+{
+ return ("vous avez fait "+getFm()->getPlayer()->Getatk());
+}
 
     //dtor
 

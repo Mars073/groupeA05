@@ -52,7 +52,7 @@ class BtnWin
         sf::Text text;
         void setIsActivate(bool val);
         std::string getTextButton();
-        std::string getDescription()const;
+        virtual std::string getDescription();
         void setDescription(std::string str);
         BtnWin(BtnWin const& c);
         sf::Text getText();

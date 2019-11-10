@@ -12,10 +12,26 @@ FightScene::FightScene()
      fn = new WindowsFight(0,250,300,200);
      fn2 = new WindowsFightInfo(325,250,300,200);
      fn3 = new WindowsFightInfo(50,190,550,40);
+     ft = FontsManager::getInstance();
      barLife = new Bar(400,20,200,20);
      barMp = new Bar(400,150,200,20);
      barMp->Setcolor(sf::Color(0,0,225));
      barMonsterLife = new Bar(50,20,200,20);
+     textCombat.setPosition(sf::Vector2f(50,190));
+     setText("coucou je vis");
+
+     this->setSpriteMonster("boss");
+     spriteMonster.setPosition(sf::Vector2f(100,60));
+     /*
+     textureMonster = Resources::getTexture("boss","data/images/monsters/boss.png");
+     spriteMonster.setTexture(textureMonster);
+     */
+
+
+
+
+
+
 
      //add Windows in Vecteur
      vectWindows.push_back(fn);
@@ -51,6 +67,8 @@ FightScene::FightScene()
      textureBackGroud =Resources::getTexture("BackGroudCombat", "data/images/BackGroudCombat.png");
      sprintBackGroud.setTexture(textureBackGroud);
 
+
+
      //Delete pointer
 
 
@@ -61,6 +79,8 @@ FightScene::~FightScene()
     //dtor
     delete(fn);
     delete(barLife);
+    delete(barMonsterLife);
+
 }
 void FightScene::setActivate(int activate)
 {
@@ -78,12 +98,13 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
     //Modifier la position
 
-    sf::Font ft = Resources::getFont("arial", "data/fonts/arial.ttf");
+     sf::Font ft = Resources::getFont("arial", "data/fonts/arial.ttf");
     //ft.loadFromFile("arial.ttf");
 
 
     sf::Text text;
     text.setFont(ft); // font est un sf::Font
+
 
     /*
 
@@ -185,6 +206,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         }
 
        }
+       target.draw(textCombat,stat);
        //manage bar of life and mana and
        //target.draw((barLife->getFond()),stat);
        target.draw((barLife->getRect()),stat);
@@ -207,6 +229,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
        //Change the size of bar
        barLife->setBarLifeTaille(current,maxx);
        barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
+       target.draw(spriteMonster,stat);
 
 
 
@@ -291,6 +314,7 @@ void FightScene::eventHandler(Event ev)
                          }
                          else
                          {
+                             setText((vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription()));
                              secondWindowsActivate =0;
                          }
 
@@ -494,6 +518,19 @@ float FightScene::getTimeEventIsNotActive()const
 void FightScene::setTimeEventIsNotActive(float newTime)
 {
     timeEventIsNotActive = newTime;
+}
+void FightScene::setSpriteMonster(std::string val)
+{
+ std::string lien = ("data/images/monsters/"+val+".png");
+ textureMonster = Resources::getTexture(val,lien);
+ spriteMonster.setTexture(textureMonster);
+}
+void FightScene::setText(std::string text)
+{
+ textCombat.setCharacterSize(30);
+ police = Resources::getFont("arial","data/fonts/arial.ttf");
+ textCombat.setFont(police);
+ textCombat.setString(text);
 }
 
 

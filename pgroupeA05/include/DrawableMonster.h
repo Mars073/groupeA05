@@ -3,22 +3,24 @@
 
 #include "Util/TexturesManager.h"
 #include "Bestiary.h"
-#include "Monster.h"
+#include "Resources.h"
+
+#include "string"
 #include "SFML/Graphics.hpp"
 
-using namespace std;
 class DrawableMonster
 {
  public:
-  DrawableMonster(string nom);
+  DrawableMonster(std::string &Snom);
+  DrawableMonster();
   virtual ~DrawableMonster();
   DrawableMonster(const DrawableMonster& other);
   DrawableMonster& operator=(const DrawableMonster& other);
 
   Monster* GetMs() { return ms; }
   void SetMs(Monster *val) { ms = val; }
-  sf::Texture* Gettext() { return text; }
-  void Settext(sf::Texture* val) { text = val; }
+  sf::Texture Gettext() { return text; }
+  void Settext(sf::Texture val) { text = val; }
   string Getnom() { return nom; }
   void Setnom(string val) { nom = val; }
   void SetTexture(string nom);
@@ -35,7 +37,7 @@ class DrawableMonster
   TexturesManager *textureManager;
   Bestiary bs;
   Monster *ms;
-  sf::Texture *text;
+  sf::Texture text;
   sf::Sprite sprite;
   string nom;
 };

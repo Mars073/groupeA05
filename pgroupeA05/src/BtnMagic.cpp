@@ -49,3 +49,7 @@ void BtnMagic::action()
  }
 
 }
+std::string BtnMagic::getDescription()
+{
+ return ("vous avez fait "+getFm()->getPlayer()->Getatk());
+}

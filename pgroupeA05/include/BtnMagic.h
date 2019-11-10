@@ -17,6 +17,7 @@ class BtnMagic : public BtnWin
   void Setmagic(Magic* val) { magic = val; }
 
   void action();
+  std::string getDescription();
 
  protected:
 

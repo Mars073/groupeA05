@@ -1,10 +1,16 @@
 #include "DrawableMonster.h"
 
-DrawableMonster::DrawableMonster(string Snom):nom(Snom)
+DrawableMonster::DrawableMonster(std::string &Snom):nom(Snom)
 {
- ms = bs.getOneMonster(nom);
- this->textureManager = TexturesManager::getInstance();
 
+
+
+
+
+}
+DrawableMonster::DrawableMonster()
+{
+ this->textureManager = TexturesManager::getInstance();
 }
 
 DrawableMonster::~DrawableMonster()
@@ -27,7 +33,10 @@ DrawableMonster& DrawableMonster::operator=(const DrawableMonster& rhs)
 }
 void DrawableMonster::SetTexture(string nom)
 {
- text = textureManager->get(("data/images/monsters/"+nom));
+
+ text = Resources::getTexture("boss","data/images/monsters/boss.png");
+ this->SetSprite(text);
+ ms =bs.getOneMonster(nom);
 }
 void DrawableMonster::SetSprite(sf::Texture val)
 {

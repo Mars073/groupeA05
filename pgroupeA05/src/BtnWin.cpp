@@ -158,9 +158,9 @@ std::vector<BtnWin*> BtnWin::getListButton()
 {
     return ListButton;
 }
-std::string BtnWin::getDescription()const
+std::string BtnWin::getDescription()
 {
-    return Description;
+    return "Choisisez une action";
 }
 void BtnWin::setDescription(std::string str)
 {

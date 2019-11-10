@@ -49,4 +49,8 @@ void BtnObject::action()
  }
 
 }
+std::string BtnObject::getDescription()
+{
+ return ("vous avez fait ");
+}
 

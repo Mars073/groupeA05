@@ -11,6 +11,7 @@ class btnAttack : public BtnWin
         //Action that the button make
         void action();
         virtual ~btnAttack();
+        std::string getDescription();
 
 
     protected:
