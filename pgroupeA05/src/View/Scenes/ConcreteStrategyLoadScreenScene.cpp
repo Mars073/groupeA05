@@ -4,6 +4,7 @@ ConcreteStrategyLoadScreenScene::ConcreteStrategyLoadScreenScene()
 {
     if (!logo.loadFromFile("data/images/helha.png"))
     {
+        error = "No logo";
         return;
     }
     error = "";
@@ -15,9 +16,9 @@ void ConcreteStrategyLoadScreenScene::draw(RenderTarget& target, RenderStates st
 {
     target.clear(Color::White);
     Font font;
-    if (!font.loadFromFile("arial.ttf"))
+    if (!font.loadFromFile("data/fonts/arial.ttf"))
     {
-        std::cout << "FAIL" << std::endl;
+        std::cout << "No font" << std::endl;
         return;
     }
     Text text;
@@ -49,6 +50,11 @@ void ConcreteStrategyLoadScreenScene::draw(RenderTarget& target, RenderStates st
     bar.setPosition(320.f-300.f*((float)min(MAX_LOAD, loaded)/MAX_LOAD), 280);
     bar.setFillColor(Color(0, 152, 147));
     target.draw(bar);
+
+    Text prct(std::to_string((int)(min((float)MAX_LOAD, (float)loaded)/MAX_LOAD*100.f))+"%", font, 18);
+    prct.setPosition(320-prct.getLocalBounds().width/2, 281);
+    prct.setFillColor(Color::White);
+    target.draw(prct);
 }
 
 void ConcreteStrategyLoadScreenScene::eventHandler(Event event)
