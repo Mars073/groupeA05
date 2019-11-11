@@ -291,9 +291,10 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
 
             if (has_aggro)
             {
+                Bestiary beast;
                 FightScene *fight = new FightScene();
                 //fight->getFightManager()->setPlayer(SingletonGame::getInstance()->getPlayerPTR());
-                fight->getFightManager()->setMonster(new Monster("Test", 1000, 1000, 60, 60, 60, 10, 20, 1, 20, 20));
+                fight->getFightManager()->setMonster(beast.getOneMonster("Goblin"));
                 SingletonGame::getInstance()->setScene(fight);
             }
             break;
