@@ -39,7 +39,6 @@ class ConcreteStrategyLoadScreenScene: public StrategyScene
             {"world_1", "data/sounds/world_1.ogg"},
             {"world_2", "data/sounds/world_2.ogg"}
         };
-        Clock clock;
         Texture logo;
 
     public:

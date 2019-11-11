@@ -14,6 +14,7 @@ using namespace sf;
 class StrategyScene : public Drawable
 {
     protected:
+        Clock clock;
         FontsManager*   fm = FontsManager::getInstance();
         SoundsManager*  sm = SoundsManager::getInstance();
         TexturesManager*tm = TexturesManager::getInstance();
