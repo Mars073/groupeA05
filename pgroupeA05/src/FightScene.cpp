@@ -201,7 +201,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
            }
 
            vectWindows.at(secondWindowsActivate)->getVect().at(activate)->setIsActivate(true);
-            vectWindows.at(secondWindowsActivate)->getVect().at(activate)->getDescription();
+            //vectWindows.at(secondWindowsActivate)->getVect().at(activate)->getDescription();
 
         }
 

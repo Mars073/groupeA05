@@ -1,8 +1,9 @@
 #ifndef BtnWin_H
 #define BtnWin_H
 #include <SFML/Graphics.hpp>
-#include "string"
 #include "iostream"
+#include "string"
+#include "sstream"
 #include "vector"
 #include "Player.h"
 #include "Monster.h"

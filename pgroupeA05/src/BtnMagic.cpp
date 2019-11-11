@@ -51,5 +51,19 @@ void BtnMagic::action()
 }
 std::string BtnMagic::getDescription()
 {
- return ("vous avez fait "+getFm()->getPlayer()->Getatk());
+
+ std::string message;
+ int degats;
+ std::stringstream degatsStr;
+ message ="vous avez fait ";
+
+ degatsStr<<message;
+ degats =magic->GetbaseDamage();
+ degatsStr<<degats;
+
+ std::cout <<degatsStr.str()<<std::endl;
+
+
+// return degatsStr.str();
+   return degatsStr.str();
 }

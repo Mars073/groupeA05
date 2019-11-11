@@ -51,6 +51,13 @@ void BtnObject::action()
 }
 std::string BtnObject::getDescription()
 {
- return ("vous avez fait ");
+ std::string message;
+ int degats;
+ std::stringstream degatsStr;
+ message ="vous avez fait ";
+
+ degatsStr<<message;
+
+ std::cout <<degatsStr.str()<<std::endl;
 }
 
