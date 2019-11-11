@@ -11,7 +11,6 @@
 class ConcreteStrategyMapScene: public StrategyScene
 {
     private:
-        Clock fxClock;
         GameMap gmap;
         DrawablePlayer player;
         void timeoutFXIntro();

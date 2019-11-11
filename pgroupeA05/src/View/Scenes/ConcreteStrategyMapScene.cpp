@@ -22,7 +22,7 @@ void ConcreteStrategyMapScene::setCamera(RenderTarget& target, Vector2f center) 
 
 void ConcreteStrategyMapScene::playFXIntro()
 {
-    fxClock.restart();
+    clock.restart();
     controller = false;
     isFXIntro = true;
     thread(&ConcreteStrategyMapScene::timeoutFXIntro, this).detach();
@@ -36,7 +36,7 @@ void ConcreteStrategyMapScene::timeoutFXIntro()
 
 void ConcreteStrategyMapScene::drawFXIntro(RenderTarget& target) const
 {
-    Time now = fxClock.getElapsedTime();
+    Time now = clock.getElapsedTime();
 
     View view = target.getView();
     Vector2f center(2080, 3408.0-min(400., now.asMilliseconds()/50.));
