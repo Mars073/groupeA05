@@ -11,13 +11,13 @@ RenderWindow* StrategyScene::getWindow()
     return g->getWindow();
 }
 
-void StrategyScene::setScene(StrategyScene* _scene)
+void StrategyScene::setScene(StrategyScene* _scene) const
 {
     SingletonGame* g = SingletonGame::getInstance();
     g->setScene(_scene);
 }
 
-void StrategyScene::gotoPreviousScene()
+void StrategyScene::gotoPreviousScene() const
 {
     SingletonGame* g = SingletonGame::getInstance();
     g->gotoPreviousScene();

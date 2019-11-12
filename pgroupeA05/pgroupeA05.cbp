@@ -187,6 +187,7 @@
 		<Unit filename="include/Spells.h" />
 		<Unit filename="include/Util/FontsManager.h" />
 		<Unit filename="include/Util/INIReader.h" />
+		<Unit filename="include/Util/ResourcesLoader.h" />
 		<Unit filename="include/Util/RessourcesManager.h" />
 		<Unit filename="include/Util/SoundsManager.h" />
 		<Unit filename="include/Util/TexturesManager.h" />
@@ -247,6 +248,7 @@
 		<Unit filename="src/Spells.cpp" />
 		<Unit filename="src/Util/FontsManager.cpp" />
 		<Unit filename="src/Util/INIReader.cpp" />
+		<Unit filename="src/Util/ResourcesLoader.cpp" />
 		<Unit filename="src/Util/RessourcesManager.cpp" />
 		<Unit filename="src/Util/SoundsManager.cpp" />
 		<Unit filename="src/Util/TexturesManager.cpp" />

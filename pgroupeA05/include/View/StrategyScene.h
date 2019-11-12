@@ -29,8 +29,8 @@ class StrategyScene : public Drawable
 
         // raccourcis scene <-> game
         RenderWindow* getWindow();
-        void setScene(StrategyScene*);
-        void gotoPreviousScene();
+        void setScene(StrategyScene*) const;
+        void gotoPreviousScene() const;
 
 };
 
