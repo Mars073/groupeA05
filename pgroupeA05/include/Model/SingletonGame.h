@@ -17,7 +17,7 @@ class SingletonGame
         vector<StrategyScene*> previous_scene;   //!< Pointer "Previous Scene"
         StrategyScene* scene = new ConcreteStrategyLoadScreenScene;   //!< Pointer "Scene"
         RenderWindow* window = nullptr; //!< Pointer "Render Window"
-        Player* player;
+        Player* player = new Player;
         void load_icon() const;
 
     public:
