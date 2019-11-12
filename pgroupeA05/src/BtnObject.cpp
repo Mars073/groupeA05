@@ -54,10 +54,14 @@ std::string BtnObject::getDescription()
  std::string message;
  int degats;
  std::stringstream degatsStr;
- message ="vous avez fait ";
+ message ="vous avez fait utiliser ";
 
  degatsStr<<message;
+ degatsStr<<item->GetitemName();
+
 
  std::cout <<degatsStr.str()<<std::endl;
+
+ return degatsStr.str();
 }
 
