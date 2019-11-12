@@ -67,6 +67,7 @@ Player* FightManager::getPlayer()const
 }
 void FightManager::setMonster(Monster* ms)
 {
+
   this->ms = ms;
 
 }
@@ -77,10 +78,6 @@ void FightManager::setPlayer(Player* pls)
   {
    //fuite de emoire pour l'instant
    this->pl = pls;
-  }
-  else
-  {
-   delete(pls);
   }
 
 }

@@ -20,7 +20,8 @@ FightScene::FightScene()
      textCombat.setPosition(sf::Vector2f(50,190));
      setText("coucou je vis");
 
-     this->setSpriteMonster("boss");
+     this->setSpriteMonster("goblin");
+     //setMonster();
      spriteMonster.setPosition(sf::Vector2f(100,60));
      /*
      textureMonster = Resources::getTexture("boss","data/images/monsters/boss.png");
@@ -284,7 +285,7 @@ void FightScene::eventHandler(Event ev)
                          std::cout << "espace toucher" << std::endl;
                          vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
                          std::cout <<"isMenu" <<std::endl;
-                         if(fn->getVect().at(i)->getIsMenuBoutton())
+                         if(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getIsMenuBoutton())
                          {
                             fn2->ClearWindows();
                           secondWindowsActivate = 1;
@@ -434,7 +435,7 @@ void FightScene::fight()
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
             rect.move(0,-1);
-            activate++;
+            activate++;fm->getMonster()->GetcharaName()
         }
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
@@ -532,5 +533,29 @@ void FightScene::setText(std::string text)
  textCombat.setFont(police);
  textCombat.setString(text);
 }
+
+
+
+
+/** @brief setMonster
+  *
+  * set the monster in  view.this monster must exist
+  */
+void FightScene::setMonster()
+{
+  //setSpriteMonster(fm->getMonster()->GetcharaName());
+  std::cout<<fm->getMonster()->GetcharaName()<<std::endl;
+}
+
+/** @brief setPlayer
+  *
+  * @todo: document this function
+  */
+void FightScene::setPlayer()
+{
+
+}
+
+
 
 

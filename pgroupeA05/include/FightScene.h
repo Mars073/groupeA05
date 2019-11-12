@@ -51,6 +51,8 @@ class FightScene: public StrategyScene
         void setSpriteMonster(std::string val);
 
         void setText(std::string text);
+        void setMonster();
+        void setPlayer();
 
 
 

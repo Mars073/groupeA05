@@ -28,7 +28,7 @@ std::string btnAttack::getDescription()
  std::string message;
  int degats;
  std::stringstream degatsStr;
- message ="vous avez fait ";
+ message ="you are doing an attack ";
 
  degatsStr<<message;
  degats =(getFm()->getPlayer()->damageDone());

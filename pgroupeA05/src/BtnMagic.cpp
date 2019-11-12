@@ -55,7 +55,7 @@ std::string BtnMagic::getDescription()
  std::string message;
  int degats;
  std::stringstream degatsStr;
- message ="vous avez fait ";
+ message ="you cast a spell which make ";
 
  degatsStr<<message;
  degats =magic->GetbaseDamage();
