@@ -79,7 +79,7 @@ void SingletonGame::setScene(StrategyScene* _scene)
         previous_scene.push_back(scene);
     scene = _scene;
     resetView();
-    std::cout << string(50, '\n'); // clear console
+    //std::cout << string(50, '\n'); // clear console
 }
 
 void SingletonGame::gotoPreviousScene()
