@@ -22,7 +22,7 @@ FightScene::FightScene()
      textCombat.setPosition(sf::Vector2f(50,190));
      setText("coucou je vis");
 
-     this->setSpriteMonster("goblin");
+
      //setMonster();
      spriteMonster.setPosition(sf::Vector2f(100,60));
      /*
@@ -59,6 +59,7 @@ FightScene::FightScene()
      fn->addButton(btnMagie);
      fn->addButton(btnDefend);
      fn->addButton(btnObjet);
+     //this->setSpriteMonster();
      //initialise fightManager in button
      for(int i = 0;i<fn->getVect().size();i++)
      {
@@ -245,19 +246,8 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 }
 void FightScene::eventHandler(Event ev)
 {
-
-
-
-
-
-
-
-
  if(!isCurrentlyWrite)
  {
-
-
-
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
          {
              //rect.move(0,1);
@@ -278,10 +268,6 @@ void FightScene::eventHandler(Event ev)
              //rect.move(-1,0);
          }
 
-
-
-
-
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && clock.getElapsedTime().asSeconds() >0.5)
         {
                  clock.restart();
@@ -298,11 +284,14 @@ void FightScene::eventHandler(Event ev)
 
                           std::cout << "espace toucher" << std::endl;
                           vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
+                          std::cout<<"it works 0 bitch : "<<std::endl<<getFightManager()->getMonster()->str();
                           if(fm->isFightFinish())
                           {
+                              std::cout<<"it works 1 bitch : "<<std::endl<<getFightManager()->getMonster()->str();
                             if(fm->isPlayerWin())
                             {
-                               //setScene();
+                                std::cout<<"it works 2 bitch : "<<std::endl<<getFightManager()->getMonster()->str();
+                               gotoPreviousScene();
                             }
                           }
                           else
@@ -573,10 +562,10 @@ void FightScene::setTimeEventIsNotActive(float newTime)
 {
     timeEventIsNotActive = newTime;
 }
-void FightScene::setSpriteMonster(std::string val)
+void FightScene::setSpriteMonster()
 {
- std::string lien = ("data/images/monsters/"+val+".png");
- textureMonster = Resources::getTexture(val,lien);
+ std::string lien = ("data/images/monsters/"+getFightManager()->getMonster()->GetcharaName()+".png");
+ textureMonster = Resources::getTexture(getFightManager()->getMonster()->GetcharaName(),lien);
  spriteMonster.setTexture(textureMonster);
 }
 void FightScene::setText(std::string text)

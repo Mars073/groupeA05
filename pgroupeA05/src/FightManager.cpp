@@ -89,11 +89,11 @@ bool FightManager::isFightFinish()
 {
  if(pl->Gethp()<=0)
  {
-  return true;
+  return false;
  }
  else if(ms->Gethp()<=0)
  {
-  return false;
+  return true;
  }
 
 /** @brief isPlayerWin

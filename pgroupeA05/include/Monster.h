@@ -2,13 +2,15 @@
 #define MONSTER_H
 
 #include "BattleCharacter.h"
-
+#include "Inventory.h"
 
 class Monster : public BattleCharacter
 {
     private:
         int moneyHeld; //!< Member variable "moneyHeld"
         int expHeld; //!< Member variable "expHeld"
+        Inventory* inventory;
+        std::vector<int>percentagesItem;
 
     public:
         /** Default constructor */
@@ -48,6 +50,30 @@ class Monster : public BattleCharacter
         Monster* clone() const override;
 
         bool operator==(const Monster&) const;
+
+        /** Access inventory
+         * \return The current value of inventory
+         */
+        Inventory* Getinventory() const;
+
+        /** Set inventory
+         * \param val New value to set
+         */
+        void Setinventory(Inventory* inventory);
+
+        /** Access inventory
+         * \return The current value of inventory
+         */
+        std::vector<int> GetPercentagesItem() const;
+
+        /** Set inventory
+         * \param val New value to set
+         */
+        void SetPercentagesItem(std::vector<int> val);
+
+        void addPercentage(int nb);
+
+        int showDamageReceived(int dmg);
 
     protected:
 

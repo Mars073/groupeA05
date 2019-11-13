@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
+#include <time.h>
 
 class Bestiary
 {
@@ -73,6 +74,8 @@ class Bestiary
          *  \param the name of the monster to delete
          */
         void deleteMonster(std::string nameMonster);
+
+        Monster* getOneRandomMonster();
 
     protected:
 

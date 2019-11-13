@@ -31,13 +31,12 @@ std::string btnAttack::getDescription()
  message ="you are doing an attack ";
 
  degatsStr<<message;
- degats =(getFm()->getPlayer()->damageDone());
+ degats =(getFm()->getMonster()->showDamageReceived(getFm()->getPlayer()->damageDone()));
  degatsStr<<degats;
 
  std::cout<<"les degats "<<degats<<std::endl;
 
-
- return (message);
+ return (degatsStr.str());
 }
 
     //dtor

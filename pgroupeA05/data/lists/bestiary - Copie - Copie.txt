@@ -1,0 +1,4 @@
+Goblin/10 10 10 10 5 2 3 1 5 5 2 Potion/60 Super potion/40
+Wolf/15 15 10 10 6 3 4 2 8 9 3 Ether/60 Super ether/40 Potion/70
+Skeleton/20 20 10 10 7 6 5 3 9 10 2 Mega potion/40 Mega ether/40
+Garland/212 212 100 100 15 10 8 10 250 130 2 X-potion/80 X-ether/80

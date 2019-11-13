@@ -49,7 +49,7 @@ class FightScene: public StrategyScene
 
         void setNameMonster(std::string val){nameMonster = val;}
 
-        void setSpriteMonster(std::string val);
+        void setSpriteMonster();
 
         void setSpritePlayer();
 

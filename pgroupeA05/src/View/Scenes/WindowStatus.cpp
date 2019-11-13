@@ -48,7 +48,7 @@ WindowStatus::WindowStatus()
 
 WindowStatus::~WindowStatus()
 {
-    delete p;
+    //delete p;
 
     for (unsigned i = 0; i < equipments.size(); i++)
     {

@@ -68,17 +68,36 @@ std::string Bestiary::str() const
 
 void Bestiary::readFromFile()
 {
-    std::string mCharaName;
-    int  mMaxHp, mHp,mMaxMp,mMp, mAtk, mMag, mDef, mLevel, mMoneyHeld, mExpHeld;
+    std::string mCharaName,itemName;
+    int  mMaxHp, mHp,mMaxMp,mMp, mAtk, mMag, mDef, mLevel, mMoneyHeld, mExpHeld,nbItem,percentItem;
+    std::vector<std::string>itemsName;
+    std::vector<int>percentsItem;
     std::ifstream infile;
     infile.open ("data/lists/bestiary.txt");
 
     if(infile){
         while ( !infile.eof() )
         {
+            itemsName.clear();
+            percentsItem.clear();
             std::getline(infile,mCharaName,'/');
-            infile >>mMaxHp>>mHp>>mMaxMp>>mMp>>mAtk>>mMag>>mDef>>mLevel>>mMoneyHeld>>mExpHeld;
-            bestiary.push_back(new Monster(mCharaName,mMaxHp,mHp,mMaxMp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld));
+            infile >>mMaxHp>>mHp>>mMaxMp>>mMp>>mAtk>>mMag>>mDef>>mLevel>>mMoneyHeld>>mExpHeld>>nbItem;
+            for(int i=0;i<nbItem;i++){
+                std::getline(infile,itemName,'/');
+                itemsName.push_back(itemName);
+                infile>>percentItem;
+                percentsItem.push_back(percentItem);
+            }
+            Monster* m=new Monster(mCharaName,mMaxHp,mHp,mMaxMp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld);
+            for(int i=0;i<nbItem;i++){
+                //std::cout<<itemsName[i]<<std::endl;
+                m->Getinventory()->addItem(itemsName[i]);
+                m->addPercentage(percentsItem[i]);
+
+
+            }
+
+            bestiary.push_back(m);
             //permet d'ignorer tout l'espace vide entre chaque monstres
             infile.ignore();
         }
@@ -166,4 +185,9 @@ void Bestiary::deleteMonster(std::string nameMonster)
     delete bestiary.at(tmp);
     bestiary.erase(bestiary.begin() + tmp);
     writeInFile();
+}
+
+Monster* Bestiary::getOneRandomMonster(){
+    srand(time(NULL));
+    return bestiary.at(rand() % bestiary.size()-1 + 0);
 }
