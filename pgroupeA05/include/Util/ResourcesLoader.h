@@ -19,7 +19,7 @@ using sf::Time;
 class ResourcesLoader
 {
     public:
-        const int MAX_LOAD = 16;
+        const int MAX_LOAD = 17;
         enum class Status {PENDING, LOADING, LOADED, ERROR};
     private:
         FontsManager*   fm = FontsManager::getInstance();
@@ -35,10 +35,11 @@ class ResourcesLoader
             { "arial", "data/fonts/arial.ttf"},
             { "morpheus", "data/fonts/morpheus.ttf"}
         };
-        string images[10][2] = {
+        string images[11][2] = {
             {"icon", "data/images/icon.png"},
             {"title", "data/images/background-title.png"},
             {"fight", "data/images/BackGroudCombat.png"},
+            {"transition", "data/images/gfx/transition-fight.png"},
             {"status", "data/images/bg_menu_status.jpg"},
             {"character", "data/images/character_sprite.png"},
             {"map", "data/images/simplemap_sprite.png"},

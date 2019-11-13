@@ -13,13 +13,16 @@ class ConcreteStrategyMapScene: public StrategyScene
     private:
         GameMap gmap;
         DrawablePlayer player;
-        void timeoutFXIntro();
+        void timeoutFX(unsigned ms = 200);
         bool isFXIntro = false;
+        bool isFXFight = false;
+        void drawFXIntro(RenderTarget&) const;
+        void drawFXFight(RenderTarget&) const;
 
     public:
         ConcreteStrategyMapScene();
         void playFXIntro();
-        void drawFXIntro(RenderTarget&) const;
+        void playFXFight();
         void draw(RenderTarget&, RenderStates) const override;
         void eventHandler(Event);
         void setCamera(RenderTarget&, float, float) const;

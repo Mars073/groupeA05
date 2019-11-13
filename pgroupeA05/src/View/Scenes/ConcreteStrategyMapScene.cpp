@@ -25,13 +25,22 @@ void ConcreteStrategyMapScene::playFXIntro()
     clock.restart();
     controller = false;
     isFXIntro = true;
-    thread(&ConcreteStrategyMapScene::timeoutFXIntro, this).detach();
+    thread(&ConcreteStrategyMapScene::timeoutFX, this, 20000).detach();
 }
-void ConcreteStrategyMapScene::timeoutFXIntro()
+
+void ConcreteStrategyMapScene::playFXFight()
 {
-    this_thread::sleep_for(chrono::seconds(20));
+    clock.restart();
+    controller = false;
+    isFXFight = true;
+    thread(&ConcreteStrategyMapScene::timeoutFX, this, 1000).detach();
+}
+void ConcreteStrategyMapScene::timeoutFX(unsigned ms)
+{
+    this_thread::sleep_for(chrono::milliseconds(ms));
     controller = true;
     isFXIntro = false;
+    isFXFight = false;
 }
 
 void ConcreteStrategyMapScene::drawFXIntro(RenderTarget& target) const
@@ -72,13 +81,23 @@ void ConcreteStrategyMapScene::drawFXIntro(RenderTarget& target) const
         target.draw(text);
     }
 }
-
+void ConcreteStrategyMapScene::drawFXFight(RenderTarget& target) const
+{
+    Texture t = *tm->get("transition");
+    Sprite sprite;
+    sprite.setTexture(t);
+    sprite.setPosition((int) (min(1., clock.getElapsedTime().asMilliseconds()/1000.)*24)*-640 - SingletonGame::W_WIDTH/2,  - SingletonGame::W_HEIGHT/2);
+    sprite.move(target.getView().getCenter());
+    target.draw(sprite);
+}
 void ConcreteStrategyMapScene::draw(RenderTarget& target, RenderStates states) const
 {
     gmap.draw();
     target.draw(player);
     if (isFXIntro)
         return drawFXIntro(target);
+    if (isFXFight)
+        return drawFXFight(target);
 
     Vector2f player_position = player.getPosition();
     setCamera(target, player_position.x*gmap.TILE_SIZE, player_position.y*gmap.TILE_SIZE);
