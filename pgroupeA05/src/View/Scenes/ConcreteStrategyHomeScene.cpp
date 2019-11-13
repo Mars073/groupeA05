@@ -1,6 +1,7 @@
 #include "View/StrategyScene.h"
 #include "View/Scenes/ConcreteStrategyHomeScene.h"
 #include "View/Scenes/ConcreteStrategyMapScene.h"
+#include "View/Scenes/ConcreteStrategyCreditsScene.h"
 #include "Model/SingletonGame.h"
 
 #include<iostream>
@@ -63,12 +64,12 @@ void ConcreteStrategyHomeScene::eventHandler(Event event)
                         // Lancer de jeu
                         ConcreteStrategyMapScene* s = new ConcreteStrategyMapScene;
                         setScene(s);
-                        s->playFXIntro();
+                        //s->playFXIntro();
                         break;
                     }
                 case 1:
                     {
-                        // Afficher Scene Credits
+                        setScene(new ConcreteStrategyCreditsScene);
                         break;
                     }
                 default:

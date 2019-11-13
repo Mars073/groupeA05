@@ -1,8 +1,8 @@
-#include "View\Scenes\ConcreteStrategyCreditsScene.h"
+#include "View/Scenes/ConcreteStrategyCreditsScene.h"
 
 ConcreteStrategyCreditsScene::ConcreteStrategyCreditsScene()
 {
-    //ctor
+    clock.restart();
 }
 
 ConcreteStrategyCreditsScene::~ConcreteStrategyCreditsScene()
@@ -12,7 +12,10 @@ ConcreteStrategyCreditsScene::~ConcreteStrategyCreditsScene()
 
 void ConcreteStrategyCreditsScene::draw(RenderTarget& target, RenderStates states) const
 {
-
+    Texture t = *tm->get("status");
+    Sprite sprite;
+    sprite.setTexture(t);
+    target.draw(sprite, states);
 }
 void ConcreteStrategyCreditsScene::eventHandler(Event event)
 {

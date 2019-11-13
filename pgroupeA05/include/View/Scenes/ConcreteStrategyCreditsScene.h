@@ -7,7 +7,6 @@
 class ConcreteStrategyCreditsScene : public StrategyScene
 {
     private:
-
     public:
         ConcreteStrategyCreditsScene();
         virtual ~ConcreteStrategyCreditsScene();
