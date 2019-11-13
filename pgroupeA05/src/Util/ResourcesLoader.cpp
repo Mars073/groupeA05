@@ -32,7 +32,7 @@ void ResourcesLoader::load_resources() {
 void ResourcesLoader::task()
 {
     status = Status::LOADING;
-    //this_thread::sleep_for(chrono::milliseconds(200));
+
     INIReader reader("data/data.ini");
     if (reader.ParseError() < 0)
     {
@@ -46,7 +46,7 @@ void ResourcesLoader::task()
         if (!fm->load(font[0], filename))
         {
             status = Status::ERROR;
-            error_message =  "font::"+font[0];
+            error_message =  "File not found: font::"+font[0];
             return;
         }
         loaded++;
@@ -56,9 +56,8 @@ void ResourcesLoader::task()
         string filename = reader.Get("sounds", sound[0], sound[1]);
         if (!sm->load(sound[0], filename))
         {
-            std::cout << "::" << sound[1] << std::endl;
             status = Status::ERROR;
-            error_message = "sound::"+sound[0];
+            error_message = "File not found: sound::"+sound[0];
             return;
         }
         loaded++;
@@ -69,14 +68,12 @@ void ResourcesLoader::task()
         if (!tm->load(image[0], filename))
         {
             status = Status::ERROR;
-            error_message = "image::"+image[0];
+            error_message = "File not found: image::"+image[0];
             return;
         }
         loaded++;
     }
-    //loaded = clock.getElapsedTime().asMilliseconds();
     finish_at = clock.getElapsedTime().asMilliseconds();
     status = Status::LOADED;
-    //this_thread::sleep_for(chrono::seconds(2));
-    //setScene(new ConcreteStrategyHomeScene);
+    return;
 }

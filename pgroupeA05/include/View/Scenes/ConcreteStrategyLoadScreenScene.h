@@ -12,7 +12,6 @@ using std::string;
 class ConcreteStrategyLoadScreenScene: public StrategyScene
 {
     private:
-        string error;
         Texture logo;
         ResourcesLoader loader;
 

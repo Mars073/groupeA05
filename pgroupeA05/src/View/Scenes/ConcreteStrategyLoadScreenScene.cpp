@@ -4,10 +4,9 @@ ConcreteStrategyLoadScreenScene::ConcreteStrategyLoadScreenScene()
 {
     if (!logo.loadFromFile("data/images/helha.png"))
     {
-        error = "No logo";
+        std::cout << "No font" << std::endl;
         return;
     }
-    error = "";
     loader.load_resources();
     clock.restart();
 }
@@ -21,14 +20,6 @@ void ConcreteStrategyLoadScreenScene::draw(RenderTarget& target, RenderStates st
         std::cout << "No font" << std::endl;
         return;
     }
-    Text text;
-    text.setFont(font);
-    text.setString(error);
-    text.setCharacterSize(24);
-    text.setPosition(40, 40);
-    text.setFillColor(Color::Red);
-
-    target.draw(text);
 
     if (loader.getStatus() == loader.Status::LOADED)
     {
@@ -40,7 +31,22 @@ void ConcreteStrategyLoadScreenScene::draw(RenderTarget& target, RenderStates st
         target.draw(logo_anim);
 
         if (delta_anim > 2000)
+        {
             setScene(new ConcreteStrategyHomeScene);
+        }
+    }
+    else if (loader.getStatus() == loader.Status::ERROR)
+    {
+        RectangleShape bar(Vector2f(600, 24));
+        bar.setPosition(320, 280);
+        bar.setFillColor(Color::Red);
+        target.draw(bar);
+
+        Text text(loader.getError(), font, 24);
+        text.setPosition(40, 300);
+        text.setFillColor(Color::Red);
+        target.draw(text);
+        return;
     }
 
     RectangleShape mask(Vector2f(640, 200));
