@@ -24,6 +24,7 @@ class WindowStatus: public StrategyScene
         std::vector<Item*>equipments;
         std::vector<Item*>items;
 
+
     public:
         /** Default constructor */
         WindowStatus();
@@ -40,6 +41,8 @@ class WindowStatus: public StrategyScene
         WindowStatus& operator=(const WindowStatus& other);
 
         void draw(RenderTarget&, RenderStates) const override;
+
+        void draw2(RenderTarget&, RenderStates,int nb,int nb2) const;
 
         void eventHandler(Event event);
 
