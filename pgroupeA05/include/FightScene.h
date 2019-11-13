@@ -19,6 +19,7 @@
 #include "DrawableMonster.h"
 #include "Resources.h"
 #include "Util/FontsManager.h"
+#include "thread"
 
 
 class FightScene: public StrategyScene
@@ -57,7 +58,7 @@ class FightScene: public StrategyScene
         void setMonster();
         void setPlayer();
         void setStringText();
-        void WriteText(std::string);
+        void WriteText();
 
 
 
@@ -111,6 +112,9 @@ class FightScene: public StrategyScene
         //Manage the fight
         FightManager *fm;
         FontsManager *ft;
+        //thread
+        std::thread thd;
+
 
 
 };
