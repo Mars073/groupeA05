@@ -81,4 +81,47 @@ void FightManager::setPlayer(Player* pls)
   }
 
 }
+/** @brief isFightFinish
+  *
+  * return true if the monster or the player win the battle
+  */
+bool FightManager::isFightFinish()
+{
+ if(pl->Gethp()<=0)
+ {
+  return true;
+ }
+ else if(ms->Gethp()<=0)
+ {
+  return false;
+ }
+
+/** @brief isPlayerWin
+  *
+  * return true if the monster have less 0 hp
+  */
+
+}
+bool FightManager::isPlayerWin()
+{
+ if(ms->Gethp() <= 0)
+ {
+  return true;
+ }
+ else
+ {
+  return false;
+ }
+}
+
+/** @brief WinReward
+  *
+  * Win to player the reward
+  */
+void FightManager::WinReward()
+{
+
+}
+
+
 

@@ -6,6 +6,8 @@ FightScene::FightScene()
      //init pointer
      activate = 0;
      secondWindowsActivate = 0;
+     indexTextWhichMustBeWrite =0;
+     textCurrentlyWrite="";
      isEventActive = true;
      isCooldown = false;
      timeEventIsNotActive = 5.0f;
@@ -207,6 +209,12 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
         }
 
        }
+
+       //
+
+
+
+
        target.draw(textCombat,stat);
        //manage bar of life and mana and
        //target.draw((barLife->getFond()),stat);
@@ -245,118 +253,163 @@ void FightScene::eventHandler(Event ev)
 
 
 
+ if(!isCurrentlyWrite)
+ {
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+         {
+             //rect.move(0,1);
+             activate--;
+         }
+         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+         {
+             //rect.move(0,-1);
+             activate++;
+
+         }
+         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+         {
+             //rect.move(1,0);
+         }
+         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+         {
+             //rect.move(-1,0);
+         }
+
+
+
+
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && clock.getElapsedTime().asSeconds() >0.5)
         {
-            //rect.move(0,1);
-            activate--;
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {
-            //rect.move(0,-1);
-            activate++;
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            //rect.move(1,0);
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            //rect.move(-1,0);
-        }
+                 clock.restart();
+                 isCooldown = true;
+                 for(int i = 0; i<=vectWindows.at(secondWindowsActivate)->getNbBoutton();i++)
+                 {
 
 
+                     std::cout <<secondWindowsActivate<<endl;
+
+                      if(this->vectWindows.at(secondWindowsActivate)->getVect().at(i)->getisActivate() == true)
+                      {
 
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && clock.getElapsedTime().asSeconds() >0.5)
-            {
-                clock.restart();
-                isCooldown = true;
-                for(int i = 0; i<=vectWindows.at(secondWindowsActivate)->getNbBoutton();i++)
-                {
+                          std::cout << "espace toucher" << std::endl;
+                          vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
+                          if(fm->isFightFinish())
+                          {
+                            if(fm->isPlayerWin())
+                            {
+                               //setScene();
+                            }
+                          }
+                          else
+                          {
 
 
-                    std::cout <<secondWindowsActivate<<endl;
+                                 std::cout <<"isMenu" <<std::endl;
+                                 if(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getIsMenuBoutton())
+                                 {
+                                    fn2->ClearWindows();
+                                  secondWindowsActivate = 1;
+                                  //check Doublon ERREUR
 
-                     if(this->vectWindows.at(secondWindowsActivate)->getVect().at(i)->getisActivate() == true)
-                     {
-
-
-                         std::cout << "espace toucher" << std::endl;
-                         vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
-                         std::cout <<"isMenu" <<std::endl;
-                         if(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getIsMenuBoutton())
-                         {
-                            fn2->ClearWindows();
-                          secondWindowsActivate = 1;
-                          //check Doublon ERREUR
-
-                             for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
-                             {
-                                  //std::cout << fn2->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
-                                  bool isCopie = false;
-                                   for(int t = 0;t <fn2->getVect().size();t++)
-                                   {
-                                     if(fn2->getVect().at(t)->equals(fn->getVect().at(i)->getListButton().at(j)))
+                                     for(int j = 0 ;j <(fn->getVect().at(i)->getListButton().size());j++)
                                      {
-                                      isCopie = true;
+                                          //std::cout << fn2->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
+                                          bool isCopie = false;
+                                           for(int t = 0;t <fn2->getVect().size();t++)
+                                           {
+                                             if(fn2->getVect().at(t)->equals(fn->getVect().at(i)->getListButton().at(j)))
+                                             {
+                                              isCopie = true;
+                                             }
+                                           }
+                                           if(isCopie == false)
+                                           {
+                                            fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                                           }
+
+
+                                          //fn2->fn->getVect().at(i)->getListButton().
                                      }
-                                   }
-                                   if(isCopie == false)
-                                   {
-                                    fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
-                                   }
 
 
-                                  //fn2->fn->getVect().at(i)->getListButton().
-                             }
-
-
-                         }
-                         else
-                         {
-                             setText((vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription()));
-                             secondWindowsActivate =0;
-                         }
+                                 }
+                                 else
+                                 {
+                                     setText(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription());
+                                     //textWhichMustBeWrite=vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription();
+                                     //isCurrentlyWrite = true;
+                                     secondWindowsActivate =0;
+                                 }
 
 
 
 
-                        std::cout << "verif doublons" << std::endl;
-                     }
+                               std::cout << "verif doublons" << std::endl;
+                            }
+                        }
 
 
-                }
+                 }
 
 
-        }
-        //isCooldown = isEventActive;
-       if(secondWindowsActivate == 1)
-        {
-            if(activate < 0)
+          }
+         //isCooldown = isEventActive;
+        if(secondWindowsActivate == 1)
+         {
+             if(activate < 0)
+             {
+                 activate =fn2->getNbBoutton()-1;
+             }
+             else if(activate > fn2->getNbBoutton())
+             {
+                 setActivate(0);
+             }
+                std::cout << fn2->getNbBoutton()<< std::endl;
+
+         }
+         else
+         {
+              if(activate < 0)
             {
-                activate =fn2->getNbBoutton()-1;
+                activate =fn->getNbBoutton();
             }
-            else if(activate > fn2->getNbBoutton())
+            else if(activate > fn->getNbBoutton())
             {
                 setActivate(0);
             }
-               std::cout << fn2->getNbBoutton()<< std::endl;
+            std::cout << activate<< std::endl;
 
-        }
-        else
-        {
-             if(activate < 0)
-           {
-               activate =fn->getNbBoutton();
-           }
-           else if(activate > fn->getNbBoutton())
-           {
-               setActivate(0);
-           }
-           std::cout << activate<< std::endl;
+         }
 
-        }
+ }
+ else
+ {
+
+  if(clock.getElapsedTime().asMilliseconds()>200)
+         {
+          indexTextWhichMustBeWrite++;
+          if(indexTextWhichMustBeWrite < textWhichMustBeWrite.length())
+          {
+           textCurrentlyWrite += textWhichMustBeWrite[indexTextWhichMustBeWrite];
+           setText(textCurrentlyWrite);
+           clock.restart();
+
+          }
+          else
+          {
+            isCurrentlyWrite= true;
+          }
+         }
+
+ }
+
+
+
 
 
 
@@ -552,6 +605,23 @@ void FightScene::setMonster()
   * @todo: document this function
   */
 void FightScene::setPlayer()
+{
+
+}
+
+/** @brief setSpritePlayer
+  *
+  * @todo: document this function
+  */
+void FightScene::setSpritePlayer()
+{
+
+}
+/** @brief WriteText
+  *
+  * @todo: document this function
+  */
+void FightScene::WriteText(std::string)
 {
 
 }

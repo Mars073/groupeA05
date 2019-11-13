@@ -18,6 +18,9 @@ class FightManager
         Player* getPlayer()const;
         Monster* getMonster()const;
         void DamageMagicPlayer(Magic *Magic);
+        bool isFightFinish();
+        bool isPlayerWin();
+        void WinReward();
 
     protected:
 

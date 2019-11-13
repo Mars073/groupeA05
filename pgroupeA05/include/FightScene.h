@@ -20,6 +20,7 @@
 #include "Resources.h"
 #include "Util/FontsManager.h"
 
+
 class FightScene: public StrategyScene
 {
     public:
@@ -50,9 +51,13 @@ class FightScene: public StrategyScene
 
         void setSpriteMonster(std::string val);
 
+        void setSpritePlayer();
+
         void setText(std::string text);
         void setMonster();
         void setPlayer();
+        void setStringText();
+        void WriteText(std::string);
 
 
 
@@ -90,10 +95,18 @@ class FightScene: public StrategyScene
 
         sf::Texture textureMonster;
         sf::Sprite spriteMonster;
+
+        sf::Texture texturePlayer;
+        sf::Sprite spritePlayer;
         std::string nameMonster;
 
         sf::Text textCombat;
+
         sf::Font police;
+        bool isCurrentlyWrite;
+        std::string textCurrentlyWrite;
+        std::string textWhichMustBeWrite;
+        int indexTextWhichMustBeWrite;
 
         //Manage the fight
         FightManager *fm;
