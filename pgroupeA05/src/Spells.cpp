@@ -119,7 +119,8 @@ void Spells::readFromFile()
             std::getline(infile,magicName,'/');
             infile>>magicDamage>>magicMpUsage;
             everySpells.push_back(new Magic(magicName,magicDamage,magicMpUsage));
-            infile.ignore();
+            //for windows
+            //infile.ignore();
         }
     }
     infile.close();
@@ -132,9 +133,10 @@ void Spells::writeInFile()
 	for (auto const& i : everySpells)
 	{
         output<<i->GetmName()<<"/"<<i->GetbaseDamage()<<i->GetmpUsage();
-        if (&i != &everySpells.back()){
+        //for windows
+        /*if (&i != &everySpells.back()){
             output<<std::endl;
-        }
+        }*/
 	}
 }
 
@@ -145,7 +147,7 @@ Magic* Spells::getOneMagic(std::string name)
             return everySpells.at(i)->clone();
         }
     }
-    return 0;
+    return new Magic("Ice",10,10);
 }
 
 Magic* Spells::getOneMagicInGame(std::string name)
@@ -155,7 +157,7 @@ Magic* Spells::getOneMagicInGame(std::string name)
             return spellsHeld.at(i);
         }
     }
-    return 0;
+    return new Magic("Ice",10,10);
 }
 
 

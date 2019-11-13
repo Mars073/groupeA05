@@ -126,7 +126,7 @@ Monster* Bestiary::getOneMonster(std::string name)
             return bestiary.at(i)->clone();
         }
     }
-    return 0;
+    return new Monster("Goblin",20,20,10,10,5,5,5,1,5,5);
 }
 
 void Bestiary::changeAttribute(std::string nameMonster,std::string nameAttribute,std::string val)

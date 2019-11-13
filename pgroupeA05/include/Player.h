@@ -23,7 +23,7 @@ class Player : public BattleCharacter
 
     public:
         /** Default constructor */
-        Player(std::string charaName="Firion",int maxHp=200,int hp=200,int maxMp=100,int mp=100,int atk=20,int mag=10,int def=15);
+        Player(std::string charaName="Firion",int maxHp=200,int hp=200,int maxMp=100,int mp=100,int atk=10,int mag=5,int def=10);
         /** Default destructor */
         virtual ~Player();
         /** Copy constructor

@@ -1,6 +1,1 @@
-Fire/10 10
-Super fire/20 20
-Ice/10 10
-Super ice/20 20
-Water/10 10
-Super water/20 20
+Fire/10 10Super fire/20 20Ice/10 10Super ice/20 20Water/10 10Super water/20 20

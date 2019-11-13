@@ -235,7 +235,7 @@ Item* Inventory::getOneItem(std::string name)
             return everyItems.at(i)->clone();
         }
     }
-    return 0;
+    return new Item("Potion","A simple potion");
 }
 
 Item* Inventory::getOneItemIngame(std::string name)
@@ -245,7 +245,7 @@ Item* Inventory::getOneItemIngame(std::string name)
             return bag.at(i);
         }
     }
-    return 0;
+    return new Item("Potion","A simple potion");
 }
 
 
