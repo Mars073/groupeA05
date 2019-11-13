@@ -10,6 +10,7 @@ FightScene::FightScene()
      textCurrentlyWrite="";
      isEventActive = true;
      isCooldown = false;
+     isCurrentlyWrite = false;
      timeEventIsNotActive = 5.0f;
      fn = new WindowsFight(0,250,300,200);
      fn2 = new WindowsFightInfo(325,250,300,200);
@@ -21,6 +22,8 @@ FightScene::FightScene()
      barMonsterLife = new Bar(50,20,200,20);
      textCombat.setPosition(sf::Vector2f(50,190));
      setText("coucou je vis");
+     thd =std::thread(&FightScene::WriteText,this);
+     thd.detach();
 
 
      //setMonster();
@@ -246,8 +249,12 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 }
 void FightScene::eventHandler(Event ev)
 {
+
+
+
  if(!isCurrentlyWrite)
  {
+
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
          {
              //rect.move(0,1);
@@ -329,9 +336,9 @@ void FightScene::eventHandler(Event ev)
                                  }
                                  else
                                  {
-                                     setText(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription());
-                                     //textWhichMustBeWrite=vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription();
-                                     //isCurrentlyWrite = true;
+                                     //setText(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription());
+                                     textWhichMustBeWrite=vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription();
+                                     isCurrentlyWrite = true;
                                      secondWindowsActivate =0;
                                  }
 
@@ -378,7 +385,7 @@ void FightScene::eventHandler(Event ev)
  }
  else
  {
-
+    /*
   if(clock.getElapsedTime().asMilliseconds()>200)
          {
           indexTextWhichMustBeWrite++;
@@ -394,6 +401,9 @@ void FightScene::eventHandler(Event ev)
             isCurrentlyWrite= true;
           }
          }
+
+        */
+
 
  }
 
@@ -610,10 +620,40 @@ void FightScene::setSpritePlayer()
   *
   * @todo: document this function
   */
-void FightScene::WriteText(std::string)
+void FightScene::WriteText()
 {
+    std::cout <<"ecrire"<<std::endl;
+    while(this)
+    {
+
+        if(isCurrentlyWrite)
+        {
+                  std::this_thread::sleep_for(std::chrono::milliseconds(20));
+
+                  if(indexTextWhichMustBeWrite < textWhichMustBeWrite.length())
+                  {
+                   textCurrentlyWrite += textWhichMustBeWrite[indexTextWhichMustBeWrite];
+                   setText(textCurrentlyWrite);
+                   clock.restart();
+
+                  }
+                  else
+                  {
+                    isCurrentlyWrite= false;
+                    indexTextWhichMustBeWrite =0;
+                    textCurrentlyWrite="";
+                  }
+                  indexTextWhichMustBeWrite++;
+            }
+
+    }
+
+
 
 }
+
+
+
 
 
 
