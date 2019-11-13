@@ -98,6 +98,8 @@ class BattleCharacter : public Character
 
         virtual std::string str() const;
 
+        std::string strHp() const;
+
         BattleCharacter* clone() const override;
 
     private:

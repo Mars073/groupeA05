@@ -128,3 +128,13 @@ void Monster::addPercentage(int nb)
     percentagesItem.push_back(nb);
 }
 
+std::vector<Item*> Monster::giveLoot(){
+    std::vector<Item*>loot;
+    srand(time(NULL));
+    for(unsigned i=0;i<percentagesItem.size();i++){
+        if(percentagesItem.at(i)>=(rand() % 100 + 0)){
+            loot.push_back(Getinventory()->Getbag().at(i));
+        }
+    }
+}
+

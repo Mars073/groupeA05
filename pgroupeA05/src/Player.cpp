@@ -231,6 +231,21 @@ void Player::damageReceived(int dmg)
     }
 }
 
+void Player::guard(int dmg)
+{
+    damageReceived(dmg/2);
+    if(Gethp()>0){
+        Sethp(Gethp()+(GetmaxHp()*0.1));
+        if(Gethp()>GetmaxHp()){
+            Sethp(GetmaxHp());
+        }
+        Setmp(Getmp()+(GetmaxMp()*0.1));
+        if(Getmp()>GetmaxMp()){
+            Setmp(GetmaxMp());
+        }
+    }
+}
+
 void Player::addIntoTheBag(std::string nameItem)
 {
     inventory->addItem(nameItem);
@@ -283,5 +298,13 @@ void Player::heals(Item* item)
         }
     }
     Getinventory()->deleteItem(item->GetitemName());
+}
+
+void Player::addLootMonster(std::vector<Item*>loot){
+    if(loot.size()>0){
+        for(unsigned i=0;i<loot.size();i++){
+            Getinventory()->addItem(loot.at(i));
+        }
+    }
 }
 

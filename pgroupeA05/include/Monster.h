@@ -3,6 +3,7 @@
 
 #include "BattleCharacter.h"
 #include "Inventory.h"
+#include <time.h>
 
 class Monster : public BattleCharacter
 {
@@ -74,6 +75,8 @@ class Monster : public BattleCharacter
         void addPercentage(int nb);
 
         int showDamageReceived(int dmg);
+
+        std::vector<Item*> giveLoot();
 
     protected:
 
