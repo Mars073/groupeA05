@@ -85,7 +85,6 @@
 		<Unit filename="include/Monster.h" />
 		<Unit filename="include/Npc.h" />
 		<Unit filename="include/Player.h" />
-		<Unit filename="include/Resources.h" />
 		<Unit filename="include/SFML/Audio.hpp" />
 		<Unit filename="include/SFML/Audio/AlResource.hpp" />
 		<Unit filename="include/SFML/Audio/Export.hpp" />
@@ -244,7 +243,6 @@
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/Npc.cpp" />
 		<Unit filename="src/Player.cpp" />
-		<Unit filename="src/Resources.cpp" />
 		<Unit filename="src/Spells.cpp" />
 		<Unit filename="src/Util/FontsManager.cpp" />
 		<Unit filename="src/Util/INIReader.cpp" />
