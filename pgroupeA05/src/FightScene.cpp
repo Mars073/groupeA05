@@ -635,6 +635,7 @@ void FightScene::WriteText()
                    textCurrentlyWrite += textWhichMustBeWrite[indexTextWhichMustBeWrite];
                    setText(textCurrentlyWrite);
                    clock.restart();
+                   indexTextWhichMustBeWrite++;
 
                   }
                   else
@@ -643,7 +644,7 @@ void FightScene::WriteText()
                     indexTextWhichMustBeWrite =0;
                     textCurrentlyWrite="";
                   }
-                  indexTextWhichMustBeWrite++;
+
             }
 
     }
