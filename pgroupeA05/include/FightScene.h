@@ -72,6 +72,7 @@ class FightScene: public StrategyScene
     protected:
 
     private:
+        bool* kill_sig;
         int activate;
         int secondWindowsActivate;
         bool isEventActive;

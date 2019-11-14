@@ -22,6 +22,8 @@ FightScene::FightScene()
      barMonsterLife = new Bar(50,20,200,20);
      textCombat.setPosition(sf::Vector2f(50,190));
      setText("coucou je vis");
+     kill_sig = new bool;
+     *kill_sig =  false;
      thd =std::thread(&FightScene::WriteText,this);
      thd.detach();
 
@@ -83,6 +85,7 @@ FightScene::FightScene()
 
 FightScene::~FightScene()
 {
+    *kill_sig = true;
     //dtor
     delete(fn);
     delete(barLife);
@@ -623,18 +626,19 @@ void FightScene::setSpritePlayer()
 void FightScene::WriteText()
 {
     std::cout <<"ecrire"<<std::endl;
-    while(this)
+    bool* intern_ptr = kill_sig;
+    while(!*intern_ptr)
     {
 
         if(isCurrentlyWrite)
         {
-                  std::this_thread::sleep_for(std::chrono::milliseconds(20));
+                  std::this_thread::sleep_for(std::chrono::milliseconds(60));
 
                   if(indexTextWhichMustBeWrite < textWhichMustBeWrite.length())
                   {
                    textCurrentlyWrite += textWhichMustBeWrite[indexTextWhichMustBeWrite];
                    setText(textCurrentlyWrite);
-                   clock.restart();
+                   //clock.restart();
                    indexTextWhichMustBeWrite++;
 
                   }
@@ -648,7 +652,7 @@ void FightScene::WriteText()
             }
 
     }
-
+    delete intern_ptr;
 
 
 }
