@@ -1,5 +1,4 @@
 #include "Model/GameMap.h"
-#include <View/Scenes/ConcreteStrategyMapScene.h>
 #define PI 3.141592653589793
 
 GameMap::GameMap()
@@ -286,31 +285,19 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
         {
             bool has_aggro = false;
             if (tile->FLOOR_ID == FLOOR_AGGRO)
-                has_aggro = (rand() % 100u) < RATE_AGGRO;
+                has_aggro = (rand() % 100) < RATE_AGGRO;
             else if (tile->FLOOR_ID == FLOOR_HIGH_AGGRO)
-                has_aggro = (rand() % 100u) < RATE_HIGH_AGGRO;
+                has_aggro = (rand() % 100) < RATE_HIGH_AGGRO;
 
             if (has_aggro)
             {
-                Bestiary* beast = new Bestiary;
+                Bestiary* beast=new Bestiary();
                 FightScene *fight = new FightScene();
 
                 //fight->getFightManager()->setPlayer(SingletonGame::getInstance()->getPlayerPTR());
                 fight->getFightManager()->setMonster(beast->getOneRandomMonster());
                 fight->setSpriteMonster();
-                std::thread thd([fight](){
-                    SingletonGame* g = SingletonGame::getInstance();
-                    if (typeid(*g->getScene()).name() == typeid(ConcreteStrategyMapScene).name())
-                    {
-                        ((ConcreteStrategyMapScene*) (g->getScene()))->playFXFight();
-                        std::this_thread::sleep_for(std::chrono::seconds(1));
-                    }
-                    g->setScene(fight);
-                });
-                thd.detach();
-                return;
-                /*if (thd.joinable())
-                    thd.join();*/
+                SingletonGame::getInstance()->setScene(fight);
 
             }
             break;
