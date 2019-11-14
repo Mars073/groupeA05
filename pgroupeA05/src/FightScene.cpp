@@ -71,7 +71,7 @@ FightScene::FightScene()
 
      activate = 0;
 
-     textureBackGroud =Resources::getTexture("BackGroudCombat", "data/images/BackGroudCombat.png");
+     textureBackGroud = *TexturesManager::getInstance()->get("fight");
      sprintBackGroud.setTexture(textureBackGroud);
 
 
@@ -105,7 +105,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
     //Modifier la position
 
-     sf::Font ft = Resources::getFont("arial", "data/fonts/arial.ttf");
+     sf::Font ft = *FontsManager::getInstance()->get("arial");
     //ft.loadFromFile("arial.ttf");
 
 
@@ -575,13 +575,13 @@ void FightScene::setTimeEventIsNotActive(float newTime)
 void FightScene::setSpriteMonster()
 {
  std::string lien = ("data/images/monsters/"+getFightManager()->getMonster()->GetcharaName()+".png");
- textureMonster = Resources::getTexture(getFightManager()->getMonster()->GetcharaName(),lien);
+ textureMonster = *TexturesManager::getInstance()->get("mob_boss");//"_" + getFightManager()->getMonster()->GetcharaName()
  spriteMonster.setTexture(textureMonster);
 }
 void FightScene::setText(std::string text)
 {
  textCombat.setCharacterSize(30);
- police = Resources::getFont("arial","data/fonts/arial.ttf");
+ police = *FontsManager::getInstance()->get("arial");
  textCombat.setFont(police);
  textCombat.setString(text);
 }

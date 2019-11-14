@@ -34,7 +34,7 @@ DrawableMonster& DrawableMonster::operator=(const DrawableMonster& rhs)
 void DrawableMonster::SetTexture(string nom)
 {
 
- text = Resources::getTexture("boss","data/images/monsters/boss.png");
+ text = *TexturesManager::getInstance()->get("mob_boss");
  this->SetSprite(text);
  ms =bs.getOneMonster(nom);
 }

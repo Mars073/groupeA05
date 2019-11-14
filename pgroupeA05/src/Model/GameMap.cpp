@@ -3,7 +3,7 @@
 
 GameMap::GameMap()
 {
-    setTexture(Resources::getTexture("simplemap", "data/images/simplemap_sprite.png"));
+    setTexture(*TexturesManager::getInstance()->get("map"));
     setWidth(64);
     world = 0;
     srand(time(NULL));

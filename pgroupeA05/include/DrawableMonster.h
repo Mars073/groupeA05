@@ -3,7 +3,6 @@
 
 #include "Util/TexturesManager.h"
 #include "Bestiary.h"
-#include "Resources.h"
 
 #include "string"
 #include "SFML/Graphics.hpp"

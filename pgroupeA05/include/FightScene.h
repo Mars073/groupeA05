@@ -17,7 +17,6 @@
 #include "Cooldown.h"
 #include "string.h"
 #include "DrawableMonster.h"
-#include "Resources.h"
 #include "Util/FontsManager.h"
 #include "thread"
 

@@ -3,7 +3,6 @@
 
 #include <string.h>
 #include <SFML/Graphics.hpp>
-#include "Resources.h"
 #include "Util/FontsManager.h"
 #include "Util/SoundsManager.h"
 #include "Util/TexturesManager.h"

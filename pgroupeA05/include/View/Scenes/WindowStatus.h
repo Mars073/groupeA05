@@ -2,7 +2,6 @@
 #define WINDOWSTATUS_H
 #include <string.h>
 #include <SFML/Graphics.hpp>
-#include "Resources.h"
 #include <Model/SingletonGame.h>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>

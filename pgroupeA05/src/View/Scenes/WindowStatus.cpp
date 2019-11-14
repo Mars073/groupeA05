@@ -125,12 +125,12 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
 {
     target.setView(View(FloatRect(0, 0, SingletonGame::W_WIDTH, SingletonGame::W_HEIGHT))); // HOT FIX
     Sprite sprite;
-    Texture t = Resources::getTexture("bg_menu_status", "data/images/bg_menu_status.jpg");
+    Texture t = *TexturesManager::getInstance()->get("status");
     sprite.setTexture(t);
     target.draw(sprite, states);
     target.draw(rectAll, states);
     target.draw(rectMenu, states);
-    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = *FontsManager::getInstance()->get("arial");
     for (int i = 0; i < MENU_LENGTH; i++)
     {
         Text text(i==selected_id?"> "+menu[i]:menu[i], f);
@@ -178,7 +178,7 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
 }
 
 void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
-    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = *FontsManager::getInstance()->get("arial");
     int menuItem=0;
     bool isHealMp=false;
     bool isHealHp=false;
@@ -243,7 +243,7 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
 }
 
 void WindowStatus::drawEquipment(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
-    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    Font f = *FontsManager::getInstance()->get("arial");
     int menuEquipment=0;
     bool isArmor=false;
     bool isWeapon=false;
