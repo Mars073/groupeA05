@@ -42,7 +42,9 @@ class WindowStatus: public StrategyScene
 
         void draw(RenderTarget&, RenderStates) const override;
 
-        void draw2(RenderTarget&, RenderStates,int nb,int nb2) const;
+        void drawItems(RenderTarget&, RenderStates,int nb,int nb2) const;
+
+        void drawEquipment(RenderTarget&, RenderStates,int nb,int nb2) const;
 
         void eventHandler(Event event);
 

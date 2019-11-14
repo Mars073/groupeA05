@@ -148,34 +148,17 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
         target.draw(textStatus, states);
     }
     else if(choiceMenu==1){
-        bool isArmor=false;
+        int nb1=0,nb2=8;
 
-        Text textWeapon("Weapons : ", f);
-        textWeapon.setCharacterSize(15);
-        textWeapon.setFillColor(sf::Color::Black);
-        textWeapon.setPosition(250, 50);
-        target.draw(textWeapon, states);
-
-        for (int i = 0; i < equipments.size(); i++)
-        {
-            if(equipments.at(i)->GetitemType()=="Armor" && !isArmor){
-                isArmor=true;
-                Text textArmor("Armors : ", f);
-                textArmor.setCharacterSize(15);
-                textArmor.setFillColor(sf::Color::Black);
-                textArmor.setPosition(250, 50+ (i+1)*42);
-                target.draw(textArmor, states);
+        for(unsigned i=0;i< ceil(((float)equipments.size()/8)) ;i++){
+            if(nb2>equipments.size()){
+                nb2=equipments.size();
             }
-            Text textEquipment(i==selected_id_menu?"> "+equipments.at(i)->strEquipment():equipments.at(i)->strEquipment(), f);
-            textEquipment.setCharacterSize(15);
-            textEquipment.setFillColor(sf::Color::Black);
-            if(!isArmor){
-                textEquipment.setPosition(250, 50 + (i+1)*42);
+            if(selected_id_menu>=nb1&&selected_id_menu<nb2){
+                drawEquipment(target,states,nb1,nb2);
             }
-            else{
-                textEquipment.setPosition(250, 50 + (i+2)*42);
-            }
-            target.draw(textEquipment, states);
+            nb1+=8;
+            nb2+=8;
         }
     }
     else if(choiceMenu==2){
@@ -186,7 +169,7 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
                 nb2=items.size();
             }
             if(selected_id_items>=nb1&&selected_id_items<nb2){
-                draw2(target,states,nb1,nb2);
+                drawItems(target,states,nb1,nb2);
             }
             nb1+=8;
             nb2+=8;
@@ -194,15 +177,14 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     }
 }
 
-void WindowStatus::draw2(RenderTarget& target, RenderStates states,int nb,int nb2) const{
+void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
     Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
     int menuItem=0;
     bool isHealMp=false;
     bool isHealHp=false;
+    bool checkNextSpace=false;
 
-
-
-    for (int i = nb; i < nb2; i++)
+    for (int i = nb1; i < nb2; i++)
     {
         if(items.at(i)->GetitemType()=="Heal" && !isHealHp){
             isHealHp=true;
@@ -217,7 +199,8 @@ void WindowStatus::draw2(RenderTarget& target, RenderStates states,int nb,int nb
             Text textHealMp("Heal mp : ", f);
             textHealMp.setCharacterSize(15);
             textHealMp.setFillColor(sf::Color::Black);
-            if(nb2==items.size() && items.size()>=9){
+            //if(nb2==items.size() && items.size()>=9){
+            if(i==nb1){
                 textHealMp.setPosition(250, 50+ (menuItem)*42);
             }
             else{
@@ -229,8 +212,11 @@ void WindowStatus::draw2(RenderTarget& target, RenderStates states,int nb,int nb
         Text textItems(i==selected_id_items?"> "+items.at(i)->strEquipment():items.at(i)->strEquipment(), f);
         textItems.setCharacterSize(15);
         textItems.setFillColor(sf::Color::Black);
-        if(!isHealMp || nb2==items.size()  && items.size()>=9){
+        if(!isHealMp || nb2==items.size() && items.size()>=9 && !isHealMp || i==nb1 && items.at(i)->GetitemType()=="HealMp" || items.size()>=9 && checkNextSpace || items.size()<8 && items.at(0)->GetitemType()=="HealMp"){
             textItems.setPosition(250, 50 + (menuItem+1)*42);
+            if(i==nb1 && items.at(i)->GetitemType()=="HealMp"){
+               checkNextSpace=true;
+            }
         }
         else{
             textItems.setPosition(250, 50 + (menuItem+2)*42);
@@ -247,6 +233,72 @@ void WindowStatus::draw2(RenderTarget& target, RenderStates states,int nb,int nb
         }
 
         if(selected_id_items>=8){
+            Text textArrowUp("Go up", f);
+            textArrowUp.setCharacterSize(20);
+            textArrowUp.setFillColor(sf::Color::Black);
+            textArrowUp.setPosition(460, 50);
+            target.draw(textArrowUp, states);
+        }
+    }
+}
+
+void WindowStatus::drawEquipment(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
+    Font f = Resources::getFont("arial", "data/fonts/arial.ttf");
+    int menuEquipment=0;
+    bool isArmor=false;
+    bool isWeapon=false;
+    bool checkNextSpace=false;
+
+    for (int i = nb1; i < nb2; i++)
+    {
+        if(equipments.at(i)->GetitemType()=="Weapon" && !isWeapon){
+            isWeapon=true;
+            Text textWeapon("Weapons : ", f);
+            textWeapon.setCharacterSize(15);
+            textWeapon.setFillColor(sf::Color::Black);
+            textWeapon.setPosition(250, 50);
+            target.draw(textWeapon, states);
+        }
+        if(equipments.at(i)->GetitemType()=="Armor" && !isArmor){
+            isArmor=true;
+            Text textArmor("Armors : ", f);
+            textArmor.setCharacterSize(15);
+            textArmor.setFillColor(sf::Color::Black);
+            textArmor.setPosition(250, 50+ (i+1)*42);
+            //if(nb2==equipments.size() && equipments.size()>=9){
+            if(i==nb1){
+                textArmor.setPosition(250, 50+ (menuEquipment)*42);
+            }
+            else{
+                textArmor.setPosition(250, 50+ (menuEquipment+1)*42);
+            }
+            target.draw(textArmor, states);
+        }
+        Text textEquipment(i==selected_id_menu?"> "+equipments.at(i)->strEquipment():equipments.at(i)->strEquipment(), f);
+        textEquipment.setCharacterSize(15);
+        textEquipment.setFillColor(sf::Color::Black);
+        //if(!isArmor || nb2==equipments.size()  && equipments.size()>=9){
+        if(!isArmor || nb2==equipments.size() && equipments.size()>=9 && !isArmor || i==nb1 && equipments.at(i)->GetitemType()=="Armor" || equipments.size()>=9 && checkNextSpace || equipments.size()<8 && equipments.at(0)->GetitemType()=="Armor"){
+            textEquipment.setPosition(250, 50 + (menuEquipment+1)*42);
+            if(i==nb1 && equipments.at(i)->GetitemType()=="Armor"){
+               checkNextSpace=true;
+            }
+        }
+        else{
+            textEquipment.setPosition(250, 50 + (menuEquipment+2)*42);
+        }
+        target.draw(textEquipment, states);
+        menuEquipment++;
+
+        if(nb2<equipments.size()){
+            Text textArrowDown("Go down", f);
+            textArrowDown.setCharacterSize(20);
+            textArrowDown.setFillColor(sf::Color::Black);
+            textArrowDown.setPosition(460, 420);
+            target.draw(textArrowDown, states);
+        }
+
+        if(selected_id_menu>=8){
             Text textArrowUp("Go up", f);
             textArrowUp.setCharacterSize(20);
             textArrowUp.setFillColor(sf::Color::Black);
