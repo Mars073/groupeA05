@@ -217,7 +217,7 @@ void WindowStatus::draw2(RenderTarget& target, RenderStates states,int nb,int nb
             Text textHealMp("Heal mp : ", f);
             textHealMp.setCharacterSize(15);
             textHealMp.setFillColor(sf::Color::Black);
-            if(nb2==items.size()){
+            if(nb2==items.size() && items.size()>=9){
                 textHealMp.setPosition(250, 50+ (menuItem)*42);
             }
             else{
@@ -229,7 +229,7 @@ void WindowStatus::draw2(RenderTarget& target, RenderStates states,int nb,int nb
         Text textItems(i==selected_id_items?"> "+items.at(i)->strEquipment():items.at(i)->strEquipment(), f);
         textItems.setCharacterSize(15);
         textItems.setFillColor(sf::Color::Black);
-        if(!isHealMp || nb2==items.size()){
+        if(!isHealMp || nb2==items.size()  && items.size()>=9){
             textItems.setPosition(250, 50 + (menuItem+1)*42);
         }
         else{
