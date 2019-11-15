@@ -191,6 +191,7 @@
 		<Unit filename="include/Util/SoundsManager.h" />
 		<Unit filename="include/Util/TexturesManager.h" />
 		<Unit filename="include/Util/ini.h" />
+		<Unit filename="include/View/DrawableBattleCharacter.h" />
 		<Unit filename="include/View/DrawablePlayer.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyCreditsScene.h">
 			<Option virtualFolder="Scenes/Headers/" />
@@ -253,6 +254,7 @@
 		<Unit filename="src/Util/init.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/View/DrawableBattleCharacter.cpp" />
 		<Unit filename="src/View/DrawablePlayer.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyCreditsScene.cpp">
 			<Option virtualFolder="Scenes/" />
