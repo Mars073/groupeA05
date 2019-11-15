@@ -68,7 +68,7 @@ Player* FightManager::getPlayer()const
 void FightManager::setMonster(Monster* ms)
 {
 
-    this->ms = ms->clone();
+    this->ms = ms;
 
 }
 void FightManager::setPlayer(Player* pls)
