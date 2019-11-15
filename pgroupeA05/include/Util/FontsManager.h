@@ -1,12 +1,12 @@
 #ifndef FONTSMANAGER_H
 #define FONTSMANAGER_H
 
-#include <Util/RessourcesManager.h>
+#include <Util/ResourcesManager.h>
 #include <SFML/Graphics.hpp>
 
 using sf::Font;
 
-class FontsManager:RessourcesManager<Font>
+class FontsManager:ResourcesManager<Font>
 {
     private:
         FontsManager();

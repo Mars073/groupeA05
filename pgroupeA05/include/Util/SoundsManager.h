@@ -1,13 +1,13 @@
 #ifndef SOUNDSMANAGER_H
 #define SOUNDSMANAGER_H
 
-#include <Util/RessourcesManager.h>
+#include <Util/ResourcesManager.h>
 #include <SFML/Audio.hpp>
 
 using sf::Sound;
 using sf::SoundBuffer;
 
-class SoundsManager:public RessourcesManager<Sound>
+class SoundsManager:public ResourcesManager<Sound>
 {
     private:
         SoundsManager();

@@ -1,12 +1,12 @@
 #ifndef TEXTURESMANAGER_H
 #define TEXTURESMANAGER_H
 
-#include <Util/RessourcesManager.h>
+#include <Util/ResourcesManager.h>
 #include <SFML/Graphics.hpp>
 
 using sf::Texture;
 
-class TexturesManager:public RessourcesManager<Texture>
+class TexturesManager:public ResourcesManager<Texture>
 {
     private:
         TexturesManager();

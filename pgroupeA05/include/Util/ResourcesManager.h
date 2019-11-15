@@ -1,5 +1,5 @@
-#ifndef RESSOURCESMANAGER_H
-#define RESSOURCESMANAGER_H
+#ifndef RESOURCESMANAGER_H
+#define RESOURCESMANAGER_H
 
 #include <map>
 #include <string>
@@ -7,7 +7,7 @@ using std::map;
 using std::string;
 
 template<class T>
-class RessourcesManager
+class ResourcesManager
 {
     private:
         //static map<string, T*> store;
@@ -22,4 +22,4 @@ class RessourcesManager
         }
 };
 
-#endif // RESSOURCESMANAGER_H
+#endif // RESOURCESMANAGER_H

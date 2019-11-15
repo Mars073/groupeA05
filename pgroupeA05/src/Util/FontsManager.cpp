@@ -27,7 +27,7 @@ bool FontsManager::load(string name, string filename)
     Font font;
     if (!font.loadFromFile(filename))
         return false;
-    name = RessourcesManager::str_tolower(name);
+    name = ResourcesManager::str_tolower(name);
     store[name] = new Font(font);
     return true;
 }
@@ -35,7 +35,7 @@ bool FontsManager::load(string name, string filename)
 Font* FontsManager::get(string name) const
 {
     map<string, Font*>::iterator it;
-    name = RessourcesManager::str_tolower(name);
+    name = ResourcesManager::str_tolower(name);
     it = store.find(name);
     return it->second;
 }
