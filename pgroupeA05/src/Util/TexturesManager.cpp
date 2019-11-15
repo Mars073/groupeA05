@@ -25,6 +25,7 @@ TexturesManager* TexturesManager::getInstance()
 bool TexturesManager::load(string name, string filename)
 {
     Texture texture;
+    name = RessourcesManager::str_tolower(name);
     if (!texture.loadFromFile(filename))
         return false;
     store[name] = new Texture(texture);
@@ -33,6 +34,7 @@ bool TexturesManager::load(string name, string filename)
 Texture* TexturesManager::get(string name) const
 {
     map<string, Texture*>::iterator it;
+    name = RessourcesManager::str_tolower(name);
     it = store.find(name);
     return it->second;
 }

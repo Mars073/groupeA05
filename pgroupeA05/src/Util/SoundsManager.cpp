@@ -33,6 +33,7 @@ SoundsManager* SoundsManager::getInstance()
 
 bool SoundsManager::load(string name, string filename)
 {
+    name = RessourcesManager::str_tolower(name);
     SoundBuffer* buffer = new SoundBuffer;
     Sound* sound = new Sound;
     if (!buffer->loadFromFile(filename))
@@ -50,6 +51,7 @@ bool SoundsManager::load(string name, string filename)
 Sound* SoundsManager::get(string name) const
 {
     map<string, Sound*>::iterator it;
+    name = RessourcesManager::str_tolower(name);
     it = store.find(name);
     return it->second;
 }
@@ -65,6 +67,7 @@ void SoundsManager::play(string name) const
 }
 void SoundsManager::pause(string name) const
 {
+    name = RessourcesManager::str_tolower(name);
     map<string, Sound*>::iterator it;
     it = store.find(name);
     if (it != store.end())
@@ -72,6 +75,7 @@ void SoundsManager::pause(string name) const
 }
 void SoundsManager::stop(string name) const
 {
+    name = RessourcesManager::str_tolower(name);
     map<string, Sound*>::iterator it;
     it = store.find(name);
     if (it != store.end())
