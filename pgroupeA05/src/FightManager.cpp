@@ -13,7 +13,7 @@ FightManager::~FightManager()
 {
     //dtor
     delete(ms);
-    delete(pl);
+
 }
 void FightManager::DamagePlayer()
 {

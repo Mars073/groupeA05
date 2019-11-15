@@ -93,6 +93,7 @@ FightScene::~FightScene()
         thd->terminate();
         delete thd;
     }
+    delete fm;
 }
 void FightScene::setActivate(int activate)
 {
