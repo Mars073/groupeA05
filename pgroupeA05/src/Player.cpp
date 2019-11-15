@@ -15,33 +15,13 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->armor=new Armor("Clothes","Ordinary clothing.",1);
     this->inventory->addItem(weapon);
     this->inventory->addItem(armor);
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Clothes"));
     this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Potion"));
-    this->inventory->addItem(inventory->getOneItem("Ether"));
     this->inventory->addItem(inventory->getOneItem("Ether"));
     this->spells=new Spells();
     this->spells->addMagic("Fire");
     this->spells->addMagic("Ice");
     this->spells->addMagic("Water");
+    this->spells->addMagic("Ultima");
     srand ( time(NULL) );
 }
 

@@ -87,7 +87,7 @@ FightScene::~FightScene()
 {
     *kill_sig = true;
     //dtor
-    delete(fn);
+    //delete(fn);
     delete(barLife);
     delete(barMonsterLife);
 
@@ -294,13 +294,13 @@ void FightScene::eventHandler(Event ev)
 
                           std::cout << "espace toucher" << std::endl;
                           vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
-                          std::cout<<"it works 0 bitch : "<<std::endl<<getFightManager()->getMonster()->str();
+
                           if(fm->isFightFinish())
                           {
-                              std::cout<<"it works 1 bitch : "<<std::endl<<getFightManager()->getMonster()->str();
+
                             if(fm->isPlayerWin())
                             {
-                                std::cout<<"it works 2 bitch : "<<std::endl<<getFightManager()->getMonster()->str();
+
                                gotoPreviousScene();
                             }
                           }
