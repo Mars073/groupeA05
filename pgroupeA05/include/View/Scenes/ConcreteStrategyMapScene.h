@@ -1,13 +1,12 @@
 #ifndef MAPSCENE_H
 #define MAPSCENE_H
 
-#include<thread>
-#include<chrono>
 #include "View/StrategyScene.h"
 #include "View/Scenes/ConcreteStrategyMenuScene.h"
 #include "View/Scenes/WindowStatus.h"
 #include "Model/GameMap.h"
 #include "View/DrawablePlayer.h"
+
 class ConcreteStrategyMapScene: public StrategyScene
 {
     private:
@@ -15,6 +14,7 @@ class ConcreteStrategyMapScene: public StrategyScene
         DrawablePlayer player;
         void timeoutFXIntro();
         bool isFXIntro = false;
+        Thread* thFXIntro = nullptr;
 
     public:
         ConcreteStrategyMapScene();

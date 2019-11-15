@@ -29,6 +29,7 @@ class ResourcesLoader
         SoundsManager*  sm = SoundsManager::getInstance();
         TexturesManager*tm = TexturesManager::getInstance();
         Clock clock;
+        Thread* _async = nullptr;
         void task();
         int loaded = 0;
         unsigned finish_at = -1;

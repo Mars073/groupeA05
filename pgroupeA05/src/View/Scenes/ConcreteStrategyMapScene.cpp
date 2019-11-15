@@ -6,6 +6,7 @@ ConcreteStrategyMapScene::ConcreteStrategyMapScene()
     gmap.loadFromFileID(0);
     // default position for map 0
     player.setPosition(65., 94.);
+    thFXIntro = new Thread(&ConcreteStrategyMapScene::timeoutFXIntro, this);
 }
 void ConcreteStrategyMapScene::setCamera(RenderTarget& target, float cx, float cy) const
 {
@@ -25,11 +26,12 @@ void ConcreteStrategyMapScene::playFXIntro()
     clock.restart();
     controller = false;
     isFXIntro = true;
-    thread(&ConcreteStrategyMapScene::timeoutFXIntro, this).detach();
+    thFXIntro->launch();
 }
 void ConcreteStrategyMapScene::timeoutFXIntro()
 {
-    this_thread::sleep_for(chrono::seconds(20));
+    //this_thread::sleep_for(chrono::seconds(20));
+    sleep(seconds(20));
     controller = true;
     isFXIntro = false;
 }

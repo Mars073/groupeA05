@@ -2,12 +2,17 @@
 
 ResourcesLoader::ResourcesLoader()
 {
+    _async = new Thread(&ResourcesLoader::task, this);
     clock.restart();
 }
 
 ResourcesLoader::~ResourcesLoader()
 {
-    //dtor
+    if (_async)
+    {
+        _async->terminate();
+        delete _async;
+    }
 }
 ResourcesLoader::Status ResourcesLoader::getStatus() const
 {
@@ -28,8 +33,7 @@ unsigned ResourcesLoader::getTime() const
 void ResourcesLoader::load_resources() {
     if (status == Status::PENDING)
     {
-        Thread _async(&ResourcesLoader::task, this);
-        _async.launch();
+        _async->launch();
     }
 }
 void ResourcesLoader::task()
