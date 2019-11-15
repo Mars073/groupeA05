@@ -87,6 +87,7 @@ FightScene::~FightScene()
     *kill_sig = true;
     //dtor
     //delete(fn);
+    //delete fm;
     if (thd)
     {
         thd->terminate();

@@ -8,6 +8,10 @@ ConcreteStrategyMapScene::ConcreteStrategyMapScene()
     player.setPosition(65., 94.);
     thFXIntro = new Thread(&ConcreteStrategyMapScene::timeoutFXIntro, this);
 }
+ConcreteStrategyMapScene::~ConcreteStrategyMapScene()
+{
+    delete thFXIntro;
+}
 void ConcreteStrategyMapScene::setCamera(RenderTarget& target, float cx, float cy) const
 {
     setCamera(target, Vector2f(cx, cy));
@@ -30,7 +34,6 @@ void ConcreteStrategyMapScene::playFXIntro()
 }
 void ConcreteStrategyMapScene::timeoutFXIntro()
 {
-    //this_thread::sleep_for(chrono::seconds(20));
     sleep(seconds(20));
     controller = true;
     isFXIntro = false;

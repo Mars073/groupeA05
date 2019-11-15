@@ -18,6 +18,7 @@ class ConcreteStrategyMapScene: public StrategyScene
 
     public:
         ConcreteStrategyMapScene();
+        virtual ~ConcreteStrategyMapScene();
         void playFXIntro();
         void drawFXIntro(RenderTarget&) const;
         void draw(RenderTarget&, RenderStates) const override;
