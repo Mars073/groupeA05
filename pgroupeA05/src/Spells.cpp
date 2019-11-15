@@ -87,7 +87,11 @@ int Spells::indexOfEverySpells(Magic* magic) const
 
 std::vector<Magic*> Spells::GetspellsHeld() const
 {
-    return spellsHeld;
+    std::vector<Magic*>clone;
+    for (unsigned i = 0; i < spellsHeld.size(); i++){
+        clone.push_back(spellsHeld.at(i)->clone());
+    }
+    return clone;
 }
 
 std::vector<Magic*> Spells::GeteverySpells() const

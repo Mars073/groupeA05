@@ -189,5 +189,5 @@ void Bestiary::deleteMonster(std::string nameMonster)
 
 Monster* Bestiary::getOneRandomMonster(){
     srand(time(NULL));
-    return bestiary.at(rand() % (bestiary.size()-1) + 0)->clone();
+    return bestiary.at(rand() % (bestiary.size()-1) + 0);
 }
