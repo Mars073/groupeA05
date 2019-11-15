@@ -1,3 +1,7 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <istream>
+#include <string>
+// *** END ***
 #ifndef CONCRETESTRATEGYLOADSCREENSCENE_H
 #define CONCRETESTRATEGYLOADSCREENSCENE_H
 

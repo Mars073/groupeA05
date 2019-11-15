@@ -1,3 +1,6 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <ctime>
+// *** END ***
 #ifndef PLAYER_H
 #define PLAYER_H
 

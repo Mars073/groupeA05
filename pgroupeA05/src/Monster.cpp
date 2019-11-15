@@ -136,5 +136,6 @@ std::vector<Item*> Monster::giveLoot(){
             loot.push_back(Getinventory()->Getbag().at(i));
         }
     }
+    return loot;
 }
 

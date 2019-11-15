@@ -1,3 +1,6 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <istream>
+// *** END ***
 #ifndef MAGIC_H
 #define MAGIC_H
 #include <sstream>

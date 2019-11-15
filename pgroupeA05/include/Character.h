@@ -1,3 +1,7 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <istream>
+#include <string>
+// *** END ***
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #include <sstream>

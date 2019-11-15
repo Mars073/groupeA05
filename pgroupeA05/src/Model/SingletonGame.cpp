@@ -90,7 +90,7 @@ void SingletonGame::gotoPreviousScene()
     setScene(previous_scene.at(previous_scene.size()-1));
     previous_scene.erase(previous_scene.begin() + previous_scene.size() - 1);
     delete curr;
-    resetView();
+    //resetView();
 }
 
 StrategyScene* SingletonGame::getScene() const

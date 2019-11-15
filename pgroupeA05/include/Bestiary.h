@@ -1,3 +1,6 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <ctime>
+// *** END ***
 #ifndef BESTIARY_H
 #define BESTIARY_H
 #include "Monster.h"

@@ -1,3 +1,7 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <istream>
+#include <string>
+// *** END ***
 #ifndef RESOURCESLOADER_H
 #define RESOURCESLOADER_H
 

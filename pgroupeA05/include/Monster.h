@@ -1,3 +1,6 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <ctime>
+// *** END ***
 #ifndef MONSTER_H
 #define MONSTER_H
 

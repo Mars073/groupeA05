@@ -1,3 +1,7 @@
+// *** ADDED BY HEADER FIXUP ***
+#include <ctime>
+#include <istream>
+// *** END ***
 #ifndef GAMEMAP_H
 #define GAMEMAP_H
 
