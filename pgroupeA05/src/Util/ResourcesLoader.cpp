@@ -27,7 +27,10 @@ unsigned ResourcesLoader::getTime() const
 }
 void ResourcesLoader::load_resources() {
     if (status == Status::PENDING)
-        thread(&ResourcesLoader::task, this).detach();
+    {
+        Thread _async(&ResourcesLoader::task, this);
+        _async.launch();
+    }
 }
 void ResourcesLoader::task()
 {

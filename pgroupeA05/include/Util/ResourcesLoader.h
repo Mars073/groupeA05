@@ -11,14 +11,13 @@
 #include "Util/FontsManager.h"
 #include "Util/SoundsManager.h"
 #include "Util/TexturesManager.h"
-#include<SFML/System.hpp>
-#include<thread>
-#include<chrono>
+#include <SFML/System.hpp>
+#include <SFML/System/Thread.hpp>
 
-using std::thread;
 using std::string;
 using sf::Clock;
 using sf::Time;
+using sf::Thread;
 
 class ResourcesLoader
 {

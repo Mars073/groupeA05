@@ -18,8 +18,8 @@
 #include "string.h"
 #include "DrawableMonster.h"
 #include "Util/FontsManager.h"
-#include "thread"
 
+using sf::Thread;
 
 class FightScene: public StrategyScene
 {
@@ -109,8 +109,7 @@ class FightScene: public StrategyScene
         //Manage the fight
         FightManager *fm;
         //thread
-        std::thread thd;
-
+        Thread* thd = nullptr;
 
 
 };

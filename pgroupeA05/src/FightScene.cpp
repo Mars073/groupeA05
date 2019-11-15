@@ -23,8 +23,8 @@ FightScene::FightScene()
     setText("coucou je vis");
     kill_sig = new bool;
     *kill_sig =  false;
-    thd =std::thread(&FightScene::WriteText,this);
-    thd.detach();
+    thd = new Thread(&FightScene::WriteText, this);
+    thd->launch();
 
 
     //setMonster();
@@ -87,7 +87,11 @@ FightScene::~FightScene()
     *kill_sig = true;
     //dtor
     //delete(fn);
-
+    if (thd)
+    {
+        thd->terminate();
+        delete thd;
+    }
 }
 void FightScene::setActivate(int activate)
 {
@@ -504,8 +508,8 @@ void FightScene::WriteText()
                 indexTextWhichMustBeWrite =0;
                 textCurrentlyWrite="";
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(60));
-
+            //std::this_thread::sleep_for(std::chrono::milliseconds(60));
+            sf::sleep(sf::milliseconds(60));
         }
 
     }
