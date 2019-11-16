@@ -22,6 +22,7 @@ class DrawableBattleCharacter : public Drawable
         BattleCharacter* character = nullptr;
         Vector2f position = Vector2f(.0, .0);
         Texture texture;
+        Vector2f textureOffset = Vector2f(.0, .0);
     public:
         /** Constants */
         static const int B_WIDTH = 100;

@@ -22,12 +22,17 @@ void DrawableBattleCharacter::setPosition(float x, float y)
 void DrawableBattleCharacter::setPosition(Vector2f _position)
 {
     position = _position;
+    if (character)
+    {
+        textureOffset = Vector2f(B_WIDTH/2, B_HEIGHT+B_WIDTH/2) - Vector2f(texture.getSize().x/2.f, texture.getSize().y/2.f);
+    }
 }
 
 void DrawableBattleCharacter::setCharacter(BattleCharacter* _character)
 {
     character = _character;
     texture = *tm->get("mob_"+character->GetcharaName());
+    setPosition(position); // refresh offset
 }
 void DrawableBattleCharacter::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -44,7 +49,7 @@ void DrawableBattleCharacter::draw(sf::RenderTarget& target, sf::RenderStates st
         RectangleShape hp(position);
         hp.setFillColor(Color::Green);
         hp.setSize(Vector2f(
-            ((float)character->GetmaxHp())/character->Gethp()*B_WIDTH,
+            ((float)character->Gethp())/character->GetmaxHp()*B_WIDTH,
             B_HEIGHT
         ));
         target.draw(hp);
@@ -55,12 +60,13 @@ void DrawableBattleCharacter::draw(sf::RenderTarget& target, sf::RenderStates st
         RectangleShape mp(position + Vector2f(0, B_WIDTH + B_HEIGHT));
         mp.setFillColor(Color::Cyan);
         mp.setSize(Vector2f(
-            ((float)character->GetmaxMp())/character->Getmp()*B_WIDTH,
+            ((float)character->Getmp())/character->GetmaxMp()*B_WIDTH,
             B_HEIGHT
         ));
         target.draw(mp);
     }
+    /** Draw Sprite centered */
     Sprite sprite(texture);
-    sprite.setPosition(position + Vector2f(0, B_HEIGHT));
+    sprite.setPosition(position + textureOffset);
     target.draw(sprite);
 }
