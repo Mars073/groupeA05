@@ -45,13 +45,13 @@ FightScene::FightScene()
     vectWindows.push_back(fn2);
     vectWindows.push_back(fn3);
     //Creation of button
-    btnAttack *btnAtt = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+7,70,35,"Attack");
-    BtnMagic *btnMagie = new BtnMagic(fn->getPositionX()+10,fn->getPositionY()+57,70,35,"Magic");
-    btnMagie->setIsMenuBoutton(true);
+    btnAttack btnAtt(fn->getPositionX()+10,fn->getPositionY()+7,70,35,"Attack");
+    BtnMagic btnMagie(fn->getPositionX()+10,fn->getPositionY()+57,70,35,"Magic");
+    btnMagie.setIsMenuBoutton(true);
 
-    btnAttack *btnDefend = new btnAttack(fn->getPositionX()+10,fn->getPositionY()+107,70,35,"Defend");
-    BtnObject *btnObjet = new BtnObject(fn->getPositionX()+10,fn->getPositionY()+157,70,35,"Object");
-    btnObjet->setIsMenuBoutton(true);
+    btnAttack btnDefend(fn->getPositionX()+10,fn->getPositionY()+107,70,35,"Defend");
+    BtnObject btnObjet(fn->getPositionX()+10,fn->getPositionY()+157,70,35,"Object");
+    btnObjet.setIsMenuBoutton(true);
 
     //btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
     //btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
@@ -59,10 +59,10 @@ FightScene::FightScene()
     //btnMagie->AddButton(btnAttack3);
     fm = new FightManager();
     //Add Button  in fightManager
-    fn->addButton(btnAtt->clone());
-    fn->addButton(btnMagie->Clone());
-    fn->addButton(btnDefend->clone());
-    fn->addButton(btnObjet->clone());
+    fn->addButton(btnAtt.clone());
+    fn->addButton(btnMagie.Clone());
+    fn->addButton(btnDefend.clone());
+    fn->addButton(btnObjet.clone());
     //this->setSpriteMonster();
     //initialise fightManager in button
     for(unsigned i = 0; i<fn->getVect().size(); i++)
@@ -75,12 +75,6 @@ FightScene::FightScene()
     textureBackGroud = *TexturesManager::getInstance()->get("fight");
     sprintBackGroud.setTexture(textureBackGroud);
 
-    delete btnAtt;
-    delete btnDefend;
-    delete btnMagie;
-    delete btnObjet;
-
-
 
     //Delete pointer
 
@@ -89,21 +83,22 @@ FightScene::FightScene()
 
 FightScene::~FightScene()
 {
-    *kill_sig = true;
-    //dtor
-    //delete(fn);
-    //delete fm;
+    *kill_sig = true;   // break WriteText loop
+
     if (thd)
     {
-        thd->terminate();
+        thd->terminate(); // force quit WriteText
         delete thd;
     }
+    if (kill_sig)
+        delete kill_sig; // alias intern_ptr in WriteText
 
     delete fm;
 
     delete fn2;
     delete fn3;
     delete fn;
+
 }
 void FightScene::setActivate(int activate)
 {
@@ -451,7 +446,7 @@ void FightScene::setTimeEventIsNotActive(float newTime)
 void FightScene::setSpriteMonster()
 {
     std::string lien = ("data/images/monsters/"+getFightManager()->getMonster()->GetcharaName()+".png");
-    textureMonster = *TexturesManager::getInstance()->get("mob_boss");//"_" + getFightManager()->getMonster()->GetcharaName()
+    textureMonster = *tm->get("mob_boss");//"_" + getFightManager()->getMonster()->GetcharaName()
     spriteMonster.setTexture(textureMonster);
 }
 void FightScene::setText(std::string text)
@@ -506,7 +501,7 @@ void FightScene::WriteText()
         if(isCurrentlyWrite)
         {
 
-            if(indexTextWhichMustBeWrite < textWhichMustBeWrite.length())
+            if(indexTextWhichMustBeWrite < (int)textWhichMustBeWrite.length())
             {
                 textCurrentlyWrite += textWhichMustBeWrite[indexTextWhichMustBeWrite];
                 setText(textCurrentlyWrite);
@@ -526,7 +521,7 @@ void FightScene::WriteText()
 
     }
     delete intern_ptr;
-
+    intern_ptr = 0;
 
 }
 

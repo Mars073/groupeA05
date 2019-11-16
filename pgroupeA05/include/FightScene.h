@@ -30,7 +30,7 @@ class FightScene: public StrategyScene
         void draw(RenderTarget&,RenderStates) const override;
         void eventHandler(Event ev);
         //Get and setter
-        std::vector<WindowsFight*>getVectWindows()const;
+        std::vector<WindowsFight*> getVectWindows() const;
         void setActivate(int activate);
         void setFightManager(FightManager *fm);
         FightManager* getFightManager()const;
@@ -83,7 +83,7 @@ class FightScene: public StrategyScene
         WindowsFightInfo *fn3;
         std::string cc;
 
-        std::vector<WindowsFight*>vectWindows;
+        std::vector<WindowsFight*> vectWindows;
         Bar barLife;
         Bar barMp;
         Bar barMonsterLife;
