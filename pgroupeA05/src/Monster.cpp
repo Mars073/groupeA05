@@ -71,7 +71,12 @@ std::string Monster::str() const
     <<"Exp held : "<<GetexpHeld()<<std::endl
     <<"Items and percentages : "<<std::endl;
     for (unsigned i = 0; i < percentagesItem.size(); i++){
-        sstr<<GetLootHeld()[i]->GetitemName()<<" "<<std::to_string(percentagesItem[i])<<" %"<<std::endl;
+        if (i >= GetLootHeld().size())
+        {
+            sstr << "Loot range fail" << std::endl;
+            break;
+        }
+        sstr<<GetLootHeld().at(i)->GetitemName()<<" "<<std::to_string(percentagesItem.at(i))<<" %"<<std::endl;
     }
     return sstr.str();
 }

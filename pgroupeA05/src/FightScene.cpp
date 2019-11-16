@@ -278,8 +278,21 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
 
 
 }
+bool __HOTFIX__inRange(int i, int b, int e) {
+    if (i >= b && i <= e)
+    {
+        return true;
+    }
+    else
+    {
+        std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄" << std::endl << "████▌▄▌▄▐▐▌█████" << std::endl << "████▌▄▌▄▐▐▌▀████" << std::endl << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << std::endl;
+        return false;
+    }
+}
+
 void FightScene::eventHandler(Event ev)
 {
+    std::cout << "isCurrentlyWrite" << isCurrentlyWrite << std::endl;
     if (!isCurrentlyWrite)
     {
         if (ev.type == sf::Event::KeyReleased) // KeyPressed (OnKeyDown)
@@ -301,43 +314,69 @@ void FightScene::eventHandler(Event ev)
             case sf::Keyboard::Enter:
             case sf::Keyboard::Space:
                 {
-                    for (unsigned i = 0; i <= vectWindows.at(secondWindowsActivate)->getNbBoutton(); i++)
+                    if (!__HOTFIX__inRange(secondWindowsActivate, 0, vectWindows.size()-1))
+                        return;
+                    for (int i = 0; i <= vectWindows.at(secondWindowsActivate)->getNbBoutton(); i++)
                     {
                         std::cout << "secondWindowsActivate: " << secondWindowsActivate<<endl;
 
+                        if (!__HOTFIX__inRange(i, 0, vectWindows.at(secondWindowsActivate)->getVect().size()-1))
+                            return;
                         if (vectWindows.at(secondWindowsActivate)->getVect().at(i)->getisActivate())
                         {
                             std::cout << "espace/enter toucher" << std::endl;
 
+                            if (!__HOTFIX__inRange(i, 0, vectWindows.at(secondWindowsActivate)->getVect().size()-1))
+                                return;
                             vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
-                            setActivate(0); /** HOT FIXES out of range */
 
                             if (fm->isFightFinish())
                             {
                                 if (fm->isPlayerWin())
+                                {
+                                    std::cout << "Freeze?" << std::endl;
                                     gotoPreviousScene();
+                                }
                             }
                             else
                             {
                                 std::cout <<"isMenu" <<std::endl;
 
+                                if (!__HOTFIX__inRange(i, 0, vectWindows.at(secondWindowsActivate)->getVect().size()-1))
+                                    return;
                                 if(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getIsMenuBoutton())
                                 {
                                     fn2->ClearWindows();
                                     secondWindowsActivate = 1;
                                     //check Doublon ERREUR
 
+                                    if (!__HOTFIX__inRange(i, 0, fn->getVect().size()-1))
+                                        return;
                                     for(unsigned j = 0 ; j <(fn->getVect().at(i)->getListButton().size()); j++)
                                     {
                                         //std::cout << fn2->getVect().at(i)->getListButton().size() <<"nombre de bouton dans le bouton et j " << j <<endl;
 
                                         bool isCopie = false;
                                         for(unsigned t = 0; t < fn2->getVect().size(); t++)
+                                        {
+                                            if (!__HOTFIX__inRange(t, 0, fn2->getVect().size()-1))
+                                                return;
+                                            if (!__HOTFIX__inRange(i, 0, fn->getVect().size()-1))
+                                                return;
+                                            if (!__HOTFIX__inRange(j, 0, fn->getVect().at(i)->getListButton().size()-1))
+                                                return;
                                             if(fn2->getVect().at(t)->equals(fn->getVect().at(i)->getListButton().at(j)))
                                                 isCopie = true;
+                                        }
 
                                         if (!isCopie)
+                                        {
+                                            if (!__HOTFIX__inRange(i, 0, fn->getVect().size()-1))
+                                                return;
+                                            if (!__HOTFIX__inRange(j, 0, fn->getVect().at(i)->getListButton().size()-1))
+                                                return;
                                             fn2->addButton(fn->getVect().at(i)->getListButton().at(j));
+                                        }
 
                                         //fn2->fn->getVect().at(i)->getListButton().
                                     }
@@ -345,6 +384,8 @@ void FightScene::eventHandler(Event ev)
                                 else
                                 {
                                     //setText(vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription());
+                                    if (!__HOTFIX__inRange(i, 0, vectWindows.at(secondWindowsActivate)->getVect().size()-1))
+                                                return;
                                     textWhichMustBeWrite=vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription();
                                     isCurrentlyWrite = true;
                                     secondWindowsActivate = 0;
@@ -359,7 +400,7 @@ void FightScene::eventHandler(Event ev)
             default: break;
             }
         }
-
+        // Tout est géré par le setter
         /*if (secondWindowsActivate == 1)
         {
             if (activate < 0)
@@ -467,7 +508,6 @@ void FightScene::WriteText()
     bool* intern_ptr = kill_sig;
     while(!*intern_ptr)
     {
-
         if(isCurrentlyWrite)
         {
 
