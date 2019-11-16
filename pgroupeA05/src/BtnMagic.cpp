@@ -11,6 +11,16 @@ BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::stri
 BtnMagic::~BtnMagic()
 {
  //dtor
+  if(!this->getIsMenuBoutton())
+  {
+   delete magic;
+  }
+  int n = this->getListButton().size();
+  for(int i = 0;i<n;i++)
+  {
+    delete(this->getListButton().at(i));
+  }
+
 
 }
 
@@ -34,10 +44,12 @@ void BtnMagic::action()
   for(int i = 0 ;i<this->getFm()->getPlayer()->Getspells()->GetspellsHeld().size();i++)
   {
    BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+325,257+(50*i),70,35,"p");
-   btnMagCreate->Setmagic(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i));
+   btnMagCreate->Setmagic(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->clone());
    btnMagCreate->setNomText(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->GetmName());
    btnMagCreate->setFm(this->getFm());
+
    this->AddButton(btnMagCreate);
+   //delete btnMagCreate;
 
   }
  }
@@ -67,3 +79,12 @@ std::string BtnMagic::getDescription()
 // return degatsStr.str();
    return degatsStr.str();
 }
+BtnMagic* BtnMagic::Clone()
+ {
+  BtnMagic *btnMag = new BtnMagic(getPositionX(),getPositionY(),getTailleX(),getTailleY(),getTextButton());
+  if(this->getIsMenuBoutton())
+  {
+    btnMag->setIsMenuBoutton(true);
+  }
+  return btnMag;
+ }

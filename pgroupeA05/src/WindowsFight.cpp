@@ -36,11 +36,14 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
 }
 
 WindowsFight::~WindowsFight()
-{
-    for(int i = 0; i< this->vectorButton.size()-1;i++)
+{   /*
+    for(int i = 0; i< this->vectorButton.size();i++)
     {
-        delete(this->vectorButton.at(i));
+        std::cout <<i <<"bouton supprimer"<<std::endl;
+        BtnWin *mp =(this->vectorButton.at(i));
+        delete mp;
     }
+    */
 
 }
 int WindowsFight::getPositionX() const

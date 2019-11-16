@@ -59,10 +59,10 @@ FightScene::FightScene()
     //btnMagie->AddButton(btnAttack3);
     fm = new FightManager();
     //Add Button  in fightManager
-    fn->addButton(btnAtt);
-    fn->addButton(btnMagie);
-    fn->addButton(btnDefend);
-    fn->addButton(btnObjet);
+    fn->addButton(btnAtt->clone());
+    fn->addButton(btnMagie->Clone());
+    fn->addButton(btnDefend->clone());
+    fn->addButton(btnObjet->clone());
     //this->setSpriteMonster();
     //initialise fightManager in button
     for(unsigned i = 0; i<fn->getVect().size(); i++)
@@ -74,6 +74,11 @@ FightScene::FightScene()
 
     textureBackGroud = *TexturesManager::getInstance()->get("fight");
     sprintBackGroud.setTexture(textureBackGroud);
+
+    delete btnAtt;
+    delete btnDefend;
+    delete btnMagie;
+    delete btnObjet;
 
 
 
@@ -93,7 +98,12 @@ FightScene::~FightScene()
         thd->terminate();
         delete thd;
     }
+
     delete fm;
+
+    delete fn2;
+    delete fn3;
+    delete fn;
 }
 void FightScene::setActivate(int activate)
 {

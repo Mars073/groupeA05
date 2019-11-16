@@ -15,7 +15,7 @@ class BtnMagic : public BtnWin
 
   Magic* Getmagic() { return magic; }
   void Setmagic(Magic* val) { magic = val; }
-
+  BtnMagic* Clone();
   void action();
   std::string getDescription();
 

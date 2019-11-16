@@ -14,6 +14,7 @@ class BtnObject : public BtnWin
   BtnObject& operator=(const BtnObject& other);
   void action();
   std::string getDescription();
+  BtnObject *clone();
 
 
  protected:

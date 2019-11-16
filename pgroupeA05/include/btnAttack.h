@@ -12,6 +12,7 @@ class btnAttack : public BtnWin
         void action();
         virtual ~btnAttack();
         std::string getDescription();
+        btnAttack *clone();
 
 
     protected:

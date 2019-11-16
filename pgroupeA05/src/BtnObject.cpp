@@ -8,6 +8,16 @@ BtnObject::BtnObject(int positionX,int positionY,int tailleX,int tailleY,std::st
 BtnObject::~BtnObject()
 {
  //dtor
+  if(!this->getIsMenuBoutton())
+  {
+   delete item;
+  }
+  int n = this->getListButton().size();
+  for(int i = 0;i<n;i++)
+  {
+    delete(this->getListButton().at(i));
+  }
+
 }
 
 BtnObject::BtnObject(const BtnObject& other):BtnWin(other)
@@ -16,7 +26,7 @@ BtnObject::BtnObject(const BtnObject& other):BtnWin(other)
 }
 void BtnObject::setItem(Item* Item)
 {
- item = Item;
+ item = Item->clone();
 }
 
 BtnObject& BtnObject::operator=(const BtnObject& rhs)
@@ -35,7 +45,7 @@ void BtnObject::action()
     {
       if(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemType()=="Heal" || this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemType()=="HealMp"){
            BtnObject *btnObjCreate = new BtnObject(this->getPositionX()+325,250+(50*i),70,35,"p");
-           btnObjCreate->setItem(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i));
+           btnObjCreate->setItem(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->clone());
            btnObjCreate->setNomText(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemName());
            btnObjCreate->setFm(this->getFm());
            this->AddButton(btnObjCreate);
@@ -65,4 +75,19 @@ std::string BtnObject::getDescription()
 
  return degatsStr.str();
 }
+/** @brief clone
+  *
+  * @todo: document this function
+  */
+BtnObject* BtnObject::clone()
+{
+  BtnObject *btnMag = new BtnObject(getPositionX(),getPositionY(),getTailleX(),getTailleY(),getTextButton());
+  if(this->getIsMenuBoutton())
+  {
+    btnMag->setIsMenuBoutton(true);
+  }
+  return btnMag;
+}
+
+
 
