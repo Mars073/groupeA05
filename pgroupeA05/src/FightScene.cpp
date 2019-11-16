@@ -286,6 +286,7 @@ bool __HOTFIX__inRange(int i, int b, int e) {
     else
     {
         std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄" << std::endl << "████▌▄▌▄▐▐▌█████" << std::endl << "████▌▄▌▄▐▐▌▀████" << std::endl << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << std::endl;
+        std::cout <<"la mort"<<std::endl;
         return false;
     }
 }
@@ -329,6 +330,7 @@ void FightScene::eventHandler(Event ev)
                             if (!__HOTFIX__inRange(i, 0, vectWindows.at(secondWindowsActivate)->getVect().size()-1))
                                 return;
                             vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
+                            setActivate(0);
 
                             if (fm->isFightFinish())
                             {
@@ -349,6 +351,7 @@ void FightScene::eventHandler(Event ev)
                                 {
                                     fn2->ClearWindows();
                                     secondWindowsActivate = 1;
+
                                     //check Doublon ERREUR
 
                                     if (!__HOTFIX__inRange(i, 0, fn->getVect().size()-1))
