@@ -336,6 +336,7 @@ void FightScene::eventHandler(Event ev)
                                 {
                                     std::cout << "Freeze?" << std::endl;
                                     gotoPreviousScene();
+                                    return;
                                 }
                             }
                             else
@@ -525,9 +526,9 @@ void FightScene::WriteText()
                 indexTextWhichMustBeWrite =0;
                 textCurrentlyWrite="";
             }
-            //std::this_thread::sleep_for(std::chrono::milliseconds(60));
-            sf::sleep(sf::milliseconds(60));
         }
+        //std::this_thread::sleep_for(std::chrono::milliseconds(60));
+        sf::sleep(sf::milliseconds(60));
 
     }
     delete intern_ptr;
