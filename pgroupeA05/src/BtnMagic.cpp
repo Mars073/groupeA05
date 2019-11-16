@@ -16,13 +16,16 @@ BtnMagic::~BtnMagic()
    delete magic;
   }
   int n = this->getListButton().size();
-  for(int i = 0;i<n;i++)
-  {
+   for(int i = 0;i<n;i++)
+   {
     delete(this->getListButton().at(i));
-  }
+    std::cout <<i<<"supprimer" <<endl;
+   }
+ }
 
 
-}
+
+
 
 BtnMagic::BtnMagic(const BtnMagic& other):BtnWin(other)
 {

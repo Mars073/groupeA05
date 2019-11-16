@@ -112,6 +112,10 @@ void WindowsFight::setFm(FightManager *newfm)
 }
 void WindowsFight::ClearWindows()
 {
+ for(int i ;i<this->vectorButton.size();i++)
+ {
+  delete vectorButton.at(i);
+ }
  this->vectorButton.clear();
 }
 

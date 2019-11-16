@@ -45,13 +45,7 @@ std::string btnAttack::getDescription()
 btnAttack* btnAttack::clone()
 {
   btnAttack *btnMag = new btnAttack(getPositionX(),getPositionY(),getTailleX(),getTailleY(),getTextButton());
-  if(this->getIsMenuBoutton())
-  {
-   for(int i = 0;i<this->getListButton().size();i++)
-   {
-    btnAttack *btnMenu =new btnAttack(this->getListButton().at(i)->getPositionX(),this->getListButton().at(i)->getPositionY(),this->getListButton().at(i)->getTailleX(),this->getListButton().at(i)->getTailleY(),this->getListButton().at(i)->getTextButton());
-   }
-  }
+  return btnMag;
 }
 
     //dtor
