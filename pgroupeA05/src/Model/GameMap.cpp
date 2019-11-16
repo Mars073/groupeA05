@@ -1,16 +1,17 @@
 #include "Model/GameMap.h"
 #define PI 3.141592653589793
 
-GameMap::GameMap()
+GameMap::GameMap(int width)
 {
     setTexture(*TexturesManager::getInstance()->get("map"));
     setWidth(64);
     world = 0;
     srand(time(NULL));
+    beast = new Bestiary();
 }
-GameMap::GameMap(int width)
+GameMap::~GameMap()
 {
-    setWidth(width);
+    delete beast;
 }
 
 void GameMap::spawn()
@@ -285,13 +286,12 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
         {
             bool has_aggro = false;
             if (tile->FLOOR_ID == FLOOR_AGGRO)
-                has_aggro = (rand() % 100) < RATE_AGGRO;
+                has_aggro = (rand() % 100u) < RATE_AGGRO;
             else if (tile->FLOOR_ID == FLOOR_HIGH_AGGRO)
-                has_aggro = (rand() % 100) < RATE_HIGH_AGGRO;
+                has_aggro = (rand() % 100u) < RATE_HIGH_AGGRO;
 
             if (has_aggro)
             {
-                Bestiary* beast=new Bestiary();
                 FightScene *fight = new FightScene();
 
                 //fight->getFightManager()->setPlayer(SingletonGame::getInstance()->getPlayerPTR());

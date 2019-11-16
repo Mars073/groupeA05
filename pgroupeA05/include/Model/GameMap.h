@@ -36,6 +36,7 @@ class GameMap
         unsigned world = 0;
         vector<TileInfo> dataset;
         vector<int> random_teleporters;
+        Bestiary* beast;
         Texture texture;
         SoundBuffer buffer;
         Sound sound;
@@ -58,8 +59,9 @@ class GameMap
         static const unsigned FLOOR_HIGH_AGGRO = 18;
         static const unsigned RATE_AGGRO = 15;//%
         static const unsigned RATE_HIGH_AGGRO = 40;//%
-        GameMap();
-        GameMap(int);
+
+        GameMap(int = 64);
+        virtual ~GameMap();
         bool loadFromFile(string);
         bool loadFromFileID(unsigned);
         void setTexture(const Texture& texture);
