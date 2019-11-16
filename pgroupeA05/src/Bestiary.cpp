@@ -2,6 +2,7 @@
 
 Bestiary::Bestiary()
 {
+    this->inventory=new Inventory();
     readFromFile();
 }
 
@@ -11,10 +12,12 @@ Bestiary::~Bestiary()
     {
         delete bestiary.at(i);
     }
+    delete inventory;
 }
 
 Bestiary::Bestiary(const Bestiary& b)
 {
+    this->inventory=new Inventory(*b.inventory);
     readFromFile();
 }
 
@@ -24,6 +27,8 @@ Bestiary& Bestiary::operator=(const Bestiary& b){
         {
             delete bestiary.at(i);
         }
+        delete inventory;
+        this->inventory=new Inventory(*b.inventory);
         readFromFile();
     }
     return *this;
@@ -91,7 +96,7 @@ void Bestiary::readFromFile()
             Monster* m=new Monster(mCharaName,mMaxHp,mHp,mMaxMp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld);
             for(int i=0;i<nbItem;i++){
                 //std::cout<<itemsName[i]<<std::endl;
-                m->Getinventory()->addItem(itemsName[i]);
+                m->GetLootHeld().push_back(inventory->getOneItem(itemsName[i])->clone());
                 m->addPercentage(percentsItem[i]);
 
 

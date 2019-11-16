@@ -8,11 +8,13 @@
 #include <fstream>
 #include <algorithm>
 #include <time.h>
+#include "Inventory.h"
 
 class Bestiary
 {
     private:
         std::vector<Monster*>bestiary;
+        Inventory* inventory;
     public:
         /** Default constructor */
         Bestiary();

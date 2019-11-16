@@ -13,7 +13,8 @@ class Monster : public BattleCharacter
     private:
         int moneyHeld; //!< Member variable "moneyHeld"
         int expHeld; //!< Member variable "expHeld"
-        Inventory* inventory;
+        //Inventory* inventory;
+        std::vector<Item*>lootHeld;
         std::vector<int>percentagesItem;
 
     public:
@@ -58,19 +59,23 @@ class Monster : public BattleCharacter
         /** Access inventory
          * \return The current value of inventory
          */
-        Inventory* Getinventory() const;
+        //Inventory* Getinventory() const;
 
         /** Set inventory
          * \param val New value to set
          */
-        void Setinventory(Inventory* inventory);
+        //void Setinventory(Inventory* inventory);
 
-        /** Access inventory
-         * \return The current value of inventory
+        std::vector<Item*> GetLootHeld() const;
+
+        void SetLootHeld(std::vector<Item*> val);
+
+        /** Access percentagesItem
+         * \return The current value of percentagesItem
          */
         std::vector<int> GetPercentagesItem() const;
 
-        /** Set inventory
+        /** Set percentagesItem
          * \param val New value to set
          */
         void SetPercentagesItem(std::vector<int> val);
