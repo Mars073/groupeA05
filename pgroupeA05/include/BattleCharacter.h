@@ -1,11 +1,16 @@
 #ifndef BATTLECHARACTER_H
 #define BATTLECHARACTER_H
 
-#include "Character.h"
+#include <istream>
+#include <string>
+#include <sstream>
+#include <iostream>
 
-class BattleCharacter : public Character
+class BattleCharacter
 {
     protected:
+        std::string charaName; //!< Member variable "charaName"
+        std::string charaType; //!< Member variable "charaType"
         int level; //!< Member variable "level"
         int maxHp;
         int hp; //!< Member variable "hp"
@@ -26,6 +31,26 @@ class BattleCharacter : public Character
         BattleCharacter(const BattleCharacter& b);
 
         BattleCharacter& operator=(const BattleCharacter& b);
+
+        /** Access name
+         * \return The current value of charaName
+         */
+        std::string GetcharaName() const;
+
+        /** Set charaName
+         * \param val New value to set
+         */
+        void SetcharaName(std::string val);
+
+        /** Access charaType
+         * \return The current value of charaType
+         */
+        std::string GetcharaType() const;
+
+        /** Set charaType
+         * \param val New value to set
+         */
+        void SetcharaType(std::string val);
 
         /** Access level
          * \return The current value of level
@@ -100,7 +125,7 @@ class BattleCharacter : public Character
 
         std::string strHp() const;
 
-        BattleCharacter* clone() const override;
+        virtual BattleCharacter* clone() const;
 
     private:
 

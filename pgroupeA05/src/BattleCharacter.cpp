@@ -1,7 +1,8 @@
 #include "BattleCharacter.h"
 
-BattleCharacter::BattleCharacter(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def):Character(charaName)
+BattleCharacter::BattleCharacter(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def)
 {
+    this->charaName=charaName;
     this->maxHp=maxHp;
     this->hp=hp;
     this->maxMp=maxMp;
@@ -16,8 +17,9 @@ BattleCharacter::~BattleCharacter()
     //dtor
 }
 
-BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(b)
+BattleCharacter::BattleCharacter(const BattleCharacter& b)
 {
+    this->charaName=b.charaName;
     this->maxHp=b.maxHp;
     this->hp=b.hp;
     this->maxMp=b.maxMp;
@@ -29,6 +31,7 @@ BattleCharacter::BattleCharacter(const BattleCharacter& b):Character(b)
 
 BattleCharacter& BattleCharacter::operator=(const BattleCharacter& b){
     if(this!=&b){
+        this->charaName=b.charaName;
         this->maxHp=b.maxHp;
         this->hp=b.hp;
         this->maxMp=b.maxMp;
@@ -40,6 +43,25 @@ BattleCharacter& BattleCharacter::operator=(const BattleCharacter& b){
     return *this;
 }
 
+std::string BattleCharacter::GetcharaName() const
+{
+    return charaName;
+}
+
+void BattleCharacter::SetcharaName(std::string val)
+{
+    charaName = val;
+}
+
+std::string BattleCharacter::GetcharaType() const
+{
+    return charaType;
+}
+
+void BattleCharacter::SetcharaType(std::string val)
+{
+    charaType = val;
+}
 
 int BattleCharacter::Getlevel() const
 {
@@ -124,7 +146,7 @@ void BattleCharacter::Setdef(int val)
 std::string BattleCharacter::str() const
 {
     std::stringstream sstr;
-    sstr<<Character::str()<<std::endl
+    sstr<<GetcharaName()<<std::endl
     <<"Level : "<<Getlevel()<<std::endl
     <<"Hp : "<<Gethp()<<"/"<<GetmaxHp()<<std::endl
     <<"Mp : "<<Getmp()<<"/"<<GetmaxMp()<<std::endl
