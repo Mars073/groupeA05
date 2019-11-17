@@ -50,7 +50,7 @@ FightScene::FightScene()
     BtnMagic btnMagie(fn->getPositionX()+10,fn->getPositionY()+57,70,35,"Magic");
     btnMagie.setIsMenuBoutton(true);
 
-    btnAttack btnDefend(fn->getPositionX()+10,fn->getPositionY()+107,70,35,"Defend");
+    BtnDefend btnDefend(fn->getPositionX()+10,fn->getPositionY()+107,70,35,"Defend");
     BtnObject btnObjet(fn->getPositionX()+10,fn->getPositionY()+157,70,35,"Object");
     btnObjet.setIsMenuBoutton(true);
 

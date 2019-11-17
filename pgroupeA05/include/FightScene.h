@@ -14,10 +14,12 @@
 #include "Bar.h"
 #include "BtnMagic.h"
 #include "BtnObject.h"
+#include "BtnDefend.h"
 #include "Cooldown.h"
 #include "string.h"
 #include "DrawableMonster.h"
 #include "Util/FontsManager.h"
+
 
 using sf::Thread;
 
