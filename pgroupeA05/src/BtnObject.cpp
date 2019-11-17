@@ -55,7 +55,7 @@ void BtnObject::action()
  }
  else
  {
-     std::cout<<"Object util"<< std::endl;
+     std::cout<<"Object utiliser"<< std::endl;
 
 
  }

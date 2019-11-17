@@ -58,6 +58,21 @@ class FightScene: public StrategyScene
         void setStringText();
         void WriteText();
 
+        int GetIndexNbButtonDisplay()const{return indexNbButtonDisplay;};
+        int GetlimiteNbButtonDisplay()const{return limiteNbButtonDisplay;};
+        int GetNbButtonDisplay()const{return NbButtonDisplay;};
+
+        void SetIndexNbButtonDisplay(int val){indexNbButtonDisplay = val;};
+        void SetLimiteNbButtonDisplay(int val){limiteNbButtonDisplay = val;};
+        void SetNbButtonDisplay(int val){NbButtonDisplay = val;};
+
+        void VerifNbDisplayButton();
+
+
+
+
+
+
 
 
 
@@ -112,6 +127,11 @@ class FightScene: public StrategyScene
         FightManager *fm;
         //thread
         Thread* thd = nullptr;
+
+        //limite the number of button displayed
+        int indexNbButtonDisplay;
+        int limiteNbButtonDisplay;
+        int NbButtonDisplay;
 
 
 };

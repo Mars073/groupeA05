@@ -76,6 +76,10 @@ FightScene::FightScene()
     textureBackGroud = *TexturesManager::getInstance()->get("fight");
     sprintBackGroud.setTexture(textureBackGroud);
 
+    indexNbButtonDisplay = 0;
+    NbButtonDisplay =5;
+    limiteNbButtonDisplay = NbButtonDisplay;
+    VerifNbDisplayButton();
 
     //Delete pointer
 
@@ -225,7 +229,8 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
             vectWindows.at(secondWindowsActivate)->getVect().at(activate)->setIsActivate(true);
 
 
-
+            /*
+            backup de draw
             for(int i = 0; i<=vectWindows.at(j)->getNbBoutton(); i++)
             {
                 //std::cout << vectWindows.at(i)->getNbBoutton() <<i <<std::endl;
@@ -235,6 +240,23 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
                 txt.setFont(ft);
                 target.draw(txt,stat);
                 vectWindows.at(j)->getVect().at(i)->setIsActivate(false);
+            }
+            */
+
+
+            for(int i = indexNbButtonDisplay; i<=limiteNbButtonDisplay; i++)
+            {
+                //std::cout << vectWindows.at(i)->getNbBoutton() <<i <<std::endl;
+                sf::RectangleShape rr =vectWindows.at(j)->getVect().at(i)->getRect();
+                target.draw(rr,stat);
+                sf::Text txt = vectWindows.at(j)->getVect().at(i)->getText();
+                txt.setFont(ft);
+                target.draw(txt,stat);
+                vectWindows.at(j)->getVect().at(i)->setIsActivate(false);
+                if(i+1 >vectWindows.at(j)->getNbBoutton())
+                {
+                 break;
+                }
 
             }
 
@@ -303,11 +325,13 @@ void FightScene::eventHandler(Event ev)
             case sf::Keyboard::Up:
                 {
                     setActivate(activate - 1);
+                    VerifNbDisplayButton();
                     break;
                 }
             case sf::Keyboard::Down:
                 {
                     setActivate(activate + 1);
+                    VerifNbDisplayButton();
                     break;
                 }
             //case sf::Keyboard::Right:
@@ -538,6 +562,18 @@ void FightScene::WriteText()
     intern_ptr = 0;
 
 }
+
+/** @brief VerifNbDisplayButton
+  *
+  * @todo: document this function
+  */
+void FightScene::VerifNbDisplayButton()
+{
+ indexNbButtonDisplay =((activate/NbButtonDisplay)*NbButtonDisplay);
+ limiteNbButtonDisplay = ((activate/NbButtonDisplay)+NbButtonDisplay);
+}
+
+
 
 
 
