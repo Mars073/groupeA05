@@ -25,6 +25,10 @@ FightScene::FightScene()
     *kill_sig =  false;
     thd = new Thread(&FightScene::WriteText, this);
     thd->launch();
+    indexNbButtonDisplay = 0;
+    NbButtonDisplay =5;
+    limiteNbButtonDisplay = NbButtonDisplay;
+    VerifNbDisplayButton();
 
 
     //setMonster();
@@ -69,6 +73,7 @@ FightScene::FightScene()
     for(unsigned i = 0; i<fn->getVect().size(); i++)
     {
         fn->getVect().at(i)->setFm(fm);
+        fn->getVect().at(i)->setNbBoutonDisplay(NbButtonDisplay);
     }
 
     activate = 0;
@@ -76,10 +81,7 @@ FightScene::FightScene()
     textureBackGroud = *TexturesManager::getInstance()->get("fight");
     sprintBackGroud.setTexture(textureBackGroud);
 
-    indexNbButtonDisplay = 0;
-    NbButtonDisplay =5;
-    limiteNbButtonDisplay = NbButtonDisplay;
-    VerifNbDisplayButton();
+
 
     //Delete pointer
 

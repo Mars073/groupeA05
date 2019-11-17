@@ -41,18 +41,26 @@ BtnMagic& BtnMagic::operator=(const BtnMagic& rhs)
 void BtnMagic::action()
 {
  //if this button is a menuButton
-
+ int t = 0;
  if(this->getIsMenuBoutton())
  {
   for(int i = 0 ;i<this->getFm()->getPlayer()->Getspells()->GetspellsHeld().size();i++)
   {
-   BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+325,257+(50*i),70,35,"p");
+   std::cout <<this->getNbBoutonDisplay()<<"le nombre maximum de btnAfficher" << std::endl;
+   if(t >this->getNbBoutonDisplay())
+   {
+    t=0;
+
+   }
+
+   BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+325,257+(50*t),70,35,"p");
    btnMagCreate->Setmagic(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->clone());
    btnMagCreate->setNomText(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->GetmName());
    btnMagCreate->setFm(this->getFm());
 
    this->AddButton(btnMagCreate);
    //delete btnMagCreate;
+   t++;
 
   }
  }

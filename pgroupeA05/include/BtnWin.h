@@ -63,6 +63,12 @@ class BtnWin
         bool equals(const BtnWin b);
         bool equals(BtnWin* b);
 
+        int getPosButtonAction(){return posButtonAction;};
+        int getNbBoutonDisplay(){return nbBoutonDisplay;};
+
+        int setPosButtonAction(int val){posButtonAction = val;};
+        int setNbBoutonDisplay(int val){nbBoutonDisplay = val;};
+
 
 
     protected:
@@ -75,6 +81,8 @@ class BtnWin
         std::string Description;
         std::string nomText;
         bool isButtonMenu;
+        int posButtonAction;
+        int nbBoutonDisplay;
 
         sf::Font font;
         bool isActivate = false;
