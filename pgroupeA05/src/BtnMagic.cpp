@@ -47,12 +47,11 @@ void BtnMagic::action()
   for(int i = 0 ;i<this->getFm()->getPlayer()->Getspells()->GetspellsHeld().size();i++)
   {
    std::cout <<this->getNbBoutonDisplay()<<"le nombre maximum de btnAfficher" << std::endl;
-   if(t >this->getNbBoutonDisplay())
+   if(t >=this->getNbBoutonDisplay())
    {
     t=0;
-
    }
-
+   std::cout <<t << std::endl;
    BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+325,257+(50*t),70,35,"p");
    btnMagCreate->Setmagic(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->clone());
    btnMagCreate->setNomText(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->GetmName());

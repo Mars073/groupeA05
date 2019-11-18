@@ -22,6 +22,7 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->spells->addMagic("Ice");
     this->spells->addMagic("Water");
     this->spells->addMagic("Ultima");
+    this->spells->addMagic("Super fire");
     srand ( time(NULL) );
 }
 

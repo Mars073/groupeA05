@@ -26,7 +26,7 @@ FightScene::FightScene()
     thd = new Thread(&FightScene::WriteText, this);
     thd->launch();
     indexNbButtonDisplay = 0;
-    NbButtonDisplay =5;
+    NbButtonDisplay =4;
     limiteNbButtonDisplay = NbButtonDisplay;
     VerifNbDisplayButton();
 
@@ -80,7 +80,7 @@ FightScene::FightScene()
 
     textureBackGroud = *TexturesManager::getInstance()->get("fight");
     sprintBackGroud.setTexture(textureBackGroud);
-
+    //dbw = DrawableBattleCharacter(fm->getPlayer(),sf::Vector2f(100,400));
 
 
     //Delete pointer
@@ -246,8 +246,15 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
             */
 
 
-            for(int i = indexNbButtonDisplay; i<=limiteNbButtonDisplay; i++)
+            for(int i = indexNbButtonDisplay; i<limiteNbButtonDisplay; i++)
             {
+
+
+                 if(i >vectWindows.at(j)->getNbBoutton())
+                {
+                 break;
+                }
+
                 //std::cout << vectWindows.at(i)->getNbBoutton() <<i <<std::endl;
                 sf::RectangleShape rr =vectWindows.at(j)->getVect().at(i)->getRect();
                 target.draw(rr,stat);
@@ -255,10 +262,6 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
                 txt.setFont(ft);
                 target.draw(txt,stat);
                 vectWindows.at(j)->getVect().at(i)->setIsActivate(false);
-                if(i+1 >vectWindows.at(j)->getNbBoutton())
-                {
-                 break;
-                }
 
             }
 
@@ -298,6 +301,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     barLife.setBarLifeTaille(current,maxx);*/
     //barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
     target.draw(spriteMonster,stat);
+    //target.draw(dbw,stat);
 
 
 
@@ -317,7 +321,8 @@ bool __HOTFIX__inRange(int i, int b, int e) {
 
 void FightScene::eventHandler(Event ev)
 {
-    std::cout << "isCurrentlyWrite" << isCurrentlyWrite << std::endl;
+    setActivate(activate);
+    std::cout<< isCurrentlyWrite << std::endl;
     if (!isCurrentlyWrite)
     {
         if (ev.type == sf::Event::KeyReleased) // KeyPressed (OnKeyDown)
@@ -327,12 +332,14 @@ void FightScene::eventHandler(Event ev)
             case sf::Keyboard::Up:
                 {
                     setActivate(activate - 1);
+                    std::cout<<activate<<"activate est egale a combien"<<std::endl;
                     VerifNbDisplayButton();
                     break;
                 }
             case sf::Keyboard::Down:
                 {
-                    setActivate(activate + 1);
+                    setActivate(activate +1);
+                    std::cout<<activate<<"activate est egale a combien"<<std::endl;
                     VerifNbDisplayButton();
                     break;
                 }
@@ -356,6 +363,7 @@ void FightScene::eventHandler(Event ev)
                             if (!__HOTFIX__inRange(i, 0, vectWindows.at(secondWindowsActivate)->getVect().size()-1))
                                 return;
                             vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
+                            VerifNbDisplayButton();
                             setActivate(0);
 
                             if (fm->isFightFinish())
@@ -572,6 +580,7 @@ void FightScene::WriteText()
 void FightScene::VerifNbDisplayButton()
 {
  indexNbButtonDisplay =((activate/NbButtonDisplay)*NbButtonDisplay);
+ std::cout <<indexNbButtonDisplay <<"indexBouton"<<std::endl;
  limiteNbButtonDisplay = ((activate/NbButtonDisplay)+NbButtonDisplay);
 }
 

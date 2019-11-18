@@ -19,6 +19,7 @@
 #include "string.h"
 #include "DrawableMonster.h"
 #include "Util/FontsManager.h"
+#include "View/DrawableBattleCharacter.h"
 
 
 using sf::Thread;
@@ -132,6 +133,7 @@ class FightScene: public StrategyScene
         int indexNbButtonDisplay;
         int limiteNbButtonDisplay;
         int NbButtonDisplay;
+        //DrawableBattleCharacter dbw;
 
 
 };
