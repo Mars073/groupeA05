@@ -65,6 +65,7 @@
 		<Unit filename="include/Bar.h" />
 		<Unit filename="include/BattleCharacter.h" />
 		<Unit filename="include/Bestiary.h" />
+		<Unit filename="include/BtnDefend.h" />
 		<Unit filename="include/BtnMagic.h" />
 		<Unit filename="include/BtnObject.h" />
 		<Unit filename="include/BtnWin.h" />
@@ -222,6 +223,7 @@
 		<Unit filename="src/Bar.cpp" />
 		<Unit filename="src/BattleCharacter.cpp" />
 		<Unit filename="src/Bestiary.cpp" />
+		<Unit filename="src/BtnDefend.cpp" />
 		<Unit filename="src/BtnMagic.cpp" />
 		<Unit filename="src/BtnObject.cpp" />
 		<Unit filename="src/BtnWin.cpp" />
