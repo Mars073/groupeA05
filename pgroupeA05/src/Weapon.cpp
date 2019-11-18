@@ -3,7 +3,7 @@
 
 Weapon::Weapon(std::string itemName,std::string itemDescription,int atk,int mag):Item(itemName,itemDescription)
 {
-    itemType="Weapon";
+    SetitemType("Weapon");
     this->atk=atk;
     this->mag=mag;
 }
@@ -15,14 +15,14 @@ Weapon::~Weapon()
 
 Weapon::Weapon(const Weapon& w):Item(w)
 {
-    itemType="Weapon";
+    SetitemType(w.GetitemType());
     this->atk=w.atk;
     this->mag=w.mag;
 }
 
 Weapon& Weapon::operator=(const Weapon& w){
     if(this!=&w){
-        itemType="Weapon";
+        SetitemType(w.GetitemType());
         this->atk=w.atk;
         this->mag=w.mag;
     }

@@ -13,33 +13,46 @@
 class Bestiary
 {
     private:
-        std::vector<Monster*>bestiary;
-        Inventory* inventory;
+        std::vector<Monster*>bestiary; //!< Member variable "bestiary"
+        Inventory* inventory; //!< Member variable "inventory"
     public:
         /** Default constructor */
         Bestiary();
+
         /** Default destructor */
         virtual ~Bestiary();
+
         /** Copy constructor
          *  \param other Object to copy from
          */
         Bestiary(const Bestiary& b);
 
+        /** Assignment operator
+         *  \param other Object to assign from
+         *  \return A reference to this
+         */
         Bestiary& operator=(const Bestiary& b);
 
-        /** add a monster in the bestiary
+        /** add a monster in the bestiary and in the file
          *  \param the monster to add in the bestiary
          */
         void addMonster(Monster *monster);
 
+        /** \brief Allow to find the index of the Monster in the list bestiary
+         *
+         * \param the Monster to find the index
+         * \return the index of the Monster in the list bestiary
+         */
         int indexOf(Monster*) const;
 
-        /** return the all bestiary
-         *
+        /** Access bestiary
+         * \return The current value of bestiary
          */
         std::vector<Monster*> Getbestiary() const;
 
-        /** write every information about the bestiary
+        /** \brief Display all the informations about the Bestiary
+         *
+         * \return virtual std::string the informations
          *
          */
         virtual std::string str() const;
@@ -62,7 +75,7 @@ class Bestiary
         /** allow to change the attributes of a monster and write it in the file that contains all monsters
          *  \param nameMonster the name of the monster to change its attributes
          *  \param nameAttribute the name of the attribute. It can be : "name" for its name, "hp" for its hp, "mp" for its mp, "atk" for its atk,
-         *  "mag" for its magical power, "def" for its def, "level" for its level, "money" for its money held or "exp" for its exp held
+         *  "mag" for its magical power, "def" for its def, "level" for its level or "exp" for its exp held
          *  \param val the new value that will replace the current one
          */
         void changeAttribute(std::string nameMonster,std::string nameAttribute,std::string val);
@@ -70,7 +83,7 @@ class Bestiary
         /** allow to change the attributes of a monster and write it in the file that contains all monsters
          *  \param nameMonster the name of the monster to change its attributes
          *  \param nameAttribute the name of the attribute. It can be : "name" for its name, "hp" for its hp, "mp" for its mp, "atk" for its atk,
-         *  "mag" for its magical power, "def" for its def, "level" for its level, "money" for its money held or "exp" for its exp held
+         *  "mag" for its magical power, "def" for its def, "level" for its level or "exp" for its exp held
          *  \param val the new value that will replace the current one
          */
         void changeAttribute(std::string nameMonster,std::string nameAttribute,int val);
@@ -80,6 +93,11 @@ class Bestiary
          */
         void deleteMonster(std::string nameMonster);
 
+        /** \brief Choose a random monster in the list bestiary
+         *
+         * \return a Monster
+         *
+         */
         Monster* getOneRandomMonster();
 
     protected:

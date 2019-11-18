@@ -156,14 +156,6 @@ std::string BattleCharacter::str() const
     return sstr.str();
 }
 
-std::string BattleCharacter::strHp() const
-{
-    std::stringstream sstr;
-    sstr<<Gethp()<<"/"<<GetmaxHp();
-    return sstr.str();
-}
-
-
 BattleCharacter* BattleCharacter::clone() const
 {
     return new BattleCharacter(GetcharaName(),GetmaxHp(),Gethp(),GetmaxMp(),Getmp(),Getatk(),Getmag(),Getdef());

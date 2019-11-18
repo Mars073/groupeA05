@@ -14,12 +14,15 @@ class Spells
     public:
         /** Default constructor */
         Spells();
+
         /** Default destructor */
         virtual ~Spells();
+
         /** Copy constructor
          *  \param other Object to copy from
          */
         Spells(const Spells& s);
+
         /** Assignment operator
          *  \param other Object to assign from
          *  \return A reference to this
@@ -41,14 +44,35 @@ class Spells
          */
         void addMagicInFile(Magic *magic);
 
+        /** \brief Allow to find the index of the Magic in the list spellsHeld
+         *
+         * \param the Magic to find the index
+         * \return the index of the Magic in the list spellsHeld
+         */
         int indexOf(Magic*) const;
 
+        /** \brief Allow to find the index of the Magic in the list everySpells
+         *
+         * \param the Magic to find the index
+         * \return the index of the Magic in the list everySpells
+         */
         int indexOfEverySpells(Magic*) const;
 
+        /** Access spellsHeld
+         * \return The current value of spellsHeld
+         */
         std::vector<Magic*> GetspellsHeld() const;
 
+        /** Access everySpells
+         * \return The current value of everySpells
+         */
         std::vector<Magic*> GeteverySpells() const;
 
+        /** \brief Display all the informations about the Spells
+         *
+         * \return virtual std::string the informations
+         *
+         */
         virtual std::string str() const;
 
         /** read the file "spells.txt" in "data/lists" and add them as magic in the everySpells list

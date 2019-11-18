@@ -1,17 +1,14 @@
 #include "Monster.h"
 
-Monster::Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld):BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)
+Monster::Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def,int level,int expHeld):BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)
 {
-    charaType="Monster";
-    this->level=level;
-    this->moneyHeld=moneyHeld;
+    SetcharaType("Monster");
+    Setlevel(level);
     this->expHeld=expHeld;
-    //this->inventory=new Inventory();
 }
 
 Monster::~Monster()
 {
-    //delete inventory;
     for (unsigned i = 0; i < lootHeld.size(); i++)
     {
         delete lootHeld.at(i);
@@ -20,11 +17,9 @@ Monster::~Monster()
 
 Monster::Monster(const Monster& m):BattleCharacter(m)
 {
-    charaType="Monster";
-    this->level=m.level;
-    this->moneyHeld=m.moneyHeld;
+    SetcharaType("Monster");
+    Setlevel(m.Getlevel());
     this->expHeld=m.expHeld;
-    //this->inventory=new Inventory(*m.inventory);
 }
 
 Monster& Monster::operator=(const Monster& m){
@@ -33,24 +28,11 @@ Monster& Monster::operator=(const Monster& m){
         {
             delete lootHeld.at(i);
         }
-        charaType="Monster";
-        this->level=m.level;
-        this->moneyHeld=m.moneyHeld;
+        SetcharaType("Monster");
+        Setlevel(m.Getlevel());
         this->expHeld=m.expHeld;
-        //delete inventory;
-        //this->inventory=new Inventory(*m.inventory);
     }
     return *this;
-}
-
-int Monster::GetmoneyHeld() const
-{
-    return moneyHeld;
-}
-
-void Monster::SetmoneyHeld(int val)
-{
-    moneyHeld = val;
 }
 
 int Monster::GetexpHeld() const
@@ -67,7 +49,6 @@ std::string Monster::str() const
 {
     std::stringstream sstr;
     sstr<<BattleCharacter::str()<<std::endl
-    <<"Money held : "<<GetmoneyHeld()<<std::endl
     <<"Exp held : "<<GetexpHeld()<<std::endl
     <<"Items and percentages : "<<std::endl;
     for (unsigned i = 0; i < percentagesItem.size(); i++){
@@ -105,7 +86,7 @@ int Monster::showDamageReceived(int dmg)
 
 Monster* Monster::clone() const
 {
-    Monster* m=new Monster(GetcharaName(),GetmaxHp(),Gethp(),GetmaxMp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetmoneyHeld(),GetexpHeld());
+    Monster* m=new Monster(GetcharaName(),GetmaxHp(),Gethp(),GetmaxMp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetexpHeld());
     m->SetLootHeld(GetLootHeld());
     m->SetPercentagesItem(GetPercentagesItem());
     return m;
@@ -113,18 +94,8 @@ Monster* Monster::clone() const
 
 bool Monster::operator==(const Monster& other) const
 {
-    return charaName == other.GetcharaName();
+    return GetcharaName() == other.GetcharaName();
 }
-
-/*Inventory* Monster::Getinventory() const
-{
-    return inventory;
-}
-
-void Monster::Setinventory(Inventory* val)
-{
-    inventory = val;
-}*/
 
 std::vector<Item*> Monster::GetLootHeld() const
 {
@@ -134,6 +105,11 @@ std::vector<Item*> Monster::GetLootHeld() const
 void Monster::SetLootHeld(std::vector<Item*> val)
 {
     lootHeld = val;
+}
+
+void Monster::addLoot(Item* item)
+{
+    lootHeld.push_back(item);
 }
 
 std::vector<int> Monster::GetPercentagesItem() const

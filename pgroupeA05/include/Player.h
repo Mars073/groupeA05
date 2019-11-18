@@ -17,49 +17,49 @@ class Player : public BattleCharacter
     private:
         int expNow; //!< Member variable "expNow"
         int expNext; //!< Member variable "expNext"
-        int money; //!< Member variable "money"
-        Weapon* weapon;
-        Armor* armor;
-        Inventory* inventory;
-        Spells* spells;
-        bool checkSpellCast;
+        Weapon* weapon; //!< Member variable "weapon"
+        Armor* armor; //!< Member variable "armor"
+        Inventory* inventory; //!< Member variable "inventory"
+        Spells* spells; //!< Member variable "spells"
+        bool checkSpellCast; //!< Member variable "checkSpellCast"
 
     public:
         /** Default constructor */
         Player(std::string charaName="Firion",int maxHp=100,int hp=100,int maxMp=50,int mp=50,int atk=5,int mag=3,int def=5);
+
         /** Default destructor */
         virtual ~Player();
+
         /** Copy constructor
          *  \param other Object to copy from
          */
         Player(const Player& p);
 
+        /** Assignment operator
+         *  \param other Object to assign from
+         *  \return A reference to this
+         */
         Player& operator=(const Player& p);
 
         /** Access expNow
          * \return The current value of expNow
          */
         int GetexpNow() const;
+
         /** Set expNow
          * \param val New value to set
          */
         void SetexpNow(int val);
+
         /** Access expNext
          * \return The current value of expNext
          */
         int GetexpNext() const;
+
         /** Set expNext
          * \param val New value to set
          */
         void SetexpNext(int val);
-        /** Access money
-         * \return The current value of money
-         */
-        int Getmoney() const;
-        /** Set money
-         * \param val New value to set
-         */
-        void Setmoney(int val);
 
         /** Access weapon
          * \return The current value of weapon
@@ -111,12 +111,12 @@ class Player : public BattleCharacter
          */
         void SetcheckSpellCast(bool val);
 
-        virtual std::string str() const;
-
-        /** add more money to the actual amount
-         * \param moneyEarn amount of money to add
+        /** \brief Display all the informations about the Player
+         *
+         * \return virtual std::string the informations
+         *
          */
-        void moreMoney(int moneyEarn);
+        virtual std::string str() const;
 
         /** increase the actual level of the player
          *
@@ -133,24 +133,63 @@ class Player : public BattleCharacter
          */
          void moreExpForLevelUp();
 
+         /** \brief Calculate the value of the attack dealt by the Player
+         *
+         * \return the value of the attack dealt by the Player
+         */
          int damageDone() const;
 
+         /** \brief Calculate the value of the attack dealt by the Player when using magic and subtract it's cost from the mp of the Player
+         *
+         * \return the value of the attack dealt by the Player when using magic
+         */
          int magicalDamageDone(std::string magicName);
 
+         /** \brief Calculate the value of the attack received by the Monster and subtract it from the actual hp of the Player
+         * \param the amount of damage the Player is gonna receive
+         */
          void damageReceived(int dmg);
 
-         void addIntoTheBag(std::string nameItem);
-
+        /** \brief Change the equipment currently held by the Player
+         *
+         * \param the name of the equipment to replace the current one
+         *
+         */
          void changeEquipment(std::string nameItem);
 
+         /** \brief Make a "clone" of the Player with all the actual attributes
+         *
+         * \return a new Player
+         *
+         */
          Player* clone() const override;
 
+         /** \brief reduce the mp of the Player when using magic
+          *
+          * \param the name of the Magic to subtract it's mp consummation from the mp of the Player
+          *
+          */
          void reduceMp(std::string magicName);
 
+         /** \brief Heal the Player with an Item and remove it from it's inventory
+          *
+          * \param the Item to heal the Player
+          *
+          */
          void heals(Item* item);
 
+         /** \brief Reduce the damage received by 2 and heal a little bit of the hp and mp of the Player based of the amount of damage
+          *
+          * \param the amount of damage the Player is gonna receive
+          *
+          */
          void guard(int dmg);
 
+         /** \brief Add the items given into the inventory of the Player
+          *
+          * \param the list of Item the Player is gonna receive
+          *
+          */
          void addLootMonster(std::vector<Item*>loot);
 
     protected:

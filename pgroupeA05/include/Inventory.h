@@ -17,11 +17,19 @@ class Inventory
     public:
         /** Default constructor */
         Inventory();
+
         /** Default destructor */
         virtual ~Inventory();
 
+        /** Copy constructor
+         *  \param other Object to copy from
+         */
         Inventory(const Inventory& i);
 
+        /** Assignment operator
+         *  \param other Object to assign from
+         *  \return A reference to this
+         */
         Inventory& operator=(const Inventory& i);
 
         /** add an item in the bag ingame not in the file
@@ -39,14 +47,35 @@ class Inventory
          */
         void addItemInFile(Item* item);
 
+        /** \brief Allow to find the index of the Item in the list bag
+         *
+         * \param the Item to find the index
+         * \return the index of the Item in the list bag
+         */
         int indexOf(Item*) const;
 
+        /** \brief Allow to find the index of the Item in the list everyItems
+         *
+         * \param the Item to find the index
+         * \return the index of the Item in the list everyItems
+         */
         int indexOfEveryItems(Item*) const;
 
+        /** Access bag
+         * \return The current value of bag
+         */
         std::vector<Item*> Getbag() const;
 
+        /** Access everyItems
+         * \return The current value of everyItems
+         */
         std::vector<Item*> GeteveryItems() const;
 
+        /** \brief Display all the informations about the Inventory
+         *
+         * \return virtual std::string the informations
+         *
+         */
         virtual std::string str() const;
 
         /** read the file "items.txt" in "data/lists" and add them as items in the everyItems list
