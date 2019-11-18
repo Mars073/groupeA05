@@ -75,7 +75,7 @@ class Bestiary
         /** allow to change the attributes of a monster and write it in the file that contains all monsters
          *  \param nameMonster the name of the monster to change its attributes
          *  \param nameAttribute the name of the attribute. It can be : "name" for its name, "hp" for its hp, "mp" for its mp, "atk" for its atk,
-         *  "mag" for its magical power, "def" for its def, "level" for its level, "money" for its money held or "exp" for its exp held
+         *  "mag" for its magical power, "def" for its def, "level" for its level or "exp" for its exp held
          *  \param val the new value that will replace the current one
          */
         void changeAttribute(std::string nameMonster,std::string nameAttribute,std::string val);
@@ -83,7 +83,7 @@ class Bestiary
         /** allow to change the attributes of a monster and write it in the file that contains all monsters
          *  \param nameMonster the name of the monster to change its attributes
          *  \param nameAttribute the name of the attribute. It can be : "name" for its name, "hp" for its hp, "mp" for its mp, "atk" for its atk,
-         *  "mag" for its magical power, "def" for its def, "level" for its level, "money" for its money held or "exp" for its exp held
+         *  "mag" for its magical power, "def" for its def, "level" for its level or "exp" for its exp held
          *  \param val the new value that will replace the current one
          */
         void changeAttribute(std::string nameMonster,std::string nameAttribute,int val);

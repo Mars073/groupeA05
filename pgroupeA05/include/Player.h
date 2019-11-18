@@ -17,7 +17,6 @@ class Player : public BattleCharacter
     private:
         int expNow; //!< Member variable "expNow"
         int expNext; //!< Member variable "expNext"
-        int money; //!< Member variable "money"
         Weapon* weapon; //!< Member variable "weapon"
         Armor* armor; //!< Member variable "armor"
         Inventory* inventory; //!< Member variable "inventory"
@@ -61,16 +60,6 @@ class Player : public BattleCharacter
          * \param val New value to set
          */
         void SetexpNext(int val);
-
-        /** Access money
-         * \return The current value of money
-         */
-        int Getmoney() const;
-
-        /** Set money
-         * \param val New value to set
-         */
-        void Setmoney(int val);
 
         /** Access weapon
          * \return The current value of weapon
@@ -128,11 +117,6 @@ class Player : public BattleCharacter
          *
          */
         virtual std::string str() const;
-
-        /** add more money to the actual amount
-         * \param moneyEarn amount of money to add
-         */
-        void moreMoney(int moneyEarn);
 
         /** increase the actual level of the player
          *

@@ -11,14 +11,13 @@
 class Monster : public BattleCharacter
 {
     private:
-        int moneyHeld; //!< Member variable "moneyHeld"
         int expHeld; //!< Member variable "expHeld"
         std::vector<Item*>lootHeld; //!< Member variable "lootHeld"
         std::vector<int>percentagesItem; //!< Member variable "percentagesItem"
 
     public:
         /** Default constructor */
-        Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld);
+        Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def,int level,int expHeld);
 
         /** Default destructor */
         virtual ~Monster();
@@ -33,16 +32,6 @@ class Monster : public BattleCharacter
          *  \return A reference to this
          */
         Monster& operator=(const Monster& m);
-
-        /** Access moneyHeld
-         * \return The current value of moneyHeld
-         */
-        int GetmoneyHeld() const;
-
-        /** Set moneyHeld
-         * \param val New value to set
-         */
-        void SetmoneyHeld(int val);
 
         /** Access expHeld
          * \return The current value of expHeld

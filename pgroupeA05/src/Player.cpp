@@ -7,7 +7,6 @@ Player::Player(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,i
     SetcharaType("Player");
     this->expNow=0;
     this->expNext=10;
-    this->money=0;
     this->inventory=new Inventory();
     this->weapon=new Weapon("Wooden sword","The first item that every adventurers want.",2,1);
     this->armor=new Armor("Clothes","Ordinary clothing.",1);
@@ -42,7 +41,6 @@ Player::Player(const Player& p):BattleCharacter(p)
     SetcharaType(p.GetcharaType());
     this->expNow=p.expNow;
     this->expNext=p.expNext;
-    this->money=p.money;
     this->inventory=new Inventory(*p.inventory);
     this->weapon=new Weapon(*p.weapon);
     this->armor=new Armor(*p.armor);
@@ -61,7 +59,6 @@ Player& Player::operator=(const Player& p){
         SetcharaType(p.GetcharaType());
         this->expNow=p.expNow;
         this->expNext=p.expNext;
-        this->money=p.money;
         delete inventory;
         this->inventory=new Inventory(*p.inventory);
         delete weapon;
@@ -98,16 +95,6 @@ int Player::GetexpNext() const
 void Player::SetexpNext(int val)
 {
     expNext = val;
-}
-
-int Player::Getmoney() const
-{
-    return money;
-}
-
-void Player::Setmoney(int val)
-{
-    money = val;
 }
 
 Weapon* Player::Getweapon() const
@@ -164,17 +151,11 @@ std::string Player::str() const
 {
     std::stringstream sstr;
     sstr<<BattleCharacter::str()<<std::endl
-    <<"Money : "<<Getmoney()<<std::endl
     <<"Exp : "<<GetexpNow()<<"/"<<GetexpNext()<<std::endl<<std::endl
     <<"Equipment : "<<std::endl<<std::endl
     <<"Weapon : "<<Getweapon()->GetitemName()<<" ATK : "<<Getweapon()->Getatk()<<" MAG : "<<Getweapon()->Getmag()<<std::endl
     <<"Armor : "<<Getarmor()->GetitemName()<<" DEF : "<<Getarmor()->Getdef()<<std::endl;
     return sstr.str();
-}
-
-void Player::moreMoney(int moneyEarn)
-{
-    Setmoney(money+moneyEarn);
 }
 
 void Player::levelUp()
