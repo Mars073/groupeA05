@@ -2,7 +2,7 @@
 
 Armor::Armor(std::string itemName,std::string itemDescription,int def):Item(itemName,itemDescription)
 {
-    itemType="Armor";
+    SetitemType("Armor");
     this->def=def;
 }
 
@@ -13,13 +13,13 @@ Armor::~Armor()
 
 Armor::Armor(const Armor& a):Item(a)
 {
-    itemType=a.itemType;
+    SetitemType(a.GetitemType());
     this->def=a.def;
 }
 
 Armor& Armor::operator=(const Armor& a){
     if(this!=&a){
-        itemType=a.itemType;
+        SetitemType(a.GetitemType());
         this->def=a.def;
     }
     return *this;

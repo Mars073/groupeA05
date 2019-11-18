@@ -15,9 +15,6 @@ WindowStatus::WindowStatus()
     this->rectMenu.setFillColor(sf::Color(253,67,0));
 
     this->p=SingletonGame::getInstance()->getPlayerPTR();
-    if(!p){
-        this->p=new Player();
-    }
 
     this->choiceMenu=0;
 
@@ -48,7 +45,6 @@ WindowStatus::WindowStatus()
 
 WindowStatus::~WindowStatus()
 {
-    //delete p;
 
     for (unsigned i = 0; i < equipments.size(); i++)
     {
@@ -64,17 +60,9 @@ WindowStatus::~WindowStatus()
 
 WindowStatus::WindowStatus(const WindowStatus& other)
 {
-    this->rectAll.setPosition(sf::Vector2f(50,50));
-    this->rectAll.setSize(sf::Vector2f(500,400));
-    this->rectAll.setOutlineThickness(5);
-    this->rectAll.setOutlineColor(sf::Color(0,0,0));
-    this->rectAll.setFillColor(sf::Color(75,52,251));
+    this->rectAll=other.rectAll;
 
-    this->rectMenu.setPosition(sf::Vector2f(60,60));
-    this->rectMenu.setSize(sf::Vector2f(160,380));
-    this->rectMenu.setOutlineThickness(5);
-    this->rectMenu.setOutlineColor(sf::Color(255,255,255));
-    this->rectMenu.setFillColor(sf::Color(253,67,0));
+    this->rectMenu=other.rectMenu;
 
     this->p=other.p;
 
@@ -88,19 +76,10 @@ WindowStatus::WindowStatus(const WindowStatus& other)
 WindowStatus& WindowStatus::operator=(const WindowStatus& rhs)
 {
     if (this != &rhs){
-        this->rectAll.setPosition(sf::Vector2f(50,50));
-        this->rectAll.setSize(sf::Vector2f(500,400));
-        this->rectAll.setOutlineThickness(5);
-        this->rectAll.setOutlineColor(sf::Color(0,0,0));
-        this->rectAll.setFillColor(sf::Color(75,52,251));
+        this->rectAll=rhs.rectAll;
 
-        this->rectMenu.setPosition(sf::Vector2f(60,60));
-        this->rectMenu.setSize(sf::Vector2f(160,380));
-        this->rectMenu.setOutlineThickness(5);
-        this->rectMenu.setOutlineColor(sf::Color(255,255,255));
-        this->rectMenu.setFillColor(sf::Color(253,67,0));
+        this->rectMenu=rhs.rectMenu;
 
-        delete p;
         this->p=rhs.p;
 
         this->choiceMenu=rhs.choiceMenu;
@@ -155,7 +134,7 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
                 nb2=equipments.size();
             }
             if(selected_id_menu>=nb1&&selected_id_menu<nb2){
-                drawEquipment(target,states,nb1,nb2);
+                drawItems(target,states,nb1,nb2,equipments,"Weapon","Armor","Weapons : ","Armors : ",selected_id_menu);
             }
             nb1+=8;
             nb2+=8;
@@ -169,7 +148,7 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
                 nb2=items.size();
             }
             if(selected_id_items>=nb1&&selected_id_items<nb2){
-                drawItems(target,states,nb1,nb2);
+                drawItems(target,states,nb1,nb2,items,"Heal","HealMp","Heal hp : ","Heal mp : ",selected_id_items);
             }
             nb1+=8;
             nb2+=8;
@@ -177,44 +156,43 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     }
 }
 
-void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
+void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,int nb2,std::vector<Item*>listofItem,std::string type1,std::string type2,std::string type1Desc,std::string type2Desc,short int id) const{
     Font f = *FontsManager::getInstance()->get("arial");
     int menuItem=0;
-    bool isHealMp=false;
-    bool isHealHp=false;
+    bool isType2=false;
+    bool isType1=false;
     bool checkNextSpace=false;
 
     for (int i = nb1; i < nb2; i++)
     {
-        if(items.at(i)->GetitemType()=="Heal" && !isHealHp){
-            isHealHp=true;
-            Text textHeal("Heal hp : ", f);
-            textHeal.setCharacterSize(15);
-            textHeal.setFillColor(sf::Color::Black);
-            textHeal.setPosition(250, 50);
-            target.draw(textHeal, states);
+        if(listofItem.at(i)->GetitemType()==type1 && !isType1){
+            isType1=true;
+            Text textType1(type1Desc, f);
+            textType1.setCharacterSize(15);
+            textType1.setFillColor(sf::Color::Black);
+            textType1.setPosition(250, 50);
+            target.draw(textType1, states);
         }
-        if(items.at(i)->GetitemType()=="HealMp" && !isHealMp){
-            isHealMp=true;
-            Text textHealMp("Heal mp : ", f);
-            textHealMp.setCharacterSize(15);
-            textHealMp.setFillColor(sf::Color::Black);
-            //if(nb2==items.size() && items.size()>=9){
+        if(listofItem.at(i)->GetitemType()==type2 && !isType2){
+            isType2=true;
+            Text textType2(type2Desc, f);
+            textType2.setCharacterSize(15);
+            textType2.setFillColor(sf::Color::Black);
             if(i==nb1){
-                textHealMp.setPosition(250, 50+ (menuItem)*42);
+                textType2.setPosition(250, 50+ (menuItem)*42);
             }
             else{
-                textHealMp.setPosition(250, 50+ (menuItem+1)*42);
+                textType2.setPosition(250, 50+ (menuItem+1)*42);
             }
 
-            target.draw(textHealMp, states);
+            target.draw(textType2, states);
         }
-        Text textItems(i==selected_id_items?"> "+items.at(i)->strEquipment():items.at(i)->strEquipment(), f);
+        Text textItems(i==id?"> "+listofItem.at(i)->strEquipment():listofItem.at(i)->strEquipment(), f);
         textItems.setCharacterSize(15);
         textItems.setFillColor(sf::Color::Black);
-        if(!isHealMp || nb2==items.size() && items.size()>=9 && !isHealMp || i==nb1 && items.at(i)->GetitemType()=="HealMp" || items.size()>=9 && checkNextSpace || items.size()<8 && items.at(0)->GetitemType()=="HealMp"){
+        if(!isType2 || nb2==listofItem.size() && listofItem.size()>=9 && !isType2 || i==nb1 && listofItem.at(i)->GetitemType()==type2 || listofItem.size()>=9 && checkNextSpace || listofItem.size()<8 && listofItem.at(0)->GetitemType()==type2){
             textItems.setPosition(250, 50 + (menuItem+1)*42);
-            if(i==nb1 && items.at(i)->GetitemType()=="HealMp"){
+            if(i==nb1 && listofItem.at(i)->GetitemType()==type2){
                checkNextSpace=true;
             }
         }
@@ -224,7 +202,7 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
         target.draw(textItems, states);
         menuItem++;
 
-        if(nb2<items.size()){
+        if(nb2<listofItem.size()){
             Text textArrowDown("Go down", f);
             textArrowDown.setCharacterSize(20);
             textArrowDown.setFillColor(sf::Color::Black);
@@ -232,7 +210,7 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
             target.draw(textArrowDown, states);
         }
 
-        if(selected_id_items>=8){
+        if(id>=8){
             Text textArrowUp("Go up", f);
             textArrowUp.setCharacterSize(20);
             textArrowUp.setFillColor(sf::Color::Black);
@@ -242,7 +220,7 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
     }
 }
 
-void WindowStatus::drawEquipment(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
+/*void WindowStatus::drawEquipment(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
     Font f = *FontsManager::getInstance()->get("arial");
     int menuEquipment=0;
     bool isArmor=false;
@@ -306,7 +284,7 @@ void WindowStatus::drawEquipment(RenderTarget& target, RenderStates states,int n
             target.draw(textArrowUp, states);
         }
     }
-}
+}*/
 
 void WindowStatus::eventHandler(Event event)
 {
@@ -330,6 +308,7 @@ void WindowStatus::eventHandler(Event event)
                 case Keyboard::Escape:
                     {
                         gotoPreviousScene();
+                        //return;
                         break;
                     }
                 case Keyboard::Enter:
@@ -346,7 +325,6 @@ void WindowStatus::eventHandler(Event event)
                             {
                                 //equipment
                                 choiceMenu=1;
-                                //setScene(new WindowEquipment);
                                 break;
                             }
                         case 2:
@@ -403,12 +381,7 @@ void WindowStatus::eventHandler(Event event)
                     case Keyboard::Enter:
                         {
                             if(equipments.size()>0){
-                                if(equipments.at(selected_id_menu)->GetitemType()=="Weapon"){
-                                    p->Setweapon(dynamic_cast<Weapon*>(equipments.at(selected_id_menu)));
-                                }
-                                else {
-                                    p->Setarmor(dynamic_cast<Armor*>(equipments.at(selected_id_menu)));
-                                }
+                                p->changeEquipment(equipments.at(selected_id_menu)->GetitemName());
                             }
                             choiceMenu=0;
                             break;

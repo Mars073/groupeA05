@@ -1,12 +1,10 @@
 #include "Player.h"
-//ajouter max hp et mp et reparer armor et weapon
+
 Player::Player(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def)
-:BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)/*,inventory(),
-weapon("Wooden sword","The first item that every adventurers want.",2,1),
-armor("Clothes","Ordinary clothing.",1)*/
+:BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)
 {
-    level=1;
-    charaType="Player";
+    Setlevel(1);
+    SetcharaType("Player");
     this->expNow=0;
     this->expNext=10;
     this->money=0;
@@ -17,9 +15,13 @@ armor("Clothes","Ordinary clothing.",1)*/
     this->inventory->addItem(armor);
     this->inventory->addItem(inventory->getOneItem("Potion"));
     this->inventory->addItem(inventory->getOneItem("Ether"));
+    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
+    this->inventory->addItem(inventory->getOneItem("Mythril armor"));
     this->spells=new Spells();
     this->spells->addMagic("Fire");
+    this->spells->addMagic("Super fire");
     this->spells->addMagic("Ice");
+    this->spells->addMagic("Super ice");
     this->spells->addMagic("Water");
     this->spells->addMagic("Ultima");
     srand ( time(NULL) );
@@ -34,12 +36,10 @@ Player::~Player()
 
 }
 
-Player::Player(const Player& p):BattleCharacter(p)/*,inventory(p),
-weapon("Wooden sword","The first item that every adventurers want.",2,1),
-armor("Clothes","Ordinary clothing.",1)*/
+Player::Player(const Player& p):BattleCharacter(p)
 {
-    level=p.level;
-    charaType=p.charaType;
+    Setlevel(p.Getlevel());
+    SetcharaType(p.GetcharaType());
     this->expNow=p.expNow;
     this->expNext=p.expNext;
     this->money=p.money;
@@ -57,8 +57,8 @@ armor("Clothes","Ordinary clothing.",1)*/
 
 Player& Player::operator=(const Player& p){
     if(this!=&p){
-        level=p.level;
-        charaType=p.charaType;
+        Setlevel(p.Getlevel());
+        SetcharaType(p.GetcharaType());
         this->expNow=p.expNow;
         this->expNext=p.expNext;
         this->money=p.money;
@@ -193,7 +193,7 @@ void Player::moreExp(int expEarned)
 {
     SetexpNow(GetexpNow()+expEarned);
     if(GetexpNow()>=GetexpNext()){
-        //permet d'avoir plus d'un niveau supplementaire
+        //allows to get more than one level
         int nb=(int)ceil(log2(GetexpNow()/GetexpNext()));
         for(int i=0;i<=nb;i++){
             levelUp();
@@ -245,11 +245,6 @@ void Player::guard(int dmg)
             Setmp(GetmaxMp());
         }
     }
-}
-
-void Player::addIntoTheBag(std::string nameItem)
-{
-    inventory->addItem(nameItem);
 }
 
 void Player::changeEquipment(std::string nameItem)

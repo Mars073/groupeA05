@@ -42,18 +42,12 @@ Inventory& Inventory::operator=(const Inventory& i){
 
 void Inventory::addItem(Item* item)
 {
-    /*if (indexOf(item) >= 0){
-        return;
-    }*/
     bag.push_back(item->clone());
 }
 
 
 void Inventory::addItem(std::string itemName)
 {
-    /*if (indexOf(getOneItem(itemName)->clone()) >= 0){
-        return;
-    }*/
     bag.push_back(getOneItem(itemName)->clone());
 }
 
@@ -229,7 +223,6 @@ void Inventory::writeInFile()
 
 Item* Inventory::getOneItem(std::string name)
 {
-    //for (auto const& i : everyItems){
     for (unsigned i = 0; i < everyItems.size(); i++){
         if(everyItems.at(i)->GetitemName()==name){
             return everyItems.at(i)->clone();

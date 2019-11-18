@@ -2,16 +2,14 @@
 
 Monster::Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def,int level,int moneyHeld,int expHeld):BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)
 {
-    charaType="Monster";
-    this->level=level;
+    SetcharaType("Monster");
+    Setlevel(level);
     this->moneyHeld=moneyHeld;
     this->expHeld=expHeld;
-    //this->inventory=new Inventory();
 }
 
 Monster::~Monster()
 {
-    //delete inventory;
     for (unsigned i = 0; i < lootHeld.size(); i++)
     {
         delete lootHeld.at(i);
@@ -20,11 +18,10 @@ Monster::~Monster()
 
 Monster::Monster(const Monster& m):BattleCharacter(m)
 {
-    charaType="Monster";
-    this->level=m.level;
+    SetcharaType("Monster");
+    Setlevel(m.Getlevel());
     this->moneyHeld=m.moneyHeld;
     this->expHeld=m.expHeld;
-    //this->inventory=new Inventory(*m.inventory);
 }
 
 Monster& Monster::operator=(const Monster& m){
@@ -33,12 +30,10 @@ Monster& Monster::operator=(const Monster& m){
         {
             delete lootHeld.at(i);
         }
-        charaType="Monster";
-        this->level=m.level;
+        SetcharaType("Monster");
+        Setlevel(m.Getlevel());
         this->moneyHeld=m.moneyHeld;
         this->expHeld=m.expHeld;
-        //delete inventory;
-        //this->inventory=new Inventory(*m.inventory);
     }
     return *this;
 }
@@ -113,18 +108,8 @@ Monster* Monster::clone() const
 
 bool Monster::operator==(const Monster& other) const
 {
-    return charaName == other.GetcharaName();
+    return GetcharaName() == other.GetcharaName();
 }
-
-/*Inventory* Monster::Getinventory() const
-{
-    return inventory;
-}
-
-void Monster::Setinventory(Inventory* val)
-{
-    inventory = val;
-}*/
 
 std::vector<Item*> Monster::GetLootHeld() const
 {
@@ -134,6 +119,11 @@ std::vector<Item*> Monster::GetLootHeld() const
 void Monster::SetLootHeld(std::vector<Item*> val)
 {
     lootHeld = val;
+}
+
+void Monster::addLoot(Item* item)
+{
+    lootHeld.push_back(item);
 }
 
 std::vector<int> Monster::GetPercentagesItem() const

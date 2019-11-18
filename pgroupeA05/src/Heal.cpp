@@ -3,7 +3,7 @@
 
 Heal::Heal(std::string itemName,std::string itemDescription,int amountHealed):HealItem(itemName,itemDescription,amountHealed)
 {
-    itemType="Heal";
+    SetitemType("Heal");
 }
 
 Heal::~Heal()
@@ -13,12 +13,12 @@ Heal::~Heal()
 
 Heal::Heal(const Heal& h):HealItem(h)
 {
-    itemType="Heal";
+    SetitemType(h.GetitemType());
 }
 
 Heal& Heal::operator=(const Heal& h){
     if(this!=&h){
-        itemType="Heal";
+        SetitemType(h.GetitemType());
     }
     return *this;
 }

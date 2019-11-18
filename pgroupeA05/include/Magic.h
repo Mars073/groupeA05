@@ -12,7 +12,7 @@ class Magic
     private:
         std::string mName; //!< Member variable "mName"
         int baseDamage; //!< Member variable "baseDamage"
-        int mpUsage;
+        int mpUsage; //!< Member variable "mpUsage"
 
     public:
         /** Default constructor */
@@ -62,10 +62,26 @@ class Magic
          */
         void SetmpUsage(int val);
 
+        /** \brief Display all the informations about the Magic
+         *
+         * \return virtual std::string the informations
+         *
+         */
         virtual std::string str() const;
 
+        /** \brief Make a "clone" of the Magic with all the actual attributes
+         *
+         * \return a new Magic
+         *
+         */
         virtual Magic* clone() const;
 
+        /** \brief Allow to check if 2 Magic are the same based on their name
+         *
+         * \param The Magic to check if it's the same
+         * \return True if it's the same, False if it's not
+         *
+         */
         bool operator==(const Magic&) const;
 
     protected:

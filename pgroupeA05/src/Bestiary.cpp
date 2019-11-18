@@ -95,15 +95,14 @@ void Bestiary::readFromFile()
             }
             Monster* m=new Monster(mCharaName,mMaxHp,mHp,mMaxMp,mMp,mAtk,mMag,mDef,mLevel,mMoneyHeld,mExpHeld);
             for(int i=0;i<nbItem;i++){
-                //std::cout<<itemsName[i]<<std::endl;
-                m->GetLootHeld().push_back(inventory->getOneItem(itemsName[i])->clone());
+                m->addLoot(inventory->getOneItem(itemsName[i])->clone());
                 m->addPercentage(percentsItem[i]);
 
 
             }
 
             bestiary.push_back(m);
-            //permet d'ignorer tout l'espace vide entre chaque monstres
+            //allows to ignore the blank space between monsters in the file
             infile.ignore();
         }
     }
@@ -117,7 +116,10 @@ void Bestiary::writeInFile()
 
 	for (auto const& i : bestiary)
 	{
-        output<<i->GetcharaName()<<"/"<<i->GetmaxHp()<<i->Gethp()<<" "<<i->GetmaxMp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetmoneyHeld()<<" "<<i->GetexpHeld();
+        output<<i->GetcharaName()<<"/"<<i->GetmaxHp()<<i->Gethp()<<" "<<i->GetmaxMp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetmoneyHeld()<<" "<<i->GetexpHeld()<<" "<<i->GetPercentagesItem().size();
+        for(int j=0;j<i->GetPercentagesItem().size();j++){
+            output<<i->GetLootHeld().at(j)->GetitemName()<<"/"<<i->GetPercentagesItem().at(j);
+        }
         if (&i != &bestiary.back()){
             output<<std::endl;
         }

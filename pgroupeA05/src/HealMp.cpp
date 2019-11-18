@@ -2,7 +2,7 @@
 
 HealMp::HealMp(std::string itemName,std::string itemDescription,int amountHealed):HealItem(itemName,itemDescription,amountHealed)
 {
-    itemType="HealMp";
+    SetitemType("HealMp");
 }
 
 HealMp::~HealMp()
@@ -12,12 +12,12 @@ HealMp::~HealMp()
 
 HealMp::HealMp(const HealMp& h):HealItem(h)
 {
-    itemType="HealMp";
+    SetitemType(h.GetitemType());
 }
 
 HealMp& HealMp::operator=(const HealMp& h){
     if(this!=&h){
-        itemType="HealMp";
+        SetitemType(h.GetitemType());
     }
     return *this;
 }

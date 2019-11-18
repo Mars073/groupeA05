@@ -68,7 +68,6 @@
 		<Unit filename="include/BtnMagic.h" />
 		<Unit filename="include/BtnObject.h" />
 		<Unit filename="include/BtnWin.h" />
-		<Unit filename="include/Character.h" />
 		<Unit filename="include/Cooldown.h" />
 		<Unit filename="include/DrawableMonster.h" />
 		<Unit filename="include/FightManager.h" />
@@ -83,7 +82,6 @@
 		<Unit filename="include/Model/SingletonGame.h" />
 		<Unit filename="include/Model/TileInfo.h" />
 		<Unit filename="include/Monster.h" />
-		<Unit filename="include/Npc.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="include/SFML/Audio.hpp" />
 		<Unit filename="include/SFML/Audio/AlResource.hpp" />
@@ -227,7 +225,6 @@
 		<Unit filename="src/BtnMagic.cpp" />
 		<Unit filename="src/BtnObject.cpp" />
 		<Unit filename="src/BtnWin.cpp" />
-		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Cooldown.cpp" />
 		<Unit filename="src/DrawableMonster.cpp" />
 		<Unit filename="src/FightManager.cpp" />
@@ -242,7 +239,6 @@
 		<Unit filename="src/Model/SingletonGame.cpp" />
 		<Unit filename="src/Model/TileInfo.cpp" />
 		<Unit filename="src/Monster.cpp" />
-		<Unit filename="src/Npc.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Spells.cpp" />
 		<Unit filename="src/Util/FontsManager.cpp" />
