@@ -280,9 +280,15 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     target.draw(textCombat,stat);
     //manage bar of life and mana and
     //target.draw((barLife->getFond()),stat);
+    target.draw((barLife.getFond()),stat);
+    target.draw((barMp.getFond()),stat);
+    target.draw((barMonsterLife.getFond()),stat);
+
     target.draw((barLife.getRect()),stat);
     target.draw((barMp.getRect()),stat);
     target.draw((barMonsterLife.getRect()),stat);
+
+
     //Get current and max value of Bar
     /*float current = fm->getPlayer()->Gethp();
     float maxx = fm->getPlayer()->GetmaxHp();
@@ -364,6 +370,7 @@ void FightScene::eventHandler(Event ev)
                                 return;
                             vectWindows.at(secondWindowsActivate)->getVect().at(i)->action();
                             VerifNbDisplayButton();
+                            CalculTailleBar();
                             setActivate(0);
 
                             if (fm->isFightFinish())
@@ -583,6 +590,25 @@ void FightScene::VerifNbDisplayButton()
  std::cout <<indexNbButtonDisplay <<"indexBouton"<<std::endl;
  limiteNbButtonDisplay = ((activate/NbButtonDisplay)+NbButtonDisplay);
 }
+void FightScene::CalculTailleBar()
+{
+    float current = fm->getPlayer()->Gethp();
+    float maxx = fm->getPlayer()->GetmaxHp();
+
+    float currentMp = fm->getPlayer()->Getmp();
+    float maxxMp = fm->getPlayer()->GetmaxMp();
+
+    float currentMHp = fm->getMonster()->Gethp();
+    float maxxMHp = fm->getMonster()->GetmaxHp();
+
+    barLife.setBarLifeTaille(current,maxx);
+    barMp.setBarLifeTaille(currentMp,maxxMp);
+    barMonsterLife.setBarLifeTaille(currentMHp,maxxMHp);
+
+}
+
+
+
 
 
 

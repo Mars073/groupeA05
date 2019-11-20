@@ -69,6 +69,8 @@ class FightScene: public StrategyScene
 
         void VerifNbDisplayButton();
 
+        void CalculTailleBar();
+
 
 
 

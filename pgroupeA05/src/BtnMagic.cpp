@@ -36,6 +36,7 @@ BtnMagic& BtnMagic::operator=(const BtnMagic& rhs)
 {
  if (this == &rhs) return *this; // handle self assignment
  //assignment operator
+ BtnWin::operator=(rhs);
  return *this;
 }
 void BtnMagic::action()
