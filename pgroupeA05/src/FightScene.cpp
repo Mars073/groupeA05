@@ -307,6 +307,8 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     barLife.setBarLifeTaille(current,maxx);*/
     //barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
     target.draw(spriteMonster,stat);
+    std::cout <<indexNbButtonDisplay <<"indexBouton"<<std::endl;
+    std::cout <<limiteNbButtonDisplay <<"limit"<<std::endl;
     //target.draw(dbw,stat);
 
 
@@ -588,7 +590,7 @@ void FightScene::VerifNbDisplayButton()
 {
  indexNbButtonDisplay =((activate/NbButtonDisplay)*NbButtonDisplay);
  std::cout <<indexNbButtonDisplay <<"indexBouton"<<std::endl;
- limiteNbButtonDisplay = ((activate/NbButtonDisplay)+NbButtonDisplay);
+ limiteNbButtonDisplay = (((activate/NbButtonDisplay)*4)+NbButtonDisplay);
 }
 void FightScene::CalculTailleBar()
 {
