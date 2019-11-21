@@ -297,6 +297,7 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
                 //fight->getFightManager()->setPlayer(SingletonGame::getInstance()->getPlayerPTR());
                 fight->getFightManager()->setMonster(beast->getOneRandomMonster());
                 fight->setSpriteMonster();
+                fight->setSpritePlayer();
                 SingletonGame::getInstance()->setScene(fight);
 
             }

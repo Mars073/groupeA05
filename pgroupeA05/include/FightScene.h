@@ -86,6 +86,9 @@ class FightScene: public StrategyScene
 
 
 
+
+
+
     protected:
 
     private:

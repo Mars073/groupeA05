@@ -33,6 +33,7 @@ FightScene::FightScene()
 
     //setMonster();
     spriteMonster.setPosition(sf::Vector2f(100,60));
+    spritePlayer.setPosition(sf::Vector2f(450,45));
     /*
     textureMonster = Resources::getTexture("boss","data/images/monsters/boss.png");
     spriteMonster.setTexture(textureMonster);
@@ -280,6 +281,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     target.draw(textCombat,stat);
     //manage bar of life and mana and
     //target.draw((barLife->getFond()),stat);
+    target.draw(spritePlayer,stat);
     target.draw((barLife.getFond()),stat);
     target.draw((barMp.getFond()),stat);
     target.draw((barMonsterLife.getFond()),stat);
@@ -307,6 +309,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     barLife.setBarLifeTaille(current,maxx);*/
     //barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
     target.draw(spriteMonster,stat);
+
     std::cout <<indexNbButtonDisplay <<"indexBouton"<<std::endl;
     std::cout <<limiteNbButtonDisplay <<"limit"<<std::endl;
     //target.draw(dbw,stat);
@@ -503,8 +506,8 @@ void FightScene::setTimeEventIsNotActive(float newTime)
 }
 void FightScene::setSpriteMonster()
 {
-    std::string lien = ("data/images/monsters/"+getFightManager()->getMonster()->GetcharaName()+".png");
-    textureMonster = *tm->get("mob_boss");//"_" + getFightManager()->getMonster()->GetcharaName()
+    std::string lien = ("mob_"+getFightManager()->getMonster()->GetcharaName());
+    textureMonster = *tm->get(lien);//"_" + getFightManager()->getMonster()->GetcharaName()
     spriteMonster.setTexture(textureMonster);
 }
 void FightScene::setText(std::string text)
@@ -543,7 +546,9 @@ void FightScene::setPlayer()
   */
 void FightScene::setSpritePlayer()
 {
-
+  texturePlayer = *tm->get("hero");//"_" + getFightManager()->getMonster()->GetcharaName()
+  spritePlayer.setTexture(texturePlayer);
+  spritePlayer.setScale(0.8,0.8);
 }
 /** @brief WriteText
   *
