@@ -38,26 +38,31 @@ BtnObject& BtnObject::operator=(const BtnObject& rhs)
 void BtnObject::action()
 {
  //if this button is a menuButton
-
+ int t = 0;
  if(this->getIsMenuBoutton())
  {
     for(int i = 0 ;i<this->getFm()->getPlayer()->Getinventory()->Getbag().size();i++)
     {
+      std::cout <<this->getNbBoutonDisplay()<<"le nombre maximum de btnAfficher" << std::endl;
+      if(t >=this->getNbBoutonDisplay())
+      {
+       t=0;
+      }
       if(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemType()=="Heal" || this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemType()=="HealMp"){
            std::cout <<"objet creer"<<std::endl;
-            BtnObject *btnObjCreate = new BtnObject(this->getPositionX()+325,250+(50*i),70,35,"p");
+            BtnObject *btnObjCreate = new BtnObject(this->getPositionX()+325,250+(50*t),70,35,"p");
            btnObjCreate->setItem(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->clone());
            btnObjCreate->setNomText(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemName());
            btnObjCreate->setFm(this->getFm());
            this->AddButton(btnObjCreate);
+           t++;
       }
     }
  }
  else
  {
      std::cout<<"Object utiliser"<< std::endl;
-
-
+     getFm()->getPlayer()->heals(item);
  }
 
 }
@@ -66,7 +71,7 @@ std::string BtnObject::getDescription()
  std::string message;
  int degats;
  std::stringstream degatsStr;
- message ="vous avez fait utiliser ";
+ message ="you use a";
 
  degatsStr<<message;
  degatsStr<<item->GetitemName();

@@ -7,7 +7,7 @@ BtnDefend::BtnDefend(int positionX,int positionY,int tailleX,int tailleY,std::st
 void BtnDefend::action()
 {
     std::cout << "vous Defendez" << std::endl;
-    getFm()->DamagePlayer();
+
     std::cout <<getFm()->getMonster()->str()<< std::endl;
     std::cout <<getFm()->getPlayer()->str()<< std::endl;
 
@@ -28,11 +28,12 @@ std::string BtnDefend::getDescription()
  std::string message;
  int degats;
  std::stringstream degatsStr;
- message ="you are doing an attack ";
+ message ="you defend";
 
  degatsStr<<message;
- degats =(getFm()->getMonster()->showDamageReceived(getFm()->getPlayer()->damageDone()));
- degatsStr<<degats;
+ //degats =(getFm()->getMonster()->showDamageReceived(getFm()->getPlayer()->damageDone()));
+ //degatsStr<<degats;
+
 
  std::cout<<"les degats "<<degats<<std::endl;
 
