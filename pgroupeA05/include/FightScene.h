@@ -70,6 +70,9 @@ class FightScene: public StrategyScene
         void VerifNbDisplayButton();
 
         void CalculTailleBar();
+        void CalculVfxAnimation(int tailleX,int tailleY,int posX,int posY,int indexX,int indexY);
+        void MakeAnimation(int,int);
+
 
 
 
@@ -124,6 +127,9 @@ class FightScene: public StrategyScene
         sf::Sprite spriteVfx;
         std::string nameMonster;
 
+        sf::Texture textureTest;
+        sf::Sprite spTest;
+
         sf::Text textCombat;
 
         sf::Font police;
@@ -142,6 +148,10 @@ class FightScene: public StrategyScene
         int limiteNbButtonDisplay;
         int NbButtonDisplay;
         //DrawableBattleCharacter dbw;
+        int indexXVfx;
+        int indexYVfx;
+        bool isAnimVfx;
+
 
 
 };

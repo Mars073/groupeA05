@@ -38,6 +38,9 @@ FightScene::FightScene()
     textureMonster = Resources::getTexture("boss","data/images/monsters/boss.png");
     spriteMonster.setTexture(textureMonster);
     */
+    textureTest = *TexturesManager::getInstance()->get("vfx_ice");
+    spTest.setTexture(textureTest);
+
 
 
 
@@ -82,7 +85,9 @@ FightScene::FightScene()
     textureBackGroud = *TexturesManager::getInstance()->get("fight");
     sprintBackGroud.setTexture(textureBackGroud);
     //dbw = DrawableBattleCharacter(fm->getPlayer(),sf::Vector2f(100,400));
-
+    indexXVfx = 0;
+    indexYVfx = 0;
+    isAnimVfx = false;
 
     //Delete pointer
     CalculTailleBar();
@@ -309,9 +314,14 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     barLife.setBarLifeTaille(current,maxx);*/
     //barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
     target.draw(spriteMonster,stat);
+    if(isAnimVfx)
+    {
+     target.draw(spriteVfx,stat);
+    }
+    //target.draw(spTest);
 
-    std::cout <<indexNbButtonDisplay <<"indexBouton"<<std::endl;
-    std::cout <<limiteNbButtonDisplay <<"limit"<<std::endl;
+
+
     //target.draw(dbw,stat);
 
 
@@ -438,7 +448,10 @@ void FightScene::eventHandler(Event ev)
                                                 return;
                                     textWhichMustBeWrite=vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription();
                                     isCurrentlyWrite = true;
+                                    textureVfx = vectWindows.at(secondWindowsActivate)->getVect().at(i)->getVfxTexture();
                                     secondWindowsActivate = 0;
+                                    isAnimVfx =true;
+
                                 }
 
                                 std::cout << "verif doublons" << std::endl;
@@ -533,7 +546,7 @@ void FightScene::setMonster()
 
 /** @brief setPlayer
   *
-  * @todo: document this function
+  * Set the Player in fightManager
   */
 void FightScene::setPlayer()
 {
@@ -542,7 +555,7 @@ void FightScene::setPlayer()
 
 /** @brief setSpritePlayer
   *
-  * @todo: document this function
+  * set the sprite of Player
   */
 void FightScene::setSpritePlayer()
 {
@@ -552,7 +565,7 @@ void FightScene::setSpritePlayer()
 }
 /** @brief WriteText
   *
-  * @todo: document this function
+  * Whrite the text of fight
   */
 void FightScene::WriteText()
 {
@@ -560,6 +573,7 @@ void FightScene::WriteText()
     bool* intern_ptr = kill_sig;
     while(!*intern_ptr)
     {
+
         if(isCurrentlyWrite)
         {
 
@@ -578,6 +592,12 @@ void FightScene::WriteText()
                 textCurrentlyWrite="";
             }
         }
+        if(isAnimVfx)
+        {
+         std::cout <<"vfx marche"<< std::endl;
+         CalculVfxAnimation(256,205,200,200,indexXVfx,indexYVfx);
+         MakeAnimation(5,4);
+        }
         //std::this_thread::sleep_for(std::chrono::milliseconds(60));
         sf::sleep(sf::milliseconds(60));
 
@@ -589,14 +609,16 @@ void FightScene::WriteText()
 
 /** @brief VerifNbDisplayButton
   *
-  * @todo: document this function
+  * Manage the number of button display
   */
 void FightScene::VerifNbDisplayButton()
 {
  indexNbButtonDisplay =((activate/NbButtonDisplay)*NbButtonDisplay);
- std::cout <<indexNbButtonDisplay <<"indexBouton"<<std::endl;
  limiteNbButtonDisplay = (((activate/NbButtonDisplay)*4)+NbButtonDisplay);
 }
+/**
+*Calcul size of BarLif,Bar of mana,Life bar of monster
+*/
 void FightScene::CalculTailleBar()
 {
     float current = fm->getPlayer()->Gethp();
@@ -611,8 +633,40 @@ void FightScene::CalculTailleBar()
     barLife.setBarLifeTaille(current,maxx);
     barMp.setBarLifeTaille(currentMp,maxxMp);
     barMonsterLife.setBarLifeTaille(currentMHp,maxxMHp);
+}
+/** @brief CalculVfxAnimation
+  *
+  * change Texture of vfx for make animation
+  */
+void FightScene::CalculVfxAnimation(int tailleX, int tailleY, int posX, int posY, int indexX,int indexY)
+{
+ spriteVfx.setTexture(textureVfx);
+ spriteVfx.setTextureRect(sf::IntRect(256*indexX,256*indexY,256,256));
+  //spriteVfx.setTexture(textureTest);
+  //= sf::Sprite(textureVfx,sf::IntRect(posX*indexX,posY*indexY,tailleX,tailleY));
 
 }
+/** @brief MakeAniùation
+  *
+  * manage index of vfx
+  */
+void FightScene::MakeAnimation(int limiteX,int limiteY)
+{
+  indexXVfx++;
+  if(indexXVfx >= limiteX)
+  {
+
+   indexXVfx =0;
+   indexYVfx++;
+   if(indexYVfx>=limiteY)
+   {
+     indexYVfx = 0;
+     isAnimVfx = false;
+   }
+  }
+}
+
+
 
 
 

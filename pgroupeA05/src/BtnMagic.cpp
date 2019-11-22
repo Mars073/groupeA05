@@ -2,10 +2,9 @@
 
 BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {
+
  //ctor
- //setVfxTexture(magic->GetmName());
- //this->setNomText(textButton);
- std::cout <<"coucou" <<std::endl;
+
 }
 
 BtnMagic::~BtnMagic()
@@ -52,11 +51,12 @@ void BtnMagic::action()
    {
     t=0;
    }
-   std::cout <<t << std::endl;
    BtnMagic *btnMagCreate = new BtnMagic(this->getPositionX()+325,257+(50*t),70,35,"p");
    btnMagCreate->Setmagic(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->clone());
    btnMagCreate->setNomText(this->getFm()->getPlayer()->Getspells()->GetspellsHeld().at(i)->GetmName());
    btnMagCreate->setFm(this->getFm());
+   std::cout<<btnMagCreate->Getmagic()->GetmName() <<std::endl;
+   btnMagCreate->setVfxTexture(btnMagCreate->Getmagic()->GetmName());
 
    this->AddButton(btnMagCreate);
    //delete btnMagCreate;
