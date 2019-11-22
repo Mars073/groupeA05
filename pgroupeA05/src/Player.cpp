@@ -14,8 +14,6 @@ Player::Player(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,i
     this->inventory->addItem(armor);
     this->inventory->addItem(inventory->getOneItem("Potion"));
     this->inventory->addItem(inventory->getOneItem("Ether"));
-    this->inventory->addItem(inventory->getOneItem("Ultima weapon"));
-    this->inventory->addItem(inventory->getOneItem("Mythril armor"));
     this->spells=new Spells();
     this->spells->addMagic("Fire");
     this->spells->addMagic("Super fire");

@@ -81,8 +81,11 @@ void Monster::damageReceived(int dmg)
 
 int Monster::showDamageReceived(int dmg)
 {
-    return dmg - Getdef();
-
+    int damage= dmg - Getdef();
+    if(damage<0){
+        damage=0;
+    }
+    return damage;
 }
 
 Monster* Monster::clone() const

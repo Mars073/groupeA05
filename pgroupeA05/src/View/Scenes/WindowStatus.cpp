@@ -14,6 +14,12 @@ WindowStatus::WindowStatus()
     this->rectMenu.setOutlineColor(sf::Color(255,255,255));
     this->rectMenu.setFillColor(sf::Color(253,67,0));
 
+    this->rectMenuRight.setPosition(sf::Vector2f(240,60));
+    this->rectMenuRight.setSize(sf::Vector2f(300,380));
+    this->rectMenuRight.setOutlineThickness(5);
+    this->rectMenuRight.setOutlineColor(sf::Color(255,255,255));
+    this->rectMenuRight.setFillColor(sf::Color(253,67,0));
+
     this->p=SingletonGame::getInstance()->getPlayerPTR();
 
     this->choiceMenu=0;
@@ -64,6 +70,8 @@ WindowStatus::WindowStatus(const WindowStatus& other)
 
     this->rectMenu=other.rectMenu;
 
+    this->rectMenuRight=other.rectMenuRight;
+
     this->p=other.p;
 
     this->choiceMenu=other.choiceMenu;
@@ -79,6 +87,8 @@ WindowStatus& WindowStatus::operator=(const WindowStatus& rhs)
         this->rectAll=rhs.rectAll;
 
         this->rectMenu=rhs.rectMenu;
+
+        this->rectMenuRight=rhs.rectMenuRight;
 
         this->p=rhs.p;
 
@@ -109,6 +119,7 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     target.draw(sprite, states);
     target.draw(rectAll, states);
     target.draw(rectMenu, states);
+    target.draw(rectMenuRight, states);
     Font f = *FontsManager::getInstance()->get("arial");
     for (int i = 0; i < MENU_LENGTH; i++)
     {
@@ -170,7 +181,8 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
             Text textType1(type1Desc, f);
             textType1.setCharacterSize(15);
             textType1.setFillColor(sf::Color::Black);
-            textType1.setPosition(250, 50);
+            textType1.setPosition(250, 60);
+            textType1.setStyle(sf::Text::Bold | sf::Text::Underlined);
             target.draw(textType1, states);
         }
         if(listofItem.at(i)->GetitemType()==type2 && !isType2){
@@ -178,11 +190,12 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
             Text textType2(type2Desc, f);
             textType2.setCharacterSize(15);
             textType2.setFillColor(sf::Color::Black);
+            textType2.setStyle(sf::Text::Bold | sf::Text::Underlined);
             if(i==nb1){
-                textType2.setPosition(250, 50+ (menuItem)*42);
+                textType2.setPosition(250, 60+ (menuItem)*42);
             }
             else{
-                textType2.setPosition(250, 50+ (menuItem+1)*42);
+                textType2.setPosition(250, 40+ (menuItem+1)*42);
             }
 
             target.draw(textType2, states);
@@ -191,13 +204,13 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
         textItems.setCharacterSize(15);
         textItems.setFillColor(sf::Color::Black);
         if(!isType2 || nb2==listofItem.size() && listofItem.size()>=9 && !isType2 || i==nb1 && listofItem.at(i)->GetitemType()==type2 || listofItem.size()>=9 && checkNextSpace || listofItem.size()<8 && listofItem.at(0)->GetitemType()==type2){
-            textItems.setPosition(250, 50 + (menuItem+1)*42);
+            textItems.setPosition(250, 40 + (menuItem+1)*42);
             if(i==nb1 && listofItem.at(i)->GetitemType()==type2){
                checkNextSpace=true;
             }
         }
         else{
-            textItems.setPosition(250, 50 + (menuItem+2)*42);
+            textItems.setPosition(250, 30 + (menuItem+2)*42);
         }
         target.draw(textItems, states);
         menuItem++;
@@ -206,7 +219,7 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
             Text textArrowDown("Go down", f);
             textArrowDown.setCharacterSize(20);
             textArrowDown.setFillColor(sf::Color::Black);
-            textArrowDown.setPosition(460, 420);
+            textArrowDown.setPosition(455, 410);
             target.draw(textArrowDown, states);
         }
 
@@ -214,77 +227,11 @@ void WindowStatus::drawItems(RenderTarget& target, RenderStates states,int nb1,i
             Text textArrowUp("Go up", f);
             textArrowUp.setCharacterSize(20);
             textArrowUp.setFillColor(sf::Color::Black);
-            textArrowUp.setPosition(460, 50);
+            textArrowUp.setPosition(455, 60);
             target.draw(textArrowUp, states);
         }
     }
 }
-
-/*void WindowStatus::drawEquipment(RenderTarget& target, RenderStates states,int nb1,int nb2) const{
-    Font f = *FontsManager::getInstance()->get("arial");
-    int menuEquipment=0;
-    bool isArmor=false;
-    bool isWeapon=false;
-    bool checkNextSpace=false;
-
-    for (int i = nb1; i < nb2; i++)
-    {
-        if(equipments.at(i)->GetitemType()=="Weapon" && !isWeapon){
-            isWeapon=true;
-            Text textWeapon("Weapons : ", f);
-            textWeapon.setCharacterSize(15);
-            textWeapon.setFillColor(sf::Color::Black);
-            textWeapon.setPosition(250, 50);
-            target.draw(textWeapon, states);
-        }
-        if(equipments.at(i)->GetitemType()=="Armor" && !isArmor){
-            isArmor=true;
-            Text textArmor("Armors : ", f);
-            textArmor.setCharacterSize(15);
-            textArmor.setFillColor(sf::Color::Black);
-            textArmor.setPosition(250, 50+ (i+1)*42);
-            //if(nb2==equipments.size() && equipments.size()>=9){
-            if(i==nb1){
-                textArmor.setPosition(250, 50+ (menuEquipment)*42);
-            }
-            else{
-                textArmor.setPosition(250, 50+ (menuEquipment+1)*42);
-            }
-            target.draw(textArmor, states);
-        }
-        Text textEquipment(i==selected_id_menu?"> "+equipments.at(i)->strEquipment():equipments.at(i)->strEquipment(), f);
-        textEquipment.setCharacterSize(15);
-        textEquipment.setFillColor(sf::Color::Black);
-        //if(!isArmor || nb2==equipments.size()  && equipments.size()>=9){
-        if(!isArmor || nb2==equipments.size() && equipments.size()>=9 && !isArmor || i==nb1 && equipments.at(i)->GetitemType()=="Armor" || equipments.size()>=9 && checkNextSpace || equipments.size()<8 && equipments.at(0)->GetitemType()=="Armor"){
-            textEquipment.setPosition(250, 50 + (menuEquipment+1)*42);
-            if(i==nb1 && equipments.at(i)->GetitemType()=="Armor"){
-               checkNextSpace=true;
-            }
-        }
-        else{
-            textEquipment.setPosition(250, 50 + (menuEquipment+2)*42);
-        }
-        target.draw(textEquipment, states);
-        menuEquipment++;
-
-        if(nb2<equipments.size()){
-            Text textArrowDown("Go down", f);
-            textArrowDown.setCharacterSize(20);
-            textArrowDown.setFillColor(sf::Color::Black);
-            textArrowDown.setPosition(460, 420);
-            target.draw(textArrowDown, states);
-        }
-
-        if(selected_id_menu>=8){
-            Text textArrowUp("Go up", f);
-            textArrowUp.setCharacterSize(20);
-            textArrowUp.setFillColor(sf::Color::Black);
-            textArrowUp.setPosition(460, 50);
-            target.draw(textArrowUp, states);
-        }
-    }
-}*/
 
 void WindowStatus::eventHandler(Event event)
 {

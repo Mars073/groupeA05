@@ -19,6 +19,7 @@ class WindowStatus: public StrategyScene
         short int selected_id = 0; //!< Member variable "selected_id"
         RectangleShape rectAll; //!< Member variable "rectAll"
         RectangleShape rectMenu; //!< Member variable "rectMenu"
+        RectangleShape rectMenuRight; //!< Member variable "rectMenuRight"
         Player* p; //!< Member variable "p"
         int choiceMenu; //!< Member variable "choiceMenu"
         short int selected_id_menu = 0; //!< Member variable "selected_id_menu"
@@ -67,8 +68,6 @@ class WindowStatus: public StrategyScene
          * \param the index of the actual position in the menu
          */
         void drawItems(RenderTarget& target, RenderStates states,int nb1,int nb2,std::vector<Item*>listofItem,std::string type1,std::string type2,std::string type1Desc,std::string type2Desc,short int id) const;
-
-        //void drawEquipment(RenderTarget&, RenderStates,int nb,int nb2) const;
 
         /** \brief Handle all the event that happens in the scene (ex: a key pressed)
          *
