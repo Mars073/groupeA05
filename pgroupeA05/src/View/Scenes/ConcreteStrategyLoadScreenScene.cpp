@@ -33,6 +33,7 @@ void ConcreteStrategyLoadScreenScene::draw(RenderTarget& target, RenderStates st
         if (delta_anim > 2000)
         {
             setScene(new ConcreteStrategyHomeScene);
+            return;
         }
     }
     else if (loader.getStatus() == loader.Status::ERROR)

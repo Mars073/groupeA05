@@ -68,12 +68,12 @@ void ConcreteStrategyHomeScene::eventHandler(Event event)
                         ConcreteStrategyMapScene* s = new ConcreteStrategyMapScene;
                         setScene(s);
                         //s->playFXIntro();
-                        break;
+                        return;
                     }
                 case 1:
                     {
                         setScene(new ConcreteStrategyCreditsScene);
-                        break;
+                        return;
                     }
                 default:
                     win->close(); // Dans les autres cas on ferme

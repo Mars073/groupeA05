@@ -308,8 +308,7 @@ void WindowStatus::eventHandler(Event event)
                 case Keyboard::Escape:
                     {
                         gotoPreviousScene();
-                        //return;
-                        break;
+                        return;
                     }
                 case Keyboard::Enter:
                     {
@@ -337,7 +336,7 @@ void WindowStatus::eventHandler(Event event)
                             {
                                 //return to game
                                 gotoPreviousScene();
-                                break;
+                                return;
                             }
 
                         default:

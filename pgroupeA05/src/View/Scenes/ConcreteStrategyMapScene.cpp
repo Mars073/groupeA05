@@ -187,7 +187,7 @@ void ConcreteStrategyMapScene::eventHandler(Event event) {
                 {
                     //ouvrir le menu du personnage
                     setScene(new WindowStatus);
-                    break;
+                    return;
                 }
             default: break;
         }

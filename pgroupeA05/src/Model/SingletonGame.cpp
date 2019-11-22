@@ -84,13 +84,14 @@ void SingletonGame::setScene(StrategyScene* _scene)
 
 void SingletonGame::gotoPreviousScene()
 {
-    if (previous_scene.size() == 0)
+    if (previous_scene.size() < 2)
         return;
     StrategyScene* curr = getScene();
     setScene(previous_scene.at(previous_scene.size()-1));
-    previous_scene.erase(previous_scene.begin() + previous_scene.size() - 1);
+    previous_scene.pop_back();//.erase(previous_scene.begin() + previous_scene.size() - 1);
     std::cout << "Si ça freeze, c'est que la destruction de l'ancienne scène se passe mal." << std::endl;
     delete curr;
+    std::cout << "Ah non" << std::endl;
     //resetView();
 }
 

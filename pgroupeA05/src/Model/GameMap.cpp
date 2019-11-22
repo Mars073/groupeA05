@@ -299,7 +299,7 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
                 fight->setSpriteMonster();
                 fight->setSpritePlayer();
                 SingletonGame::getInstance()->setScene(fight);
-
+                return;
             }
             break;
         }

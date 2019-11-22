@@ -54,31 +54,31 @@ if (event.type == Event::KeyPressed)
                     {
                         //back
                         gotoPreviousScene();
-                        break;
+                        return;
                     }
                 case 1:
                     {
                         //home
                         setScene(new ConcreteStrategyHomeScene);
-                        break;
+                        return;
                     }
                 case 2:
                     {
                         //map
                         setScene(new ConcreteStrategyMapScene);
-                        break;
+                        return;
                     }
                 case 3:
                     {
                         //fight
                         setScene(new FightScene);
-                        break;
+                        return;
                     }
                 case 5:
                     {
                         //game over
                         setScene(new ConcreteStrategyGameOverScene);
-                        break;
+                        return;
                     }
                 default://credits, gameover
                     {
