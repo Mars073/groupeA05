@@ -24,6 +24,7 @@ Monster::Monster(const Monster& m):BattleCharacter(m)
 
 Monster& Monster::operator=(const Monster& m){
     if(this!=&m){
+        BattleCharacter::operator=(m);
         for (unsigned i = 0; i < lootHeld.size(); i++)
         {
             delete lootHeld.at(i);

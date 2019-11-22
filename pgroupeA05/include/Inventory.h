@@ -24,13 +24,13 @@ class Inventory
         /** Copy constructor
          *  \param other Object to copy from
          */
-        Inventory(const Inventory& i);
+        Inventory(const Inventory& invent);
 
         /** Assignment operator
          *  \param other Object to assign from
          *  \return A reference to this
          */
-        Inventory& operator=(const Inventory& i);
+        Inventory& operator=(const Inventory& invent);
 
         /** add an item in the bag ingame not in the file
          *  \param the item to add ingame

@@ -25,13 +25,13 @@ class Item
         /** Copy constructor
          *  \param other Object to copy from
          */
-        Item(const Item& i);
+        Item(const Item& item);
 
         /** Assignment operator
          *  \param other Object to assign from
          *  \return A reference to this
          */
-        Item& operator=(const Item& i);
+        Item& operator=(const Item& item);
 
         /** Access itemName
          * \return The current value of itemName

@@ -22,6 +22,7 @@ Weapon::Weapon(const Weapon& w):Item(w)
 
 Weapon& Weapon::operator=(const Weapon& w){
     if(this!=&w){
+        Item::operator=(w);
         SetitemType(w.GetitemType());
         this->atk=w.atk;
         this->mag=w.mag;

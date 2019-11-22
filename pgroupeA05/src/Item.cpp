@@ -13,17 +13,17 @@ Item::~Item()
 
 }
 
-Item::Item(const Item& i)
+Item::Item(const Item& item)
 {
-    this->itemName=i.itemName;
-    this->itemDescription=i.itemDescription;
+    this->itemName=item.itemName;
+    this->itemDescription=item.itemDescription;
 
 }
 
-Item& Item::operator=(const Item& i){
-    if(this!=&i){
-        this->itemName=i.itemName;
-        this->itemDescription=i.itemDescription;
+Item& Item::operator=(const Item& item){
+    if(this!=&item){
+        this->itemName=item.itemName;
+        this->itemDescription=item.itemDescription;
     }
     return *this;
 }

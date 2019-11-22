@@ -19,6 +19,7 @@ Armor::Armor(const Armor& a):Item(a)
 
 Armor& Armor::operator=(const Armor& a){
     if(this!=&a){
+        Item::operator=(a);
         SetitemType(a.GetitemType());
         this->def=a.def;
     }

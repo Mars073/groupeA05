@@ -17,6 +17,7 @@ HealMp::HealMp(const HealMp& h):HealItem(h)
 
 HealMp& HealMp::operator=(const HealMp& h){
     if(this!=&h){
+        Item::operator=(h);
         SetitemType(h.GetitemType());
     }
     return *this;

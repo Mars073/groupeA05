@@ -29,11 +29,13 @@ Spells& Spells::operator=(const Spells& s)
         for (unsigned i = 0; i < spellsHeld.size(); i++)
         {
             delete spellsHeld.at(i);
+            spellsHeld.at(i)=s.spellsHeld.at(i)->clone();
         }
 
         for (unsigned i = 0; i < everySpells.size(); i++)
         {
             delete everySpells.at(i);
+            everySpells.at(i)=s.everySpells.at(i)->clone();
         }
         readFromFile();
     }

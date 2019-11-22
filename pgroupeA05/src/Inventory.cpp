@@ -19,21 +19,23 @@ Inventory::~Inventory()
     }
 }
 
-Inventory::Inventory(const Inventory& i)
+Inventory::Inventory(const Inventory& invent)
 {
     readFromFile();
 }
 
-Inventory& Inventory::operator=(const Inventory& i){
-    if(this!=&i){
+Inventory& Inventory::operator=(const Inventory& invent){
+    if(this!=&invent){
         for (unsigned i = 0; i < bag.size(); i++)
         {
             delete bag.at(i);
+            bag.at(i)=invent.bag.at(i)->clone();
         }
 
         for (unsigned i = 0; i < everyItems.size(); i++)
         {
             delete everyItems.at(i);
+            everyItems.at(i)=invent.everyItems.at(i)->clone();
         }
         readFromFile();
     }

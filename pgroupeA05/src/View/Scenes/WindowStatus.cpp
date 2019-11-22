@@ -97,14 +97,14 @@ WindowStatus& WindowStatus::operator=(const WindowStatus& rhs)
         for (unsigned i = 0; i < equipments.size(); i++)
         {
             delete equipments.at(i);
+            equipments.at(i)=rhs.equipments.at(i)->clone();
         }
-        this->equipments=rhs.equipments;
 
         for (unsigned i = 0; i < items.size(); i++)
         {
             delete items.at(i);
+            items.at(i)=rhs.items.at(i)->clone();
         }
-        this->items=rhs.items;
     }
     //assignment operator
     return *this;
@@ -116,11 +116,26 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     Sprite sprite;
     Texture t = *TexturesManager::getInstance()->get("status");
     sprite.setTexture(t);
+    Font f = *FontsManager::getInstance()->get("arial");
     target.draw(sprite, states);
     target.draw(rectAll, states);
     target.draw(rectMenu, states);
     target.draw(rectMenuRight, states);
-    Font f = *FontsManager::getInstance()->get("arial");
+
+    Text textHelp("<ENTER> Interact - <UP ARROW> Go up - <DOWN ARROW> Go down", f);
+    textHelp.setCharacterSize(15);
+    textHelp.setFillColor(sf::Color::Black);
+    textHelp.setPosition(0, 0);
+    textHelp.setStyle(sf::Text::Bold);
+    target.draw(textHelp, states);
+
+    Text textHelp2("<ESC> Go back", f);
+    textHelp2.setCharacterSize(15);
+    textHelp2.setFillColor(sf::Color::Black);
+    textHelp2.setPosition(0, 20);
+    textHelp2.setStyle(sf::Text::Bold);
+    target.draw(textHelp2, states);
+
     for (int i = 0; i < MENU_LENGTH; i++)
     {
         Text text(i==selected_id?"> "+menu[i]:menu[i], f);

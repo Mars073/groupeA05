@@ -109,8 +109,8 @@ bool FightManager::isPlayerWin()
 {
     if(ms->Gethp() <= 0)
     {
-        //pl->moreExp(ms->GetexpHeld());
-        //pl->addLootMonster(ms->giveLoot());
+        pl->moreExp(ms->GetexpHeld());
+        pl->addLootMonster(ms->giveLoot());
         return true;
     }
     else

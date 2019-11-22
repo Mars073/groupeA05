@@ -26,6 +26,7 @@ Bestiary& Bestiary::operator=(const Bestiary& b){
         for (unsigned i = 0; i < bestiary.size(); i++)
         {
             delete bestiary.at(i);
+            bestiary.at(i)=b.bestiary.at(i)->clone();
         }
         delete inventory;
         this->inventory=new Inventory(*b.inventory);

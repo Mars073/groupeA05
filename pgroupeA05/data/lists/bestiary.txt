@@ -1,4 +1,4 @@
-Goblin/20 20 10 10 5 2 3 1 5 2Potion/60Super potion/40
-Wolf/25 25 10 10 6 3 4 2 9 3Ether/60Super ether/40Potion/70
-Skeleton/30 30 10 10 7 6 5 3 10 2Mega potion/40Mega ether/40
-boss/212 212 100 100 15 10 8 10 130 2X-potion/80X-ether/80
+Goblin/20 20 10 10 5 2 3 1 5 4Potion/60Super potion/40Rapier/30Leather armor/30
+Wolf/25 25 10 10 6 3 4 2 9 5Ether/60Super ether/40Potion/70Saber/30Chain mail/30
+Skeleton/30 30 10 10 7 6 5 3 10 4Mega potion/40Mega ether/40Broadsword/30Mythril armor/30
+boss/212 212 100 100 15 10 8 10 130 4X-potion/80X-ether/80Ultima weapon/30Adamantite armor/30

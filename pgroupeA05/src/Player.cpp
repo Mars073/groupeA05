@@ -16,12 +16,9 @@ Player::Player(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,i
     this->inventory->addItem(inventory->getOneItem("Ether"));
     this->spells=new Spells();
     this->spells->addMagic("Fire");
-    this->spells->addMagic("Super fire");
     this->spells->addMagic("Ice");
-    this->spells->addMagic("Super ice");
     this->spells->addMagic("Water");
     this->spells->addMagic("Ultima");
-    this->spells->addMagic("Super fire");
     srand ( time(NULL) );
 }
 
@@ -54,6 +51,7 @@ Player::Player(const Player& p):BattleCharacter(p)
 
 Player& Player::operator=(const Player& p){
     if(this!=&p){
+        BattleCharacter::operator=(p);
         Setlevel(p.Getlevel());
         SetcharaType(p.GetcharaType());
         this->expNow=p.expNow;
@@ -152,8 +150,8 @@ std::string Player::str() const
     sstr<<BattleCharacter::str()<<std::endl
     <<"Exp : "<<GetexpNow()<<"/"<<GetexpNext()<<std::endl<<std::endl
     <<"Equipment : "<<std::endl<<std::endl
-    <<"Weapon : "<<Getweapon()->GetitemName()<<" ATK : "<<Getweapon()->Getatk()<<" MAG : "<<Getweapon()->Getmag()<<std::endl
-    <<"Armor : "<<Getarmor()->GetitemName()<<" DEF : "<<Getarmor()->Getdef()<<std::endl;
+    <<"Weapon : "<<std::endl<<Getweapon()->GetitemName()<<" ATK : "<<Getweapon()->Getatk()<<" MAG : "<<Getweapon()->Getmag()<<std::endl<<std::endl
+    <<"Armor : "<<std::endl<<Getarmor()->GetitemName()<<" DEF : "<<Getarmor()->Getdef()<<std::endl;
     return sstr.str();
 }
 
@@ -167,6 +165,16 @@ void Player::levelUp()
     Setatk(Getatk()+rand() % 3 + 1);
     Setmag(Getmag()+rand() % 3 + 1);
     Setdef(Getdef()+rand() % 3 + 1);
+
+    if(Getlevel()==10){
+        spells->addMagic("Super fire");
+    }
+    if(Getlevel()==20){
+        spells->addMagic("Super ice");
+    }
+    if(Getlevel()==30){
+        spells->addMagic("Super water");
+    }
 }
 
 void Player::moreExp(int expEarned)

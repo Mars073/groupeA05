@@ -18,6 +18,7 @@ Heal::Heal(const Heal& h):HealItem(h)
 
 Heal& Heal::operator=(const Heal& h){
     if(this!=&h){
+        HealItem::operator=(h);
         SetitemType(h.GetitemType());
     }
     return *this;
