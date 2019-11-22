@@ -38,8 +38,7 @@ class GameMap
         vector<int> random_teleporters;
         Bestiary* beast;
         Texture texture;
-        SoundBuffer buffer;
-        Sound sound;
+        SoundsManager*  sm = SoundsManager::getInstance();
         Clock clock;
     public:
         struct neighboursInfo
