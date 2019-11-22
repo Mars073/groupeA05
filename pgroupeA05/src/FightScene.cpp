@@ -396,6 +396,11 @@ void FightScene::eventHandler(Event ev)
                                     gotoPreviousScene();
                                     return;
                                 }
+                                else
+                                {
+                                  //setScene(new ConcreteStrategyGameOverScene);
+                                  return;
+                                }
                             }
                             else
                             {
@@ -449,6 +454,7 @@ void FightScene::eventHandler(Event ev)
                                     textWhichMustBeWrite=vectWindows.at(secondWindowsActivate)->getVect().at(i)->getDescription();
                                     isCurrentlyWrite = true;
                                     textureVfx = vectWindows.at(secondWindowsActivate)->getVect().at(i)->getVfxTexture();
+                                    isBtnisAttack =vectWindows.at(secondWindowsActivate)->getVect().at(i)->getIsAttack();
                                     secondWindowsActivate = 0;
                                     isAnimVfx =true;
 
@@ -595,7 +601,7 @@ void FightScene::WriteText()
         if(isAnimVfx)
         {
          std::cout <<"vfx marche"<< std::endl;
-         CalculVfxAnimation(256,205,200,200,indexXVfx,indexYVfx);
+         CalculVfxAnimation(indexXVfx,indexYVfx,isBtnisAttack);
          MakeAnimation(5,4);
         }
         //std::this_thread::sleep_for(std::chrono::milliseconds(60));
@@ -638,8 +644,19 @@ void FightScene::CalculTailleBar()
   *
   * change Texture of vfx for make animation
   */
-void FightScene::CalculVfxAnimation(int tailleX, int tailleY, int posX, int posY, int indexX,int indexY)
+void FightScene::CalculVfxAnimation(int indexX,int indexY,bool isAttack)
 {
+ if(isAttack)
+ {
+  spriteVfx.setPosition(0,0);
+  std::cout<< isAttack<<"isAttack"<<std::endl;
+ }
+ else
+ {
+  spriteVfx.setPosition(400,0);
+  std::cout<< isAttack<<"isAttack"<<std::endl;
+ }
+
  spriteVfx.setTexture(textureVfx);
  spriteVfx.setTextureRect(sf::IntRect(256*indexX,256*indexY,256,256));
   //spriteVfx.setTexture(textureTest);

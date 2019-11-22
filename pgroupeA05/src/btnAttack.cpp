@@ -4,6 +4,7 @@ btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::st
 {
     //ctor
     this->setVfxTexture();
+    this->setIsAttack(true);
 }
 void btnAttack::action()
 {

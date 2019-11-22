@@ -4,6 +4,7 @@ BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::stri
 {
 
  //ctor
+ this->setIsAttack(true);
 
 }
 

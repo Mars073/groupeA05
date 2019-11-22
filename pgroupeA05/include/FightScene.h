@@ -22,6 +22,7 @@
 #include "View/DrawableBattleCharacter.h"
 
 
+
 using sf::Thread;
 
 class FightScene: public StrategyScene
@@ -70,7 +71,7 @@ class FightScene: public StrategyScene
         void VerifNbDisplayButton();
 
         void CalculTailleBar();
-        void CalculVfxAnimation(int tailleX,int tailleY,int posX,int posY,int indexX,int indexY);
+        void CalculVfxAnimation(int indexX,int indexY,bool isAttack);
         void MakeAnimation(int,int);
 
 
@@ -151,6 +152,8 @@ class FightScene: public StrategyScene
         int indexXVfx;
         int indexYVfx;
         bool isAnimVfx;
+
+        bool isBtnisAttack;
 
 
 

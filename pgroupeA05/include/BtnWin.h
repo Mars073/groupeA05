@@ -72,6 +72,9 @@ class BtnWin
         sf::Texture getVfxTexture(){return vfxTexture;};
         void setVfxTexture(std::string nom = "hit");
 
+        bool getIsAttack(){return isAttack;};
+        void setIsAttack(bool val){isAttack = val;}
+
 
 
     protected:
@@ -95,6 +98,7 @@ class BtnWin
         don't destruct here because he wiil destruct in fightManager*/
         FightManager *fm;
         sf::Texture vfxTexture;
+        bool isAttack;
 
 
 };

@@ -3,6 +3,7 @@
 BtnObject::BtnObject(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {
  //ctor
+ this->setIsAttack(false);
 }
 
 BtnObject::~BtnObject()
@@ -54,6 +55,7 @@ void BtnObject::action()
            btnObjCreate->setItem(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->clone());
            btnObjCreate->setNomText(this->getFm()->getPlayer()->Getinventory()->Getbag().at(i)->GetitemName());
            btnObjCreate->setFm(this->getFm());
+           btnObjCreate->setVfxTexture("wind");
            this->AddButton(btnObjCreate);
            t++;
       }
