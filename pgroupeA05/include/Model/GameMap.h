@@ -57,8 +57,8 @@ class GameMap
         static const unsigned GUID_DOORS = 131;
         static const unsigned FLOOR_AGGRO = 4;
         static const unsigned FLOOR_HIGH_AGGRO = 18;
-        static const unsigned RATE_AGGRO = 15;//%
-        static const unsigned RATE_HIGH_AGGRO = 40;//%
+        static const unsigned RATE_AGGRO = 5;//%
+        static const unsigned RATE_HIGH_AGGRO = 20;//%
 
         GameMap(int = 64);
         virtual ~GameMap();
