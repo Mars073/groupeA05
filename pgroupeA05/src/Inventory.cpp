@@ -223,7 +223,7 @@ void Inventory::writeInFile()
 	}
 }
 
-Item* Inventory::getOneItem(std::string name)
+Item* Inventory::getOneItem(std::string name) const
 {
     for (unsigned i = 0; i < everyItems.size(); i++){
         if(everyItems.at(i)->GetitemName()==name){
@@ -233,7 +233,7 @@ Item* Inventory::getOneItem(std::string name)
     return new Item("Potion","A simple potion");
 }
 
-Item* Inventory::getOneItemIngame(std::string name)
+Item* Inventory::getOneItemIngame(std::string name) const
 {
     for (unsigned i = 0; i < bag.size(); i++){
         if(bag.at(i)->GetitemName()==name){

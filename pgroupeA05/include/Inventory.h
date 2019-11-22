@@ -91,12 +91,12 @@ class Inventory
         /** return the item with the name in the argument from the list of every items
          *  \param the name of the item to return
          */
-        Item* getOneItem(std::string name);
+        Item* getOneItem(std::string name) const;
 
         /** return the item with the name in the argument from the list of items ingame
          *  \param the name of the item to return
          */
-        Item* getOneItemIngame(std::string name);
+        Item* getOneItemIngame(std::string name) const;
 
 
         /** allow to change the attributes of an item and write it in the file of that type of item

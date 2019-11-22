@@ -146,7 +146,7 @@ void Spells::writeInFile()
 	}
 }
 
-Magic* Spells::getOneMagic(std::string name)
+Magic* Spells::getOneMagic(std::string name) const
 {
     for (unsigned i = 0; i < everySpells.size(); i++){
         if(everySpells.at(i)->GetmName()==name){
@@ -156,7 +156,7 @@ Magic* Spells::getOneMagic(std::string name)
     return new Magic("Ice",10,10);
 }
 
-Magic* Spells::getOneMagicInGame(std::string name)
+Magic* Spells::getOneMagicInGame(std::string name) const
 {
     for (unsigned i = 0; i < spellsHeld.size(); i++){
         if(spellsHeld.at(i)->GetmName()==name){

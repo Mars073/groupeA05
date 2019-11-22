@@ -80,7 +80,7 @@ void Monster::damageReceived(int dmg)
     }
 }
 
-int Monster::showDamageReceived(int dmg)
+int Monster::showDamageReceived(int dmg) const
 {
     int damage= dmg - Getdef();
     if(damage<0){

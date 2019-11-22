@@ -112,7 +112,7 @@ class Monster : public BattleCharacter
          * \return the value of the damage received by the monster
          *
          */
-        int showDamageReceived(int dmg);
+        int showDamageReceived(int dmg) const;
 
         /** \brief Calculate, based on the percentages of each item, if they are to be given to the player or not
          *

@@ -88,12 +88,12 @@ class Spells
         /** return the magic with the name in the argument from the file
          *  \param the name of the magic to return
          */
-        Magic* getOneMagic(std::string name);
+        Magic* getOneMagic(std::string name) const;
 
         /** return the magic with the name in the argument ingame
          *  \param the name of the magic to return
          */
-        Magic* getOneMagicInGame(std::string name);
+        Magic* getOneMagicInGame(std::string name) const;
 
         /** allow to change the attributes of a magic and write it in the file
          *  \param nameMagic the name of the magic to change its attributes

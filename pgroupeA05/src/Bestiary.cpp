@@ -127,7 +127,7 @@ void Bestiary::writeInFile()
 	}
 }
 
-Monster* Bestiary::getOneMonster(std::string name)
+Monster* Bestiary::getOneMonster(std::string name) const
 {
     for (unsigned i = 0; i < bestiary.size(); i++){
         if(bestiary.at(i)->GetcharaName()==name){
@@ -192,7 +192,7 @@ void Bestiary::deleteMonster(std::string nameMonster)
     writeInFile();
 }
 
-Monster* Bestiary::getOneRandomMonster(){
+Monster* Bestiary::getOneRandomMonster() const{
     srand(time(NULL));
     return bestiary.at(rand() % (bestiary.size()-1) + 0);
 }

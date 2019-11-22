@@ -70,7 +70,7 @@ class Bestiary
         /** return the monster with the name in the argument
          *  \param the name of the monster to return
          */
-        Monster* getOneMonster(std::string name);
+        Monster* getOneMonster(std::string name) const;
 
         /** allow to change the attributes of a monster and write it in the file that contains all monsters
          *  \param nameMonster the name of the monster to change its attributes
@@ -98,7 +98,7 @@ class Bestiary
          * \return a Monster
          *
          */
-        Monster* getOneRandomMonster();
+        Monster* getOneRandomMonster() const;
 
     protected:
 
