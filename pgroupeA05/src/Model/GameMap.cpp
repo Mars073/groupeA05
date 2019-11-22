@@ -273,7 +273,7 @@ void GameMap::draw() const
 void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& bypass) const
 {
     unsigned UID = tile->INDEX;
-    //cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
+    cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
     switch (tile->GAMEOBJECT_ID)
     {
     case 0: // empty
@@ -286,7 +286,7 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
 
             if (has_aggro)
             {
-                FightScene *fight = new FightScene();
+                FightScene* fight = new FightScene();
 
                 //fight->getFightManager()->setPlayer(SingletonGame::getInstance()->getPlayerPTR());
                 fight->getFightManager()->setMonster(beast->getOneRandomMonster());
@@ -296,6 +296,15 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
                 return;
             }
             break;
+        }
+    case 216: // Boss
+        {
+            FightScene* fight = new FightScene();
+            fight->getFightManager()->setMonster(beast->getOneMonster("boss"));
+            fight->setSpriteMonster();
+            fight->setSpritePlayer();
+            SingletonGame::getInstance()->setScene(fight);
+            return;
         }
     case GUID_RANDOM_TELEPORTER: // HOLEs
         {
