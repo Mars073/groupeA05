@@ -39,7 +39,7 @@ class ResourcesLoader
             { "arial", "data/fonts/arial.ttf"},
             { "morpheus", "data/fonts/morpheus.ttf"}
         };
-        string images[11][2] = {
+        string images[20][2] = {
             {"icon", "data/images/icon.png"},
             {"title", "data/images/background-title.png"},
             {"fight", "data/images/BackGroudCombat.png"},
@@ -50,7 +50,17 @@ class ResourcesLoader
             {"mob_skeleton", "data/images/monsters/skeleton.png"},
             {"mob_wolf", "data/images/monsters/wolf.png"},
             {"mob_boss", "data/images/monsters/boss.png"},
-            {"hero", "data/images/monsters/hero.png"}
+            {"hero", "data/images/monsters/hero.png"},
+            {"vfx_ice","data/images/gfx/70.png"},
+            {"vfx_hit","data/images/gfx/69.png"},
+            {"vfx_water","data/images/gfx/71.png"},
+            {"vfx_wind","data/images/gfx/66.png"},
+            {"vfx_fire","data/images/gfx/68.png"},
+            {"vfx_Super fire","data/images/gfx/68.png"},
+            {"vfx_Super ice","data/images/gfx/70.png"},
+            {"vfx_Super water","data/images/gfx/71.png"},
+            {"vfx_Super wind","data/images/gfx/66.png"}
+
         };
         string sounds[4][2] = {
             {"title", "data/sounds/title.ogg"},

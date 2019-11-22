@@ -66,8 +66,11 @@ class BtnWin
         int getPosButtonAction(){return posButtonAction;};
         int getNbBoutonDisplay(){return nbBoutonDisplay;};
 
-        int setPosButtonAction(int val){posButtonAction = val;};
-        int setNbBoutonDisplay(int val){nbBoutonDisplay = val;};
+        void setPosButtonAction(int val){posButtonAction = val;};
+        void setNbBoutonDisplay(int val){nbBoutonDisplay = val;};
+
+        sf::Texture getVfxTexture(){return vfxTexture;};
+        void setVfxTexture(std::string nom = "hit");
 
 
 
@@ -91,6 +94,7 @@ class BtnWin
         /*Fight manager come of FightScene.
         don't destruct here because he wiil destruct in fightManager*/
         FightManager *fm;
+        sf::Texture vfxTexture;
 
 
 };

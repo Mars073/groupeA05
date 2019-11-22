@@ -85,7 +85,7 @@ FightScene::FightScene()
 
 
     //Delete pointer
-
+    CalculTailleBar();
 
 }
 

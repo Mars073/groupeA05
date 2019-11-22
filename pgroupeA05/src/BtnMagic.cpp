@@ -3,7 +3,7 @@
 BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {
  //ctor
-
+ //setVfxTexture(magic->GetmName());
  //this->setNomText(textButton);
  std::cout <<"coucou" <<std::endl;
 }

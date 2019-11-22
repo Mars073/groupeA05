@@ -35,7 +35,7 @@ std::string BtnDefend::getDescription()
  //degatsStr<<degats;
 
 
- std::cout<<"les degats "<<degats<<std::endl;
+
 
  return (degatsStr.str());
 }

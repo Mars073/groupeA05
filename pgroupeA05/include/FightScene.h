@@ -119,6 +119,9 @@ class FightScene: public StrategyScene
 
         sf::Texture texturePlayer;
         sf::Sprite spritePlayer;
+
+        sf::Texture textureVfx;
+        sf::Sprite spriteVfx;
         std::string nameMonster;
 
         sf::Text textCombat;

@@ -227,6 +227,15 @@ bool BtnWin::equals(BtnWin* b)
 {
  return this->getNomText() == b->getNomText();
 }
+/** @brief setVfxTexture
+  *
+  * @todo: document this function
+  */
+void BtnWin::setVfxTexture(std::string nom)
+{
+  vfxTexture = *TexturesManager::getInstance()->get("vfx_"+nom);
+}
+
 
 
 

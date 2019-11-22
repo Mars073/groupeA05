@@ -3,6 +3,7 @@
 btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {
     //ctor
+    this->setVfxTexture();
 }
 void btnAttack::action()
 {
