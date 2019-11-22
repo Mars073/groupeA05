@@ -9,7 +9,7 @@ Monster::Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk
 
 Monster::~Monster()
 {
-    for (unsigned i = 0; i < lootHeld.size(); i++)
+   for (unsigned i = 0; i < lootHeld.size(); i++)
     {
         delete lootHeld.at(i);
     }
@@ -27,6 +27,7 @@ Monster& Monster::operator=(const Monster& m){
         for (unsigned i = 0; i < lootHeld.size(); i++)
         {
             delete lootHeld.at(i);
+            lootHeld.at(i)=m.GetLootHeld().at(i)->clone();
         }
         SetcharaType("Monster");
         Setlevel(m.Getlevel());
@@ -87,8 +88,10 @@ int Monster::showDamageReceived(int dmg)
 Monster* Monster::clone() const
 {
     Monster* m=new Monster(GetcharaName(),GetmaxHp(),Gethp(),GetmaxMp(),Getmp(),Getatk(),Getmag(),Getdef(),Getlevel(),GetexpHeld());
-    m->SetLootHeld(GetLootHeld());
-    m->SetPercentagesItem(GetPercentagesItem());
+    for(unsigned i=0;i<GetLootHeld().size();i++){
+        m->addLoot(GetLootHeld().at(i)->clone());
+        m->addPercentage(GetPercentagesItem().at(i));
+    }
     return m;
 }
 
