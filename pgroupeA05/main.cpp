@@ -6,8 +6,8 @@ int main()
 
     while (game->isOpen())
     {
-        game->pollEvent();
         game->draw();
+        game->pollEvent();
     }
     return 0;
 }
