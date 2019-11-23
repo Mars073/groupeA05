@@ -1,4 +1,4 @@
-#include "DrawableMonster.h"
+#include "View/DrawableMonster.h"
 
 DrawableMonster::DrawableMonster(std::string &Snom):nom(Snom)
 {

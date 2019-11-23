@@ -1,7 +1,7 @@
-#include "View/Component/UIPanel.h"
+#include "View/Components/Panel.h"
 
-UIPanel::UIPanel(Vector2f position, Vector2f size):
-    UIComponent(position, size)
+Panel::Panel(Vector2f position, Vector2f size):
+    Component(position, size)
 {
     texture = *tm->get("ui_panel");
 
@@ -36,18 +36,18 @@ UIPanel::UIPanel(Vector2f position, Vector2f size):
     sprites[8].setPosition(position + Vector2f(size.x-16, size.y-16));
 }
 
-UIPanel::UIPanel(const RectangleShape& shape):
-    UIPanel(shape.getPosition(), shape.getSize())
+Panel::Panel(const RectangleShape& shape):
+    Panel(shape.getPosition(), shape.getSize())
 {
     // ctor
 }
 
-UIPanel::~UIPanel()
+Panel::~Panel()
 {
 
 }
 
-void UIPanel::draw(RenderTarget& target, RenderStates states) const
+void Panel::draw(RenderTarget& target, RenderStates states) const
 {
     for (const Sprite& sprite: sprites)
         target.draw(sprite);

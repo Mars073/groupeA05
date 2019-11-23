@@ -63,30 +63,24 @@
 		<Unit filename="icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="include/Armor.h" />
-		<Unit filename="include/Bar.h" />
-		<Unit filename="include/BattleCharacter.h" />
-		<Unit filename="include/Bestiary.h" />
-		<Unit filename="include/BtnDefend.h" />
-		<Unit filename="include/BtnMagic.h" />
-		<Unit filename="include/BtnObject.h" />
-		<Unit filename="include/BtnWin.h" />
-		<Unit filename="include/Cooldown.h" />
-		<Unit filename="include/DrawableMonster.h" />
-		<Unit filename="include/FightManager.h" />
-		<Unit filename="include/FightScene.h" />
-		<Unit filename="include/Heal.h" />
-		<Unit filename="include/HealItem.h" />
-		<Unit filename="include/HealMp.h" />
-		<Unit filename="include/Inventory.h" />
-		<Unit filename="include/Item.h" />
-		<Unit filename="include/Magic.h" />
+		<Unit filename="include/Model/Armor.h" />
+		<Unit filename="include/Model/BattleCharacter.h" />
+		<Unit filename="include/Model/Bestiary.h" />
+		<Unit filename="include/Model/FightManager.h" />
 		<Unit filename="include/Model/GameMap.h" />
+		<Unit filename="include/Model/Heal.h" />
+		<Unit filename="include/Model/HealItem.h" />
+		<Unit filename="include/Model/HealMp.h" />
+		<Unit filename="include/Model/Inventory.h" />
 		<Unit filename="include/Model/InventoryStatus.h" />
+		<Unit filename="include/Model/Item.h" />
+		<Unit filename="include/Model/Magic.h" />
+		<Unit filename="include/Model/Monster.h" />
+		<Unit filename="include/Model/Player.h" />
 		<Unit filename="include/Model/SingletonGame.h" />
+		<Unit filename="include/Model/Spells.h" />
 		<Unit filename="include/Model/TileInfo.h" />
-		<Unit filename="include/Monster.h" />
-		<Unit filename="include/Player.h" />
+		<Unit filename="include/Model/Weapon.h" />
 		<Unit filename="include/SFML/Audio.hpp" />
 		<Unit filename="include/SFML/Audio/AlResource.hpp" />
 		<Unit filename="include/SFML/Audio/Export.hpp" />
@@ -185,7 +179,6 @@
 		<Unit filename="include/SFML/Window/Window.hpp" />
 		<Unit filename="include/SFML/Window/WindowHandle.hpp" />
 		<Unit filename="include/SFML/Window/WindowStyle.hpp" />
-		<Unit filename="include/Spells.h" />
 		<Unit filename="include/Util/FontsManager.h" />
 		<Unit filename="include/Util/INIReader.h" />
 		<Unit filename="include/Util/ResourcesLoader.h" />
@@ -193,10 +186,19 @@
 		<Unit filename="include/Util/SoundsManager.h" />
 		<Unit filename="include/Util/TexturesManager.h" />
 		<Unit filename="include/Util/ini.h" />
-		<Unit filename="include/View/Component/UIComponent.h" />
-		<Unit filename="include/View/Component/UIPanel.h" />
-		<Unit filename="include/View/DrawableBattleCharacter.h" />
+		<Unit filename="include/View/Component.h" />
+		<Unit filename="include/View/Components/Bar.h" />
+		<Unit filename="include/View/Components/BtnDefend.h" />
+		<Unit filename="include/View/Components/BtnMagic.h" />
+		<Unit filename="include/View/Components/BtnObject.h" />
+		<Unit filename="include/View/Components/BtnWin.h" />
+		<Unit filename="include/View/Components/Panel.h" />
+		<Unit filename="include/View/Components/WindowsFight.h" />
+		<Unit filename="include/View/Components/WindowsFightInfo.h" />
+		<Unit filename="include/View/Components/btnAttack.h" />
+		<Unit filename="include/View/DrawableMonster.h" />
 		<Unit filename="include/View/DrawablePlayer.h" />
+		<Unit filename="include/View/Scenes/ConcreteStategyFightScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyCreditsScene.h">
 			<Option virtualFolder="Scenes/Headers/" />
 		</Unit>
@@ -219,36 +221,25 @@
 			<Option virtualFolder="Scenes/Headers/" />
 		</Unit>
 		<Unit filename="include/View/StrategyScene.h" />
-		<Unit filename="include/Weapon.h" />
-		<Unit filename="include/WindowsFight.h" />
-		<Unit filename="include/WindowsFightInfo.h" />
-		<Unit filename="include/btnAttack.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Armor.cpp" />
-		<Unit filename="src/Bar.cpp" />
-		<Unit filename="src/BattleCharacter.cpp" />
-		<Unit filename="src/Bestiary.cpp" />
-		<Unit filename="src/BtnDefend.cpp" />
-		<Unit filename="src/BtnMagic.cpp" />
-		<Unit filename="src/BtnObject.cpp" />
-		<Unit filename="src/BtnWin.cpp" />
-		<Unit filename="src/Cooldown.cpp" />
-		<Unit filename="src/DrawableMonster.cpp" />
-		<Unit filename="src/FightManager.cpp" />
-		<Unit filename="src/FightScene.cpp" />
-		<Unit filename="src/Heal.cpp" />
-		<Unit filename="src/HealItem.cpp" />
-		<Unit filename="src/HealMp.cpp" />
-		<Unit filename="src/Inventory.cpp" />
-		<Unit filename="src/Item.cpp" />
-		<Unit filename="src/Magic.cpp" />
+		<Unit filename="src/Model/Armor.cpp" />
+		<Unit filename="src/Model/BattleCharacter.cpp" />
+		<Unit filename="src/Model/Bestiary.cpp" />
+		<Unit filename="src/Model/FightManager.cpp" />
 		<Unit filename="src/Model/GameMap.cpp" />
+		<Unit filename="src/Model/Heal.cpp" />
+		<Unit filename="src/Model/HealItem.cpp" />
+		<Unit filename="src/Model/HealMp.cpp" />
+		<Unit filename="src/Model/Inventory.cpp" />
 		<Unit filename="src/Model/InventoryStatus.cpp" />
+		<Unit filename="src/Model/Item.cpp" />
+		<Unit filename="src/Model/Magic.cpp" />
+		<Unit filename="src/Model/Monster.cpp" />
+		<Unit filename="src/Model/Player.cpp" />
 		<Unit filename="src/Model/SingletonGame.cpp" />
+		<Unit filename="src/Model/Spells.cpp" />
 		<Unit filename="src/Model/TileInfo.cpp" />
-		<Unit filename="src/Monster.cpp" />
-		<Unit filename="src/Player.cpp" />
-		<Unit filename="src/Spells.cpp" />
+		<Unit filename="src/Model/Weapon.cpp" />
 		<Unit filename="src/Util/FontsManager.cpp" />
 		<Unit filename="src/Util/INIReader.cpp" />
 		<Unit filename="src/Util/ResourcesLoader.cpp" />
@@ -258,13 +249,22 @@
 		<Unit filename="src/Util/init.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/View/Component/UIComponent.cpp" />
-		<Unit filename="src/View/Component/UIPanel.cpp" />
-		<Unit filename="src/View/DrawableBattleCharacter.cpp" />
+		<Unit filename="src/View/Component.cpp" />
+		<Unit filename="src/View/Components/Bar.cpp" />
+		<Unit filename="src/View/Components/BtnDefend.cpp" />
+		<Unit filename="src/View/Components/BtnMagic.cpp" />
+		<Unit filename="src/View/Components/BtnObject.cpp" />
+		<Unit filename="src/View/Components/BtnWin.cpp" />
+		<Unit filename="src/View/Components/Panel.cpp" />
+		<Unit filename="src/View/Components/WindowsFight.cpp" />
+		<Unit filename="src/View/Components/WindowsFightInfo.cpp" />
+		<Unit filename="src/View/Components/btnAttack.cpp" />
+		<Unit filename="src/View/DrawableMonster.cpp" />
 		<Unit filename="src/View/DrawablePlayer.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyCreditsScene.cpp">
 			<Option virtualFolder="Scenes/" />
 		</Unit>
+		<Unit filename="src/View/Scenes/ConcreteStrategyFightScene.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyGameOverScene.cpp">
 			<Option virtualFolder="Scenes/" />
 		</Unit>
@@ -280,14 +280,7 @@
 		<Unit filename="src/View/Scenes/ConcreteStrategyMenuScene.cpp">
 			<Option virtualFolder="Scenes/" />
 		</Unit>
-		<Unit filename="src/View/Scenes/WindowStatus.cpp">
-			<Option virtualFolder="Scenes/" />
-		</Unit>
 		<Unit filename="src/View/StrategyScene.cpp" />
-		<Unit filename="src/Weapon.cpp" />
-		<Unit filename="src/WindowsFight.cpp" />
-		<Unit filename="src/WindowsFightInfo.cpp" />
-		<Unit filename="src/btnAttack.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

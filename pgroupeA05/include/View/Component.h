@@ -1,5 +1,5 @@
-#ifndef UICOMPONENT_H
-#define UICOMPONENT_H
+#ifndef COMPONENT_H
+#define COMPONENT_H
 
 #include<SFML/Graphics.hpp>
 #include<Util/TexturesManager.h>
@@ -11,7 +11,7 @@ using sf::Vector2f;
 using sf::RenderTarget;
 using sf::RenderStates;
 
-class UIComponent : public Drawable
+class Component : public Drawable
 {
     protected:
         FontsManager*   fm = FontsManager::getInstance();
@@ -21,8 +21,8 @@ class UIComponent : public Drawable
         Vector2f size;
 
     public:
-        UIComponent(Vector2f = Vector2f(0.f, 0.f), Vector2f = Vector2f(0.f, 0.f));
-        virtual ~UIComponent();
+        Component(Vector2f = Vector2f(0.f, 0.f), Vector2f = Vector2f(0.f, 0.f));
+        virtual ~Component();
         virtual void draw(RenderTarget&, RenderStates) const = 0;
         void setPosition(const Vector2f&);
         void setSize(const Vector2f&);
@@ -31,4 +31,4 @@ class UIComponent : public Drawable
 
 };
 
-#endif // UICOMPONENT_H
+#endif // COMPONENT_H

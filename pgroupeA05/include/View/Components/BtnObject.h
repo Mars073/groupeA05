@@ -1,7 +1,7 @@
 #ifndef BTNOBJECT_H
 #define BTNOBJECT_H
 
-#include <BtnWin.h>
+#include <View/Components/BtnWin.h>
 
 
 class BtnObject : public BtnWin

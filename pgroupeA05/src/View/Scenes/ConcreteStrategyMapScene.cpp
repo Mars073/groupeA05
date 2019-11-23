@@ -105,7 +105,7 @@ void ConcreteStrategyMapScene::draw(RenderTarget& target, RenderStates states) c
     catch (const out_of_range& oor) { }
     const Vector2f vw = target.getView().getCenter();
     Font f = *fm->get("arial");
-    Text text("<SPACE> Status menu - <ESC> Debug menu - <A> Interact", f);
+    Text text("<ESC> Menu - <A> Interact", f);
     text.setCharacterSize(12);
     text.setFillColor(Color::Black);
     text.setPosition(vw.x-299, vw.y+221);
@@ -181,12 +181,6 @@ void ConcreteStrategyMapScene::eventHandler(Event event) {
             case Keyboard::Escape:
                 {
                     setScene(new ConcreteStrategyMenuScene);
-                    return;
-                }
-            case Keyboard::Space:
-                {
-                    //ouvrir le menu du personnage
-                    setScene(new WindowStatus);
                     return;
                 }
             default: break;

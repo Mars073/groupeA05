@@ -1,4 +1,4 @@
-#include "BtnWin.h"
+#include "View/Components/BtnWin.h"
 
 
 BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton)

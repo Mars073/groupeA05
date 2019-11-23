@@ -1,7 +1,7 @@
-#include "WindowsFight.h"
-#include "BtnWin.h"
+#include "View/Components/WindowsFight.h"
+#include "View/Components/BtnWin.h"
 #include "iostream"
-#include "btnAttack.h"
+#include "View/Components/btnAttack.h"
 
 
 

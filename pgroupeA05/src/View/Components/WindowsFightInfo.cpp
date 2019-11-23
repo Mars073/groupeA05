@@ -1,4 +1,4 @@
-#include "WindowsFightInfo.h"
+#include "View/Components/WindowsFightInfo.h"
 
 WindowsFightInfo::WindowsFightInfo(int posX,int posY,int sizeX,int sizeY):WindowsFight(posX,posY,sizeX,sizeY)
 {

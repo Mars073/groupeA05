@@ -1,8 +1,8 @@
 #ifndef BTNMAGIC_H
 #define BTNMAGIC_H
 
-#include <BtnWin.h>
-#include "Magic.h"
+#include <View/Components/BtnWin.h>
+#include "Model/Magic.h"
 
 
 class BtnMagic : public BtnWin

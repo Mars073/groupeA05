@@ -1,6 +1,6 @@
-#include "FightScene.h"
+#include "View/Scenes/ConcreteStrategyFightScene.h"
 //Constructeur of fghtScene
-FightScene::FightScene()
+ConcreteStrategyFightScene::ConcreteStrategyFightScene()
 {
     //ctor
     //init pointer
@@ -23,7 +23,7 @@ FightScene::FightScene()
     setText("the fight Begin");
     kill_sig = new bool;
     *kill_sig =  false;
-    thd = new Thread(&FightScene::WriteText, this);
+    thd = new Thread(&ConcreteStrategyFightScene::WriteText, this);
     thd->launch();
     indexNbButtonDisplay = 0;
     NbButtonDisplay =4;
@@ -87,8 +87,8 @@ FightScene::FightScene()
     CalculTailleBar();
 
 }
-//destructeur of fightScene
-FightScene::~FightScene()
+//destructeur of ConcreteStrategyFightScene
+ConcreteStrategyFightScene::~ConcreteStrategyFightScene()
 {
     *kill_sig = true;   // break WriteText loop
 
@@ -110,7 +110,7 @@ FightScene::~FightScene()
             delete vectWindows.at(i);
 }
 //check if activate exceed limite
-void FightScene::setActivate(int activate)
+void ConcreteStrategyFightScene::setActivate(int activate)
 {
     if (secondWindowsActivate == 1)
     {
@@ -132,7 +132,7 @@ void FightScene::setActivate(int activate)
     }
 }
 //Display of component which must be displyed
-void FightScene::draw(RenderTarget& target, RenderStates stat)const
+void ConcreteStrategyFightScene::draw(RenderTarget& target, RenderStates stat)const
 {
 
 
@@ -155,7 +155,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     target.draw(sprintBackGroud,stat);
     for(unsigned j = 0; j<vectWindows.size(); j++)
     {
-        target.draw(UIPanel(vectWindows.at(j)->getRect()));
+        target.draw(Panel(vectWindows.at(j)->getRect()));
         if(vectWindows.at(j)->getNbBoutton()+1 > 0)
         {
             vectWindows.at(secondWindowsActivate)->activateButton(activate);
@@ -234,8 +234,8 @@ bool __HOTFIX__inRange(int i, int b, int e) {
         return false;
     }
 }
-//manage all event in fightScene
-void FightScene::eventHandler(Event ev)
+//manage all event in ConcreteStrategyFightScene
+void ConcreteStrategyFightScene::eventHandler(Event ev)
 {
     setActivate(activate);
     std::cout<< isCurrentlyWrite << std::endl;
@@ -389,46 +389,46 @@ void FightScene::eventHandler(Event ev)
     }
 }
 //Getter of vector of windows
-std::vector<WindowsFight*> FightScene::getVectWindows()const
+std::vector<WindowsFight*> ConcreteStrategyFightScene::getVectWindows()const
 {
     return vectWindows;
 }
-void FightScene::fight()
+void ConcreteStrategyFightScene::fight()
 {
     // DELETE ME
 }
 //setter of fightManager
-void FightScene::setFightManager(FightManager* fm)
+void ConcreteStrategyFightScene::setFightManager(FightManager* fm)
 {
     this->fm = fm;
 }
 //getteur of fightManager
-FightManager* FightScene::getFightManager()const
+FightManager* ConcreteStrategyFightScene::getFightManager()const
 {
     return fm;
 }
 //getteur of Texture of backgroud
-sf::Texture FightScene::getTextureBackGroud()const
+sf::Texture ConcreteStrategyFightScene::getTextureBackGroud()const
 {
     return textureBackGroud;
 }
-float FightScene::getTimeEventIsNotActive()const
+float ConcreteStrategyFightScene::getTimeEventIsNotActive()const
 {
     return timeEventIsNotActive;
 }
-void FightScene::setTimeEventIsNotActive(float newTime)
+void ConcreteStrategyFightScene::setTimeEventIsNotActive(float newTime)
 {
     timeEventIsNotActive = newTime;
 }
 //set the texture and the sprite of mob
-void FightScene::setSpriteMonster()
+void ConcreteStrategyFightScene::setSpriteMonster()
 {
     std::string lien = ("mob_"+getFightManager()->getMonster()->GetcharaName());
     textureMonster = *tm->get(lien);//"_" + getFightManager()->getMonster()->GetcharaName()
     spriteMonster.setTexture(textureMonster);
 }
 //set the text
-void FightScene::setText(std::string text)
+void ConcreteStrategyFightScene::setText(std::string text)
 {
     textCombat.setCharacterSize(30);
     police = *FontsManager::getInstance()->get("arial");
@@ -443,7 +443,7 @@ void FightScene::setText(std::string text)
   *
   * set the monster in  view.this monster must exist
   */
-void FightScene::setMonster()
+void ConcreteStrategyFightScene::setMonster()
 {
     //setSpriteMonster(fm->getMonster()->GetcharaName());
     std::cout<<fm->getMonster()->GetcharaName()<<std::endl;
@@ -453,7 +453,7 @@ void FightScene::setMonster()
   *
   * Set the Player in fightManager
   */
-void FightScene::setPlayer()
+void ConcreteStrategyFightScene::setPlayer()
 {
 
 }
@@ -462,7 +462,7 @@ void FightScene::setPlayer()
   *
   * set the sprite of Player
   */
-void FightScene::setSpritePlayer()
+void ConcreteStrategyFightScene::setSpritePlayer()
 {
   texturePlayer = *tm->get("hero");//"_" + getFightManager()->getMonster()->GetcharaName()
   spritePlayer.setTexture(texturePlayer);
@@ -472,7 +472,7 @@ void FightScene::setSpritePlayer()
   *
   * Write the text of fight
   */
-void FightScene::WriteText()
+void ConcreteStrategyFightScene::WriteText()
 {
     std::cout <<"ecrire"<<std::endl;
 
@@ -521,7 +521,7 @@ void FightScene::WriteText()
   *
   * Manage the number of button display
   */
-void FightScene::VerifNbDisplayButton()
+void ConcreteStrategyFightScene::VerifNbDisplayButton()
 {
  indexNbButtonDisplay =((activate/NbButtonDisplay)*NbButtonDisplay);
  limiteNbButtonDisplay = (((activate/NbButtonDisplay)*4)+NbButtonDisplay);
@@ -529,7 +529,7 @@ void FightScene::VerifNbDisplayButton()
 /**
 *Calcul size of BarLif,Bar of mana,Life bar of monster
 */
-void FightScene::CalculTailleBar()
+void ConcreteStrategyFightScene::CalculTailleBar()
 {
     float current = fm->getPlayer()->Gethp();
     float maxx = fm->getPlayer()->GetmaxHp();
@@ -548,7 +548,7 @@ void FightScene::CalculTailleBar()
   *
   * change Texture of vfx for make animation
   */
-void FightScene::CalculVfxAnimation(int indexX,int indexY,bool isAttack)
+void ConcreteStrategyFightScene::CalculVfxAnimation(int indexX,int indexY,bool isAttack)
 {
  if(isAttack)
  {
@@ -571,7 +571,7 @@ void FightScene::CalculVfxAnimation(int indexX,int indexY,bool isAttack)
   *
   * manage index of vfx
   */
-void FightScene::MakeAnimation(int limiteX,int limiteY)
+void ConcreteStrategyFightScene::MakeAnimation(int limiteX,int limiteY)
 {
   indexXVfx++;
   if(indexXVfx >= limiteX)

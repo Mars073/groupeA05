@@ -286,7 +286,7 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
 
             if (has_aggro)
             {
-                FightScene* fight = new FightScene();
+                ConcreteStrategyFightScene* fight = new ConcreteStrategyFightScene();
 
                 //fight->getFightManager()->setPlayer(SingletonGame::getInstance()->getPlayerPTR());
                 fight->getFightManager()->setMonster(beast->getOneRandomMonster());
@@ -299,7 +299,7 @@ void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& b
         }
     case 216: // Boss
         {
-            FightScene* fight = new FightScene();
+            ConcreteStrategyFightScene* fight = new ConcreteStrategyFightScene();
             fight->getFightManager()->setMonster(beast->getOneMonster("boss"));
             fight->setSpriteMonster();
             fight->setSpritePlayer();

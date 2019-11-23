@@ -19,7 +19,7 @@
 #include <Model/SingletonGame.h>
 #include <Model/TileInfo.h>
 #include <View/DrawablePlayer.h>
-#include <FightScene.h>
+#include <View/Scenes/ConcreteStrategyFightScene.h>
 
 using sf::Texture;
 using sf::Sprite;

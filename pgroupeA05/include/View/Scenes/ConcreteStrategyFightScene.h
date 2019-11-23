@@ -1,35 +1,34 @@
-#ifndef FightScene_H
-#define FightScene_H
+#ifndef CONCRETESTRATEGYFIGHTSCENE_H
+#define CONCRETESTRATEGYFIGHTSCENE_H
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
-#include "WindowsFight.h"
+#include "View/Components/WindowsFight.h"
 #include "vector"
 #include "iostream"
 #include "View/StrategyScene.h"
-#include "WindowsFightInfo.h"
-#include "Player.h"
-#include "Monster.h"
+#include "View/Components/WindowsFightInfo.h"
+#include "Model/Player.h"
+#include "Model/Monster.h"
 #include "Model/SingletonGame.h"
-#include "Bar.h"
-#include "BtnMagic.h"
-#include "BtnObject.h"
-#include "BtnDefend.h"
-#include "Cooldown.h"
+#include "View/Components/Bar.h"
+#include "View/Components/BtnMagic.h"
+#include "View/Components/BtnObject.h"
+#include "View/Components/BtnDefend.h"
 #include "string.h"
-#include "DrawableMonster.h"
+#include "View/DrawableMonster.h"
 #include "Util/FontsManager.h"
-#include "View/Component/UIPanel.h"
+#include "View/Components/Panel.h"
 
 
 
 using sf::Thread;
 
-class FightScene: public StrategyScene
+class ConcreteStrategyFightScene: public StrategyScene
 {
     public:
-        FightScene();
-        virtual ~FightScene();
+        ConcreteStrategyFightScene();
+        virtual ~ConcreteStrategyFightScene();
         void fight();
         void draw(RenderTarget&,RenderStates) const override;
         void eventHandler(Event ev);
@@ -106,9 +105,9 @@ class FightScene: public StrategyScene
         float timeEventIsNotActive;
         //clock enable to know the time
         sf::Clock clock;
-        //Player in fightScene
+        //Player in ConcreteStrategyFightScene
         Player *player;
-        //Monster in fightScene
+        //Monster in ConcreteStrategyFightScene
         Monster * monster;
         //Windows contain button
         WindowsFight *fn;
@@ -175,4 +174,4 @@ class FightScene: public StrategyScene
 
 };
 
-#endif // FightScene_H
+#endif // CONCRETESTRATEGYFIGHTSCENE_H

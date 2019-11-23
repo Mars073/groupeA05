@@ -1,4 +1,4 @@
-#include "btnAttack.h"
+#include "View/Components/btnAttack.h"
 
 btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {

@@ -1,4 +1,4 @@
-#include "BtnDefend.h"
+#include "View/Components/BtnDefend.h"
 
 BtnDefend::BtnDefend(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {

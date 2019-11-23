@@ -1,4 +1,4 @@
-#include "Bar.h"
+#include "View/Components/Bar.h"
 
 Bar::Bar()
 {
