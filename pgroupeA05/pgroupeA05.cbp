@@ -198,8 +198,10 @@
 		<Unit filename="include/View/Components/btnAttack.h" />
 		<Unit filename="include/View/DrawableMonster.h" />
 		<Unit filename="include/View/DrawablePlayer.h" />
-		<Unit filename="include/View/Scenes/ConcreteStategyFightScene.h" />
 		<Unit filename="include/View/Scenes/ConcreteStrategyCreditsScene.h">
+			<Option virtualFolder="Scenes/Headers/" />
+		</Unit>
+		<Unit filename="include/View/Scenes/ConcreteStrategyFightScene.h">
 			<Option virtualFolder="Scenes/Headers/" />
 		</Unit>
 		<Unit filename="include/View/Scenes/ConcreteStrategyGameOverScene.h">
@@ -264,7 +266,9 @@
 		<Unit filename="src/View/Scenes/ConcreteStrategyCreditsScene.cpp">
 			<Option virtualFolder="Scenes/" />
 		</Unit>
-		<Unit filename="src/View/Scenes/ConcreteStrategyFightScene.cpp" />
+		<Unit filename="src/View/Scenes/ConcreteStrategyFightScene.cpp">
+			<Option virtualFolder="Scenes/" />
+		</Unit>
 		<Unit filename="src/View/Scenes/ConcreteStrategyGameOverScene.cpp">
 			<Option virtualFolder="Scenes/" />
 		</Unit>
