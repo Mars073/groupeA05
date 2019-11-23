@@ -12,14 +12,14 @@ FightScene::FightScene()
     isCooldown = false;
     isCurrentlyWrite = false;
     timeEventIsNotActive = 5.0f;
-    fn = new WindowsFight(0,250,300,200);
+    fn = new WindowsFight(15,250,300,200);
     fn2 = new WindowsFightInfo(325,250,300,200);
     fn3 = new WindowsFightInfo(50,190,550,40);
     barLife = Bar(400,20,200,20);
     barMp = Bar(400,150,200,20);
     barMp.Setcolor(sf::Color(0,0,225));
     barMonsterLife = Bar(50,20,200,20);
-    textCombat.setPosition(sf::Vector2f(50,190));
+    textCombat.setPosition(sf::Vector2f(60,190));
     setText("the fight Begin");
     kill_sig = new bool;
     *kill_sig =  false;
@@ -155,7 +155,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     target.draw(sprintBackGroud,stat);
     for(unsigned j = 0; j<vectWindows.size(); j++)
     {
-        target.draw(vectWindows.at(j)->getRect());
+        target.draw(UIPanel(vectWindows.at(j)->getRect()));
         if(vectWindows.at(j)->getNbBoutton()+1 > 0)
         {
             vectWindows.at(secondWindowsActivate)->activateButton(activate);
@@ -178,6 +178,7 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
                 target.draw(rr,stat);
                 sf::Text txt = vectWindows.at(j)->getVect().at(i)->getText();
                 txt.setFont(ft);
+                txt.move(rr.getSize().x/2.f - txt.getGlobalBounds().width/2.f, rr.getSize().y/2.f - txt.getGlobalBounds().height); // Alignement centered H/V
                 target.draw(txt,stat);
                 vectWindows.at(j)->getVect().at(i)->setIsActivate(false);
 
@@ -229,8 +230,7 @@ bool __HOTFIX__inRange(int i, int b, int e) {
     }
     else
     {
-        std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄" << std::endl << "████▌▄▌▄▐▐▌█████" << std::endl << "████▌▄▌▄▐▐▌▀████" << std::endl << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << std::endl;
-        std::cout <<"la mort"<<std::endl;
+        std::cout<<std::endl<<std::endl <<"LA MORT"<<std::endl<<std::endl<<std::endl;
         return false;
     }
 }
@@ -287,7 +287,6 @@ void FightScene::eventHandler(Event ev)
                             {
                                 if (fm->isPlayerWin())
                                 {
-                                    std::cout << "Freeze?" << std::endl;
                                     gotoPreviousScene();
                                     return;
                                 }

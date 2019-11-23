@@ -39,7 +39,7 @@ class ResourcesLoader
             { "arial", "data/fonts/arial.ttf"},
             { "morpheus", "data/fonts/morpheus.ttf"}
         };
-        string images[21][2] = {
+        string images[22][2] = {
             {"icon", "data/images/icon.png"},
             {"title", "data/images/background-title.png"},
             {"fight", "data/images/BackGroudCombat.png"},
@@ -60,7 +60,8 @@ class ResourcesLoader
             {"vfx_Super ice","data/images/gfx/70.png"},
             {"vfx_Super water","data/images/gfx/71.png"},
             {"vfx_Super wind","data/images/gfx/66.png"},
-            {"vfx_ultima","data/images/gfx/67.png"}
+            {"vfx_ultima","data/images/gfx/67.png"},
+            {"ui_panel","data/images/ui_panel.png"}
 
         };
         string sounds[4][2] = {

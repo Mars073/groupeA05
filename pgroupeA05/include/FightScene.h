@@ -19,7 +19,7 @@
 #include "string.h"
 #include "DrawableMonster.h"
 #include "Util/FontsManager.h"
-#include "View/DrawableBattleCharacter.h"
+#include "View/Component/UIPanel.h"
 
 
 
