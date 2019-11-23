@@ -97,24 +97,35 @@ class FightScene: public StrategyScene
 
     private:
         bool* kill_sig;
+        //index for know if a button is select
         int activate;
+        //index for know if a windows is select
         int secondWindowsActivate;
         bool isEventActive;
         bool isCooldown;
         float timeEventIsNotActive;
+        //clock enable to know the time
         sf::Clock clock;
+        //Player in fightScene
         Player *player;
+        //Monster in fightScene
         Monster * monster;
+        //Windows contain button
         WindowsFight *fn;
+        //Windows contain button
         WindowsFight *fn2;
+        //Windows contain button
         WindowsFightInfo *fn3;
         std::string cc;
-
+        //vector contain differents windows
         std::vector<WindowsFight*> vectWindows;
+        //Bar of player
         Bar barLife;
+        //Bar of  Mp
         Bar barMp;
+        //Bar of monsterLife
         Bar barMonsterLife;
-
+        //Texture of the scene
         sf::Texture textureBackGroud;
         sf::Sprite sprintBackGroud;
 
@@ -126,16 +137,20 @@ class FightScene: public StrategyScene
 
         sf::Texture textureVfx;
         sf::Sprite spriteVfx;
-        std::string nameMonster;
+
 
         sf::Texture textureTest;
         sf::Sprite spTest;
-
+        //Text of fight
+        std::string nameMonster;
         sf::Text textCombat;
-
+        //Police use for the text displayed
         sf::Font police;
+        //variable that check if the text of fight is currently write
         bool isCurrentlyWrite;
+        //Text is currently write in text combat
         std::string textCurrentlyWrite;
+        //Text is currently write in text combat
         std::string textWhichMustBeWrite;
         int indexTextWhichMustBeWrite;
 
@@ -149,6 +164,7 @@ class FightScene: public StrategyScene
         int limiteNbButtonDisplay;
         int NbButtonDisplay;
         //DrawableBattleCharacter dbw;
+        //index of vfx
         int indexXVfx;
         int indexYVfx;
         bool isAnimVfx;

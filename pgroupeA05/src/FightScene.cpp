@@ -1,5 +1,5 @@
 #include "FightScene.h"
-
+//Constructeur of fghtScene
 FightScene::FightScene()
 {
     //ctor
@@ -20,7 +20,7 @@ FightScene::FightScene()
     barMp.Setcolor(sf::Color(0,0,225));
     barMonsterLife = Bar(50,20,200,20);
     textCombat.setPosition(sf::Vector2f(50,190));
-    setText("coucou je vis");
+    setText("the fight Begin");
     kill_sig = new bool;
     *kill_sig =  false;
     thd = new Thread(&FightScene::WriteText, this);
@@ -34,10 +34,7 @@ FightScene::FightScene()
     //setMonster();
     spriteMonster.setPosition(sf::Vector2f(100,60));
     spritePlayer.setPosition(sf::Vector2f(450,45));
-    /*
-    textureMonster = Resources::getTexture("boss","data/images/monsters/boss.png");
-    spriteMonster.setTexture(textureMonster);
-    */
+
     textureTest = *TexturesManager::getInstance()->get("vfx_ice");
     spTest.setTexture(textureTest);
 
@@ -62,17 +59,14 @@ FightScene::FightScene()
     BtnObject btnObjet(fn->getPositionX()+10,fn->getPositionY()+157,70,35,"Object");
     btnObjet.setIsMenuBoutton(true);
 
-    //btnAttack *btnAttack2 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Feu");
-    //btnAttack *btnAttack3 = new btnAttack(fn2->getPositionX(),fn2->getPositionY()+100,80,50,"Eau");
-    //btnMagie->AddButton(btnAttack2);
-    //btnMagie->AddButton(btnAttack3);
+
     fm = new FightManager();
     //Add Button  in fightManager
     fn->addButton(btnAtt.clone());
     fn->addButton(btnMagie.Clone());
     fn->addButton(btnDefend.clone());
     fn->addButton(btnObjet.clone());
-    //this->setSpriteMonster();
+
     //initialise fightManager in button
     for(unsigned i = 0; i<fn->getVect().size(); i++)
     {
@@ -84,7 +78,7 @@ FightScene::FightScene()
 
     textureBackGroud = *TexturesManager::getInstance()->get("fight");
     sprintBackGroud.setTexture(textureBackGroud);
-    //dbw = DrawableBattleCharacter(fm->getPlayer(),sf::Vector2f(100,400));
+
     indexXVfx = 0;
     indexYVfx = 0;
     isAnimVfx = false;
@@ -93,7 +87,7 @@ FightScene::FightScene()
     CalculTailleBar();
 
 }
-
+//destructeur of fightScene
 FightScene::~FightScene()
 {
     *kill_sig = true;   // break WriteText loop
@@ -115,6 +109,7 @@ FightScene::~FightScene()
         if (vectWindows.at(i))
             delete vectWindows.at(i);
 }
+//check if activate exceed limite
 void FightScene::setActivate(int activate)
 {
     if (secondWindowsActivate == 1)
@@ -136,15 +131,10 @@ void FightScene::setActivate(int activate)
             this->activate = activate;
     }
 }
+//Display of component which must be displyed
 void FightScene::draw(RenderTarget& target, RenderStates stat)const
 {
 
-    //sf::RenderWindow window;
-    //sf::CircleShape cercle;
-    //sf::CircleShape triangle(80,3);
-    //sf::RectangleShape rect;
-    //window.create(sf::VideoMode(1270,720),"papa");
-    //window.setFramerateLimit(4);
 
     //Modifier la position
 
@@ -156,74 +146,9 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     text.setFont(ft); // font est un sf::Font
 
 
-    /*
 
-    // choix de la cha�ne de caract�res � afficher
-    text.setString("Hello world");
-    // choix de la taille des caract�res
-    text.setCharacterSize(24); // exprim�e en pixels, pas en points !
-    // choix de la couleur du texte
-    text.setColor(sf::Color::Red);
-    // choix du style du texte
-    text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    */
+    //fn->getVect().at(activate)->setIsActivate(true);
 
-
-    //window.setPosition(sf::Vector2i(0,0));
-    //window.setFramerateLimit(60);
-    //creation de fenetre
-    /*
-    cercle.setFillColor(sf::Color(100,120,140));
-    cercle.setRadius(50.0f);
-    cercle.setPosition(100,100);
-    cercle.setOutlineColor(sf::Color(100,100,100));
-    cercle.setOutlineThickness(10);
-
-    rect.setFillColor(sf::Color(0,0,0));
-    rect.setOutlineColor(sf::Color(100,100,100));
-    rect.setOutlineThickness(10);
-    rect.setRotation(45);
-    rect.setPosition(15,100);
-    rect.setSize(sf::Vector2f(40,45));
-
-    triangle.setFillColor(sf::Color(100,100,100));
-    triangle.setPosition(150,10);
-    */
-    /*
-    while(window.isOpen())
-    {
-        sf::Event event;
-        while(window.pollEvent(event))
-        {
-            if(event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-        }
-        //Gestion du clavier
-    */
-
-    //BackUp draw Widows
-    /*
-    fn->activateButton(activate);
-    fn->getVect().at(activate)->setIsActivate(true);
-    //window.draw(cercle);
-    //window.draw(rect);
-    //window.draw(triangle);
-    //window.draw(text);
-    target.draw(fn->getRect());
-    for(int i = 0; i<fn->getNbBoutton();i++)
-    {
-        sf::RectangleShape rr =fn->getVect().at(i)->getRect();
-        target.draw(rr,stat);
-        sf::Text txt = fn->getVect().at(i)->getText();
-        txt.setFont(ft);
-        target.draw(txt,stat);
-        fn->getVect().at(i)->setIsActivate(false);
-
-    }
-    fn->getVect().at(activate)->setIsActivate(true);
-    */
 
 
     // Draw the backgroud
@@ -237,19 +162,6 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
             vectWindows.at(secondWindowsActivate)->getVect().at(activate)->setIsActivate(true);
 
 
-            /*
-            backup de draw
-            for(int i = 0; i<=vectWindows.at(j)->getNbBoutton(); i++)
-            {
-                //std::cout << vectWindows.at(i)->getNbBoutton() <<i <<std::endl;
-                sf::RectangleShape rr =vectWindows.at(j)->getVect().at(i)->getRect();
-                target.draw(rr,stat);
-                sf::Text txt = vectWindows.at(j)->getVect().at(i)->getText();
-                txt.setFont(ft);
-                target.draw(txt,stat);
-                vectWindows.at(j)->getVect().at(i)->setIsActivate(false);
-            }
-            */
 
 
             for(int i = indexNbButtonDisplay; i<limiteNbButtonDisplay; i++)
@@ -296,23 +208,6 @@ void FightScene::draw(RenderTarget& target, RenderStates stat)const
     target.draw((barMonsterLife.getRect()),stat);
 
 
-    //Get current and max value of Bar
-    /*float current = fm->getPlayer()->Gethp();
-    float maxx = fm->getPlayer()->GetmaxHp();
-
-    float currentMp = fm->getPlayer()->Getmp();
-    float maxxMp = fm->getPlayer()->GetmaxHp();
-
-    float currentMHp = fm->getMonster()->Gethp();
-    float maxxMHp = fm->getMonster()->GetmaxHp();
-
-
-
-
-    //std::cout <<secondWindowsActivate<<endl;
-    //Change the size of bar
-    barLife.setBarLifeTaille(current,maxx);*/
-    //barMonsterLife->setBarLifeTaille(currentMHp,maxxMHp);
     target.draw(spriteMonster,stat);
     if(isAnimVfx)
     {
@@ -339,7 +234,7 @@ bool __HOTFIX__inRange(int i, int b, int e) {
         return false;
     }
 }
-
+//manage all event in fightScene
 void FightScene::eventHandler(Event ev)
 {
     setActivate(activate);
@@ -503,14 +398,17 @@ void FightScene::fight()
 {
     // DELETE ME
 }
+//setter of fightManager
 void FightScene::setFightManager(FightManager* fm)
 {
     this->fm = fm;
 }
+//getteur of fightManager
 FightManager* FightScene::getFightManager()const
 {
     return fm;
 }
+//getteur of Texture of backgroud
 sf::Texture FightScene::getTextureBackGroud()const
 {
     return textureBackGroud;
@@ -523,12 +421,14 @@ void FightScene::setTimeEventIsNotActive(float newTime)
 {
     timeEventIsNotActive = newTime;
 }
+//set the texture and the sprite of mob
 void FightScene::setSpriteMonster()
 {
     std::string lien = ("mob_"+getFightManager()->getMonster()->GetcharaName());
     textureMonster = *tm->get(lien);//"_" + getFightManager()->getMonster()->GetcharaName()
     spriteMonster.setTexture(textureMonster);
 }
+//set the text
 void FightScene::setText(std::string text)
 {
     textCombat.setCharacterSize(30);
@@ -571,11 +471,12 @@ void FightScene::setSpritePlayer()
 }
 /** @brief WriteText
   *
-  * Whrite the text of fight
+  * Write the text of fight
   */
 void FightScene::WriteText()
 {
     std::cout <<"ecrire"<<std::endl;
+
     bool* intern_ptr = kill_sig;
     while(!*intern_ptr)
     {
@@ -593,9 +494,13 @@ void FightScene::WriteText()
             }
             else
             {
-                isCurrentlyWrite= false;
-                indexTextWhichMustBeWrite =0;
+
                 textCurrentlyWrite="";
+                indexTextWhichMustBeWrite =0;
+                isCurrentlyWrite= false;
+
+
+
             }
         }
         if(isAnimVfx)
