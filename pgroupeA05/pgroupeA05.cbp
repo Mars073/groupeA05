@@ -18,6 +18,7 @@
 					<Add option="-DSFML" />
 					<Add directory="C:/libs/SFML/include" />
 					<Add directory="include" />
+					<Add directory="include/Model" />
 				</Compiler>
 				<Linker>
 					<Add library="C:/libs/SFML/lib/libsfml-graphics.a" />
@@ -37,6 +38,7 @@
 					<Add option="-DSFML_STATIC" />
 					<Add directory="include" />
 					<Add directory="C:/libs/SFML/include" />
+					<Add directory="include/Model" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -80,6 +82,7 @@
 		<Unit filename="include/Item.h" />
 		<Unit filename="include/Magic.h" />
 		<Unit filename="include/Model/GameMap.h" />
+		<Unit filename="include/Model/InventoryStatus.h" />
 		<Unit filename="include/Model/SingletonGame.h" />
 		<Unit filename="include/Model/TileInfo.h" />
 		<Unit filename="include/Monster.h" />
@@ -240,12 +243,12 @@
 		<Unit filename="src/Item.cpp" />
 		<Unit filename="src/Magic.cpp" />
 		<Unit filename="src/Model/GameMap.cpp" />
+		<Unit filename="src/Model/InventoryStatus.cpp" />
 		<Unit filename="src/Model/SingletonGame.cpp" />
 		<Unit filename="src/Model/TileInfo.cpp" />
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Spells.cpp" />
-		<Unit filename="src/View/Component/UIPanel.cpp" />
 		<Unit filename="src/Util/FontsManager.cpp" />
 		<Unit filename="src/Util/INIReader.cpp" />
 		<Unit filename="src/Util/ResourcesLoader.cpp" />
@@ -256,6 +259,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/View/Component/UIComponent.cpp" />
+		<Unit filename="src/View/Component/UIPanel.cpp" />
 		<Unit filename="src/View/DrawableBattleCharacter.cpp" />
 		<Unit filename="src/View/DrawablePlayer.cpp" />
 		<Unit filename="src/View/Scenes/ConcreteStrategyCreditsScene.cpp">

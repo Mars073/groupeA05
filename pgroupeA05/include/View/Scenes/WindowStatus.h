@@ -9,6 +9,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+#include <Model/InventoryStatus.h>
+#include <View/Component/UIPanel.h>
 using namespace sf;
 using namespace std;
 class WindowStatus: public StrategyScene
@@ -20,13 +22,10 @@ class WindowStatus: public StrategyScene
         RectangleShape rectAll; //!< Member variable "rectAll"
         RectangleShape rectMenu; //!< Member variable "rectMenu"
         RectangleShape rectMenuRight; //!< Member variable "rectMenuRight"
-        Player* p; //!< Member variable "p"
         int choiceMenu; //!< Member variable "choiceMenu"
         short int selected_id_menu = 0; //!< Member variable "selected_id_menu"
         short int selected_id_items = 0; //!< Member variable "selected_id_items"
-        std::vector<Item*>equipments; //!< Member variable "equipments"
-        std::vector<Item*>items; //!< Member variable "items"
-
+        InventoryStatus invent;
 
     public:
         /** Default constructor */

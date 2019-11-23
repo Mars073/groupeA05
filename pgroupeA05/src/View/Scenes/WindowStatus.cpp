@@ -20,47 +20,12 @@ WindowStatus::WindowStatus()
     this->rectMenuRight.setOutlineColor(sf::Color(255,255,255));
     this->rectMenuRight.setFillColor(sf::Color(253,67,0));
 
-    this->p=SingletonGame::getInstance()->getPlayerPTR();
-
     this->choiceMenu=0;
-
-    for (unsigned i = 0; i < p->Getinventory()->Getbag().size(); i++){
-        if(p->Getinventory()->Getbag().at(i)->GetitemType()=="Weapon"){
-            equipments.push_back(p->Getinventory()->Getbag().at(i)->clone());
-        }
-    }
-    for (unsigned i = 0; i < p->Getinventory()->Getbag().size(); i++){
-        if(p->Getinventory()->Getbag().at(i)->GetitemType()=="Armor"){
-            equipments.push_back(p->Getinventory()->Getbag().at(i)->clone());
-        }
-    }
-
-    for (unsigned i = 0; i < p->Getinventory()->Getbag().size(); i++){
-        if(p->Getinventory()->Getbag().at(i)->GetitemType()=="Heal"){
-            items.push_back(p->Getinventory()->Getbag().at(i)->clone());
-        }
-    }
-
-    for (unsigned i = 0; i < p->Getinventory()->Getbag().size(); i++){
-        if(p->Getinventory()->Getbag().at(i)->GetitemType()=="HealMp"){
-            items.push_back(p->Getinventory()->Getbag().at(i)->clone());
-        }
-    }
 
 }
 
 WindowStatus::~WindowStatus()
 {
-
-    for (unsigned i = 0; i < equipments.size(); i++)
-    {
-        delete equipments.at(i);
-    }
-
-    for (unsigned i = 0; i < items.size(); i++)
-    {
-        delete items.at(i);
-    }
 
 }
 
@@ -72,13 +37,7 @@ WindowStatus::WindowStatus(const WindowStatus& other)
 
     this->rectMenuRight=other.rectMenuRight;
 
-    this->p=other.p;
-
     this->choiceMenu=other.choiceMenu;
-
-    this->equipments=other.equipments;
-
-    this->items=other.items;
 }
 
 WindowStatus& WindowStatus::operator=(const WindowStatus& rhs)
@@ -90,21 +49,7 @@ WindowStatus& WindowStatus::operator=(const WindowStatus& rhs)
 
         this->rectMenuRight=rhs.rectMenuRight;
 
-        this->p=rhs.p;
-
         this->choiceMenu=rhs.choiceMenu;
-
-        for (unsigned i = 0; i < equipments.size(); i++)
-        {
-            delete equipments.at(i);
-            equipments.at(i)=rhs.equipments.at(i)->clone();
-        }
-
-        for (unsigned i = 0; i < items.size(); i++)
-        {
-            delete items.at(i);
-            items.at(i)=rhs.items.at(i)->clone();
-        }
     }
     //assignment operator
     return *this;
@@ -118,9 +63,9 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     sprite.setTexture(t);
     Font f = *FontsManager::getInstance()->get("arial");
     target.draw(sprite, states);
-    target.draw(rectAll, states);
-    target.draw(rectMenu, states);
-    target.draw(rectMenuRight, states);
+    target.draw(UIPanel(rectAll), states);
+    target.draw(UIPanel(rectMenu), states);
+    target.draw(UIPanel(rectMenuRight), states);
 
     Text textHelp("<ENTER> Interact - <UP ARROW> Go up - <DOWN ARROW> Go down", f);
     textHelp.setCharacterSize(15);
@@ -146,7 +91,7 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     }
 
     if(choiceMenu==0){
-        Text textStatus(p->str(), f);
+        Text textStatus(invent.Getplayer()->str(), f);
         textStatus.setCharacterSize(15);
         textStatus.setFillColor(sf::Color::Black);
         textStatus.setPosition(250, 60);
@@ -155,12 +100,12 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     else if(choiceMenu==1){
         int nb1=0,nb2=8;
 
-        for(unsigned i=0;i< ceil(((float)equipments.size()/8)) ;i++){
-            if(nb2>equipments.size()){
-                nb2=equipments.size();
+        for(unsigned i=0;i< ceil(((float)invent.Getequipments().size()/8)) ;i++){
+            if(nb2>invent.Getequipments().size()){
+                nb2=invent.Getequipments().size();
             }
             if(selected_id_menu>=nb1&&selected_id_menu<nb2){
-                drawItems(target,states,nb1,nb2,equipments,"Weapon","Armor","Weapons : ","Armors : ",selected_id_menu);
+                drawItems(target,states,nb1,nb2,invent.Getequipments(),"Weapon","Armor","Weapons : ","Armors : ",selected_id_menu);
             }
             nb1+=8;
             nb2+=8;
@@ -169,12 +114,12 @@ void WindowStatus::draw(RenderTarget& target, RenderStates states) const
     else if(choiceMenu==2){
         int nb1=0,nb2=8;
 
-        for(unsigned i=0;i< ceil(((float)items.size()/8)) ;i++){
-            if(nb2>items.size()){
-                nb2=items.size();
+        for(unsigned i=0;i< ceil(((float)invent.Getitems().size()/8)) ;i++){
+            if(nb2>invent.Getitems().size()){
+                nb2=invent.Getitems().size();
             }
             if(selected_id_items>=nb1&&selected_id_items<nb2){
-                drawItems(target,states,nb1,nb2,items,"Heal","HealMp","Heal hp : ","Heal mp : ",selected_id_items);
+                drawItems(target,states,nb1,nb2,invent.Getitems(),"Heal","HealMp","Heal hp : ","Heal mp : ",selected_id_items);
             }
             nb1+=8;
             nb2+=8;
@@ -329,7 +274,7 @@ void WindowStatus::eventHandler(Event event)
 
                     case Keyboard::Down:
                         {
-                            if(selected_id_menu<equipments.size()){
+                            if(selected_id_menu<invent.Getequipments().size()){
                                 selected_id_menu++;
                             }
                             break;
@@ -341,8 +286,8 @@ void WindowStatus::eventHandler(Event event)
                         }
                     case Keyboard::Enter:
                         {
-                            if(equipments.size()>0){
-                                p->changeEquipment(equipments.at(selected_id_menu)->GetitemName());
+                            if(invent.Getequipments().size()>0){
+                                invent.Getplayer()->changeEquipment(invent.Getequipments().at(selected_id_menu)->GetitemName());
                             }
                             choiceMenu=0;
                             break;
@@ -350,7 +295,7 @@ void WindowStatus::eventHandler(Event event)
                     default: // no default action
                     break;
                 }
-                selected_id_menu = max(0, min((int)selected_id_menu, (int)(equipments.size() - 1)));
+                selected_id_menu = max(0, min((int)selected_id_menu, (int)(invent.Getequipments().size() - 1)));
                 break;
             }
             case 2:
@@ -367,7 +312,7 @@ void WindowStatus::eventHandler(Event event)
 
                     case Keyboard::Down:
                         {
-                            if(selected_id_items<items.size()){
+                            if(selected_id_items<invent.Getitems().size()){
                                 selected_id_items++;
                             }
                             break;
@@ -379,10 +324,9 @@ void WindowStatus::eventHandler(Event event)
                         }
                     case Keyboard::Enter:
                         {
-                            if(items.size()>0){
-                                p->heals(items.at(selected_id_items));
-                                delete items.at(selected_id_items);
-                                items.erase(items.begin() + selected_id_items);
+                            if(invent.Getitems().size()>0){
+                                invent.Getplayer()->heals(invent.Getitems().at(selected_id_items));
+                                invent.deleteItem(selected_id_items);
                             }
                             choiceMenu=0;
                             break;
@@ -390,7 +334,7 @@ void WindowStatus::eventHandler(Event event)
                     default: // no default action
                     break;
                 }
-                selected_id_items = max(0, min((int)selected_id_items, (int)(items.size() - 1)));
+                selected_id_items = max(0, min((int)selected_id_items, (int)(invent.Getitems().size() - 1)));
                 break;
             }
             default: // no default action
