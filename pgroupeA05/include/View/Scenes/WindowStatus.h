@@ -75,13 +75,6 @@ class WindowStatus: public StrategyScene
          */
         void eventHandler(Event event);
 
-        /** \brief Allow to find the index of the item to erase it in the local list
-         *
-         * \param the item to find the index
-         * \return the index of the item in the local list
-         */
-        int indexOfHeal(Item*) const;
-
     protected:
 
 

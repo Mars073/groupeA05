@@ -381,9 +381,8 @@ void WindowStatus::eventHandler(Event event)
                         {
                             if(items.size()>0){
                                 p->heals(items.at(selected_id_items));
-                                int tmp = indexOfHeal(items.at(selected_id_items));
-                                delete items.at(tmp);
-                                items.erase(items.begin() + tmp);
+                                delete items.at(selected_id_items);
+                                items.erase(items.begin() + selected_id_items);
                             }
                             choiceMenu=0;
                             break;
@@ -398,16 +397,6 @@ void WindowStatus::eventHandler(Event event)
             break;
         }
     }
-}
-
-int WindowStatus::indexOfHeal(Item* item) const
-{
-    for (unsigned i = 0; i < items.size(); i++){
-        if (*(items.at(i)) == *item){
-            return i;
-        }
-    }
-    return -1;
 }
 
 
