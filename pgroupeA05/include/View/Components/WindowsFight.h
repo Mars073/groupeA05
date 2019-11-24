@@ -26,6 +26,7 @@ class WindowsFight
         //CRUD method for Button
         void addButton(BtnWin *btn);
         void removeButton(BtnWin btnRemove);
+        void removeButton(int index);
 
         void draw(sf::RenderWindow &rd);
         void activateButton(int index);

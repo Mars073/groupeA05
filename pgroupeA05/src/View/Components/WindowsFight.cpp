@@ -112,7 +112,7 @@ void WindowsFight::addButton(BtnWin *btn)
 {
     vectorButton.push_back(btn);
 }
-void WindowsFight::removeBouton(int index)
+void WindowsFight::removeButton(int index)
 {
     vectorButton.erase(vectorButton.begin()+index);
 }
