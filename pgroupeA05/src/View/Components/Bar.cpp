@@ -20,7 +20,8 @@ Bar::Bar(int posX, int posY, int sizeX, int sizeY)
     this->fond.setOutlineColor(sf::Color(0,0,0));
 
 
-
+    this->texture = *tm->get("ui_bar");
+    this->textureBorder = *tm->get("ui_bar-border");
 }
 Bar::~Bar()
 {
@@ -35,6 +36,8 @@ Bar::Bar(const Bar& other)
     this->posY = other.posY;
     this->sizeX = other.sizeX;
     this->sizeY = other.sizeY;
+    this->texture = other.texture;
+    this->textureBorder = other.textureBorder;
     this->rect.setSize(sf::Vector2f(sizeX,sizeY));
     this->rect.setPosition(sf::Vector2f(posX,posY));
     this->rect.setFillColor(sf::Color(0,255,0));
@@ -54,6 +57,8 @@ Bar& Bar::operator=(const Bar& other)
     this->posY = other.posY;
     this->sizeX = other.sizeX;
     this->sizeY = other.sizeY;
+    this->texture = other.texture;
+    this->textureBorder = other.textureBorder;
     this->rect.setSize(sf::Vector2f(sizeX,sizeY));
     this->rect.setPosition(sf::Vector2f(posX,posY));
     this->rect.setFillColor(sf::Color(0,255,0));
@@ -63,6 +68,49 @@ Bar& Bar::operator=(const Bar& other)
     this->fond.setOutlineThickness(5);
     this->fond.setOutlineColor(sf::Color(0,0,0));
     return *this;
+}
+void Bar::draw(RenderTarget& target, RenderStates states) const
+{
+    sf::Sprite sprites_b[3];
+    for (sf::Sprite& s: sprites_b)
+        s.setTexture(textureBorder);
+
+    sprites_b[0].setTextureRect(sf::IntRect(0, 0, 12, 24));
+    sprites_b[1].setTextureRect(sf::IntRect(12, 0, 1, 24));
+    sprites_b[2].setTextureRect(sf::IntRect(13, 0, 12, 24));
+
+    sprites_b[0].setPosition(posX-2, posY-2);
+    sprites_b[1].setPosition(posX+10, posY-2);
+    sprites_b[1].setScale(sizeX-20.f, 1.f);
+    sprites_b[2].setPosition(posX+sizeX-10, posY-2);
+
+    for (sf::Sprite& s: sprites_b)
+        target.draw(s);
+
+
+    sf::Sprite sprites[3];
+
+    for (sf::Sprite& s: sprites)
+    {
+        s.setTexture(texture);
+        s.setColor(rect.getFillColor());
+    }
+    sprites[0].setTextureRect(sf::IntRect(0, 0, 10, 20));
+    sprites[1].setTextureRect(sf::IntRect(10, 0, 1, 20));
+    sprites[2].setTextureRect(sf::IntRect(11, 0, 10, 20));
+
+    int sizeX = rect.getSize().x;
+
+    if (sizeX <= 0)
+        return;
+
+    sprites[0].setPosition(posX, posY);
+    sprites[1].setPosition(posX+10, posY);
+    sprites[1].setScale(sizeX-20.f, 1.f);
+    sprites[2].setPosition(posX+sizeX-10, posY);
+
+    for (sf::Sprite& s: sprites)
+        target.draw(s);
 }
 sf::RectangleShape Bar::getRect()const
 {

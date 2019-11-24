@@ -17,7 +17,7 @@ ConcreteStrategyFightScene::ConcreteStrategyFightScene()
     fn3 = new WindowsFightInfo(50,190,550,40);
     barLife = Bar(400,20,200,20);
     barMp = Bar(400,150,200,20);
-    barMp.Setcolor(sf::Color(0,0,225));
+    barMp.Setcolor(sf::Color(20,160,225));
     barMonsterLife = Bar(50,20,200,20);
     textCombat.setPosition(sf::Vector2f(60,190));
     setText("the fight Begin");
@@ -200,13 +200,16 @@ void ConcreteStrategyFightScene::draw(RenderTarget& target, RenderStates stat)co
     //manage bar of life and mana and
     //target.draw((barLife->getFond()),stat);
     target.draw(spritePlayer,stat);
-    target.draw((barLife.getFond()),stat);
+    /*target.draw((barLife.getFond()),stat);
     target.draw((barMp.getFond()),stat);
-    target.draw((barMonsterLife.getFond()),stat);
+    target.draw((barMonsterLife.getFond()),stat);*/
 
-    target.draw((barLife.getRect()),stat);
+    /*target.draw((barLife.getRect()),stat);
     target.draw((barMp.getRect()),stat);
-    target.draw((barMonsterLife.getRect()),stat);
+    target.draw((barMonsterLife.getRect()),stat);*/
+    target.draw(barLife);
+    target.draw(barMp);
+    target.draw(barMonsterLife);
 
 
     target.draw(spriteMonster,stat);

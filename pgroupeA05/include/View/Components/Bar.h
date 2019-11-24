@@ -3,8 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <ostream>
 #include "string"
+#include "View/Component.h"
 
-class Bar
+class Bar: public Component
 {
  public:
   Bar();
@@ -26,6 +27,7 @@ class Bar
   void setBarLifeTaille(float current,float maxx);
   sf::RectangleShape getRect()const;
   sf::RectangleShape getFond()const;
+  void draw(RenderTarget&, RenderStates) const override;
 
 
  protected:
@@ -39,6 +41,8 @@ class Bar
   sf::Color color;
   sf::RectangleShape rect;
   sf::RectangleShape fond;
+  sf::Texture texture;
+  sf::Texture textureBorder;
 };
 
 #endif // BAR_H
