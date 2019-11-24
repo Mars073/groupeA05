@@ -165,7 +165,7 @@ BtnWin::BtnWin(BtnWin const& c)
 
 
 }
-//Peur de fuite de memoire a poser au prof
+
 std::vector<BtnWin*> BtnWin::getListButton()
 {
     return ListButton;
@@ -175,7 +175,7 @@ std::string BtnWin::getDescription()
 {
     return "Choisisez une action";
 }
-//set of description
+//setter of description
 void BtnWin::setDescription(std::string str)
 {
     Description = str;
@@ -202,7 +202,7 @@ void BtnWin::setTailleY(int pos)
 {
     return nomText;
 }
-//add Button  in vector button
+//add Button  in vectorButton
 void BtnWin::AddButton(BtnWin *btn)
 {
     ListButton.push_back(btn);
@@ -252,7 +252,7 @@ bool BtnWin::equals(BtnWin* b)
 }
 /** @brief setVfxTexture
   *
-  * @todo: document this function
+  * -set the texture
   */
 void BtnWin::setVfxTexture(std::string nom)
 {

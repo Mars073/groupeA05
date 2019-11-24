@@ -39,7 +39,7 @@ BtnMagic& BtnMagic::operator=(const BtnMagic& rhs)
  BtnWin::operator=(rhs);
  return *this;
 }
-//make a action when this button is activate
+//do an action when the button is activated
 void BtnMagic::action()
 {
  //if this button is a menuButton

@@ -5,8 +5,7 @@ btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::st
     //ctor
     this->setVfxTexture();
     this->setIsAttack(true);
-}
-//Make a action when button is activate
+//do an action when the button is activated
 void btnAttack::action()
 {
     std::cout << "vous attaquez" << std::endl;

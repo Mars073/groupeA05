@@ -6,7 +6,7 @@ BtnDefend::BtnDefend(int positionX,int positionY,int tailleX,int tailleY,std::st
     this->setIsAttack(false);
     this->setVfxTexture("wind");
 }
-//make a action when button is active
+//do an action when the button is activated
 void BtnDefend::action()
 {
     std::cout << "vous Defendez" << std::endl;

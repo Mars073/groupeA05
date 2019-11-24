@@ -82,7 +82,7 @@ std::vector<BtnWin*> WindowsFight::getVect()const
 {
     return vectorButton;
 }
-//check activate to
+//check activate
 void WindowsFight::activateButton(int index)
 {
 

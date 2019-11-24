@@ -36,6 +36,7 @@ BtnObject& BtnObject::operator=(const BtnObject& rhs)
  //assignment operator
  return *this;
 }
+//do an action when the button is activated
 void BtnObject::action()
 {
  //if this button is a menuButton
