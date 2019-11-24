@@ -1,6 +1,6 @@
 #include "View/Components/BtnWin.h"
 
-
+//constructor
 BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton)
 {
     this->rect.setPosition(sf::Vector2f(positionX,positionY));
@@ -44,6 +44,7 @@ BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string t
 
 
 }
+//constructor
 BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton,std::string Description)
 {
     this->rect.setPosition(sf::Vector2f(positionX,positionY));
@@ -64,18 +65,22 @@ BtnWin::BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string t
     this->text.setPosition(positionX,positionY);
     this->text.setFillColor(sf::Color(0,0,255));
 }
+//make isActivate true
 void BtnWin::ativate()
 {
  isActivate = true;
 }
+//make isActivate false
 void BtnWin::Desativate()
 {
  isActivate = false;
 }
+//return position
 int BtnWin::getPositionX() const
 {
     return positionX;
 }
+//getter of position
 int BtnWin::getPositionY()const
 {
     return positionY;
@@ -88,40 +93,47 @@ int BtnWin::getTailleY()const
 {
     return tailleY;
 }
+//getter of rect
 sf::RectangleShape BtnWin::getRect()const
 {
     return rect;
 }
+//change the color of button if is activate
 void BtnWin::changeColorActivate()
 {
     rect.setOutlineColor(sf::Color(255,0,0));
 }
+//change the color of button if is activate
 void BtnWin::changeColorDesactivate()
 {
     rect.setOutlineColor(sf::Color(0,0,0));
 }
-
+//getter text
 sf::Text BtnWin::getText()
 {
     return text;
 }
+//make a action
 void BtnWin::action()
 {
     std::cout << "vous avez fait une action"<< std::endl;
 }
+//getter is activate
 bool BtnWin::getisActivate()
 {
     return isActivate;
 }
+//setter of activate
 void BtnWin::setIsActivate(bool val)
 {
     isActivate = val;
 }
-
+//desctructor
 BtnWin::~BtnWin()
 {
     //dtor
 }
+//copy constructor
 BtnWin::BtnWin(BtnWin const& c)
 {
     this->positionX= c.positionX;
@@ -158,14 +170,17 @@ std::vector<BtnWin*> BtnWin::getListButton()
 {
     return ListButton;
 }
+//return a description
 std::string BtnWin::getDescription()
 {
     return "Choisisez une action";
 }
+//set of description
 void BtnWin::setDescription(std::string str)
 {
     Description = str;
 }
+//setter of position
  void BtnWin::setPositionX(int pos)
  {
     positionX = pos;
@@ -182,26 +197,32 @@ void BtnWin::setTailleY(int pos)
 {
     tailleY = pos;
 }
+//getteur of textButton
  std::string BtnWin::getTextButton()
 {
     return nomText;
 }
+//add Button  in vector button
 void BtnWin::AddButton(BtnWin *btn)
 {
     ListButton.push_back(btn);
 }
+//getter of isMenubutton
 bool BtnWin::getIsMenuBoutton()const
 {
     return isButtonMenu;
 }
+//setter of isMenuButton
 void BtnWin::setIsMenuBoutton(bool val)
 {
     isButtonMenu = val;
 }
+//setter of fightManager
 void BtnWin::setFm(FightManager *fmNew)
 {
     fm = fmNew;
 }
+//getter of fm
 FightManager* BtnWin::getFm()
 {
  return fm;
@@ -215,10 +236,12 @@ std::string BtnWin::getNomText()const
 {
  return nomText;
 }
+//redifining of operator ==
 bool BtnWin::operator==(const BtnWin a)
 {
   return this->equals(a);
 }
+//redifining of operator equals
 bool BtnWin::equals(const BtnWin b)
 {
  return this->getNomText() == b.getNomText();

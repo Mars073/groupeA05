@@ -1,5 +1,5 @@
 #include "FightManager.h"
-
+//Constructor
 FightManager::FightManager()
 {
     //ctor
@@ -8,13 +8,14 @@ FightManager::FightManager()
 
 
 }
-
+//destructor of fightManager
 FightManager::~FightManager()
 {
     //dtor
     delete(ms);
 
 }
+//make damage Player
 void FightManager::DamagePlayer()
 {
     //no finsh calcul
@@ -31,6 +32,7 @@ void FightManager::DamagePlayer()
     this->DamageMonster();
 
 }
+//damage MagicPlayer
 void FightManager::DamageMagicPlayer(Magic *magic)
 {
     if(!pl)
@@ -45,6 +47,7 @@ void FightManager::DamageMagicPlayer(Magic *magic)
     ms->damageReceived(pl->magicalDamageDone(magic->GetmName()));
     this->DamageMonster();
 }
+//damage of monster
 void FightManager::DamageMonster()
 {
     if(!pl)
@@ -57,6 +60,7 @@ void FightManager::DamageMonster()
     }
     pl->damageReceived(ms->damageDone());
 }
+//getter of fihtManagze
 Monster* FightManager::getMonster()const
 {
     return ms;
@@ -65,6 +69,7 @@ Player* FightManager::getPlayer()const
 {
     return pl;
 }
+//setter of fightManager
 void FightManager::setMonster(Monster* ms)
 {
 

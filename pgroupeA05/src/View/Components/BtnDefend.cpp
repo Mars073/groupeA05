@@ -6,6 +6,7 @@ BtnDefend::BtnDefend(int positionX,int positionY,int tailleX,int tailleY,std::st
     this->setIsAttack(false);
     this->setVfxTexture("wind");
 }
+//make a action when button is active
 void BtnDefend::action()
 {
     std::cout << "vous Defendez" << std::endl;
@@ -25,6 +26,7 @@ BtnDefend::BtnDefend(BtnDefend const& btnA):BtnWin(btnA)
  this->setIsAttack(false);
  this->setVfxTexture("wind");
 }
+//return the decription
 std::string BtnDefend::getDescription()
 {
 
@@ -44,7 +46,7 @@ std::string BtnDefend::getDescription()
 }
 /** @brief clone
   *
-  * @todo: document this function
+  * clone the button
   */
 BtnDefend* BtnDefend::clone()
 {

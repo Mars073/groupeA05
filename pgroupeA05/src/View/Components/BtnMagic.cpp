@@ -1,5 +1,5 @@
 #include "View/Components/BtnMagic.h"
-
+//constructeur
 BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {
 
@@ -7,7 +7,7 @@ BtnMagic::BtnMagic(int positionX,int positionY,int tailleX,int tailleY,std::stri
  this->setIsAttack(true);
 
 }
-
+//destructor
 BtnMagic::~BtnMagic()
 {
  //dtor
@@ -26,12 +26,12 @@ BtnMagic::~BtnMagic()
 
 
 
-
+//copy constructor
 BtnMagic::BtnMagic(const BtnMagic& other):BtnWin(other)
 {
  //copy ctor
 }
-
+//redifining operator =
 BtnMagic& BtnMagic::operator=(const BtnMagic& rhs)
 {
  if (this == &rhs) return *this; // handle self assignment
@@ -39,6 +39,7 @@ BtnMagic& BtnMagic::operator=(const BtnMagic& rhs)
  BtnWin::operator=(rhs);
  return *this;
 }
+//make a action when this button is activate
 void BtnMagic::action()
 {
  //if this button is a menuButton
@@ -73,6 +74,7 @@ void BtnMagic::action()
  }
 
 }
+//return description
 std::string BtnMagic::getDescription()
 {
 

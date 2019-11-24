@@ -1,11 +1,12 @@
 #include "View/Components/btnAttack.h"
-
+//Constructor
 btnAttack::btnAttack(int positionX,int positionY,int tailleX,int tailleY,std::string textButton):BtnWin(positionX,positionY,tailleX,tailleY,textButton)
 {
     //ctor
     this->setVfxTexture();
     this->setIsAttack(true);
 }
+//Make a action when button is activate
 void btnAttack::action()
 {
     std::cout << "vous attaquez" << std::endl;
@@ -22,8 +23,10 @@ btnAttack::~btnAttack()
 }
 btnAttack::btnAttack(btnAttack const& btnA):BtnWin(btnA)
 {
-
+  this->setVfxTexture();
+  this->setIsAttack(true);
 }
+//enable to return description
 std::string btnAttack::getDescription()
 {
 

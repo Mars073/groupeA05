@@ -4,7 +4,7 @@
 #include "View/Components/btnAttack.h"
 
 
-
+//Constructor WindowsFight
 WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
 {
     this->rect.setPosition(sf::Vector2f(positionX,positionY));
@@ -34,7 +34,7 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
     //this->vectorButton.push_back(new btnAttack(*(btnMagie)));
 
 }
-
+//Destructor WindowsFoght
 WindowsFight::~WindowsFight()
 {   /*
     for(int i = 0; i< this->vectorButton.size();i++)
@@ -46,35 +46,43 @@ WindowsFight::~WindowsFight()
     */
 
 }
+//getter PositionX
 int WindowsFight::getPositionX() const
 {
     return positionX;
 }
+//getter PositionY
 int WindowsFight::getPositionY()const
 {
     return positionY;
 }
+//Getter tailleX
 int WindowsFight::getTailleX()const
 {
     return tailleX;
 }
+//Getter tailleY
 int WindowsFight::getTailleY()const
 {
     return tailleY;
 }
+//Getter Rect
 sf::RectangleShape WindowsFight::getRect()const
 {
     return rect;
 }
+//getteur Draw
 void WindowsFight::draw(sf::RenderWindow &rd)
 {
     rd.draw(rect);
 
 }
+//getter of vector Button
 std::vector<BtnWin*> WindowsFight::getVect()const
 {
     return vectorButton;
 }
+//check activate to
 void WindowsFight::activateButton(int index)
 {
 
@@ -94,15 +102,17 @@ void WindowsFight::activateButton(int index)
     vectorButton.at(index)->changeColorActivate();
     vectorButton.at(index)->ativate();
 }
+//return number of button
 int WindowsFight::getNbBoutton()
 {
     return (vectorButton.size()-1);
 }
+//add button in vector
 void WindowsFight::addButton(BtnWin *btn)
 {
     vectorButton.push_back(btn);
 }
-void WindowsFight::retirerBouton(int index)
+void WindowsFight::removeBouton(int index)
 {
     vectorButton.erase(vectorButton.begin()+index);
 }
@@ -110,6 +120,7 @@ void WindowsFight::setFm(FightManager *newfm)
 {
     fm = newfm;
 }
+//clear and delete the vector of ClearWindows
 void WindowsFight::ClearWindows()
 {
  for(int i ;i<this->vectorButton.size();i++)
