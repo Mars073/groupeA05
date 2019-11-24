@@ -113,7 +113,7 @@ sf::Text BtnWin::getText()
 {
     return text;
 }
-//make a action
+//do a action
 void BtnWin::action()
 {
     std::cout << "vous avez fait une action"<< std::endl;
