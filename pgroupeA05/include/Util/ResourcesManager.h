@@ -6,13 +6,18 @@
 using std::map;
 using std::string;
 
+/**
+ * Generic interface for the storage of different resources.
+ *
+ * @tparam T the time of resources stored in the map
+ */
 template<class T>
 class ResourcesManager
 {
-    private:
-        //static map<string, T*> store;
+    protected:
+        static map<string, T*> store; //!< Resources storage
     public:
-        virtual bool load(string, string) = 0;
+        virtual bool load(string, string) = 0;  //!<
         virtual T* get(string) const = 0;
         static string str_tolower(string str)
         {

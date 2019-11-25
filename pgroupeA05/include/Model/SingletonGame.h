@@ -4,8 +4,9 @@
 #include "View/Scenes/ConcreteStrategyLoadScreenScene.h"
 #include <Player.h>
 
-//using namespace sf;
-
+/**
+ * This is the main class which manage others like Scenes
+ */
 class SingletonGame
 {
     private:
@@ -14,11 +15,11 @@ class SingletonGame
         SingletonGame();
         /** instance destructor */
         ~SingletonGame();
-        vector<StrategyScene*> previous_scene;   //!< Pointer "Previous Scene"
+        vector<StrategyScene*> previous_scene;  //!< Pointer "Previous Scene"
         StrategyScene* scene = new ConcreteStrategyLoadScreenScene;   //!< Pointer "Scene"
-        RenderWindow* window = nullptr; //!< Pointer "Render Window"
-        Player* player = new Player();
-        void load_icon() const;
+        RenderWindow* window = nullptr;         //!< Pointer "Render Window"
+        Player* player = new Player();          //!< Player instance
+        void load_icon() const;                 //!< Load function to set the window icon
 
     public:
         /** Game window size */
@@ -49,9 +50,10 @@ class SingletonGame
         StrategyScene* getScene() const;
         /** Set previous scene as current scene */
         void gotoPreviousScene();
+        /** reset the view location */
         void resetView() const;
 
-        // Shortcuts game <-> window
+        /** Shortcuts game <-> window */
         bool isOpen() const;
         bool pollEvent(/*const*/ Event&) const;
         void pollEvent() const;
