@@ -7,7 +7,7 @@
 class BtnObject : public BtnWin
 {
  public:
-  BtnObject(int positionX,int positionY,int tailleX,int tailleY,std::string textButton);
+  BtnObject(int positionX=0,int positionY=0,int tailleX=0,int tailleY=0,std::string textButton="");
   void setItem(Item *Item);
   virtual ~BtnObject();
   BtnObject(const BtnObject& other);

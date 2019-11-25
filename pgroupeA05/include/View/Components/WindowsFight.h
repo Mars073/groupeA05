@@ -12,7 +12,7 @@
 class WindowsFight
 {
     public:
-        WindowsFight(int positionX,int positionY,int tailleX,int tailleY);
+        WindowsFight(int positionX = 0,int positionY = 0,int tailleX=0,int tailleY =0);
         //Getter and setter
         int getPositionX() const;
         int getPositionY() const;

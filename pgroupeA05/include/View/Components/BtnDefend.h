@@ -8,8 +8,9 @@
 class BtnDefend : public BtnWin
 {
  public:
-        BtnDefend(int positionX,int positionY,int tailleX,int tailleY,std::string textButton);
+        BtnDefend(int positionX = 0,int positionY = 0,int tailleX = 0,int tailleY = 0,std::string textButton="");
         BtnDefend(BtnDefend const &btnA);
+        BtnDefend& operator=(const BtnDefend& c);
         //Action that the button make
         void action();
         virtual ~BtnDefend();

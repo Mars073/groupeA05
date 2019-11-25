@@ -14,7 +14,7 @@
 class BtnWin
 {
     public:
-        BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton);
+        BtnWin(int positionX = 0,int positionY =0,int tailleX = 0,int tailleY =0,std::string textButton="");
         BtnWin(int positionX,int positionY,int tailleX,int tailleY,std::string textButton,std::string Description);
 
         virtual ~BtnWin();
@@ -74,6 +74,7 @@ class BtnWin
 
         bool getIsAttack(){return isAttack;};
         void setIsAttack(bool val){isAttack = val;}
+        BtnWin& operator=(const BtnWin& other);
 
 
 

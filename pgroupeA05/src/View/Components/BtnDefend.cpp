@@ -6,6 +6,12 @@ BtnDefend::BtnDefend(int positionX,int positionY,int tailleX,int tailleY,std::st
     this->setIsAttack(false);
     this->setVfxTexture("wind");
 }
+BtnDefend& BtnDefend::operator=(const BtnDefend& c)
+ {
+  this->operator=(c);
+  this->setIsAttack(false);
+  this->setVfxTexture("wind");
+ }
 //do an action when the button is activated
 void BtnDefend::action()
 {

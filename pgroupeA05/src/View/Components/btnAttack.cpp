@@ -33,7 +33,7 @@ std::string btnAttack::getDescription()
  std::string message;
  int degats;
  std::stringstream degatsStr;
- message ="you are doing an attack ";
+ message ="you are doing an attack whick make  ";
 
  degatsStr<<message;
  degats =(getFm()->getMonster()->showDamageReceived(getFm()->getPlayer()->damageDone()));
@@ -51,6 +51,12 @@ btnAttack* btnAttack::clone()
 {
   btnAttack *btnMag = new btnAttack(getPositionX(),getPositionY(),getTailleX(),getTailleY(),getTextButton());
   return btnMag;
+}
+btnAttack& btnAttack::operator=(const btnAttack& c)
+{
+ this->operator=(c);
+ this->setVfxTexture();
+ this->setIsAttack(true);
 }
 
     //dtor
