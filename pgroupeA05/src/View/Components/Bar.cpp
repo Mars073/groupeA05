@@ -95,11 +95,23 @@ void Bar::draw(RenderTarget& target, RenderStates states) const
         s.setTexture(texture);
         s.setColor(rect.getFillColor());
     }
+
+    int sizeX = rect.getSize().x;
+
+    if (sizeX <= 20)
+    {
+        sprites[0].setTextureRect(sf::IntRect(0, 0, sizeX/2, 20));
+        sprites[2].setTextureRect(sf::IntRect(11+sizeX/2, 0, sizeX/2, 20));
+        sprites[0].setPosition(posX, posY);
+        sprites[2].setPosition(posX+sizeX/2, posY);
+        target.draw(sprites[0]);
+        target.draw(sprites[2]);
+        return;
+    }
+
     sprites[0].setTextureRect(sf::IntRect(0, 0, 10, 20));
     sprites[1].setTextureRect(sf::IntRect(10, 0, 1, 20));
     sprites[2].setTextureRect(sf::IntRect(11, 0, 10, 20));
-
-    int sizeX = rect.getSize().x;
 
     if (sizeX <= 0)
         return;
