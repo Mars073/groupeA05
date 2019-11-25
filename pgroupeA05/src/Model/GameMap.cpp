@@ -1,34 +1,74 @@
 #include "Model/GameMap.h"
 #define PI 3.141592653589793
 
+/** \brief GameMap Constructor
+ *
+ * \param width Map side
+ *      the width is the height too because the map is a square
+ * \return GameMap
+ *
+ */
 GameMap::GameMap(int width)
 {
     setTexture(*TexturesManager::getInstance()->get("map"));
-    setWidth(64);
+    setWidth(width);
     world = 0;
     srand(time(NULL));
     beast = new Bestiary();
 }
+
+/** \brief GameMap Destructor
+ *
+ * \return void
+ *
+ */
 GameMap::~GameMap()
 {
     delete beast;
 }
 
+
+/** \brief Spawn event
+ *
+ * \return void
+ *
+ */
 void GameMap::spawn()
 {
     clock.restart();
 }
 
+/** \brief Texture setter
+ *
+ * \param sf::Texture Texture to set
+ *      The texture will be parse to draw the map
+ *
+ * \return void
+ *
+ */
 void GameMap::setTexture(const Texture& _texture)
 {
     texture = _texture;
 }
 
+
+/** \brief Texture getter
+ *
+ * \return sf::Texture Texture currently used
+ *
+ */
 Texture GameMap::getTexture() const
 {
     return texture;
 }
 
+/** \brief Width setter
+ *
+ * \param int map side
+ *
+ * \return void
+ *
+ */
 void GameMap::setWidth(int _width)
 {
    width = _width;
@@ -38,11 +78,25 @@ void GameMap::setWidth(int _width)
         dataset.push_back(TileInfo(i, 0));
 }
 
+
+/** \brief Width getter
+ *
+ * \return int map side
+ *
+ */
 unsigned GameMap::getWidth() const
 {
     return width;
 }
 
+/** \brief Load a map from a map file
+ *
+ * \param string filename
+ *
+ * \return bool success
+ *      If the return is true, the map is loaded.
+ *
+ */
 bool GameMap::loadFromFile(string path)
 {
     try
@@ -50,7 +104,7 @@ bool GameMap::loadFromFile(string path)
         unsigned i = 0;
         char32_t c;
         locale loc (locale(), new codecvt_utf8<char32_t>);
-        basic_ifstream<char32_t> fdat(path, ios::binary);
+        basic_ifstream<char32_t> fdat(path, ios::binary);   // vector of 32bits characters
         fdat.imbue(loc);
         string header;
         for (unsigned ii = 0; ii < 3 && fdat.get(c); ii++)
@@ -62,28 +116,37 @@ bool GameMap::loadFromFile(string path)
             setWidth(c-48);
         else
             return false; // no size
-        cout << " size: " << (c-48) << endl;
+        //cout << " size: " << (c-48) << endl;
         dataset.clear();
         while (fdat.get(c))
         {
-            if (c == '\n' || c == '\r')
+            if (c == '\n' || c == '\r') // ignore new lines
                 continue;
             if (i >= width*width)
                 break;
-            TileInfo current = TileInfo(i++, c-48);
-            if (current.GAMEOBJECT_ID == GUID_RANDOM_TELEPORTER)
+            TileInfo current = TileInfo(i++, c-48); // load data by character number parsing
+            if (current.GAMEOBJECT_ID == GUID_RANDOM_TELEPORTER) // looking fot teleporters
                 random_teleporters.push_back(i);
             dataset.push_back(current);
         }
-        cout << "map blocks: " << dataset.size() << endl;
+        //cout << "map blocks: " << dataset.size() << endl;
         return true;
     }
-    catch (int e)
+    catch (...)
     {
         return false;
     }
 }
 
+
+/** \brief Load a map from an world id and try to play the map music
+ *
+ * \param unsigned _world World ID
+ *
+ * \return bool success
+ *      If the return is true, the map is loaded.
+ *
+ */
 bool GameMap::loadFromFileID(unsigned _world)
 {
     if (loadFromFile("data/maps/world_" + to_string(_world) + ".bin"))
@@ -157,6 +220,13 @@ GameMap::neighboursInfo GameMap::getNeighboursInfo(const unsigned index) const
     return tmp;
 }
 
+
+/** \brief Draw map
+ * The method draw and animation only visible tile to improve the game experience
+ *
+ * \return void
+ *
+ */
 void GameMap::draw() const
 {
     Time now = clock.getElapsedTime();
@@ -270,10 +340,23 @@ void GameMap::draw() const
     }
 }
 
+
+/** \brief Make interaction between Player and Objects on the map
+ *
+ * \param DrawablePlayer Drawable player reference
+ *      The reference is used when the interaction want to edit the player
+ * \param TileInfo Tile informations
+ *      The tile which calls the interaction
+ * \param GameMap Game Map reference
+ *      It's a bypass because switches makes "this" as a const
+ *
+ * \return void
+ *
+ */
 void GameMap::interact(DrawablePlayer& player, const TileInfo* tile,  GameMap& bypass) const
 {
     unsigned UID = tile->INDEX;
-    cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
+    //cout << "[" << tile->GAMEOBJECT_ID << ":" << UID << "] " << player.getAbsolutePosition().x << "; " << player.getAbsolutePosition().y << " (" << world << ")" << endl;
     switch (tile->GAMEOBJECT_ID)
     {
     case 0: // empty

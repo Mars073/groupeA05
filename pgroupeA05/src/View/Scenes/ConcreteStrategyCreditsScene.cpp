@@ -1,4 +1,5 @@
 #include "View/Scenes/ConcreteStrategyCreditsScene.h"
+#include "View/Scenes/ConcreteStrategyHomeScene.h"
 
 ConcreteStrategyCreditsScene::ConcreteStrategyCreditsScene()
 {
@@ -12,12 +13,14 @@ ConcreteStrategyCreditsScene::~ConcreteStrategyCreditsScene()
 
 void ConcreteStrategyCreditsScene::draw(RenderTarget& target, RenderStates states) const
 {
-    Texture t = *tm->get("status");
+    Texture tx = *tm->get("status");
+    Text tt("", *fm->get("arial"));
     Sprite sprite;
-    sprite.setTexture(t);
+    sprite.setTexture(tx);
     target.draw(sprite, states);
 }
 void ConcreteStrategyCreditsScene::eventHandler(Event event)
 {
-
+    if (event.type == sf::Event::KeyPressed)
+        setScene(new ConcreteStrategyHomeScene);
 }

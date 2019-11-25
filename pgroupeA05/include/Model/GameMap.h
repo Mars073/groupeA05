@@ -62,8 +62,8 @@ class GameMap
         static const unsigned GUID_DOORS = 131;             //!< GameObject ID of doors
         static const unsigned FLOOR_AGGRO = 4;              //!< Kind of floor where you can found monsters
         static const unsigned FLOOR_HIGH_AGGRO = 18;        //!< Kind of floor where you've more chance to found monters (high weeds)
-        static const unsigned RATE_AGGRO = 5;/*%*/          //!< Chance of aggression
-        static const unsigned RATE_HIGH_AGGRO = 20;/*%*/    //!< Chance of aggression in weeds
+        static const unsigned RATE_AGGRO = 5;               //!< Chance of aggression (%)
+        static const unsigned RATE_HIGH_AGGRO = 20;         //!< Chance of aggression in weeds (%)
 
         GameMap(int = 64);                      //!< Basic constructor
         virtual ~GameMap();                     //!< Basic destructor

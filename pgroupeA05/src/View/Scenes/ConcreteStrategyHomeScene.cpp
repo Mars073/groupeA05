@@ -1,14 +1,11 @@
-// *** ADDED BY HEADER FIXUP ***
-#include <istream>
-// *** END ***
 #include "View/StrategyScene.h"
 #include "View/Scenes/ConcreteStrategyHomeScene.h"
 #include "View/Scenes/ConcreteStrategyMapScene.h"
 #include "View/Scenes/ConcreteStrategyCreditsScene.h"
 #include "Model/SingletonGame.h"
-
-#include<iostream>
-#include<algorithm>
+#include <istream>
+#include <iostream>
+#include <algorithm>
 
 ConcreteStrategyHomeScene::ConcreteStrategyHomeScene()
 {
@@ -25,10 +22,11 @@ void ConcreteStrategyHomeScene::draw(RenderTarget& target, RenderStates states) 
     Texture t = *tm->get("title");
     sprite.setTexture(t);
     target.draw(sprite, states);
-    Font f = *fm->get("arial");
+    Font f = *fm->get("morpheus");
     for (int i = 0; i < MENU_LENGTH; i++)
     {
         Text text(i==selected_id?"> "+menu[i]:menu[i], f);
+        text.setOutlineThickness(1.5);
         text.setCharacterSize(30);
         text.setFillColor(sf::Color::White);
         text.setPosition(400, 220 + i*42);
@@ -67,7 +65,7 @@ void ConcreteStrategyHomeScene::eventHandler(Event event)
                         // Lancer de jeu
                         ConcreteStrategyMapScene* s = new ConcreteStrategyMapScene;
                         setScene(s);
-                        //s->playFXIntro();
+                        s->playFXIntro();
                         return;
                     }
                 case 1:

@@ -19,27 +19,33 @@ using sf::Clock;
 using sf::Time;
 using sf::Thread;
 
+/**
+ * This class is used in the LoadScreen Scene.
+ *
+ * It's loading all of resources use in the game with the different resources manager.
+ * The resources are loaded in a different thread.
+ */
 class ResourcesLoader
 {
     public:
-        const int MAX_LOAD = 30;
-        enum class Status {PENDING, LOADING, LOADED, ERROR};
+        const int MAX_LOAD = 30; //!< The number of resources
+        enum class Status {PENDING, LOADING, LOADED, ERROR}; //!< Internal enum with states of loading
     private:
-        FontsManager*   fm = FontsManager::getInstance();
-        SoundsManager*  sm = SoundsManager::getInstance();
-        TexturesManager*tm = TexturesManager::getInstance();
-        Clock clock;
-        Thread* _async = nullptr;
-        void task();
-        int loaded = 0;
-        unsigned finish_at = -1;
-        Status status = Status::PENDING;
-        string error_message = "No error";
-        string fonts[2][2] = {
+        FontsManager*   fm = FontsManager::getInstance();   //!< Fonts service
+        SoundsManager*  sm = SoundsManager::getInstance();  //!< Sounds service
+        TexturesManager*tm = TexturesManager::getInstance();//!< Textures service
+        Clock clock;                //!< Clock for timestamp
+        Thread* _async = nullptr;   //!< Separed thread
+        void task();                //!< routine of loading
+        int loaded = 0;             //!< loaded files counter
+        unsigned finish_at = -1;    //!< timestamp
+        Status status = Status::PENDING;//!< current state of loading
+        string error_message = "No error";//!< Error messgage
+        string fonts[2][2] = {      //!< List of fonts
             { "arial", "data/fonts/arial.ttf"},
             { "morpheus", "data/fonts/morpheus.ttf"}
         };
-        string images[24][2] = {
+        string images[24][2] = {    //!< List of images
             {"icon", "data/images/icon.png"},
             {"title", "data/images/background-title.png"},
             {"fight", "data/images/BackGroudCombat.png"},
@@ -65,7 +71,7 @@ class ResourcesLoader
             {"ui_bar","data/images/ui_bar.png"},
             {"ui_bar-border","data/images/ui_bar-border.png"}
         };
-        string sounds[4][2] = {
+        string sounds[4][2] = {     //!< List of sounds
             {"title", "data/sounds/title.ogg"},
             {"world_0", "data/sounds/world_0.ogg"},
             {"world_1", "data/sounds/world_1.ogg"},
@@ -73,13 +79,13 @@ class ResourcesLoader
         };
 
     public:
-        ResourcesLoader();
-        virtual ~ResourcesLoader();
-        Status getStatus() const;
-        string getError() const;
-        int getLoaded() const;
-        unsigned getTime() const;
-        void load_resources();
+        ResourcesLoader();          //!< Basic constructor
+        virtual ~ResourcesLoader(); //!< Basic destructor
+        Status getStatus() const;   //!< Status getter
+        string getError() const;    //!< Error message getter
+        int getLoaded() const;      //!< Counter getter
+        unsigned getTime() const;   //!< timestamp getter
+        void load_resources();      //!< method to query loading
 
 };
 

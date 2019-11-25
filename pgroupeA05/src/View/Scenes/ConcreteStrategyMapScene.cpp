@@ -105,7 +105,7 @@ void ConcreteStrategyMapScene::draw(RenderTarget& target, RenderStates states) c
     catch (const out_of_range& oor) { }
     const Vector2f vw = target.getView().getCenter();
     Font f = *fm->get("arial");
-    Text text("<ESC> Menu - <A> Interact", f);
+    Text text("<ESC> Menu - <A> Interact - <F11> Toggle Fullscreen", f);
     text.setCharacterSize(12);
     text.setFillColor(Color::Black);
     text.setPosition(vw.x-299, vw.y+221);
