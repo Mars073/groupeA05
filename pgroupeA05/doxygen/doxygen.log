@@ -1,0 +1,243 @@
+warning: source ..\include\View\Scenes\WindowStatus.h is not a readable file or directory... skipping.
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/System/Thread.hpp:193: warning: include file SFML/System/Thread.inl not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/Graphics/Glsl.hpp:48: warning: include file SFML/Graphics/Glsl.inl not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/System/Vector3.hpp:252: warning: include file SFML/System/Vector3.inl not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/System/String.hpp:614: warning: include file SFML/System/String.inl not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/System/Utf.hpp:731: warning: include file SFML/System/Utf.inl not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/Graphics/Rect.hpp:193: warning: include file SFML/Graphics/Rect.inl not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/System/Vector2.hpp:250: warning: include file SFML/System/Vector2.inl not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/Window/WindowHandle.hpp:77: warning: documented symbol 'sf::WindowHandle' was not declared or defined.
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/System/NativeActivity.hpp:51: warning: Found unknown command '\sfplatform'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Armor.h:19: warning: argument 'other' of command @param is not found in the argument list of Armor::Armor(const Armor &a)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Armor.h:22: warning: The following parameters of Armor::Armor(const Armor &a) are not documented:
+  parameter 'a'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Armor.h:24: warning: argument 'other' of command @param is not found in the argument list of Armor::operator=(const Armor &a)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Armor.h:28: warning: The following parameters of Armor::operator=(const Armor &a) are not documented:
+  parameter 'a'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/BattleCharacter.h:30: warning: argument 'other' of command @param is not found in the argument list of BattleCharacter::BattleCharacter(const BattleCharacter &b)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/BattleCharacter.h:33: warning: The following parameters of BattleCharacter::BattleCharacter(const BattleCharacter &b) are not documented:
+  parameter 'b'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/BattleCharacter.h:35: warning: argument 'other' of command @param is not found in the argument list of BattleCharacter::operator=(const BattleCharacter &b)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/BattleCharacter.h:39: warning: The following parameters of BattleCharacter::operator=(const BattleCharacter &b) are not documented:
+  parameter 'b'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:25: warning: argument 'other' of command @param is not found in the argument list of Bestiary::Bestiary(const Bestiary &b)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:28: warning: The following parameters of Bestiary::Bestiary(const Bestiary &b) are not documented:
+  parameter 'b'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:36: warning: argument 'the' of command @param is not found in the argument list of Bestiary::addMonster(Monster *monster)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:39: warning: The following parameters of Bestiary::addMonster(Monster *monster) are not documented:
+  parameter 'monster'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:91: warning: argument 'the' of command @param is not found in the argument list of Bestiary::deleteMonster(std::string nameMonster)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:94: warning: The following parameters of Bestiary::deleteMonster(std::string nameMonster) are not documented:
+  parameter 'nameMonster'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:70: warning: argument 'the' of command @param is not found in the argument list of Bestiary::getOneMonster(std::string name) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:73: warning: The following parameters of Bestiary::getOneMonster(std::string name) const are not documented:
+  parameter 'name'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:41: warning: argument 'the' of command @param is not found in the argument list of Bestiary::indexOf(Monster *monster) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:46: warning: The following parameters of Bestiary::indexOf(Monster *monster) const are not documented:
+  parameter 'monster'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:30: warning: argument 'other' of command @param is not found in the argument list of Bestiary::operator=(const Bestiary &b)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Bestiary.h:34: warning: The following parameters of Bestiary::operator=(const Bestiary &b) are not documented:
+  parameter 'b'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/View/Scenes/ConcreteStrategyMenuScene.h:48: warning: unexpected token in comment block while parsing the argument of command param
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/View/Scenes/ConcreteStrategyMenuScene.h:56: warning: unexpected token in comment block while parsing the argument of command param
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/View/Scenes/ConcreteStrategyMenuScene.h:71: warning: argument 'the' of command @param is not found in the argument list of ConcreteStrategyMenuScene::eventHandler(Event event)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/View/Scenes/ConcreteStrategyMenuScene.h:75: warning: The following parameters of ConcreteStrategyMenuScene::eventHandler(Event event) are not documented:
+  parameter 'event'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:68: warning: documented empty return type of  GameMap::GameMap
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:69: warning: documented empty return type of  GameMap::~GameMap
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:77: warning: documented empty return type of  GameMap::draw
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:344: warning: argument 'DrawablePlayer' of command @param is not found in the argument list of GameMap::interact(DrawablePlayer &player, const TileInfo *tile, GameMap &bypass) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:344: warning: argument 'TileInfo' of command @param is not found in the argument list of GameMap::interact(DrawablePlayer &player, const TileInfo *tile, GameMap &bypass) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:344: warning: argument 'GameMap' of command @param is not found in the argument list of GameMap::interact(DrawablePlayer &player, const TileInfo *tile, GameMap &bypass) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:84: warning: The following parameters of GameMap::interact(DrawablePlayer &player, const TileInfo *tile, GameMap &bypass) const are not documented:
+  parameter 'player'
+  parameter 'tile'
+  parameter 'bypass'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:84: warning: documented empty return type of  GameMap::interact
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:92: warning: argument 'string' of command @param is not found in the argument list of GameMap::loadFromFile(string path)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:70: warning: The following parameters of GameMap::loadFromFile(string path) are not documented:
+  parameter 'path'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:142: warning: argument 'unsigned' of command @param is not found in the argument list of GameMap::loadFromFileID(unsigned _world)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:71: warning: The following parameters of GameMap::loadFromFileID(unsigned _world) are not documented:
+  parameter '_world'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:41: warning: argument 'sf' of command @param is not found in the argument list of GameMap::setTexture(const Texture &_texture)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:41: warning: argument 'Texture' of command @param is not found in the argument list of GameMap::setTexture(const Texture &_texture)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:72: warning: The following parameters of GameMap::setTexture(const Texture &_texture) are not documented:
+  parameter '_texture'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:72: warning: documented empty return type of  GameMap::setTexture
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/src/Model/GameMap.cpp:65: warning: argument 'int' of command @param is not found in the argument list of GameMap::setWidth(int _width)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:75: warning: The following parameters of GameMap::setWidth(int _width) are not documented:
+  parameter '_width'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:75: warning: documented empty return type of  GameMap::setWidth
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/GameMap.h:74: warning: documented empty return type of  GameMap::spawn
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Heal.h:19: warning: argument 'other' of command @param is not found in the argument list of Heal::Heal(const Heal &h)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Heal.h:22: warning: The following parameters of Heal::Heal(const Heal &h) are not documented:
+  parameter 'h'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Heal.h:24: warning: argument 'other' of command @param is not found in the argument list of Heal::operator=(const Heal &h)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Heal.h:28: warning: The following parameters of Heal::operator=(const Heal &h) are not documented:
+  parameter 'h'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/HealItem.h:19: warning: argument 'other' of command @param is not found in the argument list of HealItem::HealItem(const HealItem &h)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/HealItem.h:22: warning: The following parameters of HealItem::HealItem(const HealItem &h) are not documented:
+  parameter 'h'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/HealMp.h:16: warning: argument 'other' of command @param is not found in the argument list of HealMp::HealMp(const HealMp &h)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/HealMp.h:19: warning: The following parameters of HealMp::HealMp(const HealMp &h) are not documented:
+  parameter 'h'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/HealMp.h:21: warning: argument 'other' of command @param is not found in the argument list of HealMp::operator=(const HealMp &h)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/HealMp.h:25: warning: The following parameters of HealMp::operator=(const HealMp &h) are not documented:
+  parameter 'h'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:24: warning: argument 'other' of command @param is not found in the argument list of Inventory::Inventory(const Inventory &invent)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:27: warning: The following parameters of Inventory::Inventory(const Inventory &invent) are not documented:
+  parameter 'invent'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:35: warning: argument 'the' of command @param is not found in the argument list of Inventory::addItem(Item *item)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:38: warning: The following parameters of Inventory::addItem(Item *item) are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:40: warning: argument 'the' of command @param is not found in the argument list of Inventory::addItem(std::string itemName)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:43: warning: The following parameters of Inventory::addItem(std::string itemName) are not documented:
+  parameter 'itemName'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:45: warning: argument 'the' of command @param is not found in the argument list of Inventory::addItemInFile(Item *item)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:48: warning: The following parameters of Inventory::addItemInFile(Item *item) are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:120: warning: argument 'the' of command @param is not found in the argument list of Inventory::deleteItem(std::string nameItem)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:123: warning: The following parameters of Inventory::deleteItem(std::string nameItem) are not documented:
+  parameter 'nameItem'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:125: warning: argument 'the' of command @param is not found in the argument list of Inventory::deleteItemInFile(std::string nameItem)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:128: warning: The following parameters of Inventory::deleteItemInFile(std::string nameItem) are not documented:
+  parameter 'nameItem'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:91: warning: argument 'the' of command @param is not found in the argument list of Inventory::getOneItem(std::string name) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:94: warning: The following parameters of Inventory::getOneItem(std::string name) const are not documented:
+  parameter 'name'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:96: warning: argument 'the' of command @param is not found in the argument list of Inventory::getOneItemIngame(std::string name) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:99: warning: The following parameters of Inventory::getOneItemIngame(std::string name) const are not documented:
+  parameter 'name'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:50: warning: argument 'the' of command @param is not found in the argument list of Inventory::indexOf(Item *item) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:55: warning: The following parameters of Inventory::indexOf(Item *item) const are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:57: warning: argument 'the' of command @param is not found in the argument list of Inventory::indexOfEveryItems(Item *item) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:62: warning: The following parameters of Inventory::indexOfEveryItems(Item *item) const are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:29: warning: argument 'other' of command @param is not found in the argument list of Inventory::operator=(const Inventory &invent)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Inventory.h:33: warning: The following parameters of Inventory::operator=(const Inventory &invent) are not documented:
+  parameter 'invent'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/InventoryStatus.h:44: warning: argument 'the' of command @param is not found in the argument list of InventoryStatus::deleteItem(int index)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/InventoryStatus.h:47: warning: The following parameters of InventoryStatus::deleteItem(int index) are not documented:
+  parameter 'index'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Item.h:25: warning: argument 'other' of command @param is not found in the argument list of Item::Item(const Item &item)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Item.h:28: warning: The following parameters of Item::Item(const Item &item) are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Item.h:30: warning: argument 'other' of command @param is not found in the argument list of Item::operator=(const Item &item)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Item.h:34: warning: The following parameters of Item::operator=(const Item &item) are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Item.h:87: warning: argument 'The' of command @param is not found in the argument list of Item::operator==(const Item &other) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Item.h:93: warning: The following parameters of Item::operator==(const Item &other) const are not documented:
+  parameter 'other'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Magic.h:24: warning: argument 'other' of command @param is not found in the argument list of Magic::Magic(const Magic &m)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Magic.h:27: warning: The following parameters of Magic::Magic(const Magic &m) are not documented:
+  parameter 'm'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Magic.h:29: warning: argument 'other' of command @param is not found in the argument list of Magic::operator=(const Magic &m)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Magic.h:33: warning: The following parameters of Magic::operator=(const Magic &m) are not documented:
+  parameter 'm'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Magic.h:79: warning: argument 'The' of command @param is not found in the argument list of Magic::operator==(const Magic &other) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Magic.h:85: warning: The following parameters of Magic::operator==(const Magic &other) const are not documented:
+  parameter 'other'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:25: warning: argument 'other' of command @param is not found in the argument list of Monster::Monster(const Monster &m)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:28: warning: The following parameters of Monster::Monster(const Monster &m) are not documented:
+  parameter 'm'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:89: warning: argument 'the' of command @param is not found in the argument list of Monster::addLoot(Item *item)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:92: warning: The following parameters of Monster::addLoot(Item *item) are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:104: warning: argument 'the' of command @param is not found in the argument list of Monster::addPercentage(int nb)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:107: warning: The following parameters of Monster::addPercentage(int nb) are not documented:
+  parameter 'nb'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:59: warning: argument 'the' of command @param is not found in the argument list of Monster::damageReceived(int dmg)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:62: warning: The following parameters of Monster::damageReceived(int dmg) are not documented:
+  parameter 'dmg'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:30: warning: argument 'other' of command @param is not found in the argument list of Monster::operator=(const Monster &m)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:34: warning: The following parameters of Monster::operator=(const Monster &m) are not documented:
+  parameter 'm'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:71: warning: argument 'The' of command @param is not found in the argument list of Monster::operator==(const Monster &other) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:77: warning: The following parameters of Monster::operator==(const Monster &other) const are not documented:
+  parameter 'other'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:109: warning: argument 'the' of command @param is not found in the argument list of Monster::showDamageReceived(int dmg) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Monster.h:115: warning: The following parameters of Monster::showDamageReceived(int dmg) const are not documented:
+  parameter 'dmg'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:33: warning: argument 'other' of command @param is not found in the argument list of Player::Player(const Player &p)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:36: warning: The following parameters of Player::Player(const Player &p) are not documented:
+  parameter 'p'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:188: warning: argument 'the' of command @param is not found in the argument list of Player::addLootMonster(std::vector< Item * > loot)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:193: warning: The following parameters of Player::addLootMonster(std::vector< Item * > loot) are not documented:
+  parameter 'loot'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:153: warning: argument 'the' of command @param is not found in the argument list of Player::changeEquipment(std::string nameItem)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:158: warning: The following parameters of Player::changeEquipment(std::string nameItem) are not documented:
+  parameter 'nameItem'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:148: warning: argument 'the' of command @param is not found in the argument list of Player::damageReceived(int dmg)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:151: warning: The following parameters of Player::damageReceived(int dmg) are not documented:
+  parameter 'dmg'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:181: warning: argument 'the' of command @param is not found in the argument list of Player::guard(int dmg)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:186: warning: The following parameters of Player::guard(int dmg) are not documented:
+  parameter 'dmg'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:174: warning: argument 'the' of command @param is not found in the argument list of Player::heals(Item *item)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:179: warning: The following parameters of Player::heals(Item *item) are not documented:
+  parameter 'item'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:38: warning: argument 'other' of command @param is not found in the argument list of Player::operator=(const Player &p)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:42: warning: The following parameters of Player::operator=(const Player &p) are not documented:
+  parameter 'p'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:167: warning: argument 'the' of command @param is not found in the argument list of Player::reduceMp(std::string magicName)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:172: warning: The following parameters of Player::reduceMp(std::string magicName) are not documented:
+  parameter 'magicName'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:79: warning: argument 'val' of command @param is not found in the argument list of Player::Setarmor(Armor *armor)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:82: warning: The following parameters of Player::Setarmor(Armor *armor) are not documented:
+  parameter 'armor'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:89: warning: argument 'val' of command @param is not found in the argument list of Player::Setinventory(Inventory *inventory)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:92: warning: The following parameters of Player::Setinventory(Inventory *inventory) are not documented:
+  parameter 'inventory'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:99: warning: argument 'val' of command @param is not found in the argument list of Player::Setspells(Spells *spells)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:102: warning: The following parameters of Player::Setspells(Spells *spells) are not documented:
+  parameter 'spells'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:69: warning: argument 'val' of command @param is not found in the argument list of Player::Setweapon(Weapon *weapon)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Player.h:72: warning: The following parameters of Player::Setweapon(Weapon *weapon) are not documented:
+  parameter 'weapon'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/SingletonGame.h:45: warning: argument 'ptr' of command @param is not found in the argument list of SingletonGame::setScene(StrategyScene *_scene)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/SingletonGame.h:48: warning: The following parameters of SingletonGame::setScene(StrategyScene *_scene) are not documented:
+  parameter '_scene'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:21: warning: argument 'other' of command @param is not found in the argument list of Spells::Spells(const Spells &s)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:24: warning: The following parameters of Spells::Spells(const Spells &s) are not documented:
+  parameter 's'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:32: warning: argument 'the' of command @param is not found in the argument list of Spells::addMagic(Magic *magic)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:35: warning: The following parameters of Spells::addMagic(Magic *magic) are not documented:
+  parameter 'magic'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:37: warning: argument 'the' of command @param is not found in the argument list of Spells::addMagic(std::string magicName)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:40: warning: The following parameters of Spells::addMagic(std::string magicName) are not documented:
+  parameter 'magicName'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:42: warning: argument 'the' of command @param is not found in the argument list of Spells::addMagicInFile(Magic *magic)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:45: warning: The following parameters of Spells::addMagicInFile(Magic *magic) are not documented:
+  parameter 'magic'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:112: warning: argument 'the' of command @param is not found in the argument list of Spells::deleteMagic(std::string nameMagic)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:115: warning: The following parameters of Spells::deleteMagic(std::string nameMagic) are not documented:
+  parameter 'nameMagic'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:117: warning: argument 'the' of command @param is not found in the argument list of Spells::deleteMagicInFile(std::string nameMagic)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:120: warning: The following parameters of Spells::deleteMagicInFile(std::string nameMagic) are not documented:
+  parameter 'nameMagic'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:88: warning: argument 'the' of command @param is not found in the argument list of Spells::getOneMagic(std::string name) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:91: warning: The following parameters of Spells::getOneMagic(std::string name) const are not documented:
+  parameter 'name'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:93: warning: argument 'the' of command @param is not found in the argument list of Spells::getOneMagicInGame(std::string name) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:96: warning: The following parameters of Spells::getOneMagicInGame(std::string name) const are not documented:
+  parameter 'name'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:47: warning: argument 'the' of command @param is not found in the argument list of Spells::indexOf(Magic *magic) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:52: warning: The following parameters of Spells::indexOf(Magic *magic) const are not documented:
+  parameter 'magic'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:54: warning: argument 'the' of command @param is not found in the argument list of Spells::indexOfEverySpells(Magic *magic) const
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:59: warning: The following parameters of Spells::indexOfEverySpells(Magic *magic) const are not documented:
+  parameter 'magic'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:26: warning: argument 'other' of command @param is not found in the argument list of Spells::operator=(const Spells &s)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Spells.h:30: warning: The following parameters of Spells::operator=(const Spells &s) are not documented:
+  parameter 's'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Weapon.h:19: warning: argument 'other' of command @param is not found in the argument list of Weapon::Weapon(const Weapon &w)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Weapon.h:22: warning: The following parameters of Weapon::Weapon(const Weapon &w) are not documented:
+  parameter 'w'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Weapon.h:24: warning: argument 'other' of command @param is not found in the argument list of Weapon::operator=(const Weapon &w)
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/Model/Weapon.h:28: warning: The following parameters of Weapon::operator=(const Weapon &w) are not documented:
+  parameter 'w'
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/Network/Packet.hpp:102: warning: documented empty return type of  sf::Packet::getData
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/Network/Packet.hpp:358: warning: documented empty return type of  sf::Packet::onSend
+C:/Users/Mars073/source/code-blocks/groupeA05/pgroupeA05/include/SFML/System/ThreadLocal.hpp:79: warning: documented empty return type of  sf::ThreadLocal::getValue
