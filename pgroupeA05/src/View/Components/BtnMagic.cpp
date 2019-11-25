@@ -75,7 +75,7 @@ void BtnMagic::action()
 
 }
 //return description
-std::string BtnMagic::getDescription()
+std::string BtnMagic::getDescription()const
 {
 
  std::string message;

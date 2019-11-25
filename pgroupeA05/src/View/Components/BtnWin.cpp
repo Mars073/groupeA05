@@ -73,7 +73,7 @@ BtnWin& BtnWin::operator=(const BtnWin& c)
     this->tailleY = c.tailleY;
     this->text = c.text;
 
-    this->rect = c.rect;
+    //this->rect = c.rect;
 
     this->rect.setPosition(sf::Vector2f(c.positionX,c.positionY));
     this->rect.setSize(sf::Vector2f(c.tailleX,c.tailleY));
@@ -147,7 +147,7 @@ void BtnWin::action()
     std::cout << "vous avez fait une action"<< std::endl;
 }
 //getter is activate
-bool BtnWin::getisActivate()
+bool BtnWin::getisActivate()const
 {
     return isActivate;
 }

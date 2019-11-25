@@ -8,9 +8,10 @@ BtnDefend::BtnDefend(int positionX,int positionY,int tailleX,int tailleY,std::st
 }
 BtnDefend& BtnDefend::operator=(const BtnDefend& c)
  {
-  this->operator=(c);
+  this->BtnWin::operator=(c);
   this->setIsAttack(false);
   this->setVfxTexture("wind");
+  return *this;
  }
 //do an action when the button is activated
 void BtnDefend::action()
@@ -37,7 +38,7 @@ std::string BtnDefend::getDescription()
 {
 
  std::string message;
- int degats;
+
  std::stringstream degatsStr;
  message ="you defend";
 

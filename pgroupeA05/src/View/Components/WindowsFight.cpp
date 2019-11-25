@@ -36,14 +36,15 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
 }
 //Destructor WindowsFoght
 WindowsFight::~WindowsFight()
-{   /*
+{
     for(int i = 0; i< this->vectorButton.size();i++)
     {
         std::cout <<i <<"bouton supprimer"<<std::endl;
         BtnWin *mp =(this->vectorButton.at(i));
         delete mp;
     }
-    */
+    this->vectorButton.clear();
+
 
 }
 //getter PositionX
@@ -112,10 +113,12 @@ void WindowsFight::addButton(BtnWin *btn)
 {
     vectorButton.push_back(btn);
 }
+//remove a button
 void WindowsFight::removeButton(int index)
 {
     vectorButton.erase(vectorButton.begin()+index);
 }
+//setter of fightManager
 void WindowsFight::setFm(FightManager *newfm)
 {
     fm = newfm;
@@ -129,6 +132,35 @@ void WindowsFight::ClearWindows()
  }
  this->vectorButton.clear();
 }
+WindowsFight& WindowsFight::operator=(const WindowsFight& rhs)
+{
+    if (this == &rhs)
+        return *this; // handle self assignment
+//assignment operator
+    return *this;
+}
+/** @brief WindowsFight
+  *
+  * copy constuctor
+  */
+WindowsFight::WindowsFight(const WindowsFight& other)
+{
+   this->rect.setPosition(sf::Vector2f(other.getPositionX(),other.getPositionY()));
+    this->rect.setSize(sf::Vector2f(other.getTailleX(),other.getTailleY()));
+    this->rect.setOutlineThickness(2);
+    this->rect.setOutlineColor(sf::Color(255,255,255));
+    this->rect.setFillColor(sf::Color(0,0,255));
+    this->indexSelectionner = 0;
+
+    //initialisation cf attribut
+    this->positionX = other.getPositionX();
+    this->positionY = other.getPositionY();
+    this->tailleX = other.getTailleX();
+    this->tailleY = other.getTailleY();
+}
+
+
+
 
 
 

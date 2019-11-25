@@ -54,9 +54,10 @@ btnAttack* btnAttack::clone()
 }
 btnAttack& btnAttack::operator=(const btnAttack& c)
 {
- this->operator=(c);
+ this->BtnWin::operator=(c);
  this->setVfxTexture();
  this->setIsAttack(true);
+ return *this;
 }
 
     //dtor

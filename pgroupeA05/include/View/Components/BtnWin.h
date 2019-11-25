@@ -35,7 +35,7 @@ class BtnWin
 
 
         sf::RectangleShape getRect()const;
-        void getNbBoutton();
+        void getNbBoutton()const;
         void ativate();
         void Desativate();
         void changeColorActivate();
@@ -49,7 +49,7 @@ class BtnWin
 
         virtual void action();
         void Draw();
-        bool getisActivate();
+        bool getisActivate()const;
         sf::Text text;
         void setIsActivate(bool val);
         std::string getTextButton();
@@ -63,8 +63,8 @@ class BtnWin
         bool equals(const BtnWin b);
         bool equals(BtnWin* b);
 
-        int getPosButtonAction(){return posButtonAction;};
-        int getNbBoutonDisplay(){return nbBoutonDisplay;};
+        int getPosButtonAction()const{return posButtonAction;};
+        int getNbBoutonDisplay()const{return nbBoutonDisplay;};
 
         void setPosButtonAction(int val){posButtonAction = val;};
         void setNbBoutonDisplay(int val){nbBoutonDisplay = val;};
@@ -72,7 +72,7 @@ class BtnWin
         sf::Texture getVfxTexture(){return vfxTexture;};
         void setVfxTexture(std::string nom = "hit");
 
-        bool getIsAttack(){return isAttack;};
+        bool getIsAttack()const{return isAttack;};
         void setIsAttack(bool val){isAttack = val;}
         BtnWin& operator=(const BtnWin& other);
 

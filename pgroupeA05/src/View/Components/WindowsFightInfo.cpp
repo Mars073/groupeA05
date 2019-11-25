@@ -18,7 +18,30 @@ WindowsFightInfo::WindowsFightInfo(int posX,int posY,int sizeX,int sizeY):Window
 WindowsFightInfo::~WindowsFightInfo()
 {
     //dtor
+    this->~WindowsFight();
 }
+/** @brief operator=
+  *
+  * assignment operator
+  */
+WindowsFightInfo& WindowsFightInfo::operator=(const WindowsFightInfo& rhs)
+{
+   if (this == &rhs)
+        return *this; // handle self assignment
+//assignment operator
+    return *this;
+
+}
+
+/** @brief WindowsFightInfo
+  *
+  * copy constructor
+  */
+WindowsFightInfo::WindowsFightInfo(const WindowsFightInfo& other):WindowsFight(other)
+{
+
+}
+
 void WindowsFightInfo::EcrireinWindow()
 {
 
