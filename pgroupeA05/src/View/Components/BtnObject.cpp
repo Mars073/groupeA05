@@ -108,7 +108,7 @@ std::string BtnObject::getDescription()
     return degatsStr.str();
 }
 /** @brief clone
-  *
+  *test
   * returns a pointer that is a copy
   */
 BtnObject* BtnObject::clone()
