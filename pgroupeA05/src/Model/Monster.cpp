@@ -1,4 +1,4 @@
-#include "Monster.h"
+#include "Model/Monster.h"
 
 Monster::Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def,int level,int expHeld):BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)
 {
@@ -9,7 +9,7 @@ Monster::Monster(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk
 
 Monster::~Monster()
 {
-   for (unsigned i = 0; i < lootHeld.size(); i++)
+    for (unsigned i = 0; i < lootHeld.size(); i++)
     {
         delete lootHeld.at(i);
     }

@@ -1,4 +1,4 @@
-#include "FightManager.h"
+#include "Model/FightManager.h"
 //Constructor
 FightManager::FightManager()
 {

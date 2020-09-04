@@ -1,4 +1,4 @@
-#include "Weapon.h"
+#include "Model/Weapon.h"
 
 
 Weapon::Weapon(std::string itemName,std::string itemDescription,int atk,int mag):Item(itemName,itemDescription)

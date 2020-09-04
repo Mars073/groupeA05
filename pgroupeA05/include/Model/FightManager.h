@@ -1,8 +1,8 @@
 #ifndef FIGHTMANAGER_H
 #define FIGHTMANAGER_H
 
-#include<Monster.h>
-#include<Player.h>
+#include "Model/Monster.h"
+#include "Model/Player.h"
 #include "Model/SingletonGame.h"
 
 class FightManager

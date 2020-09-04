@@ -1,8 +1,8 @@
 #ifndef INVENTORYSTATUS_H
 #define INVENTORYSTATUS_H
 #include <vector>
-#include <Item.h>
-#include <Model/SingletonGame.h>
+#include "Model/Item.h"
+#include "Model/SingletonGame.h"
 using namespace std;
 
 class InventoryStatus

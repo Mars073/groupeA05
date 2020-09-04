@@ -14,12 +14,12 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <Model/SingletonGame.h>
-#include <Model/TileInfo.h>
-#include <View/DrawablePlayer.h>
-#include <View/Scenes/ConcreteStrategyFightScene.h>
+#include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
+#include "Model/SingletonGame.h"
+#include "Model/TileInfo.h"
+#include "View/DrawablePlayer.h"
+#include "View/Scenes/ConcreteStrategyFightScene.h"
 
 using sf::Texture;
 using sf::Sprite;

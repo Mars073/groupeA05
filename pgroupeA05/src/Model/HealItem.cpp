@@ -1,4 +1,4 @@
-#include "HealItem.h"
+#include "Model/HealItem.h"
 
 HealItem::HealItem(std::string itemName,std::string itemDescription,int amountHealed):Item(itemName,itemDescription)
 {

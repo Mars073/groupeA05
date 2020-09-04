@@ -1,4 +1,4 @@
-#include "BattleCharacter.h"
+#include "Model/BattleCharacter.h"
 
 BattleCharacter::BattleCharacter(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def)
 {

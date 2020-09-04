@@ -3,12 +3,12 @@
 // *** END ***
 #ifndef BESTIARY_H
 #define BESTIARY_H
-#include "Monster.h"
 #include <vector>
 #include <fstream>
 #include <algorithm>
 #include <time.h>
-#include "Inventory.h"
+#include "Model/Monster.h"
+#include "Model/Inventory.h"
 
 class Bestiary
 {

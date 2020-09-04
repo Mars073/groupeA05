@@ -1,4 +1,4 @@
-#include <View/Scenes/ConcreteStrategyMenuScene.h>
+#include "View/Scenes/ConcreteStrategyMenuScene.h"
 
 ConcreteStrategyMenuScene::ConcreteStrategyMenuScene()
 {
@@ -98,7 +98,7 @@ void ConcreteStrategyMenuScene::draw(RenderTarget& target, RenderStates states) 
         target.draw(textStatus, states);
     }
     else if(choiceMenu==1){
-        int nb1=0,nb2=8;
+        size_t nb1=0,nb2=8;
 
         for(unsigned i=0;i< ceil(((float)invent.Getequipments().size()/8)) ;i++){
             if(nb2>invent.Getequipments().size()){
@@ -112,7 +112,7 @@ void ConcreteStrategyMenuScene::draw(RenderTarget& target, RenderStates states) 
         }
     }
     else if(choiceMenu==2){
-        int nb1=0,nb2=8;
+        size_t nb1=0,nb2=8;
 
         for(unsigned i=0;i< ceil(((float)invent.Getitems().size()/8)) ;i++){
             if(nb2>invent.Getitems().size()){
@@ -127,14 +127,16 @@ void ConcreteStrategyMenuScene::draw(RenderTarget& target, RenderStates states) 
     }
 }
 
-void ConcreteStrategyMenuScene::drawItems(RenderTarget& target, RenderStates states,int nb1,int nb2,std::vector<Item*>listofItem,std::string type1,std::string type2,std::string type1Desc,std::string type2Desc,short int id) const{
+void ConcreteStrategyMenuScene::drawItems(RenderTarget& target, RenderStates states,int _nb1,int _nb2,std::vector<Item*>listofItem,std::string type1,std::string type2,std::string type1Desc,std::string type2Desc,short int id) const{
     Font f = *FontsManager::getInstance()->get("arial");
     int menuItem=0;
+    size_t nb1 = (size_t) _nb1;
+    size_t nb2 = (size_t) _nb2;
     bool isType2=false;
     bool isType1=false;
     bool checkNextSpace=false;
 
-    for (int i = nb1; i < nb2; i++)
+    for (size_t i = nb1; i < nb2; i++)
     {
         if(listofItem.at(i)->GetitemType()==type1 && !isType1){
             isType1=true;
@@ -160,10 +162,10 @@ void ConcreteStrategyMenuScene::drawItems(RenderTarget& target, RenderStates sta
 
             target.draw(textType2, states);
         }
-        Text textItems(i==id?"> "+listofItem.at(i)->strEquipment():listofItem.at(i)->strEquipment(), f);
+        Text textItems(i==(size_t)id?"> "+listofItem.at(i)->strEquipment():listofItem.at(i)->strEquipment(), f);
         textItems.setCharacterSize(15);
         textItems.setFillColor(sf::Color::Black);
-        if(!isType2 || nb2==listofItem.size() && listofItem.size()>=9 && !isType2 || i==nb1 && listofItem.at(i)->GetitemType()==type2 || listofItem.size()>=9 && checkNextSpace || listofItem.size()<8 && listofItem.at(0)->GetitemType()==type2){
+        if(!isType2 || (nb2==listofItem.size() && listofItem.size()>=9 && !isType2) || (i==nb1 && listofItem.at(i)->GetitemType()==type2) || (listofItem.size()>=9 && checkNextSpace) || (listofItem.size()<8 && listofItem.at(0)->GetitemType()==type2)){
             textItems.setPosition(250, 40 + (menuItem+1)*42);
             if(i==nb1 && listofItem.at(i)->GetitemType()==type2){
                checkNextSpace=true;

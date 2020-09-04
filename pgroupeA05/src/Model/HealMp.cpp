@@ -1,4 +1,4 @@
-#include "HealMp.h"
+#include "Model/HealMp.h"
 
 HealMp::HealMp(std::string itemName,std::string itemDescription,int amountHealed):HealItem(itemName,itemDescription,amountHealed)
 {

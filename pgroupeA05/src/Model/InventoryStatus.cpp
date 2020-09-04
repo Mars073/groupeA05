@@ -1,4 +1,4 @@
-#include "InventoryStatus.h"
+#include "Model/InventoryStatus.h"
 
 InventoryStatus::InventoryStatus()
 {

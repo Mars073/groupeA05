@@ -92,6 +92,7 @@ BtnWin& BtnWin::operator=(const BtnWin& c)
     this->ListButton = c.ListButton;
     this->fm = c.fm;
 
+    return *this;
 }
 //make isActivate true
 void BtnWin::ativate()

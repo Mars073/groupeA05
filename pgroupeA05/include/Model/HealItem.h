@@ -1,7 +1,7 @@
 #ifndef HEALITEM_H
 #define HEALITEM_H
 
-#include <Item.h>
+#include "Model/Item.h"
 
 
 class HealItem : public Item

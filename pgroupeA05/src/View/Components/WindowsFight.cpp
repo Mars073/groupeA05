@@ -37,7 +37,7 @@ WindowsFight::WindowsFight(int positionX,int positionY,int tailleX,int tailleY)
 //Destructor WindowsFoght
 WindowsFight::~WindowsFight()
 {
-    for(int i = 0; i< this->vectorButton.size();i++)
+    for(size_t i = 0; i< this->vectorButton.size();i++)
     {
         std::cout <<i <<"bouton supprimer"<<std::endl;
         BtnWin *mp =(this->vectorButton.at(i));
@@ -84,8 +84,9 @@ std::vector<BtnWin*> WindowsFight::getVect()const
     return vectorButton;
 }
 //check activate
-void WindowsFight::activateButton(int index)
+void WindowsFight::activateButton(int _index)
 {
+    size_t index = (size_t) _index;
 
     if(index < 0)
     {
@@ -95,7 +96,7 @@ void WindowsFight::activateButton(int index)
     {
         index = 0;
     }
-    for(int i = 0;i < vectorButton.size();i++)
+    for(size_t i = 0;i < vectorButton.size();i++)
     {
         vectorButton.at(i)->changeColorDesactivate();
         vectorButton.at(i)->Desativate();
@@ -126,7 +127,7 @@ void WindowsFight::setFm(FightManager *newfm)
 //clear and delete the vector of ClearWindows
 void WindowsFight::ClearWindows()
 {
- for(int i ;i<this->vectorButton.size();i++)
+ for(size_t i ;i<this->vectorButton.size();i++)
  {
   delete vectorButton.at(i);
  }

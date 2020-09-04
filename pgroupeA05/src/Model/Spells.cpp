@@ -1,4 +1,4 @@
-#include "Spells.h"
+#include "Model/Spells.h"
 
 Spells::Spells()
 {

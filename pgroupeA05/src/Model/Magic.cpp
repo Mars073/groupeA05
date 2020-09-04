@@ -1,4 +1,4 @@
-#include "Magic.h"
+#include "Model/Magic.h"
 
 Magic::Magic(std::string mName,int baseDamage,int mpUsage)
 {

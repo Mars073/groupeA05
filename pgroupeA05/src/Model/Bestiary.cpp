@@ -1,4 +1,4 @@
-#include "Bestiary.h"
+#include "Model/Bestiary.h"
 
 Bestiary::Bestiary()
 {
@@ -118,7 +118,7 @@ void Bestiary::writeInFile()
 	for (auto const& i : bestiary)
 	{
         output<<i->GetcharaName()<<"/"<<i->GetmaxHp()<<i->Gethp()<<" "<<i->GetmaxMp()<<" "<<i->Getmp()<<" "<<i->Getatk()<<" "<<i->Getmag()<<" "<<i->Getdef()<<" "<<i->Getlevel()<<" "<<i->GetexpHeld()<<" "<<i->GetPercentagesItem().size();
-        for(int j=0;j<i->GetPercentagesItem().size();j++){
+        for(size_t j=0;j<i->GetPercentagesItem().size();j++){
             output<<i->GetLootHeld().at(j)->GetitemName()<<"/"<<i->GetPercentagesItem().at(j);
         }
         if (&i != &bestiary.back()){

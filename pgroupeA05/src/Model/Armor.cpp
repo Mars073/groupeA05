@@ -1,4 +1,4 @@
-#include "Armor.h"
+#include "Model/Armor.h"
 
 Armor::Armor(std::string itemName,std::string itemDescription,int def):Item(itemName,itemDescription)
 {

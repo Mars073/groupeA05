@@ -4,13 +4,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "BattleCharacter.h"
 #include <time.h>
 #include <math.h>
-#include "Weapon.h"
-#include "Armor.h"
-#include "Inventory.h"
-#include "Spells.h"
+#include "Model/BattleCharacter.h"
+#include "Model/Weapon.h"
+#include "Model/Armor.h"
+#include "Model/Inventory.h"
+#include "Model/Spells.h"
 
 class Player : public BattleCharacter
 {

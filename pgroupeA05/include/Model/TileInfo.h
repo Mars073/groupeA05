@@ -1,7 +1,7 @@
 #ifndef TILEINFO_H
 #define TILEINFO_H
 
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics.hpp"
 using sf::Vector2u;
 
 /*

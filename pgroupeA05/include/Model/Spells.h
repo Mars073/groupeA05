@@ -3,7 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
-#include "Magic.h"
+#include "Model/Magic.h"
 
 class Spells
 {

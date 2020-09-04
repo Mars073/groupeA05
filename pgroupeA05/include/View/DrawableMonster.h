@@ -2,9 +2,9 @@
 #define DRAWABLEMONSTER_H
 
 #include "Util/TexturesManager.h"
-#include "Bestiary.h"
+#include "Model/Bestiary.h"
 
-#include "string"
+#include <string>
 #include "SFML/Graphics.hpp"
 
 class DrawableMonster

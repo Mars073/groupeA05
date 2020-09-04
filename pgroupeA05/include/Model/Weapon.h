@@ -1,6 +1,6 @@
 #ifndef WEAPON_H
 #define WEAPON_H
-#include <Item.h>
+#include "Model/Item.h"
 
 
 class Weapon : public Item

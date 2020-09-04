@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include "View/Scenes/ConcreteStrategyLoadScreenScene.h"
-#include <Player.h>
+#include "Model/Player.h"
 
 /**
  * This is the main class which manage others like Scenes

@@ -3,10 +3,10 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
-#include "Heal.h"
-#include "HealMp.h"
-#include "Armor.h"
-#include "Weapon.h"
+#include "Model/Heal.h"
+#include "Model/HealMp.h"
+#include "Model/Armor.h"
+#include "Model/Weapon.h"
 
 class Inventory
 {

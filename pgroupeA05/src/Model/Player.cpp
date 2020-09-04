@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Model/Player.h"
 
 Player::Player(std::string charaName,int maxHp,int hp,int maxMp,int mp,int atk,int mag,int def)
 :BattleCharacter(charaName,maxHp,hp,maxMp,mp,atk,mag,def)

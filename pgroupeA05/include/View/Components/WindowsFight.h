@@ -3,9 +3,9 @@
 #include "vector"
 #include <SFML/Graphics.hpp>
 #include "vector"
-#include "FightManager.h"
-#include "string"
-#include "btnAttack.h"
+#include "Model/FightManager.h"
+#include <string>
+#include "View/Components/btnAttack.h"
 
 
 

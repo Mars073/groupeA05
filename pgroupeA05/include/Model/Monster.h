@@ -4,8 +4,8 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 
-#include "BattleCharacter.h"
-#include "Inventory.h"
+#include "Model/BattleCharacter.h"
+#include "Model/Inventory.h"
 #include <time.h>
 
 class Monster : public BattleCharacter

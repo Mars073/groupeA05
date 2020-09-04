@@ -1,13 +1,13 @@
 #ifndef BtnWin_H
 #define BtnWin_H
 #include <SFML/Graphics.hpp>
-#include "iostream"
-#include "string"
-#include "sstream"
-#include "vector"
-#include "Player.h"
-#include "Monster.h"
-#include "FightManager.h"
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include "Model/Player.h"
+#include "Model/Monster.h"
+#include "Model/FightManager.h"
 
 
 

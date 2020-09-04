@@ -46,7 +46,7 @@ void BtnMagic::action()
  int t = 0;
  if(this->getIsMenuBoutton())
  {
-  for(int i = 0 ;i<this->getFm()->getPlayer()->Getspells()->GetspellsHeld().size();i++)
+  for(size_t i = 0 ;i<this->getFm()->getPlayer()->Getspells()->GetspellsHeld().size();i++)
   {
    std::cout <<this->getNbBoutonDisplay()<<"le nombre maximum de btnAfficher" << std::endl;
    if(t >=this->getNbBoutonDisplay())

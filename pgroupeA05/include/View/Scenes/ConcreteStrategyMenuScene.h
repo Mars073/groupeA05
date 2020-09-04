@@ -23,8 +23,8 @@ class ConcreteStrategyMenuScene: public StrategyScene
         RectangleShape rectMenu; //!< Member variable "rectMenu"
         RectangleShape rectMenuRight; //!< Member variable "rectMenuRight"
         int choiceMenu; //!< Member variable "choiceMenu"
-        short int selected_id_menu = 0; //!< Member variable "selected_id_menu"
-        short int selected_id_items = 0; //!< Member variable "selected_id_items"
+        size_t selected_id_menu = 0; //!< Member variable "selected_id_menu"
+        size_t selected_id_items = 0; //!< Member variable "selected_id_items"
         InventoryStatus invent;
 
     public:
