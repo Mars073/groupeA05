@@ -61,7 +61,7 @@ git clone https://github.com/Mars073/groupeA05.git
 	1. Open the `pgroupeA05\pgroupeA05_linux.cbp` file with Code::Blocks
 	2. Everything is ready, you can Build and run <kbd>F9</kbd> σ(≧ε≦ｏ)
 
-> ** NOTE **: it is necessary to install the `openal` devel on some linux
+> ** NOTE **: it is necessary to install the `openal` devel on some linux  
 Fedora:
 ```sh
 sudo dnf install openal
